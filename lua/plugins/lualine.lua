@@ -22,7 +22,7 @@ return {
                     },
                     { "filename", path = 1, symbols = { modified = "  ", readonly = "", unnamed = "" } },
 
-                    -- { "diagnostics", sources = { "nvim_lsp" }, symbols = { error = " ", warn = " ", info = " " }
+                    { "diagnostics", sources = { "nvim_lsp" }, symbols = { error = " ", warn = " ", info = " " } },
                 },
                 lualine_x = { "encoding" },
                 lualine_y = { "progress" },
