@@ -1,6 +1,7 @@
 return {
     "folke/which-key.nvim",
-    event = "VeryLazy",
+    event = "VeryLazy", 
+    lazy = true,
     opts = {
         plugins = {
             marks = false,     -- shows a list of your marks on ' and `

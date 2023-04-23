@@ -1,7 +1,9 @@
 return {
     {
         "akinsho/bufferline.nvim",
-        event = "VeryLazy",
+        enabled = true,
+        event = "VimEnter",
+        lazy = true,
         opts = {
             options = {
                 mode = "buffers",
@@ -26,15 +28,15 @@ return {
                     delay = 200,
                     reveal = { "close" },
                 },
-                diagnostics_indicator = function(_, _, diag)
-                    local s = " "
-                    for e, n in pairs(diag) do
-                        local sym = e == "error" and " "
-                            or (e == "warning" and " " or "")
-                        s = s .. n .. sym
-                    end
-                    return s
-                end,
+                -- diagnostics_indicator = function(_, _, diag)
+                --     local s = " "
+                --     for e, n in pairs(diag) do
+                --         local sym = e == "error" and " "
+                --             or (e == "warning" and " " or "")
+                --         s = s .. n .. sym
+                --     end
+                --     return s
+                -- end,
                 offsets = {
                     {
                         filetype = "neo-tree",

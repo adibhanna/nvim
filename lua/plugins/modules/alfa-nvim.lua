@@ -1,17 +1,18 @@
-return   -- dashboard
-{
+return {
   "goolord/alpha-nvim",
+  enabled = true,
   event = "VimEnter",
+  lazy = true,
   opts = function()
     local dashboard = require("alpha.themes.dashboard")
-    local logo = [[                                                   
+    local logo = [[
     ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗
     ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║
     ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║
     ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║
     ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║
     ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝
-                                                          
+
     ]]
 
     dashboard.section.header.val = vim.split(logo, "\n")

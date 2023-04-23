@@ -1,5 +1,8 @@
 return {
     "nvim-lualine/lualine.nvim",
+    enabled = true,
+    lazy = false,
+    event = { "BufReadPost", "BufNewFile" },
     config = function()
         require("lualine").setup {
             options = {
@@ -20,8 +23,7 @@ return {
                         padding = {
                             left = 1, right = 0 }
                     },
-                    { "filename", path = 1, symbols = { modified = "  ", readonly = "", unnamed = "" } },
-
+                    { "filename",    path = 1,                 symbols = { modified = "  ", readonly = "", unnamed = "" } },
                     { "diagnostics", sources = { "nvim_lsp" }, symbols = { error = " ", warn = " ", info = " " } },
                 },
                 lualine_x = { "encoding" },

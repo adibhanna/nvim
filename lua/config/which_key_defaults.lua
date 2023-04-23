@@ -7,6 +7,7 @@ return {
     h = { ":nohlsearch<CR>", "No Highlight" },
     p = { ":Lazy<CR>", "Lazy" },
     f = { ':Telescope find_files<CR>', "Find Files" },
+    r = { function() require("spectre").open() end, "Replace (Spectre)"},
     b = {
         name = "Buffers",
         j = { "<cmd>BufferLinePick<cr>", "Jump" },
@@ -34,7 +35,7 @@ return {
         p = { "<cmd>BufferLineTogglePin<CR>", "Toggle pin" },
         P = { "<cmd>BufferLineGroupClose ungrouped<CR>", "Delete non-pinned buffers" },
     },
-    g = {
+    G = {
         name = "+Git",
         j = { "<cmd>lua require 'gitsigns'.next_hunk({navigation_message = false})<cr>", "Next Hunk" },
         k = { "<cmd>lua require 'gitsigns'.prev_hunk({navigation_message = false})<cr>", "Prev Hunk" },
@@ -93,4 +94,11 @@ return {
         C = { "<cmd>Telescope commands<cr>", "Commands" },
         l = { "<cmd>Telescope resume<cr>", "Resume last search" },
     },
+    t = {
+        name = "+Todo",
+        t = { "<cmd>TodoTelescope<cr>", "Todo" },
+        T = { "<cmd>TodoTelescope keywords=TODO,FIX,FIXME<cr>", "Todo/Fix/Fixme" },
+        x = { "<cmd>TodoTrouble<cr>", "Todo (Trouble)" },
+        X = { "<cmd>TodoTrouble keywords=TODO,FIX,FIXME<cr><cr>", "Todo/Fix/Fixme (Trouble)" },
+    }
 }
