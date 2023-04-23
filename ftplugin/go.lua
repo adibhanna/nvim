@@ -11,7 +11,6 @@ local opts = {
   noremap = true, -- use `noremap` when creating keymaps
   nowait = true, -- use `nowait` when creating keymaps
 }
-
 local mappings = {
   g = {
     name = "+Go",
