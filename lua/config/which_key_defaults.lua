@@ -7,7 +7,7 @@ return {
     h = { ":nohlsearch<CR>", "No Highlight" },
     p = { ":Lazy<CR>", "Lazy" },
     f = { ':Telescope find_files<CR>', "Find Files" },
-    r = { function() require("spectre").open() end, "Replace (Spectre)"},
+    r = { function() require("spectre").open() end, "Replace (Spectre)" },
     b = {
         name = "Buffers",
         j = { "<cmd>BufferLinePick<cr>", "Jump" },
@@ -76,6 +76,17 @@ return {
         l = { "<cmd>TroubleToggle document_diagnostics<cr>", "Document Diagnostics (Trouble)" },
         L = { "<cmd>TroubleToggle workspace_diagnostics<cr>", "Workspace Diagnostics (Trouble)" },
         w = { "<cmd>Telescope diagnostics<cr>", "Diagnostics" },
+        p = {
+            name = "+LspSaga",
+            -- LSP finder - Find the symbol's definition
+            -- If there is no definition, it will instead be hidden
+            -- When you use an action in finder like "open vsplit",
+            -- you can use <C-t> to jump back
+            h = { "<cmd>Lspsaga lsp_finder<CR>", "LSP Finder" },
+            p = { "<cmd>Lspsaga peek_definition<CR>", "Peek Definition" },
+            t = { "<cmd>Lspsaga peek_type_definition<CR>", "Peek Type Definition" },
+            o = { "<cmd>Lspsaga outline<CR>", "Outline" },
+        },
         -- j = { "<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>", "Previous Diagnostic" },
         -- k = { "<cmd>lua vim.lsp.diagnostic.goto_next()<cr>", "Next Diagnostic" },
         -- e = { "<cmd>Telescope quickfix<cr>", "Telescope Quickfix" },

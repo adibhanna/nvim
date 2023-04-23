@@ -22,14 +22,14 @@ local mappings = {
     d = { "<cmd>GoDef<cr>", "Symbol/Declaration" },
     -- B = { "<cmd>GoDoc<cr>", "Documentation" },
     p = { "<cmd>GoImport<cr>", "Import Package" },
-    P = { "<cmd>GoDrop<cr>", "Remove Package" },
+    -- P = { "<cmd>GoDrop<cr>", "Remove Package" },
     n = { "<cmd>GoRename<cr>", "Rename" },
     c = { "<cmd>GoCoverage<cr>", "Test Coverage" },
     -- a = { "<cmd>GoAddTags<cr>", "Add Tags" },
     -- A = { "<cmd>GoRemoveTags<cr>", "Remove Tags" },
     l = { "<cmd>GoLint<cr>", "Lint" },
     v = { "<cmd>GoVet<cr>", "Catch Static Errors" },
-    e = { "<cmd>GoErrCheck<cr>", "Check Errors" },
+    -- e = { "<cmd>GoErrCheck<cr>", "Check Errors" },
   },
 }
 
