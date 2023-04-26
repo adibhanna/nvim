@@ -6,7 +6,7 @@ return {
     config = function()
         require("lualine").setup {
             options = {
-                theme = "gruvbox-material",
+                theme = "auto",--"gruvbox-material",
                 icons_enabled = true,
                 section_separators = "",
                 component_separators = "",
