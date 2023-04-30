@@ -57,13 +57,22 @@ api.nvim_create_autocmd(
 
 -- Enable spell checking for certain file types
 api.nvim_create_autocmd(
-  { "BufRead", "BufNewFile" },
-  -- { pattern = { "*.txt", "*.md", "*.tex" }, command = [[setlocal spell<cr> setlocal spelllang=en,de<cr>]] }
-  {
-    pattern = { "*.txt", "*.md", "*.tex" },
-    callback = function()
-      vim.opt.spell = true
-      vim.opt.spelllang = "en,de"
-    end,
-  }
+    { "BufRead", "BufNewFile" },
+    -- { pattern = { "*.txt", "*.md", "*.tex" }, command = [[setlocal spell<cr> setlocal spelllang=en,de<cr>]] }
+    {
+        pattern = { "*.txt", "*.md", "*.tex" },
+        callback = function()
+            vim.opt.spell = true
+            vim.opt.spelllang = "en,de"
+        end,
+    }
 )
+
+-- Use LspAttach autocommand to only map the following keys
+-- after the language server attaches to the current buffer
+vim.api.nvim_create_autocmd('LspAttach', {
+    callback = function(ev)
+        local opts = { buffer = ev.buf }
+        vim.keymap.set('n', '<leader>v', "<cmd>vsplit | lua vim.lsp.buf.definition()<CR>", opts)
+    end,
+})

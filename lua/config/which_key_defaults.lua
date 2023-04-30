@@ -6,7 +6,7 @@ return {
     c = { ":bd<CR>", "Close Buffer" },
     h = { ":nohlsearch<CR>", "No Highlight" },
     p = { ":Lazy<CR>", "Lazy" },
-    f = { ':Telescope git_files<CR>', "Find Files" },
+    f = { ':Telescope find_files<CR>', "Find Files" },
     r = { function() require("spectre").open() end, "Replace (Spectre)" },
     b = {
         name = "Buffers",
@@ -82,7 +82,6 @@ return {
     },
     s = {
         name = "+Search",
-        b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
         f = { "<cmd>Telescope find_files<cr>", "Find File" },
         h = { "<cmd>Telescope help_tags<cr>", "Find Help" },
         H = { "<cmd>Telescope highlights<cr>", "Find highlight groups" },
@@ -93,6 +92,10 @@ return {
         k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
         C = { "<cmd>Telescope commands<cr>", "Commands" },
         l = { "<cmd>Telescope resume<cr>", "Resume last search" },
+        c = { "<cmd>Telescope git_commits<cr>", "Git commits" },
+        b = { "<cmd>Telescope git_branches<cr>", "Git branches" },
+        s = { "<cmd>Telescope git_status<cr>", "Git status" },
+        S = { "<cmd>Telescope git_stash<cr>", "Git stash" },
     },
     t = {
         name = "+Todo",
