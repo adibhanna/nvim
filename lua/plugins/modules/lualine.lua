@@ -6,7 +6,7 @@ return {
   config = function()
     require("lualine").setup {
       options = {
-        theme = "auto",         --"gruvbox-material",
+        theme = "auto", --"gruvbox-material",
         icons_enabled = true,
         section_separators = "",
         component_separators = "",
@@ -41,8 +41,9 @@ return {
             padding = {
               left = 1, right = 0 }
           },
-          { "filename",    path = 1,                 symbols = { modified = "  ", readonly = "", unnamed = "" } },
-          { "diagnostics", sources = { "nvim_lsp" }, symbols = { error = " ", warn = " ", info = " " } },
+          { "filename",                  path = 1,                 symbols = { modified = "  ", readonly = "",
+            unnamed = "" } },
+          { "diagnostics",               sources = { "nvim_lsp" }, symbols = { error = " ", warn = " ", info = " " } },
         },
         lualine_x = { "encoding" },
         lualine_y = { "progress" },

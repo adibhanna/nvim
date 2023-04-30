@@ -8,6 +8,11 @@ return {
     dependencies = {
         "nvim-treesitter/nvim-treesitter-textobjects",
     },
+    opts = function(_, opts)
+      if type(opts.ensure_installed) == "table" then
+        vim.list_extend(opts.ensure_installed, { "typescript", "tsx" })
+      end
+    end,
     config = function ()
       require("nvim-treesitter.configs").setup {
         highlight = { 

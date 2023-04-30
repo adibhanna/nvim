@@ -7,7 +7,12 @@ return {
     h = { ":nohlsearch<CR>", "No Highlight" },
     p = { ":Lazy<CR>", "Lazy" },
     f = { ':Telescope find_files<CR>', "Find Files" },
-    r = { function() require("spectre").open() end, "Replace (Spectre)" },
+    r = {
+        name = "Replace",
+        r = { "<cmd>lua require('spectre').open()<cr>", "Replace" },
+        w = { "<cmd>lua require('spectre').open_visual({select_word=true})<cr>", "Replace Word" },
+        f = { "<cmd>lua require('spectre').open_file_search()<cr>", "Replace Buffer" },
+      },
     b = {
         name = "Buffers",
         j = { "<cmd>BufferLinePick<cr>", "Jump" },
@@ -70,12 +75,12 @@ return {
         R = { "<cmd>Telescope lsp_references<cr>", "References" },
         s = { "<cmd>lua vim.lsp.buf.signature_help()<cr>", "Display Signature Information" },
         r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename all references" },
-        f = { "<cmd>lua vim.lsp.buf.format()<cr>", "Format" },
+        f = { "<cmd>LspZeroFormat<cr>", "LspZero Format" },
         K = { "<cmd>lua vim.lsp.buf.hover()<cr>", "Hover" },
-        -- l = { "<cmd>lua vim.lsp.diagnostic.open_float()<cr>", "Show Line Diagnostics" },
         l = { "<cmd>TroubleToggle document_diagnostics<cr>", "Document Diagnostics (Trouble)" },
         L = { "<cmd>TroubleToggle workspace_diagnostics<cr>", "Workspace Diagnostics (Trouble)" },
         w = { "<cmd>Telescope diagnostics<cr>", "Diagnostics" },
+        t = { [[ <Esc><Cmd>lua require('telescope').extensions.refactoring.refactors()<CR>]], "Refactor" },
         -- j = { "<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>", "Previous Diagnostic" },
         -- k = { "<cmd>lua vim.lsp.diagnostic.goto_next()<cr>", "Next Diagnostic" },
         -- e = { "<cmd>Telescope quickfix<cr>", "Telescope Quickfix" },
@@ -96,6 +101,14 @@ return {
         b = { "<cmd>Telescope git_branches<cr>", "Git branches" },
         s = { "<cmd>Telescope git_status<cr>", "Git status" },
         S = { "<cmd>Telescope git_stash<cr>", "Git stash" },
+        d = {
+            name = "+DAP",
+            c ={ "<cmd>Telescope dap commands<cr>", "Dap Commands" },
+            b ={ "<cmd>Telescope dap list_breakpoints<cr>", "Dap Breakpoints" },
+            g ={ "<cmd>Telescope dap configurations<cr>", "Dap Configurations" },
+            v ={ "<cmd>Telescope dap variables<cr>", "Dap Variables" },
+            f ={ "<cmd>Telescope dap frames<cr>", "Dap Frames" },
+        }
     },
     t = {
         name = "+Todo",
@@ -103,5 +116,17 @@ return {
         T = { "<cmd>TodoTelescope keywords=TODO,FIX,FIXME<cr>", "Todo/Fix/Fixme" },
         x = { "<cmd>TodoTrouble<cr>", "Todo (Trouble)" },
         X = { "<cmd>TodoTrouble keywords=TODO,FIX,FIXME<cr><cr>", "Todo/Fix/Fixme (Trouble)" },
-    }
+    },
+    d = {
+        name = "Debug",
+        b = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "Breakpoint" },
+        c = { "<cmd>lua require'dap'.continue()<cr>", "Continue" },
+        i = { "<cmd>lua require'dap'.step_into()<cr>", "Into" },
+        o = { "<cmd>lua require'dap'.step_over()<cr>", "Over" },
+        O = { "<cmd>lua require'dap'.step_out()<cr>", "Out" },
+        r = { "<cmd>lua require'dap'.repl.toggle()<cr>", "Repl" },
+        l = { "<cmd>lua require'dap'.run_last()<cr>", "Last" },
+        u = { "<cmd>lua require'dapui'.toggle()<cr>", "UI" },
+        x = { "<cmd>lua require'dap'.terminate()<cr>", "Exit" },
+      }
 }

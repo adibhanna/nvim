@@ -14,22 +14,14 @@ local opts = {
 local mappings = {
   g = {
     name = "+Go",
-    b = { "<cmd>GoBuild<cr>", "Build" },
-    i = { "<cmd>GoInstall<cr>", "Install" },
-    t = { "<cmd>GoTest<cr>", "Test" },
-    r = { "<cmd>GoRun<cr>", "Run" },
-    -- D = { "<cmd>GoDebugStart<cr>", "Debug (Delve)" }, -- brew install delve
-    d = { "<cmd>GoDef<cr>", "Symbol/Declaration" },
-    -- B = { "<cmd>GoDoc<cr>", "Documentation" },
-    p = { "<cmd>GoImport<cr>", "Import Package" },
-    -- P = { "<cmd>GoDrop<cr>", "Remove Package" },
-    n = { "<cmd>GoRename<cr>", "Rename" },
-    c = { "<cmd>GoCoverage<cr>", "Test Coverage" },
-    -- a = { "<cmd>GoAddTags<cr>", "Add Tags" },
-    -- A = { "<cmd>GoRemoveTags<cr>", "Remove Tags" },
-    l = { "<cmd>GoLint<cr>", "Lint" },
-    v = { "<cmd>GoVet<cr>", "Catch Static Errors" },
-    -- e = { "<cmd>GoErrCheck<cr>", "Check Errors" },
+    i = { "<cmd>GoInstallDeps<Cr>", "Install Go Dependencies" },
+    f = { "<cmd>GoMod tidy<cr>", "Tidy" },
+    a = { "<cmd>GoTestAdd<Cr>", "Add Test" },
+    A = { "<cmd>GoTestsAll<Cr>", "Add All Tests" },
+    e = { "<cmd>GoTestsExp<Cr>", "Add Exported Tests" },
+    g = { "<cmd>GoGenerate<Cr>", "Go Generate" },
+    G = { "<cmd>GoGenerate %<Cr>", "Go Generate File" },
+    c = { "<cmd>GoCmt<Cr>", "Generate Comment" },
   },
 }
 
