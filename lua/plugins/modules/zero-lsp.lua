@@ -141,7 +141,6 @@ return {
         lazy = false,
         config = function()
             local gopher = require("gopher")
-            local dap_go = require("dap-go")
             gopher.setup({
                 commands = {
                     go = "go",
@@ -153,8 +152,6 @@ return {
                 goimport = "gopls",
                 gofmt = "gopls",
             })
-             
-            dap_go.setup()
         end
     },
 }
