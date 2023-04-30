@@ -6,7 +6,7 @@ return {
     c = { ":bd<CR>", "Close Buffer" },
     h = { ":nohlsearch<CR>", "No Highlight" },
     p = { ":Lazy<CR>", "Lazy" },
-    f = { ':Telescope find_files<CR>', "Find Files" },
+    f = { ':Telescope git_files<CR>', "Find Files" },
     r = { function() require("spectre").open() end, "Replace (Spectre)" },
     b = {
         name = "Buffers",
@@ -67,7 +67,7 @@ return {
         D = { "<cmd>lua vim.lsp.buf.declaration()<cr>", "Declaration" },
         i = { "<cmd>lua vim.lsp.buf.implementation()<cr>", "Implementation" },
         o = { "<cmd>lua vim.lsp.buf.type_definition()<cr>", "Type Definition" },
-        R = { "<cmd>lua vim.lsp.buf.references()<cr>", "References" },
+        R = { "<cmd>Telescope lsp_references<cr>", "References" },
         s = { "<cmd>lua vim.lsp.buf.signature_help()<cr>", "Display Signature Information" },
         r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename all references" },
         f = { "<cmd>lua vim.lsp.buf.format()<cr>", "Format" },
@@ -76,17 +76,6 @@ return {
         l = { "<cmd>TroubleToggle document_diagnostics<cr>", "Document Diagnostics (Trouble)" },
         L = { "<cmd>TroubleToggle workspace_diagnostics<cr>", "Workspace Diagnostics (Trouble)" },
         w = { "<cmd>Telescope diagnostics<cr>", "Diagnostics" },
-        p = {
-            name = "+LspSaga",
-            -- LSP finder - Find the symbol's definition
-            -- If there is no definition, it will instead be hidden
-            -- When you use an action in finder like "open vsplit",
-            -- you can use <C-t> to jump back
-            h = { "<cmd>Lspsaga lsp_finder<CR>", "LSP Finder" },
-            p = { "<cmd>Lspsaga peek_definition<CR>", "Peek Definition" },
-            t = { "<cmd>Lspsaga peek_type_definition<CR>", "Peek Type Definition" },
-            o = { "<cmd>Lspsaga outline<CR>", "Outline" },
-        },
         -- j = { "<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>", "Previous Diagnostic" },
         -- k = { "<cmd>lua vim.lsp.diagnostic.goto_next()<cr>", "Next Diagnostic" },
         -- e = { "<cmd>Telescope quickfix<cr>", "Telescope Quickfix" },

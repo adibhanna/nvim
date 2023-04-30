@@ -24,24 +24,55 @@ return {
         config = function()
             local lsp = require('lsp-zero').preset("recommended")
 
-            -- lsp.ensure_installed({
-            --     'tsserver',
-            --     'eslint',
-            --     'rust_analyzer',
-            --     'gopls'
-            -- })
+            lsp.ensure_installed({
+                'tsserver',
+                'eslint',
+                'rust_analyzer',
+                'gopls'
+            })
             lsp.on_attach(function(client, bufnr)
                 lsp.default_keymaps({ buffer = bufnr })
             end)
 
-            -- lsp.set_sign_icons({
-            --     error = '✘',
-            --     warn = '▲',
-            --     hint = '⚑',
-            --     info = '»'
-            -- })
-
             require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
+            require('lspconfig').gopls.setup({
+                settings = {
+                    gopls = {
+                        usePlaceholders = true,
+                        gofumpt = true,
+                        analyses = {
+                            nilness = true,
+                            unusedparams = true,
+                            unusedwrite = true,
+                            useany = true,
+                        },
+                        codelenses = {
+                            gc_details = false,
+                            generate = true,
+                            regenerate_cgo = true,
+                            run_govulncheck = true,
+                            test = true,
+                            tidy = true,
+                            upgrade_dependency = true,
+                            vendor = true,
+                        },
+                        experimentalPostfixCompletions = true,
+                        completeUnimported = true,
+                        staticcheck = true,
+                        directoryFilters = { "-.git", "-node_modules" },
+                        semanticTokens = true,
+                        hints = {
+                            assignVariableTypes = true,
+                            compositeLiteralFields = true,
+                            compositeLiteralTypes = true,
+                            constantValues = true,
+                            functionTypeParameters = true,
+                            parameterNames = true,
+                            rangeVariableTypes = true,
+                        },
+                    },
+                }
+            })
 
             lsp.setup()
         end
