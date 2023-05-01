@@ -12,7 +12,7 @@ return {
         r = { "<cmd>lua require('spectre').open()<cr>", "Replace" },
         w = { "<cmd>lua require('spectre').open_visual({select_word=true})<cr>", "Replace Word" },
         f = { "<cmd>lua require('spectre').open_file_search()<cr>", "Replace Buffer" },
-      },
+    },
     b = {
         name = "Buffers",
         j = { "<cmd>BufferLinePick<cr>", "Jump" },
@@ -68,6 +68,7 @@ return {
     l = {
         name = "+LSP",
         a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
+        A = { "<cmd>lua vim.lsp.buf.range_code_action()<cr>", "Range Code Actions" },
         d = { "<cmd>lua vim.lsp.buf.definition()<cr>", "Definition" },
         D = { "<cmd>lua vim.lsp.buf.declaration()<cr>", "Declaration" },
         i = { "<cmd>lua vim.lsp.buf.implementation()<cr>", "Implementation" },
@@ -81,6 +82,7 @@ return {
         L = { "<cmd>TroubleToggle workspace_diagnostics<cr>", "Workspace Diagnostics (Trouble)" },
         w = { "<cmd>Telescope diagnostics<cr>", "Diagnostics" },
         t = { [[ <Esc><Cmd>lua require('telescope').extensions.refactoring.refactors()<CR>]], "Refactor" },
+
         -- j = { "<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>", "Previous Diagnostic" },
         -- k = { "<cmd>lua vim.lsp.diagnostic.goto_next()<cr>", "Next Diagnostic" },
         -- e = { "<cmd>Telescope quickfix<cr>", "Telescope Quickfix" },
@@ -104,11 +106,11 @@ return {
         z = { "<cmd>Telescope zoxide list<cr>", "Zoxide" },
         d = {
             name = "+DAP",
-            c ={ "<cmd>Telescope dap commands<cr>", "Dap Commands" },
-            b ={ "<cmd>Telescope dap list_breakpoints<cr>", "Dap Breakpoints" },
-            g ={ "<cmd>Telescope dap configurations<cr>", "Dap Configurations" },
-            v ={ "<cmd>Telescope dap variables<cr>", "Dap Variables" },
-            f ={ "<cmd>Telescope dap frames<cr>", "Dap Frames" },
+            c = { "<cmd>Telescope dap commands<cr>", "Dap Commands" },
+            b = { "<cmd>Telescope dap list_breakpoints<cr>", "Dap Breakpoints" },
+            g = { "<cmd>Telescope dap configurations<cr>", "Dap Configurations" },
+            v = { "<cmd>Telescope dap variables<cr>", "Dap Variables" },
+            f = { "<cmd>Telescope dap frames<cr>", "Dap Frames" },
         }
     },
     t = {
@@ -129,5 +131,5 @@ return {
         l = { "<cmd>lua require'dap'.run_last()<cr>", "Last" },
         u = { "<cmd>lua require'dapui'.toggle()<cr>", "UI" },
         x = { "<cmd>lua require'dap'.terminate()<cr>", "Exit" },
-      }
+    }
 }
