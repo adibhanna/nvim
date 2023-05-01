@@ -19,6 +19,9 @@ return {
             { 'hrsh7th/nvim-cmp' },     -- Required
             { 'hrsh7th/cmp-nvim-lsp' }, -- Required
             { 'L3MON4D3/LuaSnip' },     -- Required
+            {
+                'onsails/lspkind.nvim'
+            },
 
             -- inlay hints
             {
@@ -102,6 +105,51 @@ return {
             lsp.skip_server_setup({ 'rust_analyzer' })
 
             lsp.setup()
+
+            -- cmp icons
+            local cmp = require('cmp')
+            local lspkind = require('lspkind')
+            local cmp_kinds = {
+                Text = '  ',
+                Method = '  ',
+                Function = '  ',
+                Constructor = '  ',
+                Field = '  ',
+                Variable = '  ',
+                Class = '  ',
+                Interface = '  ',
+                Module = '  ',
+                Property = '  ',
+                Unit = '  ',
+                Value = '  ',
+                Enum = '  ',
+                Keyword = '  ',
+                Snippet = '  ',
+                Color = '  ',
+                File = '  ',
+                Reference = '  ',
+                Folder = '  ',
+                EnumMember = '  ',
+                Constant = '  ',
+                Struct = '  ',
+                Event = '  ',
+                Operator = '  ',
+                TypeParameter = '  ',
+            }
+
+            cmp.setup {
+                formatting = {
+                    -- fields = { "kind", "abbr" },
+                    format = function(entry, vim_item)
+                        if vim.tbl_contains({ 'path' }, entry.source.name) then
+                            vim_item.kind = cmp_kinds
+                            vim_item.kind_hl_group = hl_group
+                            return vim_item
+                        end
+                        return lspkind.cmp_format({ with_text = true })(entry, vim_item)
+                    end
+                }
+            }
         end
     },
     {
