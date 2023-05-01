@@ -2,7 +2,7 @@ local opts = { noremap = true, silent = true }
 
 local map = vim.keymap.set
 
-map("n", "<C-Space>", ":WhichKey \\<space><cr>", opts)
+-- map("n", "<C-Space>", ":WhichKey \\<space><cr>", opts)
 map("n", "<C-d>", "<C-d>zz", opts)
 map("n", "<C-u>", "<C-u>zz", opts)
 map("v", "J", ":m '>+1<CR>gv=gv", opts)
