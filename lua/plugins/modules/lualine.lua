@@ -15,6 +15,7 @@ return {
             'help',
             'startify',
             'dashboard',
+            'neo-tree',
             'packer',
             'neogitstatus',
             'NvimTree',
