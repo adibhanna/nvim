@@ -6,6 +6,7 @@ return {
         lazy = true,
         dependencies = {
             'nvim-lua/plenary.nvim',
+            'jvgrootveld/telescope-zoxide',
             'nvim-tree/nvim-web-devicons',
             { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
             'nvim-telescope/telescope-ui-select.nvim',
@@ -160,6 +161,7 @@ return {
             telescope.load_extension('ui-select')
             telescope.load_extension('refactoring')
             telescope.load_extension('dap')
+            telescope.load_extension("zoxide")
         end
     },
 }

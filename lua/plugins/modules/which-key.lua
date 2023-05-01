@@ -68,5 +68,7 @@ return {
             mode = "n",
             prefix = "<leader>",
         })
+
+        which_key.register(require('config.which_key_non_leader'))
     end
 }
