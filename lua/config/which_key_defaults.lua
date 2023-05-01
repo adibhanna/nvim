@@ -6,7 +6,7 @@ return {
     c = { ":bd<CR>", "Close Buffer" },
     h = { ":nohlsearch<CR>", "No Highlight" },
     p = { ":Lazy<CR>", "Lazy" },
-    f = { '<cmd>Telescope git_files<CR>', "Find Files" },
+    f = { "<cmd>lua require('plugins.utils').telescope_git_or_file()<CR>", "Find Files" },
     r = {
         name = "Replace",
         r = { "<cmd>lua require('spectre').open()<cr>", "Replace" },
