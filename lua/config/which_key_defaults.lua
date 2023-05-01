@@ -5,7 +5,7 @@ return {
     q = { ":confirm q<CR>", "Quit" },
     c = { ":bd<CR>", "Close Buffer" },
     h = { ":nohlsearch<CR>", "No Highlight" },
-    p = { ":Lazy<CR>", "Lazy" },
+    p = { "<cmd>Telescope treesitter<CR>", "List Symbols" },
     f = { "<cmd>lua require('plugins.utils').telescope_git_or_file()<CR>", "Find Files" },
     r = {
         name = "Replace",

@@ -16,12 +16,18 @@ return {
             telescope.setup {
                 defaults   = {
                     theme                = 'dropdown',
+                    previewer            = true,
                     file_ignore_patterns = { 'node_modules', 'package-lock.json' },
                     initial_mode         = 'insert',
                     select_strategy      = 'reset',
-                    sorting_strategy     = nil,
-                    layout_strategy      = nil,
-                    layout_config        = nil,
+                    sorting_strategy     = 'ascending',
+                    layout_strategy      = 'horizontal',
+                    layout_config        = {
+                        width = 0.75,
+                        height = 0.75,
+                        prompt_position = "top",
+                        preview_cutoff = 120,
+                    },
                     path_display         = { "smart" },
                     winblend             = 0,
                     border               = {},
@@ -43,32 +49,94 @@ return {
                 pickers    = {
                     find_files = {
                         hidden = true,
+                        previewer = false,
+                        layout_config = {
+                            horizontal = {
+                                width = 0.5,
+                                height = 0.4,
+                                preview_width = 0.6,
+                            },
+                        },
+                    },
+                    git_files = {
+                        hidden = true,
+                        previewer = false,
+                        layout_config = {
+                            horizontal = {
+                                width = 0.5,
+                                height = 0.4,
+                                preview_width = 0.6,
+                            },
+                        },
                     },
                     live_grep = {
                         --@usage don't include the filename in the search results
                         only_sort_text = true,
+                        previewer = true,
+                        layout_config = {
+                            horizontal = {
+                                width = 0.9,
+                                height = 0.75,
+                                preview_width = 0.6,
+                            },
+                        },
                     },
                     grep_string = {
+                        --@usage don't include the filename in the search results
                         only_sort_text = true,
+                        previewer = true,
+                        layout_config = {
+                            horizontal = {
+                                width = 0.9,
+                                height = 0.75,
+                                preview_width = 0.6,
+                            },
+                        },
                     },
                     buffers = {
-                        initial_mode = "normal",
-                        -- mappings = {
-                        --     i = {
-                        --         ["<C-d>"] = require("telescope.actions").delete_buffer,
-                        --     },
-                        --     n = {
-                        --         ["dd"] = require("telescope.actions").delete_buffer,
-                        --     },
-                        -- },
+                        -- initial_mode = "normal",
+                        previewer = false,
+                        layout_config = {
+                            horizontal = {
+                                width = 0.5,
+                                height = 0.4,
+                                preview_width = 0.6,
+                            },
+                        },
                     },
+                    lsp_references = {
+                        show_line = false,
+                        layout_config = {
+                            horizontal = {
+                                width = 0.9,
+                                height = 0.75,
+                                preview_width = 0.6,
+                            },
+                        },
+                    },
+                    treesitter = {
+                        show_line = false,
+                        sorting_strategy = nil,
+                        layout_config = {
+                            horizontal = {
+                                width = 0.9,
+                                height = 0.75,
+                                preview_width = 0.6,
+                            },
+                        },
+                        symbols = {
+                            "class", "function", "method", "interface",
+                            "type", "const", "variable", "property",
+                            "constructor", "module", "struct", "trait", "field"
+                        }
+                    }
                 },
                 extensions = {
                     fzf = {
-                        fuzzy = true,                       -- false will only do exact matching
-                        override_generic_sorter = true,     -- override the generic sorter
-                        override_file_sorter = true,        -- override the file sorter
-                        case_mode = "smart_case",           -- or "ignore_case" or "respect_case"
+                        fuzzy = true,                   -- false will only do exact matching
+                        override_generic_sorter = true, -- override the generic sorter
+                        override_file_sorter = true,    -- override the file sorter
+                        case_mode = "smart_case",       -- or "ignore_case" or "respect_case"
                     },
                     ["ui-select"] = {
                         require("telescope.themes").get_dropdown({
@@ -77,7 +145,7 @@ return {
                             shorten_path = false,
                             winblend = 10,
                         })
-                 
+
                     },
                 }
             }
