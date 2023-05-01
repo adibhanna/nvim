@@ -1,7 +1,7 @@
 return {
     {
         'sainnhe/gruvbox-material',
-        enabled = true,
+        enabled = false,
         priority = 1000,
         config = function()
                 vim.o.background = "dark"
