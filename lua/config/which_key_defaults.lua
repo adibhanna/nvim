@@ -76,7 +76,7 @@ return {
         R = { "<cmd>Telescope lsp_references<cr>", "References" },
         s = { "<cmd>lua vim.lsp.buf.signature_help()<cr>", "Display Signature Information" },
         r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename all references" },
-        f = { "<cmd>LspZeroFormat<cr>", "LspZero Format" },
+        f = { "<cmd>lua vim.lsp.buf.format()<cr>", "Format" },
         K = { "<cmd>lua vim.lsp.buf.hover()<cr>", "Hover" },
         l = { "<cmd>TroubleToggle document_diagnostics<cr>", "Document Diagnostics (Trouble)" },
         L = { "<cmd>TroubleToggle workspace_diagnostics<cr>", "Workspace Diagnostics (Trouble)" },

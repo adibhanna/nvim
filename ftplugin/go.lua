@@ -12,6 +12,9 @@ local opts = {
   nowait = true, -- use `nowait` when creating keymaps
 }
 local mappings = {
+  l = {
+    f = { "<cmd>GoFmt<cr>", "Format (GoFmt)" },
+  },
   g = {
     name = "+Go",
     i = { "<cmd>GoInstallDeps<Cr>", "Install Go Dependencies" },
