@@ -15,7 +15,7 @@ return {
     end,
     config = function ()
       require("nvim-treesitter.configs").setup {
-        highlight = { 
+        highlight = {
           enable = true,
           additional_vim_regex_highlighting = false,
          },
@@ -47,7 +47,7 @@ return {
         incremental_selection = {
           enable = true,
           keymaps = {
-            init_selection = "<leader>v",
+            init_selection = "<leader>vv",
             node_incremental = "+",
             scope_incremental = false,
             node_decremental = "_",
@@ -57,7 +57,7 @@ return {
           select = {
             enable = true,
             lookahead = true,
-    
+
             keymaps = {
               -- You can use the capture groups defined in textobjects.scm
               ["af"] = { query = "@function.outer", desc = "around a function" },

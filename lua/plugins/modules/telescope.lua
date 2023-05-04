@@ -141,11 +141,11 @@ return {
                     },
                     ["ui-select"] = {
                         require("telescope.themes").get_dropdown({
-                            previewer = false,
-                            initial_mode = "normal",
-                            sorting_strategy     = 'ascending',
-                            layout_strategy      = 'horizontal',
-                            layout_config = {
+                            previewer        = false,
+                            initial_mode     = "normal",
+                            sorting_strategy = 'ascending',
+                            layout_strategy  = 'horizontal',
+                            layout_config    = {
                                 horizontal = {
                                     width = 0.5,
                                     height = 0.4,
@@ -153,7 +153,6 @@ return {
                                 },
                             },
                         })
-
                     },
                 }
             }
