@@ -29,13 +29,24 @@ return {
         'tsserver',
         -- 'eslint',
         'rust_analyzer',
-        'gopls',
+        'gopls', 
+        'lua_ls'
         -- 'bashls',
       })
 
       lsp.on_attach(function(client, bufnr)
         lsp.default_keymaps({ buffer = bufnr })
       end)
+
+      lsp.set_preferences({
+        suggest_lsp_servers = false,
+        sign_icons = {
+          error = "E",
+          warn = "W",
+          hint = "H",
+          info = "I",
+        },
+      })
 
       require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
 
@@ -48,6 +59,7 @@ return {
       -- })
 
       lsp.skip_server_setup({ 'rust_analyzer', 'gopls' })
+
       lsp.setup()
 
       -- cmp icons
@@ -109,8 +121,8 @@ return {
           end,
         },
         window = {
-          completion = require('cmp.config.window').bordered(),
-          documentation = require('cmp.config.window').bordered(),
+          completion = cmp.config.window.bordered(),
+          documentation = cmp.config.window.bordered(),
         },
         sources = {
           {

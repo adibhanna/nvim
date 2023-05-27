@@ -12,66 +12,39 @@ return {
             'nvim-telescope/telescope-ui-select.nvim',
             'telescope-dap.nvim'
         },
+        keys = {
+            { "<C-f>", "<cmd>Telescope find_files<cr>", desc = "Find Files" },
+            { "<C-p>", "<cmd>Telescope git_files<cr>",  desc = "Git Files" },
+        },
         config = function()
             local telescope = require('telescope')
             telescope.setup {
-                defaults   = {
-                    theme                = 'dropdown',
-                    previewer            = true,
-                    file_ignore_patterns = { 'node_modules', 'package-lock.json' },
-                    initial_mode         = 'insert',
-                    select_strategy      = 'reset',
-                    sorting_strategy     = 'ascending',
-                    layout_strategy      = 'horizontal',
-                    layout_config        = {
-                        width = 0.75,
-                        height = 0.75,
+                defaults = {
+                    previewer = false,
+                    hidden = true,
+                    file_ignore_patterns = { "node_modules", "package-lock.json" },
+                    initial_mode = "insert",
+                    select_strategy = "reset",
+                    sorting_strategy = "ascending",
+                    layout_strategy = "horizontal",
+                    layout_config = {
+                        width = 0.5,
+                        height = 0.4,
                         prompt_position = "top",
                         preview_cutoff = 120,
                     },
-                    path_display         = { "smart" },
-                    winblend             = 0,
-                    border               = {},
-                    borderchars          = nil,
-                    color_devicons       = true,
-                    set_env              = { ["COLORTERM"] = "truecolor" },
-                    vimgrep_arguments    = {
-                        "rg",
-                        "--color=never",
-                        "--no-heading",
-                        "--with-filename",
-                        "--line-number",
-                        "--column",
-                        "--smart-case",
-                        "--hidden",
-                        "--glob=!.git/",
-                    },
                 },
-                pickers    = {
+                pickers = {
                     find_files = {
-                        hidden = true,
                         previewer = false,
-                        layout_config = {
-                            horizontal = {
-                                width = 0.5,
-                                height = 0.4,
-                                preview_width = 0.6,
-                            },
-                        },
                     },
                     git_files = {
-                        hidden = true,
                         previewer = false,
-                        layout_config = {
-                            horizontal = {
-                                width = 0.5,
-                                height = 0.4,
-                                preview_width = 0.6,
-                            },
-                        },
+                    },
+                    buffers = {
+                        previewer = false,
                     },
                     live_grep = {
-                        --@usage don't include the filename in the search results
                         only_sort_text = true,
                         previewer = true,
                         layout_config = {
@@ -83,7 +56,6 @@ return {
                         },
                     },
                     grep_string = {
-                        --@usage don't include the filename in the search results
                         only_sort_text = true,
                         previewer = true,
                         layout_config = {
@@ -94,19 +66,9 @@ return {
                             },
                         },
                     },
-                    buffers = {
-                        -- initial_mode = "normal",
-                        previewer = false,
-                        layout_config = {
-                            horizontal = {
-                                width = 0.5,
-                                height = 0.4,
-                                preview_width = 0.6,
-                            },
-                        },
-                    },
                     lsp_references = {
                         show_line = false,
+                        previewer = true,
                         layout_config = {
                             horizontal = {
                                 width = 0.9,
@@ -115,22 +77,6 @@ return {
                             },
                         },
                     },
-                    treesitter = {
-                        show_line = false,
-                        sorting_strategy = nil,
-                        layout_config = {
-                            horizontal = {
-                                width = 0.9,
-                                height = 0.75,
-                                preview_width = 0.6,
-                            },
-                        },
-                        symbols = {
-                            "class", "function", "method", "interface",
-                            "type", "const", "variable", "property",
-                            "constructor", "module", "struct", "trait", "field"
-                        }
-                    }
                 },
                 extensions = {
                     fzf = {

@@ -1,51 +1,105 @@
+local colors = {
+    fg = "#76787d",
+    bg = "#252829",
+}
 return {
-    {
-        "akinsho/bufferline.nvim",
-        enabled = true,
-        event = "VimEnter",
-        lazy = true,
-        opts = {
+    "akinsho/bufferline.nvim",
+    event = "VeryLazy",
+    version = "*",
+    dependencies = "nvim-tree/nvim-web-devicons",
+    config = function()
+        require("bufferline").setup({
             options = {
-                mode = "buffers",
-                numbers = "none",
-                close_command = function(bufnr) -- can be a string | function, see "Mouse actions"
-                    vim.api.nvim_buf_delete(bufnr, { force = true })
-                end,
-                right_mouse_command = "", -- right click does nothing
-                -- left_mouse_command = "",
-                color_icons = true,
-                max_name_length = 18,
-                max_prefix_length = 15, -- prefix used when a buffer is de-duplicated
-                truncate_names = true,  -- whether or not tab names should be truncated
-                tab_size = 18,
-                show_tab_indicators = true,
-                separator_style = "thin", -- "slant" | "padded_slant" | "slope" | "thick" | "thin"
-                diagnostics = "nvim_lsp",
-                show_close_icon = false,
-                always_show_bufferline = false,
-                hover = {
-                    enabled = false,
-                    delay = 200,
-                    reveal = { "close" },
+                indicator = {
+                    icon = " ",
                 },
-                -- diagnostics_indicator = function(_, _, diag)
-                --     local s = " "
-                --     for e, n in pairs(diag) do
-                --         local sym = e == "error" and " "
-                --             or (e == "warning" and " " or "")
-                --         s = s .. n .. sym
-                --     end
-                --     return s
-                -- end,
+                show_close_icon = false,
+                tab_size = 0,
+                max_name_length = 25,
                 offsets = {
                     {
                         filetype = "neo-tree",
-                        text = "Neo-tree",
+                        text = "  Project",
                         highlight = "Directory",
                         text_align = "left",
                     },
                 },
+                modified_icon = "",
+                custom_areas = {
+                    left = function()
+                        return {
+                            { text = "    ", fg = colors.fg },
+                        }
+                    end,
+                },
             },
-        },
-    },
+            highlights = {
+                fill = {
+                    bg = "",
+                },
+                background = {
+                    bg = "",
+                },
+                tab = {
+                    bg = "",
+                },
+                tab_close = {
+                    bg = "",
+                },
+                tab_separator = {
+                    fg = colors.bg,
+                    bg = "",
+                },
+                tab_separator_selected = {
+                    fg = colors.bg,
+                    bg = "",
+                    sp = colors.fg,
+                },
+                close_button = {
+                    bg = "",
+                    fg = colors.fg,
+                },
+                close_button_visible = {
+                    bg = "",
+                    fg = colors.fg,
+                },
+                close_button_selected = {
+                    fg = { attribute = "fg", highlight = "StatusLineNonText" },
+                },
+                buffer_visible = {
+                    bg = "",
+                },
+                modified = {
+                    bg = "",
+                },
+                modified_visible = {
+                    bg = "",
+                },
+                duplicate = {
+                    fg = colors.fg,
+                    bg = ""
+                },
+                duplicate_visible = {
+                    fg = colors.fg,
+                    bg = ""
+                },
+                separator = {
+                    fg = colors.bg,
+                    bg = ""
+                },
+                separator_selected = {
+                    fg = colors.bg,
+                    bg = ""
+                },
+                separator_visible = {
+                    fg = colors.bg,
+                    bg = ""
+                },
+                offset_separator = {
+                    fg = colors.bg,
+                    bg = ""
+                },
+            },
+        })
+    end,
 }

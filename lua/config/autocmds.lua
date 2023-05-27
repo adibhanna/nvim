@@ -76,3 +76,11 @@ vim.api.nvim_create_autocmd('LspAttach', {
         vim.keymap.set('n', '<leader>v', "<cmd>vsplit | lua vim.lsp.buf.definition()<CR>", opts)
     end,
 })
+
+-- change the background color of floating windows and borders.
+vim.api.nvim_create_autocmd('ColorScheme', {
+    callback = function()
+        vim.cmd('highlight NormalFloat guibg=none guifg=none')
+        vim.cmd('highlight FloatBorder guifg=none guibg=none')
+    end,
+})

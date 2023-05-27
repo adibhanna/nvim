@@ -2,11 +2,32 @@ return {
   "nvim-lualine/lualine.nvim",
   enabled = true,
   lazy = false,
-  event = { "BufReadPost", "BufNewFile" },
+  event = { "BufReadPost", "BufNewFile", "VeryLazy" },
   config = function()
+    local colors = {
+      fg = "#76787d",
+      bg = "#252829",
+  }
     require("lualine").setup {
       options = {
-        theme = "auto", --"gruvbox-material",
+        -- theme = "auto", --"gruvbox-material",
+        theme = {
+          normal = {
+            a = { fg = colors.fg, bg = colors.bg },
+            b = { fg = colors.fg, bg = colors.bg },
+            c = { fg = colors.fg, bg = colors.bg },
+          },
+          insert = { a = { fg = colors.fg, bg = colors.bg }, b = { fg = colors.fg, bg = colors.bg } },
+          visual = { a = { fg = colors.fg, bg = colors.bg }, b = { fg = colors.fg, bg = colors.bg } },
+          command = { a = { fg = colors.fg, bg = colors.bg }, b = { fg = colors.fg, bg = colors.bg } },
+          replace = { a = { fg = colors.fg, bg = colors.bg }, b = { fg = colors.fg, bg = colors.bg } },
+
+          inactive = {
+            a = { bg = colors.fg, fg = colors.bg },
+            b = { bg = colors.fg, fg = colors.bg },
+            c = { bg = colors.fg, fg = colors.bg },
+          },
+        },
         icons_enabled = true,
         section_separators = "",
         component_separators = "",
@@ -31,7 +52,7 @@ return {
         },
       },
       sections = {
-        lualine_a = { "mode" },
+        lualine_a = { },
         lualine_b = { "branch" },
         lualine_c = {
           -- "filename",

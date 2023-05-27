@@ -95,6 +95,15 @@ return {
               ["]p"] = { query = "@parameter.inner", desc = "Next parameter" },
             },
           },
+          swap = {
+            enable = true,
+            swap_next = {
+              ["<leader>a"] = "@parameter.inner",
+            },
+            swap_previous = {
+              ["<leader>A"] = "@parameter.inner",
+            },
+          },
         },
       }
     end
