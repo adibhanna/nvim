@@ -28,12 +28,13 @@ return {
 
       lsp.ensure_installed({
         'tsserver',
-        -- 'eslint',
+        'eslint',
         'rust_analyzer',
         'gopls',
         'lua_ls',
         'jsonls',
         'bashls',
+        'vimls'
       })
 
       lsp.on_attach(function(_, bufnr)
@@ -76,13 +77,13 @@ return {
         }
       })
 
-      -- require('lspconfig').eslint.setup({
-      --   filestypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'vue', 'svelte' },
-      --   settings = {
-      --     format = { enable = true },
-      --     lint = { enable = true },
-      --   },
-      -- })
+      require('lspconfig').eslint.setup({
+        filestypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'vue', 'svelte' },
+        settings = {
+          format = { enable = true },
+          lint = { enable = true },
+        },
+      })
 
       lsp.skip_server_setup({ 'rust_analyzer' })
 
