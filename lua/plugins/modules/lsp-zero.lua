@@ -5,7 +5,7 @@ return {
     lazy = false,
     dependencies = {
       -- LSP Support
-      { 'neovim/nvim-lspconfig' },       -- Required
+      { 'neovim/nvim-lspconfig' }, -- Required
       {
         -- Optional
         'williamboman/mason.nvim',
@@ -13,14 +13,15 @@ return {
           pcall(vim.cmd, 'MasonUpdate')
         end,
       },
-      { 'williamboman/mason-lspconfig.nvim' },       -- Optional
+      { 'williamboman/mason-lspconfig.nvim' }, -- Optional
 
       -- Autocompletion
-      { 'hrsh7th/nvim-cmp' },           -- Required
-      { 'hrsh7th/cmp-nvim-lsp' },       -- Required
-      { 'L3MON4D3/LuaSnip' },           -- Required
+      { 'hrsh7th/nvim-cmp' },     -- Required
+      { 'hrsh7th/cmp-nvim-lsp' }, -- Required
+      { 'L3MON4D3/LuaSnip' },     -- Required
 
       { 'onsails/lspkind.nvim' },
+      { 'b0o/schemastore.nvim' }
     },
     config = function()
       local lsp = require('lsp-zero').preset("recommended")
@@ -29,12 +30,13 @@ return {
         'tsserver',
         -- 'eslint',
         'rust_analyzer',
-        'gopls', 
-        'lua_ls'
-        -- 'bashls',
+        'gopls',
+        'lua_ls',
+        'jsonls',
+        'bashls',
       })
 
-      lsp.on_attach(function(client, bufnr)
+      lsp.on_attach(function(_, bufnr)
         lsp.default_keymaps({ buffer = bufnr })
       end)
 
@@ -48,7 +50,31 @@ return {
         },
       })
 
-      require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
+      local lspconfig = require('lspconfig')
+      lspconfig.lua_ls.setup({
+        settings = {
+          Lua = {
+            diagnostics = {
+              globals = { "vim" },
+            },
+            workspace = {
+              library = {
+                [vim.fn.expand("$VIMRUNTIME/lua")] = true,
+                [vim.fn.stdpath("config") .. "/lua"] = true,
+              },
+            },
+          },
+        },
+      })
+
+      lspconfig.jsonls.setup({
+        settings = {
+          json = {
+            schema = require('schemastore').json.schemas(),
+            validate = { enable = true },
+          }
+        }
+      })
 
       -- require('lspconfig').eslint.setup({
       --   filestypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'vue', 'svelte' },
@@ -228,11 +254,11 @@ return {
               local confirm_opts = vim.deepcopy({
                 behavior = cmp_types.ConfirmBehavior.Replace,
                 select = false,
-              })               -- avoid mutating the original opts below
+              }) -- avoid mutating the original opts below
               local is_insert_mode = function()
                 return vim.api.nvim_get_mode().mode:sub(1, 1) == "i"
               end
-              if is_insert_mode() then               -- prevent overwriting brackets
+              if is_insert_mode() then -- prevent overwriting brackets
                 confirm_opts.behavior = cmp_types.ConfirmBehavior.Insert
               end
               local entry = cmp.get_selected_entry()
@@ -242,10 +268,10 @@ return {
                 confirm_opts.select = true
               end
               if cmp.confirm(confirm_opts) then
-                return                 -- success, exit early
+                return -- success, exit early
               end
             end
-            fallback()             -- if not exited early, always fallback
+            fallback() -- if not exited early, always fallback
           end),
         },
       }
@@ -294,7 +320,7 @@ return {
           },
         },
         tools = {
-          executor = require("rust-tools/executors").termopen,           -- can be quickfix or termopen
+          executor = require("rust-tools/executors").termopen, -- can be quickfix or termopen
           reload_workspace_from_cargo_toml = true,
           runnables = {
             use_telescope = true,
@@ -368,7 +394,7 @@ return {
   },
   {
     "ray-x/go.nvim",
-    dependencies = {     -- optional packages
+    dependencies = { -- optional packages
       "ray-x/guihua.lua",
       "neovim/nvim-lspconfig",
       "nvim-treesitter/nvim-treesitter",
@@ -378,6 +404,6 @@ return {
     end,
     event = { "CmdlineEnter" },
     ft = { "go", 'gomod' },
-    build = ':lua require("go.install").update_all_sync()'     -- if you need to install/update all binaries
+    build = ':lua require("go.install").update_all_sync()' -- if you need to install/update all binaries
   }
 }
