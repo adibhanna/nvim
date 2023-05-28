@@ -42,3 +42,7 @@ map("i", "jk", "<ESC>", opts)
 map("n", "<Leader>w", ":write!<CR>", opts)
 map("n", "<Leader>q", ":q!<CR>", opts)
 
+-- Navigate buffers
+map("n", "<S-l>", ":bnext<CR>", opts)
+map("n", "<S-h>", ":bprevious<CR>", opts)
+
