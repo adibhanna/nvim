@@ -2,7 +2,7 @@ return {
     {
         "catppuccin/nvim",
         enabled = true,
-        lazy = false,
+        lazy = true,
         priority = 150,
         name = "catppuccin",
         config = function()
@@ -113,7 +113,7 @@ return {
                     }
                 end,
             })
-    
+
             -- vim.api.nvim_command("colorscheme catppuccin")
         end,
     },
@@ -130,6 +130,7 @@ return {
     },
     {
         "ChristianChiarulli/onedark.nvim",
+        lazy = true,
         config = function()
             -- vim.cmd.colorscheme 'onedark'
         end,

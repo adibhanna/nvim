@@ -73,6 +73,17 @@ return {
               },
             },
           },
+          treesitter = {
+            show_line = false,
+            previewer = true,
+            layout_config = {
+              horizontal = {
+                width = 0.9,
+                height = 0.75,
+                preview_width = 0.6,
+              },
+            },
+          },
         },
         extensions = {
           fzf = {

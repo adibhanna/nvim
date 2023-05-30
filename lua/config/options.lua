@@ -41,6 +41,9 @@ local options = {
     title = true,                            -- set the title of window to the value of the titlestring
 }
 
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
+
 for k, v in pairs(options) do
     vim.opt[k] = v
 end
