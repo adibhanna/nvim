@@ -113,7 +113,7 @@ return {
             f = { "<cmd>Telescope dap frames<cr>", "Dap Frames" },
         }
     },
-    t = {
+    T = {
         name = "+Todo",
         t = { "<cmd>TodoTelescope<cr>", "Todo" },
         T = { "<cmd>TodoTelescope keywords=TODO,FIX,FIXME<cr>", "Todo/Fix/Fixme" },
@@ -131,5 +131,8 @@ return {
         l = { "<cmd>lua require'dap'.run_last()<cr>", "Last" },
         u = { "<cmd>lua require'dapui'.toggle()<cr>", "UI" },
         x = { "<cmd>lua require'dap'.terminate()<cr>", "Exit" },
+    },
+    t = {
+        name = "+Tests"
     }
 }

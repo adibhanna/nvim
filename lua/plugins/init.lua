@@ -16,10 +16,6 @@ vim.opt.rtp:prepend(lazypath)
 
 -- Install plugin modules
 require("lazy").setup("plugins.modules", {
-	-- defaults = {
-	-- 	lazy = false,
-	-- 	version = nil,
-	-- },
 	install = {
 		missing = true,
 	},

@@ -24,6 +24,10 @@ return {
                 modified_icon = "",
                 custom_areas = {
                     left = function()
+                        if vim.bo.filetype == "alpha" then
+                            return {}
+                        end
+
                         return {
                             { text = "    ", fg = colors.fg },
                         }
