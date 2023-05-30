@@ -51,6 +51,21 @@ return {
         },
       })
 
+      vim.diagnostic.config({
+        underline = true,
+        virtual_text = false,
+        signs = true,
+        update_in_insert = false,
+        severity_sort = true,
+        float = {
+          source = "always",
+          style = "minimal",
+          border = "rounded",
+          header = "",
+          prefix = "",
+        },
+      })
+
       local lspconfig = require('lspconfig')
       lspconfig.lua_ls.setup({
         settings = {
@@ -148,8 +163,12 @@ return {
           end,
         },
         window = {
-          completion = cmp.config.window.bordered(),
-          documentation = cmp.config.window.bordered(),
+          completion = cmp.config.window.bordered({
+            winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None",
+          }),
+          documentation = cmp.config.window.bordered({
+            winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None",
+          }),
         },
         sources = {
           {

@@ -1,7 +1,4 @@
-local colors = {
-    fg = "#76787d",
-    bg = "#252829",
-}
+local colors = require("config.colors").colors
 return {
     "akinsho/bufferline.nvim",
     event = "VeryLazy",

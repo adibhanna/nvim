@@ -4,10 +4,7 @@ return {
   lazy = false,
   event = { "BufReadPost", "BufNewFile", "VeryLazy" },
   config = function()
-    local colors = {
-      fg = "#76787d",
-      bg = "#252829",
-  }
+    local colors = require('config.colors').colors
     require("lualine").setup {
       options = {
         -- theme = "auto", --"gruvbox-material",
@@ -52,7 +49,7 @@ return {
         },
       },
       sections = {
-        lualine_a = { },
+        lualine_a = {},
         lualine_b = { "branch" },
         lualine_c = {
           -- "filename",
@@ -63,9 +60,16 @@ return {
             padding = {
               left = 1, right = 0 }
           },
-          { "filename",                  path = 1,                 symbols = { modified = "  ", readonly = "",
-            unnamed = "" } },
-          { "diagnostics",               sources = { "nvim_lsp" }, symbols = { error = " ", warn = " ", info = " " } },
+          {
+            "filename",
+            path = 1,
+            symbols = {
+              modified = "  ",
+              readonly = "",
+              unnamed = ""
+            }
+          },
+          { "diagnostics", sources = { "nvim_lsp" }, symbols = { error = " ", warn = " ", info = " " } },
         },
         lualine_x = { "encoding" },
         lualine_y = { "progress" },
