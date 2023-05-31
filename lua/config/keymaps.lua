@@ -7,7 +7,7 @@ map("n", "<C-d>", "<C-d>zz", opts)
 map("n", "<C-u>", "<C-u>zz", opts)
 map("v", "J", ":m '>+1<CR>gv=gv", opts)
 map("v", "K", ":m '<-2<CR>gv=gv", opts)
-map("n", "<leader><leader>", ":Telescope buffers<CR>", opts)
+-- map("n", "<leader><leader>", ":Telescope buffers<CR>", opts)
 
 -- Fast saving
 map("n", "<Leader>w", ":write!<CR>", opts)

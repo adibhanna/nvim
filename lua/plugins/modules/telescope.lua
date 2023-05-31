@@ -23,22 +23,40 @@ return {
           select_strategy = "reset",
           sorting_strategy = "ascending",
           layout_strategy = "horizontal",
-          layout_config = {
-            width = 0.5,
-            height = 0.4,
-            prompt_position = "top",
-            preview_cutoff = 120,
-          },
+          -- layout_config = {
+          --   width = 0.5,
+          --   height = 0.4,
+          --   prompt_position = "top",
+          --   preview_cutoff = 120,
+          -- },
         },
         pickers = {
           find_files = {
             previewer = false,
+            layout_config = {
+              width = 0.5,
+              height = 0.4,
+              prompt_position = "top",
+              preview_cutoff = 120,
+            },
           },
           git_files = {
             previewer = false,
+            layout_config = {
+              width = 0.5,
+              height = 0.4,
+              prompt_position = "top",
+              preview_cutoff = 120,
+            },
           },
           buffers = {
             previewer = false,
+            layout_config = {
+              width = 0.5,
+              height = 0.4,
+              prompt_position = "top",
+              preview_cutoff = 120,
+            },
           },
           live_grep = {
             only_sort_text = true,
