@@ -31,8 +31,8 @@ map("v", "P", '"_dP')
 map("n", "YY", "va{Vy", opts)
 
 -- Exit on jj and jk
-map("n", "j", "gj", opts)
-map("n", "k", "gk", opts)
+-- map("n", "j", "gj", opts)
+-- map("n", "k", "gk", opts)
 
 -- Exit on jj and jk
 map("i", "jj", "<ESC>", opts)
@@ -46,3 +46,8 @@ map("n", "<Leader>q", ":q!<CR>", opts)
 map("n", "<S-l>", ":bnext<CR>", opts)
 map("n", "<S-h>", ":bprevious<CR>", opts)
 
+-- Map enter to ciw in normal mode
+map("n", "<CR>", "ciw", opts)
+
+-- map ; to resume last search
+map("n", ";", "<cmd>lua require('telescope.builtin').resume(require('telescope.themes').get_dropdown({}))<cr>", opts)

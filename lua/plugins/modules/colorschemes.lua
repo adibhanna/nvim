@@ -113,7 +113,7 @@ return {
         end,
       })
 
-      -- vim.api.nvim_command("colorscheme catppuccin")
+      vim.api.nvim_command("colorscheme catppuccin")
     end,
   },
   {
@@ -121,10 +121,10 @@ return {
     enabled = true,
     priority = 500,
     config = function()
-      vim.o.background = "dark"
-      vim.g.gruvbox_material_background = "hard"
+      -- vim.o.background = "dark"
+      -- vim.g.gruvbox_material_background = "hard"
       -- vim.g.gruvbox_material_transparent_background = 1
-      vim.cmd.colorscheme 'gruvbox-material'
+      -- vim.cmd.colorscheme 'gruvbox-material'
     end,
   },
   {
@@ -135,15 +135,47 @@ return {
   },
   {
     'projekt0n/github-nvim-theme',
-    lazy = false,  -- make sure we load this during startup if it is your main colorscheme
+    lazy = false,    -- make sure we load this during startup if it is your main colorscheme
     priority = 1000, -- make sure to load this before all the other start plugins
     config = function()
       require('github-theme').setup({
         -- ...
       })
 
-      -- vim.cmd('colorscheme github_dark_dimmed')
+      -- vim.cmd('colorscheme github_light_colorblind')
     end,
+  },
+  {
+    'sainnhe/everforest',
+    priority = 1000,
+    config = function()
+      -- vim.o.background = 'dark'
+      -- vim.g.everforest_background = 'hard'
+      -- vim.g.everforest_better_performance = 1
+      --
+      -- vim.cmd.colorscheme 'everforest'
+    end
+  },
+  {
+    'morhetz/gruvbox',
+    priority = 1000,
+    config = function()
+      -- vim.o.background = 'dark'
+      -- vim.g.gruvbox_bold = 0
+      -- vim.g.gruvbox_italic = 0
+      -- vim.g.gruvbox_italicize_comments = 0
+      -- vim.g.gruvbox_contrast_dark = 'hard'
+      -- vim.g.gruvbox_contrast_light = 'hard'
+      -- vim.g.gruvbox_invert_selection = 0
+      -- vim.g.gruvbox_color_column = 'bg0'
+      -- vim.g.gruvbox_sign_column = 'bg0'
+      -- vim.g.gruvbox_indent_guides = 0
+      -- vim.g.gruvbox_transparent_background = 1
+      -- vim.g.gruvbox_improved_strings = 0
+      -- vim.g.grubvox_termcolors = 256
+      --
+      -- vim.cmd.colorscheme 'gruvbox'
+    end
   }
 
 }

@@ -39,7 +39,28 @@ return {
 
       lsp.on_attach(function(_, bufnr)
         lsp.default_keymaps({ buffer = bufnr })
+        vim.keymap.set('n', 'gr', '<cmd>Telescope lsp_references<cr>', { buffer = true })
       end)
+
+      -- lsp.set_server_config({
+      --   on_init = function(client)
+      --     client.server_capabilities.semanticTokensProvider = nil
+      --   end,
+      -- })
+      lsp.format_on_save({
+        format_opts = {
+          async = false,
+          timeout_ms = 10000,
+        },
+        servers = {
+          ['lua_ls'] = { 'lua' },
+          ['rust_analyzer'] = { 'rust' },
+          ['gopls'] = { 'go' },
+          -- if you have a working setup with null-ls
+          -- you can specify filetypes it can format.
+          -- ['null-ls'] = {'javascript', 'typescript'},
+        }
+      })
 
       lsp.set_preferences({
         suggest_lsp_servers = false,

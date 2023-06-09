@@ -42,12 +42,12 @@ return {
   },
   G = {
     name = "+Git",
-    j = { "<cmd>lua require 'gitsigns'.next_hunk({navigation_message = false})<cr>", "Next Hunk" },
     k = { "<cmd>lua require 'gitsigns'.prev_hunk({navigation_message = false})<cr>", "Prev Hunk" },
     l = { "<cmd>lua require 'gitsigns'.blame_line()<cr>", "Blame" },
     p = { "<cmd>lua require 'gitsigns'.preview_hunk()<cr>", "Preview Hunk" },
     r = { "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", "Reset Hunk" },
     R = { "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", "Reset Buffer" },
+    j = { "<cmd>lua require 'gitsigns'.next_hunk({navigation_message = false})<cr>", "Next Hunk" },
     s = { "<cmd>lua require 'gitsigns'.stage_hunk()<cr>", "Stage Hunk" },
     u = {
       "<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>",
@@ -135,6 +135,13 @@ return {
   t = {
     name = "+Tests"
   },
+  -- z = {
+  --   name = "Folding",
+  --   R = { "<cmd>lua require'ufo'.openAllFolds<cr>", "Open all folds" },
+  --   M = { "<cmd>lua require'ufo'.closeAllFolds<cr>", "Close all folds" },
+  --   -- r = { "<cmd>lua require'ufo'.openFoldsExceptKinds<cr>", "Open fold except kinds" },
+  --   -- m = { "<cmd>lua require'ufo'.closeFoldsWith<cr>", "Close fold with" },
+  -- },
   ['\\'] = {
     name = "+Terminal",
     h = { "<cmd>ToggleTerm direction=horizontal<cr>", "Horizontal" },

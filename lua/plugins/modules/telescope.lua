@@ -17,12 +17,12 @@ return {
       telescope.setup {
         defaults = {
           previewer = false,
-          hidden = true,
+          -- hidden = true,
           file_ignore_patterns = { "node_modules", "package-lock.json" },
           initial_mode = "insert",
           select_strategy = "reset",
           sorting_strategy = "ascending",
-          layout_strategy = "horizontal",
+          -- layout_strategy = "horizontal",
           -- layout_config = {
           --   width = 0.5,
           --   height = 0.4,
@@ -32,25 +32,28 @@ return {
         },
         pickers = {
           find_files = {
+            theme = "dropdown",
             previewer = false,
             layout_config = {
-              width = 0.5,
-              height = 0.4,
+            --   width = 0.5,
+            --   height = 0.4,
               prompt_position = "top",
-              preview_cutoff = 120,
+            --   preview_cutoff = 120,
             },
           },
           git_files = {
             previewer = false,
+            theme = "dropdown",
             layout_config = {
-              width = 0.5,
-              height = 0.4,
+            --   width = 0.5,
+            --   height = 0.4,
               prompt_position = "top",
-              preview_cutoff = 120,
+            --   preview_cutoff = 120,
             },
           },
           buffers = {
             previewer = false,
+            theme = "dropdown",
             layout_config = {
               width = 0.5,
               height = 0.4,
