@@ -93,7 +93,7 @@ vim.api.nvim_create_autocmd('ColorScheme', {
 
 -- close some filetypes with <q>
 vim.api.nvim_create_autocmd("FileType", {
-  group =  vim.api.nvim_create_augroup("close_with_q", { clear = true } ),
+  group = vim.api.nvim_create_augroup("close_with_q", { clear = true }),
   pattern = {
     "PlenaryTestPopup",
     "help",
@@ -114,3 +114,6 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.keymap.set("n", "q", "<cmd>close<cr>", { buffer = event.buf, silent = true })
   end,
 })
+
+-- resize neovim split when terminal is resized
+vim.api.nvim_command('autocmd VimResized * wincmd =')

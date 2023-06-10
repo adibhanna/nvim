@@ -1,4 +1,4 @@
-return {
+eturn {
   {
     'VonHeikemen/lsp-zero.nvim',
     branch = 'v2.x',
@@ -34,7 +34,8 @@ return {
         'lua_ls',
         'jsonls',
         'bashls',
-        'vimls'
+        'vimls',
+        'intelephense',
       })
 
       lsp.on_attach(function(_, bufnr)
@@ -112,6 +113,9 @@ return {
           }
         }
       })
+
+
+      lspconfig.intelephense.setup({})
 
       require('lspconfig').eslint.setup({
         filestypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'vue', 'svelte' },
@@ -333,9 +337,10 @@ return {
     end
   },
 
-  ------------------------------------
-  -- language specific: Rust and Go --
-  ------------------------------------
+  -----------------------------------------
+  -- language specific: Rust, Go and PHP --
+  -----------------------------------------
+  -- rust-tools
   {
     "simrat39/rust-tools.nvim",
     lazy = true,
@@ -408,6 +413,7 @@ return {
       })
     end,
   },
+  -- crates
   {
     "saecki/crates.nvim",
     enabled = true,
@@ -427,6 +433,7 @@ return {
       }
     end,
   },
+  -- gopher
   {
     "olexsmir/gopher.nvim",
     dependencies = {
@@ -448,6 +455,7 @@ return {
       })
     end
   },
+  -- go
   {
     "ray-x/go.nvim",
     dependencies = { -- optional packages
@@ -461,5 +469,14 @@ return {
     event = { "CmdlineEnter" },
     ft = { "go", 'gomod' },
     build = ':lua require("go.install").update_all_sync()' -- if you need to install/update all binaries
-  }
+  },
+  -- phpactor
+  {
+    'phpactor/phpactor',
+    build = 'composer install --no-dev -optimize-autoloader',
+    ft = { 'php' },
+    keys = {
+      { '<leader>pm', ':PhpactorContextMenu<CR>', desc = "PhpActor Context Menu" },
+    }
+  },
 }
