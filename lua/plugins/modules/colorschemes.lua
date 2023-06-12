@@ -64,18 +64,18 @@ return {
             CursorLineNr = { fg = colors.surface2 },
             Pmenu = { bg = colors.crust, fg = "" },
             PmenuSel = { bg = colors.surface0, fg = "" },
-            TelescopeSelection = { bg = colors.surface0 },
-            TelescopePromptCounter = { fg = colors.mauve },
-            TelescopePromptPrefix = { bg = colors.surface0 },
-            TelescopePromptNormal = { bg = colors.surface0 },
-            TelescopeResultsNormal = { bg = colors.mantle },
-            TelescopePreviewNormal = { bg = colors.crust },
-            TelescopePromptBorder = { bg = colors.surface0, fg = colors.surface0 },
-            TelescopeResultsBorder = { bg = colors.mantle, fg = colors.mantle },
-            TelescopePreviewBorder = { bg = colors.crust, fg = colors.crust },
-            TelescopePromptTitle = { fg = colors.surface0, bg = colors.surface0 },
-            TelescopeResultsTitle = { fg = colors.mantle, bg = colors.mantle },
-            TelescopePreviewTitle = { fg = colors.crust, bg = colors.crust },
+            -- TelescopeSelection = { bg = colors.surface0 },
+            -- TelescopePromptCounter = { fg = colors.mauve },
+            -- TelescopePromptPrefix = { bg = colors.surface0 },
+            -- TelescopePromptNormal = { bg = colors.surface0 },
+            -- TelescopeResultsNormal = { bg = colors.mantle },
+            -- TelescopePreviewNormal = { bg = colors.crust },
+            -- TelescopePromptBorder = { bg = colors.surface0, fg = colors.surface0 },
+            -- TelescopeResultsBorder = { bg = colors.mantle, fg = colors.mantle },
+            -- TelescopePreviewBorder = { bg = colors.crust, fg = colors.crust },
+            -- TelescopePromptTitle = { fg = colors.surface0, bg = colors.surface0 },
+            -- TelescopeResultsTitle = { fg = colors.mantle, bg = colors.mantle },
+            -- TelescopePreviewTitle = { fg = colors.crust, bg = colors.crust },
             IndentBlanklineChar = { fg = colors.surface0 },
             IndentBlanklineContextChar = { fg = colors.surface2 },
             GitSignsChange = { fg = colors.peach },
@@ -104,12 +104,14 @@ return {
   },
   {
     "ChristianChiarulli/onedark.nvim",
+    enabled = false,
     config = function()
       -- vim.cmd.colorscheme 'onedark'
     end,
   },
   {
     'projekt0n/github-nvim-theme',
+    enabled = false,
     lazy = false,    -- make sure we load this during startup if it is your main colorscheme
     priority = 1000, -- make sure to load this before all the other start plugins
     config = function()
@@ -122,6 +124,7 @@ return {
   },
   {
     'sainnhe/everforest',
+    enabled = false,
     priority = 1000,
     config = function()
       -- vim.o.background = 'dark'
@@ -133,6 +136,7 @@ return {
   },
   {
     'morhetz/gruvbox',
+    enabled = false,
     priority = 1000,
     config = function()
       -- vim.o.background = 'dark'

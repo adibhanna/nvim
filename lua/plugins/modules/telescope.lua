@@ -18,6 +18,7 @@ return {
         defaults = {
           previewer = false,
           -- hidden = true,
+          prompt_prefix = "  ",
           file_ignore_patterns = { "node_modules", "package-lock.json" },
           initial_mode = "insert",
           select_strategy = "reset",
@@ -35,20 +36,20 @@ return {
             theme = "dropdown",
             previewer = false,
             layout_config = {
-            --   width = 0.5,
-            --   height = 0.4,
+              --   width = 0.5,
+              --   height = 0.4,
               prompt_position = "top",
-            --   preview_cutoff = 120,
+              --   preview_cutoff = 120,
             },
           },
           git_files = {
             previewer = false,
             theme = "dropdown",
             layout_config = {
-            --   width = 0.5,
-            --   height = 0.4,
+              --   width = 0.5,
+              --   height = 0.4,
               prompt_position = "top",
-            --   preview_cutoff = 120,
+              --   preview_cutoff = 120,
             },
           },
           buffers = {
