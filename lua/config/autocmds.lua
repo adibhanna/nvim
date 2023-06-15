@@ -117,17 +117,3 @@ vim.api.nvim_create_autocmd("FileType", {
 
 -- resize neovim split when terminal is resized
 vim.api.nvim_command('autocmd VimResized * wincmd =')
-
--- if a file is a .env or .envrc file, set the filetype to sh
-vim.api.nvim_create_autocmd("BufRead", {
-  callback = function()
-    vim.filetype.add({
-      filename = {
-        [".env"] = "sh",
-        [".envrc"] = "sh",
-        ["*.env"] = "sh",
-        ["*.envrc"] = "sh"
-      }
-    })
-  end,
-})
