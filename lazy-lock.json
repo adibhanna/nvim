@@ -1,6 +1,6 @@
 {
   "FixCursorHold.nvim": { "branch": "master", "commit": "1900f89dc17c603eec29960f57c00bd9ae696495" },
-  "LuaSnip": { "branch": "master", "commit": "bfbd03952f428db6e28bb199c713b1b25576cec9" },
+  "LuaSnip": { "branch": "master", "commit": "65ff66db0e466369fa6fb7abb5e38627713182ff" },
   "alpha-nvim": { "branch": "main", "commit": "9e33db324b8bb7a147bce9ea5496686ee859461d" },
   "bufferline.nvim": { "branch": "main", "commit": "41660189da6951d14436147dff30ed7f0d12ed01" },
   "catppuccin": { "branch": "main", "commit": "ad6305594737e16155c41c176c611e865c26bb6d" },
@@ -34,7 +34,7 @@
   "neotest": { "branch": "master", "commit": "e46eae5739c470aa011ee43108ea8a730736174e" },
   "neotest-go": { "branch": "main", "commit": "4e7a87967e45f2b357fd546b0b7877774191772e" },
   "nui.nvim": { "branch": "main", "commit": "e916f67b6bae1d290efa7c824ae4e04023cdfb20" },
-  "null-ls.nvim": { "branch": "main", "commit": "a138b14099e9623832027ea12b4631ddd2a49256" },
+  "null-ls.nvim": { "branch": "main", "commit": "bbaf5a96913aa92281f154b08732be2f57021c45" },
   "nvim-cmp": { "branch": "main", "commit": "b8c2a62b3bd3827aa059b43be3dd4b5c45037d65" },
   "nvim-dap": { "branch": "master", "commit": "a6d48d23407fbad7a4c1451803b8f34cab31c441" },
   "nvim-dap-go": { "branch": "main", "commit": "cdf604a5703838f65fdee7c198f6cb59b563ef6f" },
