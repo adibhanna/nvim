@@ -100,10 +100,12 @@ return {
     C = { "<cmd>Telescope commands<cr>", "Commands" },
     l = { "<cmd>Telescope resume<cr>", "Resume last search" },
     c = { "<cmd>Telescope git_commits<cr>", "Git commits" },
-    b = { "<cmd>Telescope git_branches<cr>", "Git branches" },
+    B = { "<cmd>Telescope git_branches<cr>", "Git branches" },
     s = { "<cmd>Telescope git_status<cr>", "Git status" },
     S = { "<cmd>Telescope git_stash<cr>", "Git stash" },
     z = { "<cmd>Telescope zoxide list<cr>", "Zoxide" },
+    e = { "<cmd>Telescope frecency<cr>", "Frecency" },
+    b = { "<cmd>Telescope buffers<cr>", "Buffers" },
     d = {
       name = "+DAP",
       c = { "<cmd>Telescope dap commands<cr>", "Dap Commands" },

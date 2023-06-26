@@ -88,7 +88,7 @@ return {
         end,
       })
 
-      vim.api.nvim_command("colorscheme catppuccin")
+      -- vim.api.nvim_command("colorscheme catppuccin")
     end,
   },
   {
@@ -96,10 +96,10 @@ return {
     enabled = true,
     priority = 500,
     config = function()
-      -- vim.o.background = "dark"
-      -- vim.g.gruvbox_material_background = "hard"
+      vim.o.background = "dark"
+      vim.g.gruvbox_material_background = "hard"
       -- vim.g.gruvbox_material_transparent_background = 1
-      -- vim.cmd.colorscheme 'gruvbox-material'
+      vim.cmd.colorscheme 'gruvbox-material'
     end,
   },
   {
@@ -110,51 +110,61 @@ return {
     end,
   },
   {
-    'projekt0n/github-nvim-theme',
-    enabled = false,
-    lazy = false,    -- make sure we load this during startup if it is your main colorscheme
-    priority = 1000, -- make sure to load this before all the other start plugins
-    config = function()
-      require('github-theme').setup({
-        -- ...
-      })
-
-      -- vim.cmd('colorscheme github_light_colorblind')
-    end,
-  },
-  {
-    'sainnhe/everforest',
-    enabled = false,
+    "folke/tokyonight.nvim",
+    lazy = false,
     priority = 1000,
     config = function()
-      -- vim.o.background = 'dark'
-      -- vim.g.everforest_background = 'hard'
-      -- vim.g.everforest_better_performance = 1
-      --
-      -- vim.cmd.colorscheme 'everforest'
+      require("tokyonight").setup({
+        on_highlights = function(hl, c)
+          local prompt = "#2d3149"
+          hl.TelescopeNormal = {
+            bg = c.bg_dark,
+            fg = c.fg_dark,
+          }
+          hl.TelescopeBorder = {
+            bg = c.bg_dark,
+            fg = c.bg_dark,
+          }
+          hl.TelescopePromptNormal = {
+            bg = prompt,
+          }
+          hl.TelescopePromptBorder = {
+            bg = prompt,
+            fg = prompt,
+          }
+          hl.TelescopePromptTitle = {
+            bg = prompt,
+            fg = prompt,
+          }
+          hl.TelescopePreviewTitle = {
+            bg = c.bg_dark,
+            fg = c.bg_dark,
+          }
+          hl.TelescopeResultsTitle = {
+            bg = c.bg_dark,
+            fg = c.bg_dark,
+          }
+        end,
+      })
+      -- vim.cmd.colorscheme 'tokyonight-storm'
     end
   },
   {
-    'morhetz/gruvbox',
-    enabled = false,
+    'rose-pine/neovim',
+    name = 'rose-pine',
     priority = 1000,
     config = function()
-      -- vim.o.background = 'dark'
-      -- vim.g.gruvbox_bold = 0
-      -- vim.g.gruvbox_italic = 0
-      -- vim.g.gruvbox_italicize_comments = 0
-      -- vim.g.gruvbox_contrast_dark = 'hard'
-      -- vim.g.gruvbox_contrast_light = 'hard'
-      -- vim.g.gruvbox_invert_selection = 0
-      -- vim.g.gruvbox_color_column = 'bg0'
-      -- vim.g.gruvbox_sign_column = 'bg0'
-      -- vim.g.gruvbox_indent_guides = 0
-      -- vim.g.gruvbox_transparent_background = 1
-      -- vim.g.gruvbox_improved_strings = 0
-      -- vim.g.grubvox_termcolors = 256
-      --
-      -- vim.cmd.colorscheme 'gruvbox'
+      require("rose-pine").setup({
+        highlight_groups = {
+          TelescopeBorder = { fg = "highlight_high", bg = "none" },
+          TelescopeNormal = { bg = "none" },
+          TelescopePromptNormal = { bg = "base" },
+          TelescopeResultsNormal = { fg = "subtle", bg = "none" },
+          TelescopeSelection = { fg = "text", bg = "base" },
+          TelescopeSelectionCaret = { fg = "rose", bg = "rose" },
+        },
+      })
+      -- vim.api.nvim_command("colorscheme rose-pine")
     end
   }
-
 }

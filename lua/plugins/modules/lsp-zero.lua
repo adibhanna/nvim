@@ -386,15 +386,15 @@ return {
           },
           inlay_hints = {
             auto = false,
-            only_current_line = false,
-            show_parameter_hints = false,
-            parameter_hints_prefix = "<-",
-            other_hints_prefix = "=>",
-            max_len_align = false,
-            max_len_align_padding = 1,
-            right_align = false,
-            right_align_padding = 7,
-            highlight = "Comment",
+            -- only_current_line = false,
+            -- show_parameter_hints = false,
+            -- parameter_hints_prefix = "<-",
+            -- other_hints_prefix = "=>",
+            -- max_len_align = false,
+            -- max_len_align_padding = 1,
+            -- right_align = false,
+            -- right_align_padding = 7,
+            -- highlight = "Comment",
           },
           hover_actions = {
             border = "rounded",
@@ -473,6 +473,7 @@ return {
   -- phpactor
   {
     'phpactor/phpactor',
+    enabled = false,
     build = 'composer install --no-dev -optimize-autoloader',
     ft = { 'php' },
     keys = {

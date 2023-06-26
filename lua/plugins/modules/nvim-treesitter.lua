@@ -23,7 +23,7 @@ return {
         auto_install = true,
         ensure_installed = {
           "bash",
-          "c",
+          -- "c",
           "html",
           "javascript",
           "json",
