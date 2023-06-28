@@ -49,5 +49,7 @@ map("n", "<S-h>", ":bprevious<CR>", opts)
 -- Map enter to ciw in normal mode
 map("n", "<CR>", "ciw", opts)
 
+map("n", "<BS>", 'ci', opts)
+
 -- map ; to resume last search
 map("n", ";", "<cmd>lua require('telescope.builtin').resume(require('telescope.themes').get_dropdown({}))<cr>", opts)
