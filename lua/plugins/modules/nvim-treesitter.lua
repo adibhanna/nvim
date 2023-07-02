@@ -1,7 +1,7 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
-    version = false, -- last release is way too old and doesn't work on Windows
+    version = false,
     build = ":TSUpdate",
     event = { "BufReadPost", "BufNewFile" },
     dependencies = {
@@ -22,8 +22,8 @@ return {
         context_commentstring = { enable = true, enable_autocmd = false },
         auto_install = true,
         ensure_installed = {
-          "bash",
-          -- "c",
+          -- "bash",
+          "c",
           "html",
           "javascript",
           "json",
