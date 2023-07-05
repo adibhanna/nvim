@@ -5,7 +5,9 @@ return {
     lazy = false,
     dependencies = {
       -- LSP Support
-      { 'neovim/nvim-lspconfig' }, -- Required
+      {
+        'neovim/nvim-lspconfig', -- Required
+      },
       {
         -- Optional
         'williamboman/mason.nvim',
@@ -35,7 +37,6 @@ return {
         'jsonls',
         'bashls',
         'vimls',
-        'intelephense',
       })
 
       lsp.on_attach(function(_, bufnr)
@@ -43,11 +44,7 @@ return {
         vim.keymap.set('n', 'gr', '<cmd>Telescope lsp_references<cr>', { buffer = true })
       end)
 
-      -- lsp.set_server_config({
-      --   on_init = function(client)
-      --     client.server_capabilities.semanticTokensProvider = nil
-      --   end,
-      -- })
+
       lsp.format_on_save({
         format_opts = {
           async = false,
@@ -114,10 +111,7 @@ return {
         }
       })
 
-
-      lspconfig.intelephense.setup({})
-
-      require('lspconfig').eslint.setup({
+      lspconfig.eslint.setup({
         filestypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'vue', 'svelte' },
         settings = {
           workingDirectory = { mode = 'auto' },
@@ -126,7 +120,35 @@ return {
         },
       })
 
-      lsp.skip_server_setup({ 'rust_analyzer' })
+      lspconfig.rust_analyzer.setup({
+        settings = {
+          ["rust-analyzer"] = {
+            lens = {
+              enable = true,
+            },
+            cargo = {
+              allFeatures = true,
+              loadOutDirsFromCheck = true,
+              runBuildScripts = true,
+            },
+            -- Add clippy lints for Rust.
+            check = {
+              enable = true,
+              allFeatures = true,
+              command = "clippy",
+              extraArgs = { "--no-deps" },
+            },
+            procMacro = {
+              enable = true,
+              ignored = {
+                ["async-trait"] = { "async_trait" },
+                ["napi-derive"] = { "napi" },
+                ["async-recursion"] = { "async_recursion" },
+              },
+            },
+          },
+        },
+      })
 
       lsp.setup()
 
@@ -137,7 +159,7 @@ return {
       local luasnip = require('luasnip')
       local cmp_mapping = require('cmp.config.mapping')
       local cmp_types = require('cmp.types.cmp')
-      local utils = require('plugins.utils')
+      local utils = require('config.utils')
       cmp.setup {
         formatting = {
           fields = { "kind", "abbr", "menu" },
@@ -326,93 +348,28 @@ return {
 
   -- inlay hints
   {
-    'simrat39/inlay-hints.nvim',
+    'lvimuser/lsp-inlayhints.nvim',
     config = function()
-      require("inlay-hints").setup({
-        only_current_line = false,
-        eol = {
-          right_align = false,
-        }
+      require("lsp-inlayhints").setup()
+      vim.api.nvim_create_augroup("LspAttach_inlayhints", {})
+      vim.api.nvim_create_autocmd("LspAttach", {
+        group = "LspAttach_inlayhints",
+        callback = function(args)
+          if not (args.data and args.data.client_id) then
+            return
+          end
+  
+          local bufnr = args.buf
+          local client = vim.lsp.get_client_by_id(args.data.client_id)
+          require("lsp-inlayhints").on_attach(client, bufnr)
+        end,
       })
     end
   },
 
-  -----------------------------------------
-  -- language specific: Rust, Go and PHP --
-  -----------------------------------------
-  -- rust-tools
-  {
-    "simrat39/rust-tools.nvim",
-    lazy = true,
-    enabled = true,
-    event = { "BufRead", "BufReadPre", "BufNewFile" },
-    config = function()
-      local ih = require("inlay-hints")
-      require("rust-tools").setup({
-        server = {
-          settings = {
-            ["rust-analyzer"] = {
-              lens = {
-                enable = true,
-              },
-              cargo = {
-                allFeatures = true,
-                loadOutDirsFromCheck = true,
-                runBuildScripts = true,
-              },
-              -- Add clippy lints for Rust.
-              check = {
-                enable = true,
-                allFeatures = true,
-                command = "clippy",
-                extraArgs = { "--no-deps" },
-              },
-              procMacro = {
-                enable = true,
-                ignored = {
-                  ["async-trait"] = { "async_trait" },
-                  ["napi-derive"] = { "napi" },
-                  ["async-recursion"] = { "async_recursion" },
-                },
-              },
-            },
-          },
-        },
-        tools = {
-          executor = require("rust-tools/executors").termopen, -- can be quickfix or termopen
-          reload_workspace_from_cargo_toml = true,
-          runnables = {
-            use_telescope = true,
-          },
-          inlay_hints = {
-            auto = false,
-            -- only_current_line = false,
-            -- show_parameter_hints = false,
-            -- parameter_hints_prefix = "<-",
-            -- other_hints_prefix = "=>",
-            -- max_len_align = false,
-            -- max_len_align_padding = 1,
-            -- right_align = false,
-            -- right_align_padding = 7,
-            -- highlight = "Comment",
-          },
-          hover_actions = {
-            border = "rounded",
-          },
-          on_initialized = function()
-            ih.set_all()
-
-            vim.api.nvim_create_autocmd({ "BufWritePost", "BufEnter", "CursorHold", "InsertLeave" }, {
-              pattern = { "*.rs" },
-              callback = function()
-                local _, _ = pcall(vim.lsp.codelens.refresh)
-              end,
-            })
-          end,
-        },
-      })
-    end,
-  },
+  ---------------------------------
+  -- language specific: Rust, Go --
+  ---------------------------------
   -- crates
   {
     "saecki/crates.nvim",
@@ -469,15 +426,5 @@ return {
     event = { "CmdlineEnter" },
     ft = { "go", 'gomod' },
     build = ':lua require("go.install").update_all_sync()' -- if you need to install/update all binaries
-  },
-  -- phpactor
-  {
-    'phpactor/phpactor',
-    enabled = false,
-    build = 'composer install --no-dev -optimize-autoloader',
-    ft = { 'php' },
-    keys = {
-      { '<leader>pm', ':PhpactorContextMenu<CR>', desc = "PhpActor Context Menu" },
-    }
   },
 }

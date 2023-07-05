@@ -13,21 +13,21 @@ local opts = {
 }
 
 local mappings = {
-     R = {
-        name = "+Rust",
-        j = { "<cmd>lua require('rust-tools').join_lines.join_lines()<CR>", "Join Lines" },
-        r = { "<cmd>RustRunnables<Cr>", "Runnables" },
-        t = { "<cmd>lua _CARGO_TEST()<cr>", "Cargo Test" },
-        m = { "<cmd>RustExpandMacro<Cr>", "Expand Macro" },
-        c = { "<cmd>RustOpenCargo<Cr>", "Open Cargo" },
-        p = { "<cmd>RustParentModule<Cr>", "Parent Module" },
-        d = { "<cmd>RustDebuggables<Cr>", "Debuggables" },
-        v = { "<cmd>RustViewCrateGraph<Cr>", "View Crate Graph" },
-        R = {
-            "<cmd>lua require('rust-tools/workspace_refresh')._reload_workspace_from_cargo_toml()<Cr>",
-            "Reload Workspace",
-        },
-    },
+    --  R = {
+    --     name = "+Rust",
+    --     j = { "<cmd>lua require('rust-tools').join_lines.join_lines()<CR>", "Join Lines" },
+    --     r = { "<cmd>RustRunnables<Cr>", "Runnables" },
+    --     t = { "<cmd>lua _CARGO_TEST()<cr>", "Cargo Test" },
+    --     m = { "<cmd>RustExpandMacro<Cr>", "Expand Macro" },
+    --     c = { "<cmd>RustOpenCargo<Cr>", "Open Cargo" },
+    --     p = { "<cmd>RustParentModule<Cr>", "Parent Module" },
+    --     d = { "<cmd>RustDebuggables<Cr>", "Debuggables" },
+    --     v = { "<cmd>RustViewCrateGraph<Cr>", "View Crate Graph" },
+    --     R = {
+    --         "<cmd>lua require('rust-tools/workspace_refresh')._reload_workspace_from_cargo_toml()<Cr>",
+    --         "Reload Workspace",
+    --     },
+    -- },
     C = {
         name = "+Rust Crates",
         o = { "<cmd>lua require('crates').show_popup()<CR>", "Show popup" },

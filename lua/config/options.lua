@@ -2,7 +2,7 @@ local options = {
   incsearch = true,                        -- make search act like search in modern browsers
   backup = false,                          -- creates a backup file
   clipboard = "unnamedplus",               -- allows neovim to access the system clipboard
-  cmdheight = 0,                           -- more space in the neovim command line for displaying messages
+  cmdheight = 1,                           -- more space in the neovim command line for displaying messages
   completeopt = { "menuone", "noselect" }, -- mostly just for cmp
   conceallevel = 0,                        -- so that `` is visible in markdown files
   fileencoding = "utf-8",                  -- the encoding written to a file
@@ -46,7 +46,8 @@ local options = {
 
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
-
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
 for k, v in pairs(options) do
   vim.opt[k] = v
 end
