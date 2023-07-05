@@ -33,7 +33,7 @@ return {
             scroll_up = "<c-u>",   -- binding to scroll up inside the popup
         },
         window = {
-            border = "none",          -- none, single, double, shadow
+            border = "single",          -- none, single, double, shadow
             position = "bottom",      -- bottom, top
             margin = { 2, 0, 2, 0 },  -- extra window margin [top, right, bottom, left]
             padding = { 2, 2, 2, 2 }, -- extra window padding [top, right, bottom, left]
@@ -64,11 +64,11 @@ return {
     config = function(_, opts)
         local which_key = require("which-key")
         which_key.setup(opts)
-        which_key.register(require('config.which_key_defaults'), {
+        which_key.register(require('config.which-key.defaults'), {
             mode = "n",
             prefix = "<leader>",
         })
 
-        which_key.register(require('config.which_key_non_leader'))
+        which_key.register(require('config.which-key.non_leader'))
     end
 }
