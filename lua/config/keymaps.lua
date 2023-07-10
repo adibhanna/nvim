@@ -38,9 +38,13 @@ map("n", "YY", "va{Vy", opts)
 map("i", "jj", "<ESC>", opts)
 map("i", "jk", "<ESC>", opts)
 
+-- Move to start/end of line
+map({ 'n', 'x', 'o' }, 'H', '^', opts)
+map({ 'n', 'x', 'o' }, 'L', '$', opts)
+
 -- Navigate buffers
-map("n", "<S-l>", ":bnext<CR>", opts)
-map("n", "<S-h>", ":bprevious<CR>", opts)
+map("n", "<Right>", ":bnext<CR>", opts)
+map("n", "<Left>", ":bprevious<CR>", opts)
 
 -- Map enter to ciw in normal mode
 map("n", "<CR>", "ciw", opts)
