@@ -1,13 +1,13 @@
 local opts = { noremap = true, silent = true }
-
 local map = vim.keymap.set
 
--- map("n", "<C-Space>", ":WhichKey \\<space><cr>", opts)
+-- Keep cursor centered when scrolling
 map("n", "<C-d>", "<C-d>zz", opts)
 map("n", "<C-u>", "<C-u>zz", opts)
+
+-- Move selected line / block of text in visual mode
 map("v", "J", ":m '>+1<CR>gv=gv", opts)
 map("v", "K", ":m '<-2<CR>gv=gv", opts)
--- map("n", "<leader><leader>", ":Telescope buffers<CR>", opts)
 
 -- Fast saving
 map("n", "<Leader>w", ":write!<CR>", opts)
@@ -30,9 +30,9 @@ map("v", "P", '"_dP')
 -- P puts text before the cursor.
 map("n", "YY", "va{Vy", opts)
 
--- Exit on jj and jk
--- map("n", "j", "gj", opts)
--- map("n", "k", "gk", opts)
+-- Move line on the screen rather than by line in the file
+map("n", "j", "gj", opts)
+map("n", "k", "gk", opts)
 
 -- Exit on jj and jk
 map("i", "jj", "<ESC>", opts)
@@ -46,9 +46,14 @@ map({ 'n', 'x', 'o' }, 'L', '$', opts)
 map("n", "<Right>", ":bnext<CR>", opts)
 map("n", "<Left>", ":bprevious<CR>", opts)
 
+-- Panes resizing
+map("n", "+", ":vertical resize +5<CR>")
+map("n", "_", ":vertical resize -5<CR>")
+map("n", "=", ":resize +5<CR>")
+map("n", "-", ":resize -5<CR>")
+
 -- Map enter to ciw in normal mode
 map("n", "<CR>", "ciw", opts)
-
 map("n", "<BS>", 'ci', opts)
 
 -- map ; to resume last search
