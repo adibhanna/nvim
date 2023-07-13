@@ -62,12 +62,19 @@ return {
 
       lsp.set_preferences({
         suggest_lsp_servers = false,
-        sign_icons = {
-          error = "E",
-          warn = "W",
-          hint = "H",
-          info = "I",
-        },
+        -- sign_icons = {
+        --   error = "E",
+        --   warn = "W",
+        --   hint = "H",
+        --   info = "I",
+        -- },
+      })
+
+      lsp.set_sign_icons({
+        error = "E",
+        warn = "W",
+        hint = "H",
+        info = "I",
       })
 
       vim.diagnostic.config({
@@ -358,7 +365,7 @@ return {
           if not (args.data and args.data.client_id) then
             return
           end
-  
+
           local bufnr = args.buf
           local client = vim.lsp.get_client_by_id(args.data.client_id)
           require("lsp-inlayhints").on_attach(client, bufnr)
