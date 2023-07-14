@@ -58,3 +58,10 @@ map("n", "<BS>", 'ci', opts)
 
 -- map ; to resume last search
 map("n", ";", "<cmd>lua require('telescope.builtin').resume(require('telescope.themes').get_dropdown({}))<cr>", opts)
+
+vim.keymap.set('n', '<C-s>', function()
+  require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
+    winblend = 10,
+    previewer = false,
+  })
+end, { desc = 'Fuzzily search in current buffer' })
