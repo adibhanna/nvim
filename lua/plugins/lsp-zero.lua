@@ -413,6 +413,8 @@ return {
     end
   },
 
+  'folke/neodev.nvim',
+
   ---------------------------------
   -- language specific: Rust, Go --
   ---------------------------------
