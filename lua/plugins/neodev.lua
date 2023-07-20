@@ -1,3 +1,3 @@
 return {
-    "folke/neodev.nvim"
+  "folke/neodev.nvim"
 }

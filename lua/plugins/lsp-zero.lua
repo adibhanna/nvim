@@ -26,8 +26,8 @@ return {
       -- The arguments for .extend() have the same shape as `manage_nvim_cmp`:
       -- https://github.com/VonHeikemen/lsp-zero.nvim/blob/v2.x/doc/md/api-reference.md#manage_nvim_cmp
 
-     require('lsp-zero.cmp').extend()
-     
+      require('lsp-zero.cmp').extend()
+
       -- And you can configure cmp even more, if you want to.
       local cmp         = require('cmp')
       local lspkind     = require('lspkind')
@@ -261,6 +261,8 @@ return {
         vim.keymap.set('n', 'gr', '<cmd>Telescope lsp_references<cr>', { buffer = true })
       end)
 
+      lsp.skip_server_setup({ 'rust_analyzer' })
+
       lsp.set_server_config({
         on_init = function(client)
           client.server_capabilities.semanticTokensProvider = nil
@@ -313,7 +315,21 @@ return {
 
       -- (Optional) Configure lua language server for neovim
       local lspconfig = require('lspconfig')
-      lspconfig.lua_ls.setup(lsp.nvim_lua_ls())
+      lspconfig.lua_ls.setup({
+        settings = {
+          Lua = {
+            diagnostics = {
+              globals = { "vim", "custom_nvim" },
+            },
+            workspace = {
+              library = vim.api.nvim_get_runtime_file("", true),
+              checkThirdParty = false,
+              hint = { enable = true },
+              telemetry = { enable = false },
+            },
+          },
+        },
+      })
 
       lspconfig.jsonls.setup({
         settings = {
@@ -322,6 +338,12 @@ return {
             validate = { enable = true },
           }
         }
+      })
+
+      lspconfig.tsserver.setup({
+        root_dir = lspconfig.util.root_pattern("package.json", "tsconfig.json", "jsconfig.json"),
+        filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'vue', 'svelte' },
+        cmd = { "typescript-language-server", "--stdio" },
       })
 
       lspconfig.eslint.setup({
@@ -336,9 +358,9 @@ return {
       lspconfig.rust_analyzer.setup({
         settings = {
           ["rust-analyzer"] = {
-            -- lens = {
-            --   enable = true,
-            -- },
+            lens = {
+              enable = true,
+            },
             cargo = {
               allFeatures = true,
               loadOutDirsFromCheck = true,
@@ -397,7 +419,6 @@ return {
             completeUnimported = true,
             staticcheck = true,
             directoryFilters = { "-.git", "-.vscode", "-.idea", "-.vscode-test", "-node_modules" },
-            -- semanticTokens = true,
           }
         }
       })
