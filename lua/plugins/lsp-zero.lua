@@ -171,15 +171,15 @@ return {
               upgrade_dependency = true,
               vendor = true,
             },
-            hints = {
-              assignVariableTypes = true,
-              compositeLiteralFields = true,
-              compositeLiteralTypes = true,
-              constantValues = true,
-              functionTypeParameters = true,
-              parameterNames = true,
-              rangeVariableTypes = true,
-            },
+            -- hints = {
+            --   assignVariableTypes = true,
+            --   compositeLiteralFields = true,
+            --   compositeLiteralTypes = true,
+            --   constantValues = true,
+            --   functionTypeParameters = true,
+            -- parameterNames = true,
+            --   rangeVariableTypes = true,
+            -- },
             analyses = {
               fieldalignment = true,
               nilness = true,
@@ -392,11 +392,16 @@ return {
     end
   },
 
+
   -- inlay hints
   {
     'lvimuser/lsp-inlayhints.nvim',
+    enabled = false,
     config = function()
-      require("lsp-inlayhints").setup()
+      require("lsp-inlayhints").setup({
+        highlight = "LspInlayHint",
+        priority = 100,
+      })
       vim.api.nvim_create_augroup("LspAttach_inlayhints", {})
       vim.api.nvim_create_autocmd("LspAttach", {
         group = "LspAttach_inlayhints",
