@@ -10,6 +10,10 @@ return {
   v = "Go to definition in a split",
   a = "Swap next param",
   A = "Swap previous param",
+  m = {
+    name = "Marks",
+    m = { "<cmd>Telescope marks<cr>", "Marks" },
+  },
   r = {
     name = "Replace",
     r = { "<cmd>lua require('spectre').open()<cr>", "Replace" },

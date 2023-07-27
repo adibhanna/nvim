@@ -313,7 +313,6 @@ return {
         },
       })
 
-      -- (Optional) Configure lua language server for neovim
       local lspconfig = require('lspconfig')
       lspconfig.lua_ls.setup({
         settings = {

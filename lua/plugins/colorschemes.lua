@@ -1,7 +1,7 @@
 return {
   {
     "catppuccin/nvim",
-    enabled = true,
+    enabled = false,
     priority = 150,
     name = "catppuccin",
     config = function()
@@ -94,7 +94,7 @@ return {
   {
     'sainnhe/gruvbox-material',
     enabled = true,
-    priority = 500,
+    priority = 1000,
     config = function()
       vim.o.background = "dark"
       vim.g.gruvbox_material_background = "hard"
@@ -106,12 +106,13 @@ return {
     "ChristianChiarulli/onedark.nvim",
     enabled = false,
     config = function()
-      -- vim.cmd.colorscheme 'onedark'
+      vim.cmd.colorscheme 'onedark'
     end,
   },
   {
     "folke/tokyonight.nvim",
     lazy = false,
+    enabled = false,
     priority = 1000,
     config = function()
       require("tokyonight").setup({
@@ -152,6 +153,7 @@ return {
   {
     'rose-pine/neovim',
     name = 'rose-pine',
+    enabled = false,
     priority = 1000,
     config = function()
       require("rose-pine").setup({
@@ -164,7 +166,15 @@ return {
           TelescopeSelectionCaret = { fg = "rose", bg = "rose" },
         },
       })
-      -- vim.api.nvim_command("colorscheme rose-pine")
+      vim.api.nvim_command("colorscheme rose-pine")
     end
+  },
+  {
+    'oxfist/night-owl.nvim',
+    enabled = false,
+    priority = 1000,
+    config = function()
+      -- vim.cmd.colorscheme 'night-owl'
+    end,
   }
 }
