@@ -10,6 +10,7 @@ return {
   v = "Go to definition in a split",
   a = "Swap next param",
   A = "Swap previous param",
+  U = { ":UndotreeToggle<CR>", "Toggle UndoTree" },
   m = {
     name = "Marks",
     m = { "<cmd>Telescope marks<cr>", "Marks" },
