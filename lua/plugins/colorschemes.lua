@@ -94,7 +94,7 @@ return {
   {
     'sainnhe/gruvbox-material',
     enabled = true,
-    priority = 500,
+    priority = 1000,
     config = function()
       vim.o.background = "dark"
       vim.g.gruvbox_material_background = "hard"
@@ -102,69 +102,4 @@ return {
       vim.cmd.colorscheme 'gruvbox-material'
     end,
   },
-  {
-    "ChristianChiarulli/onedark.nvim",
-    enabled = false,
-    config = function()
-      -- vim.cmd.colorscheme 'onedark'
-    end,
-  },
-  {
-    "folke/tokyonight.nvim",
-    lazy = false,
-    priority = 1000,
-    config = function()
-      require("tokyonight").setup({
-        on_highlights = function(hl, c)
-          local prompt = "#2d3149"
-          hl.TelescopeNormal = {
-            bg = c.bg_dark,
-            fg = c.fg_dark,
-          }
-          hl.TelescopeBorder = {
-            bg = c.bg_dark,
-            fg = c.bg_dark,
-          }
-          hl.TelescopePromptNormal = {
-            bg = prompt,
-          }
-          hl.TelescopePromptBorder = {
-            bg = prompt,
-            fg = prompt,
-          }
-          hl.TelescopePromptTitle = {
-            bg = prompt,
-            fg = prompt,
-          }
-          hl.TelescopePreviewTitle = {
-            bg = c.bg_dark,
-            fg = c.bg_dark,
-          }
-          hl.TelescopeResultsTitle = {
-            bg = c.bg_dark,
-            fg = c.bg_dark,
-          }
-        end,
-      })
-      -- vim.cmd.colorscheme 'tokyonight-storm'
-    end
-  },
-  {
-    'rose-pine/neovim',
-    name = 'rose-pine',
-    priority = 1000,
-    config = function()
-      require("rose-pine").setup({
-        highlight_groups = {
-          TelescopeBorder = { fg = "highlight_high", bg = "none" },
-          TelescopeNormal = { bg = "none" },
-          TelescopePromptNormal = { bg = "base" },
-          TelescopeResultsNormal = { fg = "subtle", bg = "none" },
-          TelescopeSelection = { fg = "text", bg = "base" },
-          TelescopeSelectionCaret = { fg = "rose", bg = "rose" },
-        },
-      })
-      -- vim.api.nvim_command("colorscheme rose-pine")
-    end
-  }
 }

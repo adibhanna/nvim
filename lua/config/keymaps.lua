@@ -65,3 +65,6 @@ vim.keymap.set('n', '<C-s>', function()
     previewer = false,
   })
 end, { desc = 'Fuzzily search in current buffer' })
+
+-- Split line with X
+map('n', 'X', ':keeppatterns substitute/\\s*\\%#\\s*/\\r/e <bar> normal! ==^<cr>', { silent = true })

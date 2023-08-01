@@ -128,25 +128,3 @@ vim.api.nvim_create_autocmd("FileType", {
 
 -- resize neovim split when terminal is resized
 vim.api.nvim_command('autocmd VimResized * wincmd =')
-
--- vim.api.nvim_create_autocmd("LspAttach", {
---   group = vim.api.nvim_create_augroup("LspAttachInlayHints", { clear = true }),
---   callback = function(args)
---     if not (args.data and args.data.client_id) then
---       return
---     end
---
---     local client = vim.lsp.get_client_by_id(args.data.client_id)
---
---     if not client then
---       return
---     end
---
---     local server_has_inlay_hints = client.server_capabilities.inlayHintsProvider
---         or client.server_capabilities.inlayHintProvider
---
---     if server_has_inlay_hints then
---       vim.lsp.inlay_hint(0, true)
---     end
---   end,
--- })

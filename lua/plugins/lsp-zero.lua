@@ -2,211 +2,42 @@ return {
   {
     'VonHeikemen/lsp-zero.nvim',
     branch = 'v2.x',
-    lazy = false,
+    lazy = true,
+    config = function()
+      -- This is where you modify the settings for lsp-zero
+      -- Note: autocompletion settings will not take effect
+
+      require('lsp-zero.settings').preset({
+        name = 'recommended',
+      })
+    end
+  },
+
+  -- Autocompletion
+  {
+    'hrsh7th/nvim-cmp',
+    event = 'InsertEnter',
     dependencies = {
-      -- LSP Support
-      {
-        'neovim/nvim-lspconfig', -- Required
-      },
-      {
-        -- Optional
-        'williamboman/mason.nvim',
-        build = function()
-          pcall(vim.cmd, 'MasonUpdate')
-        end,
-      },
-      { 'williamboman/mason-lspconfig.nvim' }, -- Optional
-
-      -- Autocompletion
-      { 'hrsh7th/nvim-cmp' },     -- Required
-      { 'hrsh7th/cmp-nvim-lsp' }, -- Required
-      { 'L3MON4D3/LuaSnip' },     -- Required
-
+      { 'L3MON4D3/LuaSnip' },
       { 'onsails/lspkind.nvim' },
-      { 'b0o/schemastore.nvim' }
     },
     config = function()
-      local lsp = require('lsp-zero').preset("recommended")
+      -- Here is where you configure the autocompletion settings.
+      -- The arguments for .extend() have the same shape as `manage_nvim_cmp`:
+      -- https://github.com/VonHeikemen/lsp-zero.nvim/blob/v2.x/doc/md/api-reference.md#manage_nvim_cmp
 
-      lsp.ensure_installed({
-        'tsserver',
-        'eslint',
-        'rust_analyzer',
-        'gopls',
-        'lua_ls',
-        'jsonls',
-        'bashls',
-        'vimls',
-      })
+      require('lsp-zero.cmp').extend()
 
-      lsp.on_attach(function(_, bufnr)
-        lsp.default_keymaps({ buffer = bufnr })
-        vim.keymap.set('n', 'gr', '<cmd>Telescope lsp_references<cr>', { buffer = true })
-      end)
-
-
-      lsp.format_on_save({
-        format_opts = {
-          async = false,
-          timeout_ms = 10000,
-        },
-        servers = {
-          ['lua_ls'] = { 'lua' },
-          ['rust_analyzer'] = { 'rust' },
-          ['gopls'] = { 'go' },
-          -- if you have a working setup with null-ls
-          -- you can specify filetypes it can format.
-          -- ['null-ls'] = {'javascript', 'typescript'},
-        }
-      })
-
-      lsp.set_preferences({
-        suggest_lsp_servers = false,
-        -- sign_icons = {
-        --   error = "E",
-        --   warn = "W",
-        --   hint = "H",
-        --   info = "I",
-        -- },
-      })
-
-      lsp.set_sign_icons({
-        error = "E",
-        warn = "W",
-        hint = "H",
-        info = "I",
-      })
-
-      vim.diagnostic.config({
-        underline = true,
-        virtual_text = false,
-        signs = true,
-        update_in_insert = false,
-        severity_sort = true,
-        float = {
-          source = "always",
-          style = "minimal",
-          border = "rounded",
-          header = "",
-          prefix = "",
-        },
-      })
-
-      local lspconfig = require('lspconfig')
-      lspconfig.lua_ls.setup({
-        settings = {
-          Lua = {
-            diagnostics = {
-              globals = { "vim" },
-            },
-            workspace = {
-              library = {
-                [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-                [vim.fn.stdpath("config") .. "/lua"] = true,
-              },
-            },
-          },
-        },
-      })
-
-      lspconfig.jsonls.setup({
-        settings = {
-          json = {
-            schema = require('schemastore').json.schemas(),
-            validate = { enable = true },
-          }
-        }
-      })
-
-      lspconfig.eslint.setup({
-        filestypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'vue', 'svelte' },
-        settings = {
-          workingDirectory = { mode = 'auto' },
-          format = { enable = true },
-          lint = { enable = true },
-        },
-      })
-
-      lspconfig.rust_analyzer.setup({
-        settings = {
-          ["rust-analyzer"] = {
-            lens = {
-              enable = true,
-            },
-            cargo = {
-              allFeatures = true,
-              loadOutDirsFromCheck = true,
-              runBuildScripts = true,
-            },
-            -- Add clippy lints for Rust.
-            check = {
-              enable = true,
-              allFeatures = true,
-              command = "clippy",
-              extraArgs = { "--no-deps" },
-            },
-            procMacro = {
-              enable = true,
-              ignored = {
-                ["async-trait"] = { "async_trait" },
-                ["napi-derive"] = { "napi" },
-                ["async-recursion"] = { "async_recursion" },
-              },
-            },
-          },
-        },
-      })
-
-      lspconfig.gopls.setup({
-        settings = {
-          gopls = {
-            gofumpt = true,
-            codelenses = {
-              gc_details = false,
-              generate = true,
-              regenerate_cgo = true,
-              run_govulncheck = true,
-              test = true,
-              tidy = true,
-              upgrade_dependency = true,
-              vendor = true,
-            },
-            -- hints = {
-            --   assignVariableTypes = true,
-            --   compositeLiteralFields = true,
-            --   compositeLiteralTypes = true,
-            --   constantValues = true,
-            --   functionTypeParameters = true,
-            -- parameterNames = true,
-            --   rangeVariableTypes = true,
-            -- },
-            analyses = {
-              fieldalignment = true,
-              nilness = true,
-              unusedparams = true,
-              unusedwrite = true,
-              useany = true,
-            },
-            usePlaceholders = true,
-            completeUnimported = true,
-            staticcheck = true,
-            directoryFilters = { "-.git", "-.vscode", "-.idea", "-.vscode-test", "-node_modules" },
-            -- semanticTokens = true,
-          }
-        }
-      })
-
-      lsp.setup()
-
-      -- cmp icons
-      local cmp = require('cmp')
-      local lspkind = require('lspkind')
-      local icons = require('config.icons')
-      local luasnip = require('luasnip')
-      local cmp_mapping = require('cmp.config.mapping')
-      local cmp_types = require('cmp.types.cmp')
-      local utils = require('config.utils')
-      cmp.setup {
+      -- And you can configure cmp even more, if you want to.
+      local cmp         = require('cmp')
+      local lspkind     = require('lspkind')
+      local icons       = require('config.icons')
+      local cmp_action  = require('lsp-zero.cmp').action()
+      local cmp_mapping = cmp.mapping
+      local cmp_types   = require('cmp.types.cmp')
+      local luasnip     = require('luasnip')
+      local utils       = require('config.utils')
+      cmp.setup({
         formatting = {
           fields = { "kind", "abbr", "menu" },
           format = function(entry, vim_item)
@@ -319,7 +150,8 @@ return {
           { name = "crates" },
           { name = "tmux" },
         },
-        mapping = cmp_mapping.preset.insert {
+        mapping = {
+          ['<C-b>'] = cmp_action.luasnip_jump_backward(),
           ["<C-k>"] = cmp_mapping(cmp_mapping.select_prev_item(), { "i", "c" }),
           ["<C-j>"] = cmp_mapping(cmp_mapping.select_next_item(), { "i", "c" }),
           ["<Down>"] = cmp_mapping(cmp_mapping.select_next_item { behavior = cmp_types.SelectBehavior.Select }, {
@@ -387,99 +219,210 @@ return {
             end
             fallback() -- if not exited early, always fallback
           end),
-        },
-      }
+        }
+      })
     end
   },
 
-
-  -- inlay hints
+  -- LSP
   {
-    'lvimuser/lsp-inlayhints.nvim',
-    enabled = false,
+    'neovim/nvim-lspconfig',
+    cmd = 'LspInfo',
+    event = { 'BufReadPre', 'BufNewFile' },
+    dependencies = {
+      { 'hrsh7th/cmp-nvim-lsp' },
+      { 'williamboman/mason-lspconfig.nvim' },
+      {
+        'williamboman/mason.nvim',
+        build = function()
+          pcall(vim.cmd, 'MasonUpdate')
+        end,
+      },
+      { 'b0o/schemastore.nvim' }
+    },
     config = function()
-      require("lsp-inlayhints").setup({
-        highlight = "LspInlayHint",
-        priority = 100,
-      })
-      vim.api.nvim_create_augroup("LspAttach_inlayhints", {})
-      vim.api.nvim_create_autocmd("LspAttach", {
-        group = "LspAttach_inlayhints",
-        callback = function(args)
-          if not (args.data and args.data.client_id) then
-            return
-          end
+      -- This is where all the LSP shenanigans will live
 
-          local bufnr = args.buf
-          local client = vim.lsp.get_client_by_id(args.data.client_id)
-          require("lsp-inlayhints").on_attach(client, bufnr)
+      local lsp = require('lsp-zero')
+
+      lsp.ensure_installed({
+        'tsserver',
+        'eslint',
+        'rust_analyzer',
+        'gopls',
+        'lua_ls',
+        'jsonls',
+        'bashls',
+        'vimls',
+      })
+
+      lsp.on_attach(function(client, bufnr)
+        lsp.default_keymaps({ buffer = bufnr })
+        vim.keymap.set('n', 'gr', '<cmd>Telescope lsp_references<cr>', { buffer = true })
+      end)
+
+      lsp.skip_server_setup({ 'rust_analyzer' })
+
+      lsp.set_server_config({
+        on_init = function(client)
+          client.server_capabilities.semanticTokensProvider = nil
         end,
       })
-    end
-  },
 
-  'folke/neodev.nvim',
+      lsp.nvim_workspace()
 
-  ---------------------------------
-  -- language specific: Rust, Go --
-  ---------------------------------
-  -- crates
-  {
-    "saecki/crates.nvim",
-    enabled = true,
-    version = "v0.3.0",
-    lazy = true,
-    ft = { "rust", "toml" },
-    event = { "BufRead", "BufReadPre", "BufNewFile" },
-    dependencies = { "nvim-lua/plenary.nvim" },
-    config = function()
-      require("crates").setup {
-        null_ls = {
-          enabled = true,
-          name = "crates.nvim",
+      lsp.format_on_save({
+        format_opts = {
+          async = false,
+          timeout_ms = 10000,
         },
-        popup = {
-          border = "rounded",
-        },
-      }
-    end,
-  },
-  -- gopher
-  {
-    "olexsmir/gopher.nvim",
-    dependencies = {
-      "leoluz/nvim-dap-go"
-    },
-    lazy = false,
-    config = function()
-      local gopher = require("gopher")
-      gopher.setup({
-        commands = {
-          go = "go",
-          gomodifytags = "gomodifytags",
-          gotests = "gotests",
-          impl = "impl",
-          iferr = "iferr",
-        },
-        goimport = "gopls",
-        gofmt = "gopls",
+        servers = {
+          ['lua_ls'] = { 'lua' },
+          ['rust_analyzer'] = { 'rust' },
+          ['gopls'] = { 'go' },
+          -- if you have a working setup with null-ls
+          -- you can specify filetypes it can format.
+          -- ['null-ls'] = {'javascript', 'typescript'},
+        }
       })
+
+      lsp.set_preferences({
+        suggest_lsp_servers = false,
+      })
+
+      lsp.set_sign_icons({
+        error = "E",
+        warn = "W",
+        hint = "H",
+        info = "I",
+      })
+
+      vim.diagnostic.config({
+        title            = false,
+        underline        = true,
+        virtual_text     = false,
+        signs            = true,
+        update_in_insert = false,
+        severity_sort    = true,
+        float            = {
+          source = "always",
+          style = "minimal",
+          border = "rounded",
+          header = "",
+          prefix = "",
+        },
+      })
+
+      local lspconfig = require('lspconfig')
+      lspconfig.lua_ls.setup({
+        settings = {
+          Lua = {
+            diagnostics = {
+              globals = { "vim", "custom_nvim" },
+            },
+            workspace = {
+              library = vim.api.nvim_get_runtime_file("", true),
+              checkThirdParty = false,
+              hint = { enable = true },
+              telemetry = { enable = false },
+            },
+          },
+        },
+      })
+
+      lspconfig.jsonls.setup({
+        settings = {
+          json = {
+            schema = require('schemastore').json.schemas(),
+            validate = { enable = true },
+          }
+        }
+      })
+
+      lspconfig.tsserver.setup({
+        root_dir = lspconfig.util.root_pattern("package.json", "tsconfig.json", "jsconfig.json"),
+        filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'vue', 'svelte' },
+        cmd = { "typescript-language-server", "--stdio" },
+      })
+
+      lspconfig.eslint.setup({
+        filestypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'vue', 'svelte' },
+        settings = {
+          workingDirectory = { mode = 'auto' },
+          format = { enable = true },
+          lint = { enable = true },
+        },
+      })
+
+      lspconfig.rust_analyzer.setup({
+        settings = {
+          ["rust-analyzer"] = {
+            lens = {
+              enable = true,
+            },
+            cargo = {
+              allFeatures = true,
+              loadOutDirsFromCheck = true,
+              runBuildScripts = true,
+            },
+            -- Add clippy lints for Rust.
+            check = {
+              enable = true,
+              allFeatures = true,
+              command = "clippy",
+              extraArgs = { "--no-deps" },
+            },
+            procMacro = {
+              enable = true,
+              ignored = {
+                ["async-trait"] = { "async_trait" },
+                ["napi-derive"] = { "napi" },
+                ["async-recursion"] = { "async_recursion" },
+              },
+            },
+          },
+        },
+      })
+
+      lspconfig.gopls.setup({
+        settings = {
+          gopls = {
+            gofumpt = true,
+            codelenses = {
+              gc_details = false,
+              generate = true,
+              regenerate_cgo = true,
+              run_govulncheck = true,
+              test = true,
+              tidy = true,
+              upgrade_dependency = true,
+              vendor = true,
+            },
+            hints = {
+              assignVariableTypes = true,
+              compositeLiteralFields = true,
+              compositeLiteralTypes = true,
+              constantValues = true,
+              functionTypeParameters = true,
+              parameterNames = true,
+              rangeVariableTypes = true,
+            },
+            analyses = {
+              fieldalignment = true,
+              nilness = true,
+              unusedparams = true,
+              unusedwrite = true,
+              useany = true,
+            },
+            usePlaceholders = true,
+            completeUnimported = true,
+            staticcheck = true,
+            directoryFilters = { "-.git", "-.vscode", "-.idea", "-.vscode-test", "-node_modules" },
+          }
+        }
+      })
+
+      lsp.setup()
     end
-  },
-  -- go
-  {
-    "ray-x/go.nvim",
-    enabled = false,
-    dependencies = { -- optional packages
-      "ray-x/guihua.lua",
-      "neovim/nvim-lspconfig",
-      "nvim-treesitter/nvim-treesitter",
-    },
-    config = function()
-      require("go").setup()
-    end,
-    event = { "CmdlineEnter" },
-    ft = { "go", 'gomod' },
-    build = ':lua require("go.install").update_all_sync()' -- if you need to install/update all binaries
-  },
+  }
 }
