@@ -254,6 +254,7 @@ return {
         'jsonls',
         'bashls',
         'vimls',
+        -- 'nomic_solidity'
       })
 
       lsp.on_attach(function(client, bufnr)
@@ -328,6 +329,13 @@ return {
             },
           },
         },
+      })
+
+      lspconfig.solidity.setup({
+        cmd = { "nomicfoundation-solidity-language-server", "--stdio" },
+        filetypes = { "solidity", "sol" },
+        root_dir = require("lspconfig.util").find_git_ancestor,
+        single_file_support = true,
       })
 
       lspconfig.jsonls.setup({
