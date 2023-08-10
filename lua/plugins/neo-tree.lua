@@ -73,13 +73,6 @@ return {
         },
       },
       event_handlers = {
-        -- {
-        --     event = "file_opened",
-        --     handler = function()
-        --         --auto close
-        --         require("neo-tree").close_all()
-        --     end,
-        -- },
         {
           event = "neo_tree_window_after_open",
           handler = function(args)
