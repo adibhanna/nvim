@@ -88,7 +88,7 @@ return {
         end,
       })
 
-      vim.api.nvim_command("colorscheme catppuccin")
+      -- vim.api.nvim_command("colorscheme catppuccin")
     end,
   },
   {
@@ -98,8 +98,8 @@ return {
     config = function()
       vim.o.background = "dark"
       vim.g.gruvbox_material_background = "hard"
-      vim.g.gruvbox_material_transparent_background = 1
-      -- vim.cmd.colorscheme 'gruvbox-material'
+      -- vim.g.gruvbox_material_transparent_background = 1
+      vim.cmd.colorscheme 'gruvbox-material'
     end,
   },
 }
