@@ -36,7 +36,7 @@ return {
         },
         pickers = {
           find_files = {
-            theme = "dropdown",
+            -- theme = "dropdown",
             previewer = false,
             layout_config = {
               width = 0.5,
@@ -47,7 +47,7 @@ return {
           },
           git_files = {
             previewer = false,
-            theme = "dropdown",
+            -- theme = "dropdown",
             layout_config = {
               width = 0.5,
               height = 0.4,
@@ -57,7 +57,17 @@ return {
           },
           buffers = {
             previewer = false,
-            theme = "dropdown",
+            -- theme = "dropdown",
+            layout_config = {
+              width = 0.5,
+              height = 0.4,
+              prompt_position = "top",
+              preview_cutoff = 120,
+            },
+          },
+          current_buffer_fuzzy_find = {
+            previewer = false,
+            -- theme = "dropdown",
             layout_config = {
               width = 0.5,
               height = 0.4,

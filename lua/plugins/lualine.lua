@@ -1,3 +1,14 @@
+local function diff_source()
+  local gitsigns = vim.b.gitsigns_status_dict
+  if gitsigns then
+    return {
+      added = gitsigns.added,
+      modified = gitsigns.changed,
+      removed = gitsigns.removed
+    }
+  end
+end
+
 return {
   "nvim-lualine/lualine.nvim",
   enabled = true,
@@ -32,7 +43,7 @@ return {
       },
       sections = {
         lualine_a = {},
-        lualine_b = { "branch" },
+        lualine_b = { { 'b:gitsigns_head', icon = '' } },
         lualine_c = {
           -- "filename",
           {
@@ -52,9 +63,11 @@ return {
             }
           },
           { "diagnostics", sources = { "nvim_lsp" }, symbols = { error = " ", warn = " ", info = " " } },
+          { 'diff', source = diff_source },
+          { "searchcount" }
         },
-        lualine_x = { "encoding" },
-        lualine_y = {},
+        lualine_x = {},
+        lualine_y = { "progress" },
         lualine_z = {
           -- function()
           --   return " " .. os.date("%R")

@@ -64,18 +64,18 @@ return {
             CursorLineNr = { fg = colors.surface2 },
             Pmenu = { bg = colors.crust, fg = "" },
             PmenuSel = { bg = colors.surface0, fg = "" },
-            -- TelescopeSelection = { bg = colors.surface0 },
-            -- TelescopePromptCounter = { fg = colors.mauve },
-            -- TelescopePromptPrefix = { bg = colors.surface0 },
-            -- TelescopePromptNormal = { bg = colors.surface0 },
-            -- TelescopeResultsNormal = { bg = colors.mantle },
-            -- TelescopePreviewNormal = { bg = colors.crust },
-            -- TelescopePromptBorder = { bg = colors.surface0, fg = colors.surface0 },
-            -- TelescopeResultsBorder = { bg = colors.mantle, fg = colors.mantle },
-            -- TelescopePreviewBorder = { bg = colors.crust, fg = colors.crust },
-            -- TelescopePromptTitle = { fg = colors.surface0, bg = colors.surface0 },
-            -- TelescopeResultsTitle = { fg = colors.mantle, bg = colors.mantle },
-            -- TelescopePreviewTitle = { fg = colors.crust, bg = colors.crust },
+            TelescopeSelection = { bg = colors.surface0 },
+            TelescopePromptCounter = { fg = colors.mauve },
+            TelescopePromptPrefix = { bg = colors.surface0 },
+            TelescopePromptNormal = { bg = colors.surface0 },
+            TelescopeResultsNormal = { bg = colors.mantle },
+            TelescopePreviewNormal = { bg = colors.crust },
+            TelescopePromptBorder = { bg = colors.surface0, fg = colors.surface0 },
+            TelescopeResultsBorder = { bg = colors.mantle, fg = colors.mantle },
+            TelescopePreviewBorder = { bg = colors.crust, fg = colors.crust },
+            TelescopePromptTitle = { fg = colors.surface0, bg = colors.surface0 },
+            TelescopeResultsTitle = { fg = colors.mantle, bg = colors.mantle },
+            TelescopePreviewTitle = { fg = colors.crust, bg = colors.crust },
             IndentBlanklineChar = { fg = colors.surface0 },
             IndentBlanklineContextChar = { fg = colors.surface2 },
             GitSignsChange = { fg = colors.peach },
@@ -88,7 +88,7 @@ return {
         end,
       })
 
-      -- vim.api.nvim_command("colorscheme catppuccin")
+      vim.api.nvim_command("colorscheme catppuccin")
     end,
   },
   {
@@ -99,7 +99,7 @@ return {
       vim.o.background = "dark"
       vim.g.gruvbox_material_background = "hard"
       -- vim.g.gruvbox_material_transparent_background = 1
-      vim.cmd.colorscheme 'gruvbox-material'
+      -- vim.cmd.colorscheme 'gruvbox-material'
     end,
   },
 }
