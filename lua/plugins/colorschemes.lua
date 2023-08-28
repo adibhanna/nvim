@@ -88,7 +88,7 @@ return {
         end,
       })
 
-      vim.api.nvim_command("colorscheme catppuccin")
+      -- vim.api.nvim_command("colorscheme catppuccin")
     end,
   },
   {
@@ -102,4 +102,30 @@ return {
       -- vim.cmd.colorscheme 'gruvbox-material'
     end,
   },
+  {
+    "oxfist/night-owl.nvim",
+    lazy = false,    -- make sure we load this during startup if it is your main colorscheme
+    priority = 1000, -- make sure to load this before all the other start plugins
+    config = function()
+      -- load the colorscheme here
+      -- vim.cmd.colorscheme("night-owl")
+    end,
+  },
+  {
+    "rebelot/kanagawa.nvim",
+    config = function()
+      require("kanagawa").setup({
+        colors = {
+          theme = {
+            all = {
+              ui = {
+                bg_gutter = "none"
+              }
+            }
+          }
+        }
+      })
+      vim.cmd("colorscheme kanagawa-wave")
+    end
+  }
 }
