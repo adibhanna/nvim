@@ -43,7 +43,7 @@ return {
       },
       sections = {
         lualine_a = {},
-        lualine_b = { { 'b:gitsigns_head', icon = '' } },
+        lualine_b = {},
         lualine_c = {
           -- "filename",
           {
@@ -66,7 +66,7 @@ return {
           { 'diff', source = diff_source },
           { "searchcount" }
         },
-        lualine_x = {},
+        lualine_x = { { 'b:gitsigns_head', icon = '' } },
         lualine_y = { "progress" },
         lualine_z = {
           -- function()

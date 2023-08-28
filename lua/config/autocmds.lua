@@ -92,10 +92,10 @@ vim.api.nvim_create_autocmd('ColorScheme', {
 
     -- change neotree background colors
     -- Default: NeoTreeNormal  xxx ctermfg=223 ctermbg=232 guifg=#d4be98 guibg=#141617
-    vim.cmd('highlight NeoTreeNormal guibg=#1d2021')
-    -- vim.cmd('highlight NeoTreeFloatNormal guifg=#1d2021 guibg=#141617')
-    vim.cmd('highlight NeoTreeFloatBorder guifg=#958272 guibg=#1d2021')
-    vim.cmd('highlight NeoTreeEndOfBuffer guibg=#1d2021') -- 1d2021
+    -- vim.cmd('highlight NeoTreeNormal guibg=#1d2021')
+    ---- vim.cmd('highlight NeoTreeFloatNormal guifg=#1d2021 guibg=#141617')
+    -- vim.cmd('highlight NeoTreeFloatBorder guifg=#958272 guibg=#1d2021')
+    -- vim.cmd('highlight NeoTreeEndOfBuffer guibg=#1d2021') -- 1d2021
   end,
 })
 
@@ -125,3 +125,16 @@ vim.api.nvim_create_autocmd("FileType", {
 
 -- resize neovim split when terminal is resized
 vim.api.nvim_command('autocmd VimResized * wincmd =')
+
+vim.api.nvim_create_autocmd("ColorScheme", {
+  pattern = "kanagawa",
+  callback = function()
+    if vim.o.background == "light" then
+      vim.fn.system("kitty +kitten themes Kanagawa_light")
+    elseif vim.o.background == "dark" then
+      vim.fn.system("kitty +kitten themes Kanagawa_dragon")
+    else
+      vim.fn.system("kitty +kitten themes Kanagawa")
+    end
+  end,
+})
