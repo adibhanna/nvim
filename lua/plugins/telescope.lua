@@ -13,6 +13,10 @@ return {
       'telescope-dap.nvim',
       'kkharji/sqlite.lua',
       'nvim-telescope/telescope-frecency.nvim',
+      -- {
+      --   "nvim-telescope/telescope-file-browser.nvim",
+      --   dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
+      -- }
     },
     config = function()
       local telescope = require('telescope')
@@ -152,7 +156,21 @@ return {
               "*/tmp/*",
               "*/lua-language-server/*",
             },
-          }
+          },
+          -- file_browser = {
+          --   -- theme = "",
+          --   previewer = true,
+          --   -- disables netrw and use telescope-file-browser in its place
+          --   hijack_netrw = true,
+          --   -- mappings = {
+          --   --   ["i"] = {
+          --   --     -- your custom insert mode mappings
+          --   --   },
+          --   --   ["n"] = {
+          --   --     -- your custom normal mode mappings
+          --   --   },
+          --   -- },
+          -- },
         }
       }
       telescope.load_extension('fzf')
@@ -161,6 +179,7 @@ return {
       telescope.load_extension('dap')
       telescope.load_extension("zoxide")
       telescope.load_extension("frecency")
+      -- telescope.load_extension("file_browser")
     end
   },
 }
