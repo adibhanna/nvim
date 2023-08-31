@@ -41,20 +41,20 @@ return {
         pickers = {
           find_files = {
             -- theme = "dropdown",
-            previewer = false,
+            previewer = true,
             layout_config = {
-              width = 0.5,
-              height = 0.4,
+              -- width = 0.5,
+              height = 0.8,
               prompt_position = "top",
               preview_cutoff = 120,
             },
           },
           git_files = {
-            previewer = false,
+            previewer = true,
             -- theme = "dropdown",
             layout_config = {
-              width = 0.5,
-              height = 0.4,
+              -- width = 0.5,
+              height = 0.8,
               prompt_position = "top",
               preview_cutoff = 120,
             },
@@ -70,11 +70,11 @@ return {
             },
           },
           current_buffer_fuzzy_find = {
-            previewer = false,
+            previewer = true,
             -- theme = "dropdown",
             layout_config = {
-              width = 0.5,
-              height = 0.4,
+              -- width = 0.5,
+              height = 0.8,
               prompt_position = "top",
               preview_cutoff = 120,
             },

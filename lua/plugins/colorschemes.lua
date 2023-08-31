@@ -141,7 +141,14 @@ return {
           }
         }
       })
-      vim.cmd("colorscheme kanagawa-wave")
+      -- vim.cmd("colorscheme kanagawa-wave")
+    end
+  },
+  {
+    "Mofiqul/vscode.nvim",
+    config = function()
+      require("vscode").setup({})
+      -- vim.cmd("colorscheme vscode")
     end
   }
 }
