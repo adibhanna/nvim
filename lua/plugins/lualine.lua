@@ -8,6 +8,57 @@ local function diff_source()
     }
   end
 end
+local colors = {
+  black        = '#1d2021',
+  white        = '#ebdbb2',
+  red          = '#fb4934',
+  green        = '#b8bb26',
+  blue         = '#83a598',
+  yellow       = '#fe8019',
+  gray         = '#a89984',
+  darkgray     = '#3c3836',
+  lightgray    = '#504945',
+  inactivegray = '#7c6f64',
+}
+
+local theme = {
+  normal = {
+    a = { bg = colors.black, fg = colors.gray, gui = 'bold' },
+    b = { bg = colors.black, fg = colors.white },
+    c = { bg = colors.black, fg = colors.gray }
+  },
+  insert = {
+    a = { bg = colors.black, fg = colors.blue, gui = 'bold' },
+    b = { bg = colors.black, fg = colors.white },
+    c = { bg = colors.black, fg = colors.gray }
+  },
+  visual = {
+    a = { bg = colors.black, fg = colors.yellow, gui = 'bold' },
+    b = { bg = colors.black, fg = colors.white },
+    c = { bg = colors.black, fg = colors.gray }
+  },
+  replace = {
+    a = { bg = colors.black, fg = colors.red, gui = 'bold' },
+    b = { bg = colors.black, fg = colors.white },
+    c = { bg = colors.black, fg = colors.gray }
+  },
+  command = {
+    a = { bg = colors.black, fg = colors.green, gui = 'bold' },
+    b = { bg = colors.black, fg = colors.white },
+    c = { bg = colors.black, fg = colors.gray }
+  },
+  terminal = {
+    a = { bg = colors.black, fg = colors.blue, gui = 'bold' },
+    b = { bg = colors.black, fg = colors.white },
+    c = { bg = colors.black, fg = colors.gray }
+  },
+  inactive = {
+    a = { bg = colors.black, fg = colors.gray, gui = 'bold' },
+    b = { bg = colors.black, fg = colors.gray },
+    c = { bg = colors.black, fg = colors.gray }
+  }
+}
+
 
 return {
   "nvim-lualine/lualine.nvim",
