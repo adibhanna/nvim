@@ -430,6 +430,13 @@ return {
         }
       })
 
+      -- lspconfig.terraformls.setup({
+      --   cmd = { "terraform-ls", "serve" },
+      --   filetypes = { "terraform", "tf", "terraform-vars" },
+      --   -- root_dir = lspconfig.util.root_pattern(".terraform", ".git"),
+      --   root_dir = lspconfig.util.root_pattern("*.tf", "*.terraform", "*.tfvars", "*.hcl", "*.config"),
+      -- })
+
       lsp.setup()
     end
   }

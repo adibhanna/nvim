@@ -36,6 +36,7 @@ return {
             surface1 = "#2A2D2E",
             surface0 = "#232728",
             base = "#1D2021",
+            -- base = "#0E1419", -- dark color
             mantle = "#191C1D",
             crust = "#151819",
           },
@@ -104,6 +105,7 @@ return {
   },
   {
     "oxfist/night-owl.nvim",
+    enabled = false,
     lazy = false,    -- make sure we load this during startup if it is your main colorscheme
     priority = 1000, -- make sure to load this before all the other start plugins
     config = function()
@@ -113,6 +115,7 @@ return {
   },
   {
     "rebelot/kanagawa.nvim",
+    enabled = false,
     config = function()
       require("kanagawa").setup({
         overrides = function(colors)
@@ -145,10 +148,32 @@ return {
     end
   },
   {
-    "Mofiqul/vscode.nvim",
-    config = function()
-      require("vscode").setup({})
-      -- vim.cmd("colorscheme vscode")
-    end
-  }
+    'Mofiqul/dracula.nvim',
+    lazy = false,
+    priority = 1000,
+    opts = {
+      colors = {
+        -- Overrides.
+        bg = '#0E1419',
+        -- bright_red = '#EC6A88',
+        comment = '#B08BBB',
+        -- orange = '#FFBFA9',
+        -- red = '#E95678',
+        selection = '#3C4148',
+        -- -- Some extra colors.
+        -- fuchsia = '#E11299',
+        -- grey = '#A9ABAC',
+        -- lavender = '#6272A4',
+        -- lilac = '#6D5978',
+        -- transparent_blue = '#19272C',
+        -- transparent_red = '#342231',
+        -- transparent_yellow = '#202624',
+      },
+      italic_comment = false
+    },
+    config = function(_, opts)
+      require('dracula').setup(opts)
+      -- vim.cmd("colorscheme dracula")
+    end,
+  },
 }
