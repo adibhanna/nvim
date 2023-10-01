@@ -97,10 +97,10 @@ return {
     enabled = true,
     priority = 1000,
     config = function()
-      vim.o.background = "dark"
-      vim.g.gruvbox_material_background = "hard"
+      -- vim.o.background = "dark"
+      -- vim.g.gruvbox_material_background = "hard"
       -- vim.g.gruvbox_material_transparent_background = 1
-      vim.cmd.colorscheme 'gruvbox-material'
+      -- vim.cmd.colorscheme 'gruvbox-material'
     end,
   },
   {
@@ -176,4 +176,17 @@ return {
       -- vim.cmd("colorscheme dracula")
     end,
   },
+  {
+    "sainnhe/everforest",
+    config = function()
+      vim.o.background = "dark"
+      vim.g.everforest_background = "hard"
+      vim.g.everforest_enable_italic = 0
+      vim.g.everforest_ui_contrast = "high"
+      vim.g.everforest_float_style = "dim"
+
+      vim.g.everforest_better_performance = 1
+      vim.cmd("colorscheme everforest")
+    end
+  }
 }
