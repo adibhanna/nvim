@@ -92,10 +92,10 @@ vim.api.nvim_create_autocmd('ColorScheme', {
 
     -- change neotree background colors
     -- Default: NeoTreeNormal  xxx ctermfg=223 ctermbg=232 guifg=#d4be98 guibg=#141617
-    vim.cmd('highlight NeoTreeNormal guibg=#1d2021')
-    ---- vim.cmd('highlight NeoTreeFloatNormal guifg=#1d2021 guibg=#141617')
-    vim.cmd('highlight NeoTreeFloatBorder guifg=#958272 guibg=#1d2021')
-    vim.cmd('highlight NeoTreeEndOfBuffer guibg=#1d2021') -- 1d2021
+    -- vim.cmd('highlight NeoTreeNormal guibg=#252e33 guifg=none')
+    -- vim.cmd('highlight NeoTreeFloatNormal guifg=none guibg=none')
+    -- vim.cmd('highlight NeoTreeFloatBorder gui=none guifg=' .. colors.fg .. ' guibg=none')
+    -- vim.cmd('highlight NeoTreeEndOfBuffer guibg=#252e33') -- 1d2021
   end,
 })
 

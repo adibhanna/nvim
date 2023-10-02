@@ -184,7 +184,7 @@ return {
       vim.g.everforest_enable_italic = 0
       vim.g.everforest_ui_contrast = "high"
       vim.g.everforest_float_style = "dim"
-      vim.g.everyforest_transparent_background = 1
+      -- vim.g.everyforest_transparent_background = 1
 
       vim.g.everforest_better_performance = 1
       vim.cmd("colorscheme everforest")
