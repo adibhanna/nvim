@@ -51,9 +51,7 @@ return {
           },
           git_files = {
             previewer = true,
-            -- theme = "dropdown",
             layout_config = {
-              -- width = 0.5,
               height = 0.8,
               prompt_position = "top",
               preview_cutoff = 120,
@@ -61,7 +59,8 @@ return {
           },
           buffers = {
             previewer = false,
-            -- theme = "dropdown",
+            initial_mode = "normal",
+            theme = "dropdown",
             layout_config = {
               width = 0.5,
               height = 0.4,
