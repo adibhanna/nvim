@@ -20,9 +20,15 @@ return {
     },
     config = function()
       local telescope = require('telescope')
+      local actions = require('telescope.actions')
       telescope.setup {
         file_ignore_patterns = { "%.git/." },
         defaults = {
+          mappings = {
+            i = {
+              ["<esc>"] = actions.close,
+            },
+          },
           previewer = false,
           -- hidden = true,
           prompt_prefix = "   ",
@@ -58,8 +64,16 @@ return {
             },
           },
           buffers = {
+            mappings = {
+              i = {
+                ["<c-d>"] = actions.delete_buffer,
+              },
+              n = {
+                ["<c-d>"] = actions.delete_buffer,
+              },
+            },
             previewer = false,
-            initial_mode = "normal",
+            initial_mode = "insert",
             theme = "dropdown",
             layout_config = {
               width = 0.5,
