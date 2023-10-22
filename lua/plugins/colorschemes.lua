@@ -98,9 +98,9 @@ return {
     priority = 1000,
     config = function()
       vim.o.background = "dark"
-      -- vim.g.gruvbox_material_background = "hard"
-      -- vim.g.gruvbox_material_transparent_background = 1
-      -- vim.cmd.colorscheme 'gruvbox-material'
+      vim.g.gruvbox_material_background = "hard"
+      vim.g.gruvbox_material_transparent_background = 1
+      vim.cmd.colorscheme 'gruvbox-material'
     end,
   },
   {
@@ -193,7 +193,7 @@ return {
   {
     "cocopon/iceberg.vim",
     config = function()
-      vim.cmd("colorscheme iceberg")
+      -- vim.cmd("colorscheme iceberg")
     end
   },
   {
