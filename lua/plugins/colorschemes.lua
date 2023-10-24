@@ -104,6 +104,26 @@ return {
     end,
   },
   {
+    "rose-pine/neovim",
+    config = function()
+      require('rose-pine').setup({
+        disable_background = true,
+        -- disable_float_background = true,
+        disable_italics = true,
+        highlight_groups = {
+          TelescopeBorder = { fg = "highlight_high", bg = "none" },
+          TelescopeNormal = { bg = "none" },
+          TelescopePromptNormal = { bg = "base" },
+          TelescopeResultsNormal = { fg = "subtle", bg = "none" },
+          TelescopeSelection = { fg = "text", bg = "base" },
+          TelescopeSelectionCaret = { fg = "rose", bg = "rose" },
+        },
+      })
+
+      -- vim.cmd.colorscheme 'rose-pine-moon'
+    end
+  },
+  {
     "oxfist/night-owl.nvim",
     enabled = true,
     lazy = false,    -- make sure we load this during startup if it is your main colorscheme
