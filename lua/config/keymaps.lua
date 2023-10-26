@@ -57,7 +57,7 @@ map("n", "<CR>", "ciw", opts)
 map("n", "<BS>", 'ci', opts)
 
 -- map ; to resume last search
-map("n", ";", "<cmd>Telescope resume<cr>", opts)
+-- map("n", ";", "<cmd>Telescope resume<cr>", opts)
 
 -- search current buffer
 map("n", "<C-s>", ":Telescope current_buffer_fuzzy_find<CR>", opts)
