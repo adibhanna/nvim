@@ -46,13 +46,13 @@ return {
         lualine_b = {},
         lualine_c = {
           -- "filename",
-          {
-            "filetype",
-            icon_only = true,
-            separator = "",
-            padding = {
-              left = 1, right = 0 }
-          },
+          -- {
+          --   "filetype",
+          --   icon_only = true,
+          --   separator = "",
+          --   padding = {
+          --     left = 1, right = 0 }
+          -- },
           {
             "filename",
             path = 1,
@@ -66,8 +66,8 @@ return {
           { 'diff', source = diff_source },
           { "searchcount" }
         },
-        lualine_x = { { 'b:gitsigns_head', icon = '' } },
-        lualine_y = { "progress" },
+        lualine_x = { { 'b:gitsigns_head', icon = '' }, "progress" },
+        lualine_y = {},
         lualine_z = {},
       },
       inactive_sections = {
