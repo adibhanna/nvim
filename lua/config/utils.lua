@@ -118,4 +118,20 @@ M.toggle_inlay_hints = function()
   end
 end
 
+M.toggle_set_color_column = function()
+  if vim.wo.colorcolumn == "" then
+    vim.wo.colorcolumn = "80"
+  else
+    vim.wo.colorcolumn = ""
+  end
+end
+
+M.toggle_cursor_line = function()
+  if vim.wo.cursorline then
+    vim.wo.cursorline = false
+  else
+    vim.wo.cursorline = true
+  end
+end
+
 return M

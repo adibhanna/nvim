@@ -12,10 +12,15 @@ return {
   A = "Swap previous param",
   U = { ":UndotreeToggle<CR>", "Toggle UndoTree" },
   o = { ":Telescope buffers<CR>", "Open Buffer" },
-  m = {
-    name = "Marks",
-    m = { "<cmd>Telescope marks<cr>", "Marks" },
+  u = {
+    name = "UI",
+    c = { "<cmd>lua require('config.utils').toggle_set_color_column()<CR>", "Toggle Color Line" },
+    l = { "<cmd>lua require('config.utils').toggle_cursor_line()<CR>", "Toggle Cursor Line" },
   },
+  -- m = {
+  --   name = "Marks",
+  --   m = { "<cmd>Telescope marks<cr>", "Marks" },
+  -- },
   r = {
     name = "Replace",
     r = { "<cmd>lua require('spectre').open()<cr>", "Replace" },
@@ -91,7 +96,6 @@ return {
     L = { "<cmd>TroubleToggle workspace_diagnostics<cr>", "Workspace Diagnostics (Trouble)" },
     w = { "<cmd>Telescope diagnostics<cr>", "Diagnostics" },
     t = { [[ <Esc><Cmd>lua require('telescope').extensions.refactoring.refactors()<CR>]], "Refactor" },
-
     h = { "<cmd>lua require('config.utils').toggle_inlay_hints()<CR>", "Toggle Inlay Hints" },
 
     -- j = { "<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>", "Previous Diagnostic" },
