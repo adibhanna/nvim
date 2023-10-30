@@ -21,13 +21,18 @@ return {
     config = function()
       local telescope = require('telescope')
       local actions = require('telescope.actions')
+      local trouble = require("trouble.providers.telescope")
+
       telescope.setup {
         file_ignore_patterns = { "%.git/." },
         defaults = {
           mappings = {
             i = {
               ["<esc>"] = actions.close,
+              ["<C-t>"] = trouble.open_with_trouble,
             },
+
+            n = { ["<C-t>"] = trouble.open_with_trouble },
           },
           previewer = false,
           -- hidden = true,
