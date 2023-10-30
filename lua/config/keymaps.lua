@@ -64,3 +64,6 @@ map("n", "<C-s>", ":Telescope current_buffer_fuzzy_find<CR>", opts)
 
 -- Split line with X
 map('n', 'X', ':keeppatterns substitute/\\s*\\%#\\s*/\\r/e <bar> normal! ==^<cr>', { silent = true })
+
+-- Select all
+map('n', '<C-a>', 'ggVG', opts)
