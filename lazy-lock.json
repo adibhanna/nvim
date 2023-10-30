@@ -52,7 +52,7 @@
   "plenary.nvim": { "branch": "master", "commit": "50012918b2fc8357b87cff2a7f7f0446e47da174" },
   "refactoring.nvim": { "branch": "master", "commit": "5831194debd23920a32abd9fefd5dddba44e34fc" },
   "rust-tools.nvim": { "branch": "master", "commit": "0cc8adab23117783a0292a0c8a2fbed1005dc645" },
-  "schemastore.nvim": { "branch": "main", "commit": "976e7e3e9c400b99f1cb337b2ce804a9652571ec" },
+  "schemastore.nvim": { "branch": "main", "commit": "639be26bf3315f7353ae13fb7a9dc3759bb8e43f" },
   "splitjoin.nvim": { "branch": "main", "commit": "3dd4973ffcc8240b8bc8668babfdd66517144a4a" },
   "sqlite.lua": { "branch": "master", "commit": "b7e28c8463254c46a8e61c52d27d6a2040492fc3" },
   "telescope-dap.nvim": { "branch": "master", "commit": "4e2d5efb92062f0b865fe59b200b5ed7793833bf" },

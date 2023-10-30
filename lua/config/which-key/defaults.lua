@@ -16,6 +16,7 @@ return {
     name = "UI",
     c = { "<cmd>lua require('config.utils').toggle_set_color_column()<CR>", "Toggle Color Line" },
     l = { "<cmd>lua require('config.utils').toggle_cursor_line()<CR>", "Toggle Cursor Line" },
+    b = { "<cmd>lua require('config.utils').change_background()<CR>", "Toggle Background" },
   },
   -- m = {
   --   name = "Marks",
