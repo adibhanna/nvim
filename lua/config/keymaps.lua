@@ -67,3 +67,12 @@ map('n', 'X', ':keeppatterns substitute/\\s*\\%#\\s*/\\r/e <bar> normal! ==^<cr>
 
 -- Select all
 map('n', '<C-a>', 'ggVG', opts)
+
+-- write file in current directory
+-- :w %:h/<new-file-name>
+map('n', '<C-n>', ':w %:h/', opts)
+
+-- delete forward
+-- w{number}dw
+-- delete backward
+-- w{number}db
