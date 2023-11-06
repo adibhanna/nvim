@@ -6,7 +6,7 @@ return {
   c = { ":bd<CR>", "Close Buffer" },
   h = { ":nohlsearch<CR>", "No Highlight" },
   p = { "<cmd>Telescope treesitter<CR>", "List Symbols" },
-  f = { "<cmd>lua require('config.utils').telescope_git_or_file()<CR>", "Find Files" },
+  f = { "<cmd>lua require('config.utils').telescope_git_or_file()<CR>", "Find Files (Root)" },
   v = "Go to definition in a split",
   a = "Swap next param",
   A = "Swap previous param",
@@ -17,6 +17,12 @@ return {
     c = { "<cmd>lua require('config.utils').toggle_set_color_column()<CR>", "Toggle Color Line" },
     l = { "<cmd>lua require('config.utils').toggle_cursor_line()<CR>", "Toggle Cursor Line" },
     b = { "<cmd>lua require('config.utils').change_background()<CR>", "Toggle Background" },
+  },
+  i = {
+    name = "Sessions",
+    s    = { "<cmd>lua require('persistence').load()<cr>", "Load Session" },
+    l    = { "<cmd>lua require('persistence').load({ last = true })<cr>", "Load Last Session" },
+    d    = { "<cmd>lua require('persistence').stop()<cr>", "Stop Persistence" },
   },
   -- m = {
   --   name = "Marks",
@@ -105,7 +111,7 @@ return {
   },
   s = {
     name = "+Search",
-    f = { "<cmd>Telescope find_files<cr>", "Find File" },
+    f = { "<cmd>Telescope find_files<cr>", "Find File (CWD)" },
     h = { "<cmd>Telescope help_tags<cr>", "Find Help" },
     H = { "<cmd>Telescope highlights<cr>", "Find highlight groups" },
     M = { "<cmd>Telescope man_pages<cr>", "Man Pages" },

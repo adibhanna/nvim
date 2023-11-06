@@ -110,7 +110,7 @@ return {
       --   vim.g.gruvbox_material_colors_override = { bg0 = '#0e1010' }
       -- end
 
-      vim.g.gruvbox_material_colors_override = { bg0 = '#0e1010' }
+      vim.g.gruvbox_material_colors_override = { bg0 = '#0e1010' } -- #0e1010
       -- vim.g.gruvbox_material_better_performance = 1
       vim.cmd.colorscheme 'gruvbox-material'
     end,
@@ -120,9 +120,41 @@ return {
     config = function()
       require('rose-pine').setup({
         disable_background = true,
-        -- disable_float_background = true,
+        disable_float_background = true,
+        dark_variant = 'moon',
         disable_italics = true,
+        groups = {
+          background = 'base',
+          background_nc = '_experimental_nc',
+          panel = 'surface',
+          panel_nc = 'base',
+          border = 'highlight_med',
+          comment = 'muted',
+          link = 'iris',
+          punctuation = 'subtle',
+
+          error = 'love',
+          hint = 'iris',
+          info = 'foam',
+          warn = 'gold',
+
+          headings = {
+            h1 = 'iris',
+            h2 = 'foam',
+            h3 = 'rose',
+            h4 = 'gold',
+            h5 = 'pine',
+            h6 = 'foam',
+          }
+        },
         highlight_groups = {
+          ColorColumn = { bg = 'rose' },
+
+          -- Blend colours against the "base" background
+          CursorLine = { bg = 'foam', blend = 10 },
+          StatusLine = { fg = 'love', bg = 'love', blend = 10 },
+          Search = { bg = 'gold', inherit = false },
+
           TelescopeBorder = { fg = "highlight_high", bg = "none" },
           TelescopeNormal = { bg = "none" },
           TelescopePromptNormal = { bg = "base" },
