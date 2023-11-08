@@ -35,6 +35,7 @@ return {
             surface2 = "#4B4F51",
             surface1 = "#2A2D2E",
             surface0 = "#232728",
+            base = "#0e1010",
             base = "#1D2021",
             -- base = "#0E1419", -- dark color
             mantle = "#191C1D",
@@ -110,8 +111,8 @@ return {
       --   vim.g.gruvbox_material_colors_override = { bg0 = '#0e1010' }
       -- end
 
-      -- vim.g.gruvbox_material_colors_override = { bg0 = '#0e1010' } -- #0e1010
-      -- vim.g.gruvbox_material_better_performance = 1
+      vim.g.gruvbox_material_colors_override = { bg0 = '#0e1010' } -- #0e1010
+      vim.g.gruvbox_material_better_performance = 1
       vim.cmd.colorscheme 'gruvbox-material'
     end,
   },
@@ -168,16 +169,6 @@ return {
     end
   },
   {
-    "oxfist/night-owl.nvim",
-    enabled = true,
-    lazy = false,    -- make sure we load this during startup if it is your main colorscheme
-    priority = 1000, -- make sure to load this before all the other start plugins
-    config = function()
-      -- load the colorscheme here
-      -- vim.cmd.colorscheme("night-owl")
-    end,
-  },
-  {
     "rebelot/kanagawa.nvim",
     enabled = true,
     config = function()
@@ -212,56 +203,38 @@ return {
     end
   },
   {
-    'Mofiqul/dracula.nvim',
-    lazy = false,
-    priority = 1000,
-    opts = {
-      colors = {
-        -- Overrides.
-        bg = '#0E1419',
-        -- bright_red = '#EC6A88',
-        comment = '#B08BBB',
-        -- orange = '#FFBFA9',
-        -- red = '#E95678',
-        selection = '#3C4148',
-        -- -- Some extra colors.
-        -- fuchsia = '#E11299',
-        -- grey = '#A9ABAC',
-        -- lavender = '#6272A4',
-        -- lilac = '#6D5978',
-        -- transparent_blue = '#19272C',
-        -- transparent_red = '#342231',
-        -- transparent_yellow = '#202624',
-      },
-      italic_comment = false
-    },
-    config = function(_, opts)
-      require('dracula').setup(opts)
-      -- vim.cmd("colorscheme dracula")
-    end,
-  },
-  {
-    "sainnhe/everforest",
-    config = function()
-      vim.o.background = "dark"
-      vim.g.everforest_background = "hard"
-      vim.g.everforest_enable_italic = 0
-      vim.g.everforest_ui_contrast = "high"
-      vim.g.everforest_float_style = "dim"
-      -- vim.g.everyforest_transparent_background = 1
-
-      vim.g.everforest_better_performance = 1
-      -- vim.cmd("colorscheme everforest")
-    end
-  },
-  {
-    "cocopon/iceberg.vim",
-    config = function()
-      -- vim.cmd("colorscheme iceberg")
-    end
-  },
-  {
     "olimorris/onedarkpro.nvim",
     priority = 1000 -- Ensure it loads first
+  },
+  {
+    "ellisonleao/gruvbox.nvim",
+    priority = 1000,
+    config = function()
+      require("gruvbox").setup({
+        terminal_colors = true, -- add neovim terminal colors
+        undercurl = false,
+        underline = false,
+        bold = false,
+        italic = {
+          strings = false,
+          emphasis = false,
+          comments = false,
+          operators = false,
+          folds = false,
+        },
+        strikethrough = false,
+        invert_selection = false,
+        invert_signs = false,
+        invert_tabline = false,
+        invert_intend_guides = false,
+        inverse = true,    -- invert background for search, diffs, statuslines and errors
+        contrast = "hard", -- can be "hard", "soft" or empty string
+        palette_overrides = {},
+        overrides = {},
+        dim_inactive = false,
+        transparent_mode = true,
+      })
+      -- vim.cmd.colorscheme("gruvbox")
+    end
   }
 }

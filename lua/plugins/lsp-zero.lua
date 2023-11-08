@@ -359,7 +359,7 @@ return {
       vim.diagnostic.config({
         title            = false,
         underline        = true,
-        virtual_text     = false,
+        virtual_text     = true,
         signs            = true,
         update_in_insert = false,
         severity_sort    = true,

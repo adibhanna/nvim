@@ -19,8 +19,8 @@ return {
       options = {
         theme = "auto",
         icons_enabled = true,
-        section_separators = "",
-        component_separators = "",
+        -- component_separators = '│',
+        -- section_separators = '',
         disabled_filetypes = {
           statusline = {
             'help',
@@ -45,14 +45,6 @@ return {
         lualine_a = {},
         lualine_b = {},
         lualine_c = {
-          -- "filename",
-          -- {
-          --   "filetype",
-          --   icon_only = true,
-          --   separator = "",
-          --   padding = {
-          --     left = 1, right = 0 }
-          -- },
           {
             "filename",
             path = 1,
@@ -62,11 +54,11 @@ return {
               unnamed = ""
             }
           },
+          { "aerial" },
           { "diagnostics", sources = { "nvim_lsp" }, symbols = { error = " ", warn = " ", info = " " } },
-          { 'diff', source = diff_source },
-          { "searchcount" }
+          { "searchcount" },
         },
-        lualine_x = { { 'b:gitsigns_head', icon = '' }, "progress" },
+        lualine_x = { { 'diff', source = diff_source }, { 'b:gitsigns_head', icon = '' }, "progress" },
         lualine_y = {},
         lualine_z = {},
       },
