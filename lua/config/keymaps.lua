@@ -76,3 +76,6 @@ map('n', '<C-n>', ':w %:h/', opts)
 -- w{number}dw
 -- delete backward
 -- w{number}db
+
+
+map('n', '<C-P>', ':lua require("config.utils").toggle_go_test()<CR>', opts)
