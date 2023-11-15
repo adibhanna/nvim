@@ -52,6 +52,7 @@
   "refactoring.nvim": { "branch": "master", "commit": "156532476deb10b1b2a32cb38e1078b3f9951c42" },
   "rust-tools.nvim": { "branch": "master", "commit": "0cc8adab23117783a0292a0c8a2fbed1005dc645" },
   "schemastore.nvim": { "branch": "main", "commit": "fe2ab14cf777a041b7c62af37346f7849400a754" },
+  "solarized-osaka.nvim": { "branch": "main", "commit": "fc7e1a0ff81adca26c1b4e5c45049a09c0ae30a1" },
   "splitjoin.nvim": { "branch": "main", "commit": "3dd4973ffcc8240b8bc8668babfdd66517144a4a" },
   "sqlite.lua": { "branch": "master", "commit": "b7e28c8463254c46a8e61c52d27d6a2040492fc3" },
   "telescope-dap.nvim": { "branch": "master", "commit": "4e2d5efb92062f0b865fe59b200b5ed7793833bf" },

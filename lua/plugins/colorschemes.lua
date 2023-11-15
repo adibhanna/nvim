@@ -36,7 +36,7 @@ return {
             surface1 = "#2A2D2E",
             surface0 = "#232728",
             base = "#0e1010",
-            base = "#1D2021",
+            -- base = "#1D2021",
             -- base = "#0E1419", -- dark color
             mantle = "#191C1D",
             crust = "#151819",
