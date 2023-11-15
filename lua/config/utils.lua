@@ -151,7 +151,7 @@ M.toggle_go_test = function()
     local non_test_file = string.gsub(current_file, '_test.go$', '.go')
     if vim.fn.filereadable(non_test_file) == 1 then
       -- Open the corresponding non-test file if it exists
-      vim.cmd('edit ' .. non_test_file)
+      vim.cmd.edit(non_test_file)
     else
       print('No corresponding non-test file found')
     end
@@ -160,7 +160,7 @@ M.toggle_go_test = function()
     local test_file = string.gsub(current_file, '.go$', '_test.go')
     if vim.fn.filereadable(test_file) == 1 then
       -- Open the corresponding test file if it exists
-      vim.cmd('edit ' .. test_file)
+      vim.cmd.edit(test_file)
     else
       print('No corresponding test file found')
     end
