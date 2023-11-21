@@ -96,6 +96,8 @@ vim.api.nvim_create_autocmd('ColorScheme', {
     -- vim.cmd('highlight NeoTreeFloatNormal guifg=none guibg=none')
     -- vim.cmd('highlight NeoTreeFloatBorder gui=none guifg=' .. colors.fg .. ' guibg=none')
     -- vim.cmd('highlight NeoTreeEndOfBuffer guibg=#252e33') -- 1d2021
+
+    vim.cmd("highlight Comment guifg=#475558")
   end,
 })
 
@@ -126,18 +128,18 @@ vim.api.nvim_create_autocmd("FileType", {
 -- resize neovim split when terminal is resized
 vim.api.nvim_command('autocmd VimResized * wincmd =')
 
-vim.api.nvim_create_autocmd("ColorScheme", {
-  pattern = "kanagawa",
-  callback = function()
-    if vim.o.background == "light" then
-      vim.fn.system("kitty +kitten themes Kanagawa_light")
-    elseif vim.o.background == "dark" then
-      vim.fn.system("kitty +kitten themes Kanagawa_dragon")
-    else
-      vim.fn.system("kitty +kitten themes Kanagawa")
-    end
-  end,
-})
+-- vim.api.nvim_create_autocmd("ColorScheme", {
+--   pattern = "kanagawa",
+--   callback = function()
+--     if vim.o.background == "light" then
+--       vim.fn.system("kitty +kitten themes Kanagawa_light")
+--     elseif vim.o.background == "dark" then
+--       vim.fn.system("kitty +kitten themes Kanagawa_dragon")
+--     else
+--       vim.fn.system("kitty +kitten themes Kanagawa")
+--     end
+--   end,
+-- })
 
 
 --fix terraform and hcl comment string
@@ -148,6 +150,8 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
   pattern = { "terraform", "hcl" },
 })
+
+
 
 -- vim.api.nvim_create_autocmd({ "OptionSet" }, {
 --   pattern = { "background" },

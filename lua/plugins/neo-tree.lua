@@ -21,11 +21,11 @@ return {
       popup_border_style = "single",
       enable_git_status = true,
       enable_modified_markers = true,
-      enable_diagnostics = false,
+      enable_diagnostics = true,
       sort_case_insensitive = true,
       default_component_configs = {
         indent = {
-          with_markers = false,
+          with_markers = true,
           with_expanders = true,
         },
         modified = {
@@ -44,11 +44,11 @@ return {
             added = "",
             deleted = "",
             modified = "",
-            renamed = "",
+            renamed = "",
             -- Status type
             untracked = "",
             ignored = "",
-            unstaged = "",
+            unstaged = "",
             staged = "",
             conflict = "",
           },
