@@ -4,15 +4,11 @@ return {
   {
     "echasnovski/mini.comment",
     event = "VeryLazy",
-    opts = {
-      hooks = {
-        pre = function()
-          require("ts_context_commentstring.internal").update_commentstring({})
-        end,
-      },
-    },
-    config = function(_, opts)
-      require("mini.comment").setup(opts)
+    opts = {},
+    config = function(_, _)
+      require("ts_context_commentstring").setup({})
+      require("mini.comment").setup()
+      vim.g.skip_ts_context_commentstring_module = true
     end,
   },
 }
