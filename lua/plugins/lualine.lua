@@ -57,7 +57,7 @@ return {
           },
           { "aerial" },
           { "diagnostics", sources = { "nvim_lsp" }, symbols = { error = " ", warn = " ", info = " " } },
-          { "searchcount" },
+          -- { "searchcount" },
         },
         lualine_x = { { 'diff', source = diff_source }, { 'b:gitsigns_head', icon = '' }, "progress" },
         lualine_y = {},
