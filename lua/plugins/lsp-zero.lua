@@ -24,138 +24,49 @@ return {
       {
         'L3MON4D3/LuaSnip',
       },
-      { 'onsails/lspkind.nvim' },
     },
     config = function()
-      require('lsp-zero.cmp').extend()
+      -- Here is where you configure the autocompletion settings.
+      local lsp_zero = require('lsp-zero')
+      lsp_zero.extend_cmp()
 
-      local cmp         = require('cmp')
-      local lspkind     = require('lspkind')
-      local icons       = require('config.icons')
-      local cmp_action  = require('lsp-zero.cmp').action()
-      local cmp_mapping = cmp.mapping
-      local cmp_types   = require('cmp.types.cmp')
-      local luasnip     = require('luasnip')
-      local utils       = require('config.utils')
+      -- And you can configure cmp even more, if you want to.
+      local cmp = require('cmp')
+      local cmp_action = lsp_zero.cmp_action()
+
       cmp.setup({
-        formatting = {
-          fields = { "kind", "abbr", "menu" },
-          format = function(entry, vim_item)
-            local max_width = 0
-            if max_width ~= 0 and #vim_item.abbr > max_width then
-              vim_item.abbr = string.sub(vim_item.abbr, 1, max_width - 1) .. icons.ui.Ellipsis
-            end
-            vim_item.kind = lspkind.presets.default[vim_item.kind] .. " " .. vim_item.kind
-
-            if entry.source.name == "copilot" then
-              vim_item.kind = icons.git.Octoface
-              vim_item.kind_hl_group = "CmpItemKindCopilot"
-            end
-
-            if entry.source.name == "crates" then
-              vim_item.kind = icons.misc.Package
-              vim_item.kind_hl_group = "CmpItemKindCrate"
-            end
-
-            if entry.source.name == "emoji" then
-              vim_item.kind = icons.misc.Smiley
-              vim_item.kind_hl_group = "CmpItemKindEmoji"
-            end
-            vim_item.menu = ({
-              nvim_lsp = "(LSP)",
-              emoji = "(Emoji)",
-              path = "(Path)",
-              calc = "(Calc)",
-              vsnip = "(Snippet)",
-              luasnip = "(Snippet)",
-              buffer = "(Buffer)",
-              tmux = "(TMUX)",
-              copilot = "(Copilot)",
-              treesitter = "(TreeSitter)",
-            })[entry.source.name]
-            vim_item.dup = ({
-              buffer = 1,
-              path = 1,
-              nvim_lsp = 0,
-              luasnip = 1,
-            })[entry.source.name] or 0
-            return vim_item
-          end,
+        formatting = lsp_zero.cmp_format(),
+        mapping = cmp.mapping.preset.insert({
+          ['<Tab>'] = cmp_action.luasnip_supertab(),
+          ['<S-Tab>'] = cmp_action.luasnip_shift_supertab(),
+          ['<CR>'] = cmp.mapping.confirm({ select = false }),
+          ['<C-Space>'] = cmp.mapping.complete(),
+          ['<C-u>'] = cmp.mapping.scroll_docs(-4),
+          ['<C-d>'] = cmp.mapping.scroll_docs(4),
+          ['<C-f>'] = cmp_action.luasnip_jump_forward(),
+          ['<C-b>'] = cmp_action.luasnip_jump_backward(),
+        }),
+        window = {
+          completion = cmp.config.window.bordered(),
+          documentation = cmp.config.window.bordered(),
+        },
+        sources = {
+          { name = 'nvim_lsp' },
+          { name = 'nvim_lua' },
+          { name = 'luasnip' },
+          { name = 'buffer' },
+          { name = 'path' },
+          { name = 'calc' },
+          { name = 'emoji' },
+          { name = 'treesitter' },
+          { name = 'crates' },
+          { name = 'tmux' },
         },
         snippet = {
           expand = function(args)
-            luasnip.lsp_expand(args.body)
+            require('luasnip').lsp_expand(args.body)
           end,
         },
-        window = {
-          completion = cmp.config.window.bordered({
-            winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None",
-          }),
-          documentation = cmp.config.window.bordered({
-            winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None",
-          }),
-        },
-        sources = {
-          {
-            name = "copilot",
-            -- keyword_length = 0,
-            max_item_count = 3,
-            trigger_characters = {
-              {
-                ".",
-                ":",
-                "(",
-                "'",
-                '"',
-                "[",
-                ",",
-                "#",
-                "*",
-                "@",
-                "|",
-                "=",
-                "-",
-                "{",
-                "/",
-                "\\",
-                "+",
-                "?",
-                " ",
-                -- "\t",
-                -- "\n",
-              },
-            },
-          },
-          {
-            name = "nvim_lsp",
-            entry_filter = function(entry, ctx)
-              local kind = require("cmp.types.lsp").CompletionItemKind[entry:get_kind()]
-              if kind == "Snippet" and ctx.prev_context.filetype == "java" then
-                return false
-              end
-              if kind == "Text" then
-                return false
-              end
-              return true
-            end,
-          },
-
-          { name = "path" },
-          { name = "luasnip" },
-          { name = "nvim_lua" },
-          { name = "buffer" },
-          { name = "calc" },
-          { name = "emoji" },
-          { name = "treesitter" },
-          { name = "crates" },
-          { name = "tmux" },
-        },
-        mapping = {
-          ['<Tab>'] = cmp_action.luasnip_supertab(),
-          ['<S-Tab>'] = cmp_action.luasnip_shift_supertab(),
-          ["<C-Space>"] = cmp_mapping.complete(),
-          ['<CR>'] = cmp.mapping.confirm({ select = false }),
-        }
       })
     end
   },
@@ -163,7 +74,7 @@ return {
   -- LSP
   {
     'neovim/nvim-lspconfig',
-    cmd = 'LspInfo',
+    cmd = { 'LspInfo', 'LspInstall', 'LspStart' },
     event = { 'BufReadPre', 'BufNewFile' },
     dependencies = {
       { 'hrsh7th/cmp-nvim-lsp' },
@@ -174,7 +85,7 @@ return {
       local lsp_zero = require('lsp-zero')
       lsp_zero.extend_lspconfig()
 
-      lsp_zero.on_attach(function(client, bufnr)
+      lsp_zero.on_attach(function(_, bufnr)
         lsp_zero.default_keymaps({ buffer = bufnr })
         opts = { buffer = bufnr, silent = true }
 
@@ -212,21 +123,25 @@ return {
         },
         handlers = {
           lsp_zero.default_setup,
-          lspconfig.lua_ls.setup({
-            settings = {
-              Lua = {
-                diagnostics = {
-                  globals = { "vim", "custom_nvim" },
-                },
-                workspace = {
-                  library = vim.api.nvim_get_runtime_file("", true),
-                  checkThirdParty = false,
-                  hint = { enable = true },
-                  telemetry = { enable = false },
-                },
-              },
-            },
-          }),
+          lua_ls = function()
+            local lua_opts = lsp_zero.nvim_lua_ls()
+            lspconfig.lua_ls.setup(lua_opts)
+          end,
+          -- lspconfig.lua_ls.setup({
+          --   settings = {
+          --     Lua = {
+          --       diagnostics = {
+          --         globals = { "vim", "custom_nvim" },
+          --       },
+          --       workspace = {
+          --         library = vim.api.nvim_get_runtime_file("", true),
+          --         checkThirdParty = false,
+          --         hint = { enable = true },
+          --         telemetry = { enable = false },
+          --       },
+          --     },
+          --   },
+          -- }),
           lspconfig.solidity.setup({
             cmd = { "nomicfoundation-solidity-language-server", "--stdio" },
             filetypes = { "solidity", "sol" },

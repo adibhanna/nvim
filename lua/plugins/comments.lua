@@ -7,7 +7,10 @@ return {
     opts = {},
     config = function(_, _)
       require("mini.comment").setup()
-      require("ts_context_commentstring").setup()
+
+      require('nvim-treesitter.configs').setup {
+        enable_autocmd = false,
+      }
       vim.g.skip_ts_context_commentstring_module = true
     end,
   },

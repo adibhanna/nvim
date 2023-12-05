@@ -81,11 +81,11 @@ map('n', '<C-n>', ':w %:h/', opts)
 map('n', '<C-P>', ':lua require("config.utils").toggle_go_test()<CR>', opts)
 
 
-vim.cmd [[:amenu 10.100 mousemenu.Goto\ Definition <cmd>Telescope lsp_definitions<CR>]]
-vim.cmd [[:amenu 10.110 mousemenu.References <cmd>Telescope lsp_references<CR>]]
-vim.cmd [[:amenu 10.120 mousemenu.Implementation <cmd>Telescope lsp_implementations <CR>]]
-vim.cmd [[:amenu 10.130 mousemenu.Rename <cmd>lua vim.lsp.buf.rename()<CR>]]
-
-vim.keymap.set("n", "<RightMouse>", "<cmd>:popup mousemenu<CR>")
-
-vim.keymap.set("n", "<Tab>", "<cmd>:popup mousemenu<CR>")
+-- vim.cmd [[:amenu 10.100 mousemenu.Goto\ Definition <cmd>Telescope lsp_definitions<CR>]]
+-- vim.cmd [[:amenu 10.110 mousemenu.References <cmd>Telescope lsp_references<CR>]]
+-- vim.cmd [[:amenu 10.120 mousemenu.Implementation <cmd>Telescope lsp_implementations <CR>]]
+-- vim.cmd [[:amenu 10.130 mousemenu.Rename <cmd>lua vim.lsp.buf.rename()<CR>]]
+--
+-- vim.keymap.set("n", "<RightMouse>", "<cmd>:popup mousemenu<CR>")
+--
+-- vim.keymap.set("n", "<Tab>", "<cmd>:popup mousemenu<CR>")
