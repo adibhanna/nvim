@@ -1,3 +1,8 @@
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 local options = {
   incsearch = true,                        -- make search act like search in modern browsers
   backup = false,                          -- creates a backup file
@@ -44,10 +49,6 @@ local options = {
   -- cursorlineopt = "number",                -- set the cursorline
 }
 
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
 for k, v in pairs(options) do
   vim.opt[k] = v
 end
