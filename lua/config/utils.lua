@@ -167,4 +167,15 @@ M.toggle_go_test = function()
   end
 end
 
+
+M.declutter_terminal = function()
+  require('lualine').hide()
+  vim.cmd('silent !tmux set-option -g status off')
+end
+
+M.clutter_terminal = function()
+  require('lualine').hide({ unhide = true })
+  vim.cmd('silent !tmux set-option -g status on')
+end
+
 return M

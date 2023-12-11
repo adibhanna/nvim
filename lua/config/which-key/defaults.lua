@@ -17,6 +17,17 @@ return {
     c = { "<cmd>lua require('config.utils').toggle_set_color_column()<CR>", "Toggle Color Line" },
     l = { "<cmd>lua require('config.utils').toggle_cursor_line()<CR>", "Toggle Cursor Line" },
     b = { "<cmd>lua require('config.utils').change_background()<CR>", "Toggle Background" },
+    s = {
+      name = "Lualine",
+      h = { "<cmd>lua require('lualine').hide()<CR>", "Hide Lualine" },
+      s = { "<cmd>lua require('lualine').hide({unhide = true})<CR>", "Show Lualine" },
+    },
+    z = {
+      name = "Manage Clutter",
+      z = { "<cmd>lua require('config.utils').declutter_terminal()<CR>", "Declutter Terminal" },
+      f = { "<cmd>lua require('config.utils').clutter_terminal()<CR>", "Clutter Terminal" },
+
+    }
   },
   i = {
     name = "Sessions",

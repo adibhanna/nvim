@@ -98,7 +98,7 @@ return {
     enabled = true,
     priority = 1000,
     config = function()
-      -- vim.g.gruvbox_material_transparent_background = 1
+      vim.g.gruvbox_material_transparent_background = 1
       vim.g.gruvbox_material_foreground = 'material'
       vim.g.gruvbox_material_background = 'hard'  -- soft, medium, hard
       vim.g.gruvbox_material_ui_contrast = 'high' -- The contrast of line numbers, indent lines, etc.
@@ -113,7 +113,7 @@ return {
 
       vim.g.gruvbox_material_colors_override = { bg0 = '#0e1010' } -- #0e1010
       vim.g.gruvbox_material_better_performance = 1
-      -- vim.cmd.colorscheme 'gruvbox-material'
+      vim.cmd.colorscheme 'gruvbox-material'
     end,
   },
   {
@@ -173,7 +173,7 @@ return {
     lazy = false,    -- make sure we load this during startup if it is your main colorscheme
     priority = 1000, -- make sure to load this before all the other start plugins
     config = function()
-      vim.cmd.colorscheme 'primer_dark'
+      -- vim.cmd.colorscheme 'primer_dark'
     end
   },
   {
