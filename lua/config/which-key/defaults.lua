@@ -24,8 +24,8 @@ return {
     },
     z = {
       name = "Manage Clutter",
-      z = { "<cmd>lua require('config.utils').declutter_terminal()<CR>", "Declutter Terminal" },
-      f = { "<cmd>lua require('config.utils').clutter_terminal()<CR>", "Clutter Terminal" },
+      d = { "<cmd>lua require('config.utils').declutter_terminal()<CR>", "Declutter Terminal" },
+      c = { "<cmd>lua require('config.utils').clutter_terminal()<CR>", "Clutter Terminal" },
 
     }
   },
@@ -119,6 +119,7 @@ return {
     -- j = { "<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>", "Previous Diagnostic" },
     -- k = { "<cmd>lua vim.lsp.diagnostic.goto_next()<cr>", "Next Diagnostic" },
     -- e = { "<cmd>Telescope quickfix<cr>", "Telescope Quickfix" },
+    c = { "<cmd>lua require('config.utils').copyFilePathAndLineNumber()<CR>", "Copy File Path and Line Number" },
   },
   s = {
     name = "+Search",

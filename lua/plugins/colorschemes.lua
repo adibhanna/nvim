@@ -120,7 +120,7 @@ return {
     "rose-pine/neovim",
     config = function()
       require('rose-pine').setup({
-        disable_background = true,
+        disable_background = false,
         disable_float_background = true,
         dark_variant = 'moon',
         disable_italics = true,
@@ -232,7 +232,7 @@ return {
         },
         strikethrough = false,
         invert_selection = false,
-        invert_signs = false,
+        invert_signs = true,
         invert_tabline = false,
         invert_intend_guides = false,
         inverse = true,    -- invert background for search, diffs, statuslines and errors
@@ -240,7 +240,7 @@ return {
         palette_overrides = {},
         overrides = {},
         dim_inactive = false,
-        transparent_mode = true,
+        transparent_mode = false,
       })
       -- vim.cmd.colorscheme("gruvbox")
     end
