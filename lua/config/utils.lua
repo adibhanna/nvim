@@ -178,8 +178,6 @@ M.clutter_terminal = function()
   vim.cmd('silent !tmux set-option -g status on')
 end
 
-
-
 -- Copy the current file path and line number to the clipboard, use GitHub URL if in a Git repository
 M.copyFilePathAndLineNumber = function()
   local current_file = vim.fn.expand('%:p')
