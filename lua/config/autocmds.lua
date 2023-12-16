@@ -90,6 +90,15 @@ vim.api.nvim_create_autocmd('ColorScheme', {
     vim.cmd('highlight FloatBorder guifg=' .. colors.fg .. ' guibg=none')
     vim.cmd('highlight NormalNC guibg=none guifg=none')
 
+    vim.cmd('highlight TelescopeBorder guifg=' .. colors.fg .. ' guibg=none')
+    vim.cmd('highlight TelescopePromptBorder guifg=' .. colors.fg .. ' guibg=none')
+    vim.cmd('highlight TelescopeResultsBorder guifg=' .. colors.fg .. ' guibg=none')
+
+    vim.cmd('highlight TelescopePromptTitle guifg=' .. colors.fg .. ' guibg=none')
+    vim.cmd('highlight TelescopeResultsTitle guifg=' .. colors.fg .. ' guibg=none')
+    vim.cmd('highlight TelescopePreviewTitle guifg=' .. colors.fg .. ' guibg=none')
+
+
     -- change neotree background colors
     -- Default: NeoTreeNormal  xxx ctermfg=223 ctermbg=232 guifg=#d4be98 guibg=#141617
     -- vim.cmd('highlight NeoTreeNormal guibg=#252e33 guifg=none')
@@ -100,6 +109,8 @@ vim.api.nvim_create_autocmd('ColorScheme', {
     vim.cmd("highlight Comment guifg=#475558")
   end,
 })
+
+
 
 -- close some filetypes with <q>
 vim.api.nvim_create_autocmd("FileType", {

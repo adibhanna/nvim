@@ -222,8 +222,8 @@ return {
     config = function()
       require("vitesse").setup {
         comment_italics = true,
-        transparent_background = false,
-        transparent_float_background = false, -- aka pum(popup menu) background
+        transparent_background = true,
+        transparent_float_background = true, -- aka pum(popup menu) background
         reverse_visual = false,
         dim_nc = false,
         cmp_cmdline_disable_search_highlight_group = false, -- disable search highlight group for cmp item
