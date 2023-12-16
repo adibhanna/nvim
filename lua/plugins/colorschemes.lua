@@ -113,7 +113,7 @@ return {
 
       vim.g.gruvbox_material_colors_override = { bg0 = '#0e1010' } -- #0e1010
       vim.g.gruvbox_material_better_performance = 1
-      vim.cmd.colorscheme 'gruvbox-material'
+      -- vim.cmd.colorscheme 'gruvbox-material'
     end,
   },
   {
@@ -213,6 +213,34 @@ return {
   {
     "ChristianChiarulli/onedark.nvim",
     priority = 1000, -- Ensure it loads first,
+  },
+  {
+    "2nthony/vitesse.nvim",
+    dependencies = {
+      "tjdevries/colorbuddy.nvim"
+    },
+    config = function()
+      require("vitesse").setup {
+        comment_italics = true,
+        transparent_background = false,
+        transparent_float_background = false, -- aka pum(popup menu) background
+        reverse_visual = false,
+        dim_nc = false,
+        cmp_cmdline_disable_search_highlight_group = false, -- disable search highlight group for cmp item
+        -- if `transparent_float_background` false, make telescope border color same as float background
+        telescope_border_follow_float_background = false,
+        -- diagnostic virtual text background, like error lens
+        diagnostic_virtual_text_background = false,
+
+        -- override the `lua/vitesse/palette.lua`, go to file see fields
+        colors = {},
+        themes = {
+          -- background = "#000000",
+        },
+      }
+
+      vim.cmd.colorscheme 'vitesse'
+    end
   },
   {
     "ellisonleao/gruvbox.nvim",

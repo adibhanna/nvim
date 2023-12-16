@@ -5,6 +5,7 @@
   "alpha-nvim": { "branch": "main", "commit": "29074eeb869a6cbac9ce1fbbd04f5f5940311b32" },
   "catppuccin": { "branch": "main", "commit": "079500a625f3ae5aa6efb758f1a17fe4c7a57e52" },
   "cmp-nvim-lsp": { "branch": "main", "commit": "5af77f54de1b16c34b23cba810150689a3a90312" },
+  "colorbuddy.nvim": { "branch": "master", "commit": "cdb5b0654d3cafe61d2a845e15b2b4b0e78e752a" },
   "copilot-cmp": { "branch": "master", "commit": "72fbaa03695779f8349be3ac54fa8bd77eed3ee3" },
   "copilot.lua": { "branch": "master", "commit": "dcaaed5b58e6c2d395bca18d25d34e6384856722" },
   "crates.nvim": { "branch": "main", "commit": "1dffccc0a95f656ebe00cacb4de282473430c5a1" },
@@ -66,5 +67,6 @@
   "undotree": { "branch": "master", "commit": "36ff7abb6b60980338344982ad4cdf03f7961ecd" },
   "vim-illuminate": { "branch": "master", "commit": "3bd2ab64b5d63b29e05691e624927e5ebbf0fb86" },
   "vim-sleuth": { "branch": "master", "commit": "1cc4557420f215d02c4d2645a748a816c220e99b" },
+  "vitesse.nvim": { "branch": "main", "commit": "addd777a6b46c3369b7251d9d5e9ad8bb70a5d99" },
   "which-key.nvim": { "branch": "main", "commit": "4433e5ec9a507e5097571ed55c02ea9658fb268a" }
 }
