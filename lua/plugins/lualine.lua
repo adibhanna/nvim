@@ -48,7 +48,7 @@ return {
         lualine_c = {
           {
             "filename",
-            path = 1,
+            path = 1, -- 2 for full path
             symbols = {
               modified = "  ",
               readonly = "",

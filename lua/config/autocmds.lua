@@ -86,9 +86,9 @@ vim.api.nvim_create_autocmd('LspAttach', {
 vim.api.nvim_create_autocmd('ColorScheme', {
   callback = function()
     -- change the background color of floating windows and borders.
-    vim.cmd('highlight NormalFloat guibg=none guifg=none')
-    vim.cmd('highlight FloatBorder guifg=' .. colors.fg .. ' guibg=none')
-    vim.cmd('highlight NormalNC guibg=none guifg=none')
+    -- vim.cmd('highlight NormalFloat guibg=none guifg=none')
+    -- vim.cmd('highlight FloatBorder guifg=' .. colors.fg .. ' guibg=none')
+    -- vim.cmd('highlight NormalNC guibg=none guifg=none')
 
     -- vim.cmd('highlight TelescopeBorder guifg=' .. colors.fg .. ' guibg=none')
     -- vim.cmd('highlight TelescopePromptBorder guifg=' .. colors.fg .. ' guibg=none')
@@ -106,6 +106,9 @@ vim.api.nvim_create_autocmd('ColorScheme', {
     -- vim.cmd('highlight NeoTreeFloatBorder gui=none guifg=' .. colors.fg .. ' guibg=none')
     -- vim.cmd('highlight NeoTreeEndOfBuffer guibg=#252e33') -- 1d2021
 
+    vim.api.nvim_set_hl(0, "FloatBorder", { link = "Normal" })
+    vim.api.nvim_set_hl(0, "LspInfoBorder", { link = "Normal" })
+    vim.api.nvim_set_hl(0, "NormalFloat", { link = "Normal" })
     vim.cmd("highlight Comment guifg=#475558")
   end,
 })
