@@ -94,6 +94,14 @@ return {
     end,
   },
   {
+    'nvimdev/nightsky.vim',
+    enabled = true,
+    priority = 1000,
+    config = function()
+      -- vim.cmd.colorscheme 'nightsky'
+    end
+  },
+  {
     'sainnhe/gruvbox-material',
     enabled = true,
     priority = 1000,

@@ -25,26 +25,20 @@ return {
         disabled_filetypes = {
           statusline = {
             'help',
-            -- 'startify',
-            -- 'dashboard',
             'neo-tree',
-            -- 'packer',
-            -- 'neogitstatus',
-            -- 'NvimTree',
             'Trouble',
             'alpha',
-            -- 'lir',
             'Outline',
             'spectre_panel',
             'toggleterm',
-            -- 'qf',
           },
           winbar = {},
         },
       },
       sections = {
         lualine_a = {},
-        lualine_b = {},
+        lualine_b = {
+        },
         lualine_c = {
           {
             "filename",
@@ -55,19 +49,32 @@ return {
               unnamed = ""
             }
           },
-          { "aerial" },
+          {
+            "aerial",
+            sep = " ) ",
+            depth = nil,
+            dense = true,
+            dense_sep = ".",
+            colored = false,
+          },
           { "diagnostics", sources = { "nvim_lsp" }, symbols = { error = " ", warn = " ", info = " " } },
-          -- { "searchcount" },
+          { "searchcount" },
         },
-        lualine_x = { { 'diff', source = diff_source }, { 'b:gitsigns_head', icon = '' }, "progress" },
-        lualine_y = {},
-        lualine_z = {},
+        lualine_x = {
+          { 'diff', source = diff_source },
+          { 'b:gitsigns_head', icon = '' },
+          "progress"
+        },
+        lualine_y = {
+        },
+        lualine_z = {
+        },
       },
       inactive_sections = {
         lualine_a = {},
         lualine_b = {},
         lualine_c = { "filename" },
-        lualine_x = { "location" },
+        -- lualine_x = { "location" },
         lualine_y = {},
         lualine_z = {},
       },
