@@ -40,7 +40,7 @@ map("i", "jk", "<ESC>", opts)
 
 -- Move to start/end of line
 map({ 'n', 'x', 'o' }, 'H', '^', opts)
-map({ 'n', 'x', 'o' }, 'L', '$', opts)
+map({ 'n', 'x', 'o' }, 'L', 'g_', opts)
 
 -- Navigate buffers
 map("n", "<Right>", ":bnext<CR>", opts)
@@ -55,6 +55,13 @@ map("n", "-", ":resize -5<CR>")
 -- Map enter to ciw in normal mode
 map("n", "<CR>", "ciw", opts)
 map("n", "<BS>", 'ci', opts)
+
+map("n", "n", "nzzv", opts)
+map("n", "N", "Nzzv", opts)
+map("n", "*", "*zzv", opts)
+map("n", "#", "#zzv", opts)
+map("n", "g*", "g*zz", opts)
+map("n", "g#", "g#zz", opts)
 
 -- map ; to resume last search
 -- map("n", ";", "<cmd>Telescope resume<cr>", opts)
