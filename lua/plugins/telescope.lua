@@ -24,6 +24,25 @@ return {
       local trouble = require("trouble.providers.telescope")
       local icons = require('config.icons')
 
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = "TelescopeResults",
+        callback = function(ctx)
+          vim.api.nvim_buf_call(ctx.buf, function()
+            vim.fn.matchadd("TelescopeParent", "\t\t.*$")
+            vim.api.nvim_set_hl(0, "TelescopeParent", { link = "Comment" })
+          end)
+        end,
+      })
+
+      local function filenameFirst(_, path)
+        local tail = vim.fs.basename(path)
+        local parent = vim.fs.dirname(path)
+        if parent == "." then
+          return tail
+        end
+        return string.format("%s\t\t%s", tail, parent)
+      end
+
       telescope.setup {
         file_ignore_patterns = { "%.git/." },
         defaults = {
@@ -48,8 +67,6 @@ return {
           set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
           -- layout_strategy = "horizontal",
           layout_config = {
-            --   width = 0.5,
-            --   height = 0.4,
             prompt_position = "top",
             preview_cutoff = 120,
           },
@@ -67,10 +84,9 @@ return {
         },
         pickers = {
           find_files = {
-            -- theme = "dropdown",
             previewer = false,
+            path_display = filenameFirst,
             layout_config = {
-              -- width = 0.5,
               height = 0.4,
               prompt_position = "top",
               preview_cutoff = 120,
@@ -78,6 +94,7 @@ return {
           },
           git_files = {
             previewer = false,
+            path_display = filenameFirst,
             layout_config = {
               height = 0.4,
               prompt_position = "top",
@@ -85,6 +102,7 @@ return {
             },
           },
           buffers = {
+            path_display = filenameFirst,
             mappings = {
               i = {
                 ["<c-d>"] = actions.delete_buffer,
@@ -97,7 +115,6 @@ return {
             initial_mode = "insert",
             theme = "dropdown",
             layout_config = {
-              -- width = 0.4,
               height = 0.4,
               prompt_position = "top",
               preview_cutoff = 120,
@@ -105,10 +122,7 @@ return {
           },
           current_buffer_fuzzy_find = {
             previewer = true,
-            -- theme = "dropdown",
             layout_config = {
-              -- width = 0.5,
-              height = 0.8,
               prompt_position = "top",
               preview_cutoff = 120,
             },
@@ -116,46 +130,18 @@ return {
           live_grep = {
             only_sort_text = true,
             previewer = true,
-            layout_config = {
-              horizontal = {
-                width = 0.9,
-                height = 0.75,
-                preview_width = 0.6,
-              },
-            },
           },
           grep_string = {
             only_sort_text = true,
             previewer = true,
-            layout_config = {
-              horizontal = {
-                width = 0.9,
-                height = 0.75,
-                preview_width = 0.6,
-              },
-            },
           },
           lsp_references = {
             show_line = false,
             previewer = true,
-            layout_config = {
-              horizontal = {
-                width = 0.9,
-                height = 0.75,
-                preview_width = 0.6,
-              },
-            },
           },
           treesitter = {
             show_line = false,
             previewer = true,
-            layout_config = {
-              horizontal = {
-                width = 0.9,
-                height = 0.75,
-                preview_width = 0.6,
-              },
-            },
           },
           colorscheme = {
             enable_preview = true,
