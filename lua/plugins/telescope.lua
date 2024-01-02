@@ -34,7 +34,7 @@ return {
         end,
       })
 
-      local function filenameFirst(_, path)
+      local function formattedName(_, path)
         local tail = vim.fs.basename(path)
         local parent = vim.fs.dirname(path)
         if parent == "." then
@@ -85,7 +85,7 @@ return {
         pickers = {
           find_files = {
             previewer = false,
-            path_display = filenameFirst,
+            path_display = formattedName,
             layout_config = {
               height = 0.4,
               prompt_position = "top",
@@ -94,7 +94,7 @@ return {
           },
           git_files = {
             previewer = false,
-            path_display = filenameFirst,
+            path_display = formattedName,
             layout_config = {
               height = 0.4,
               prompt_position = "top",
@@ -102,7 +102,7 @@ return {
             },
           },
           buffers = {
-            path_display = filenameFirst,
+            path_display = formattedName,
             mappings = {
               i = {
                 ["<c-d>"] = actions.delete_buffer,
@@ -113,9 +113,10 @@ return {
             },
             previewer = false,
             initial_mode = "insert",
-            theme = "dropdown",
+            -- theme = "dropdown",
             layout_config = {
               height = 0.4,
+              width = 0.6,
               prompt_position = "top",
               preview_cutoff = 120,
             },

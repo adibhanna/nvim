@@ -25,6 +25,7 @@ return {
         section_separators = '',
         disabled_filetypes = {
           statusline = {
+            'alfa-nvim',
             'help',
             'neo-tree',
             'Trouble',
@@ -48,14 +49,14 @@ return {
               unnamed = ""
             }
           },
-          {
-            "aerial",
-            sep = " ) ",
-            depth = nil,
-            dense = true,
-            dense_sep = ".",
-            colored = false,
-          },
+          -- {
+          --   "aerial",
+          --   sep = " ) ",
+          --   depth = nil,
+          --   dense = true,
+          --   dense_sep = ".",
+          --   colored = false,
+          -- },
           { "diagnostics", sources = { "nvim_lsp" }, symbols = { error = " ", warn = " ", info = " " } },
           { "searchcount" },
         },
