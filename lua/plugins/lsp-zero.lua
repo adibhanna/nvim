@@ -85,7 +85,7 @@ return {
       local lsp_zero = require('lsp-zero')
       lsp_zero.extend_lspconfig()
 
-      lsp_zero.on_attach(function(client, bufnr)
+      lsp_zero.on_attach(function(_, bufnr)
         lsp_zero.default_keymaps({ buffer = bufnr })
         opts = { buffer = bufnr, silent = true }
 
@@ -104,6 +104,9 @@ return {
         vim.keymap.set('n', 'gl', '<cmd>lua vim.diagnostic.open_float()<cr>', opts)
         vim.keymap.set('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<cr>', opts)
         vim.keymap.set('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<cr>', opts)
+        -- if client.server_capabilities.inlayHintProvider then
+        --   vim.lsp.inlay_hint.enable(bufnr, true)
+        -- end
       end)
 
 
@@ -112,7 +115,7 @@ return {
       require('mason').setup({})
       require('mason-lspconfig').setup({
         ensure_installed = {
-          'tsserver',
+          -- 'tsserver',
           'eslint',
           'rust_analyzer',
           'gopls',
@@ -144,11 +147,11 @@ return {
             }
           }),
 
-          lspconfig.tsserver.setup({
-            root_dir = lspconfig.util.root_pattern("package.json", "tsconfig.json", "jsconfig.json"),
-            filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'vue', 'svelte' },
-            cmd = { "typescript-language-server", "--stdio" },
-          }),
+          -- lspconfig.tsserver.setup({
+          --   root_dir = lspconfig.util.root_pattern("package.json", "tsconfig.json", "jsconfig.json"),
+          --   filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'vue', 'svelte' },
+          --   cmd = { "typescript-language-server", "--stdio" },
+          -- }),
 
           lspconfig.eslint.setup({
             filestypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'vue', 'svelte' },
@@ -170,7 +173,6 @@ return {
                   loadOutDirsFromCheck = true,
                   runBuildScripts = true,
                 },
-                -- Add clippy lints for Rust.
                 check = {
                   enable = true,
                   allFeatures = true,
@@ -226,10 +228,10 @@ return {
               }
             }
           }),
+
           lspconfig.terraformls.setup({
             cmd = { "terraform-ls", "serve" },
             filetypes = { "terraform", "tf", "terraform-vars" },
-            -- root_dir = lspconfig.util.root_pattern(".terraform", ".git"),
             root_dir = lspconfig.util.root_pattern("*.tf", "*.terraform", "*.tfvars", "*.hcl", "*.config"),
           })
         },
@@ -243,7 +245,6 @@ return {
         servers = {
           ['lua_ls'] = { 'lua' },
           ['rust_analyzer'] = { 'rust' },
-          ['tsserver'] = { 'javascript', 'typescript' },
           ['gopls'] = { 'go' },
         }
       })

@@ -12,11 +12,11 @@ return {
   A = "Swap previous param",
   U = { ":UndotreeToggle<CR>", "Toggle UndoTree" },
   o = { ":Telescope buffers<CR>", "Open Buffer" },
+  W = { "<cmd>noautocmd w<cr>", "Save without formatting (noautocmd)" },
   u = {
     name = "UI",
     c = { "<cmd>lua require('config.utils').toggle_set_color_column()<CR>", "Toggle Color Line" },
     l = { "<cmd>lua require('config.utils').toggle_cursor_line()<CR>", "Toggle Cursor Line" },
-    b = { "<cmd>lua require('config.utils').change_background()<CR>", "Toggle Background" },
     s = {
       name = "Lualine",
       h = { "<cmd>lua require('lualine').hide()<CR>", "Hide Lualine" },
@@ -35,42 +35,11 @@ return {
     l    = { "<cmd>lua require('persistence').load({ last = true })<cr>", "Load Last Session" },
     d    = { "<cmd>lua require('persistence').stop()<cr>", "Stop Persistence" },
   },
-  -- m = {
-  --   name = "Marks",
-  --   m = { "<cmd>Telescope marks<cr>", "Marks" },
-  -- },
   r = {
     name = "Replace",
     r = { "<cmd>lua require('spectre').open()<cr>", "Replace" },
     w = { "<cmd>lua require('spectre').open_visual({select_word=true})<cr>", "Replace Word" },
     f = { "<cmd>lua require('spectre').open_file_search()<cr>", "Replace Buffer" },
-  },
-  b = {
-    name = "Buffers",
-    -- j = { "<cmd>BufferLinePick<cr>", "Jump" },
-    f = { "<cmd>Telescope buffers previewer=false<cr>", "Find" },
-    -- b = { "<cmd>BufferLineCyclePrev<cr>", "Previous" },
-    -- n = { "<cmd>BufferLineCycleNext<cr>", "Next" },
-    W = { "<cmd>noautocmd w<cr>", "Save without formatting (noautocmd)" },
-    -- e = {
-    --   "<cmd>BufferLinePickClose<cr>",
-    --   "Pick which buffer to close",
-    -- },
-    -- h = { "<cmd>BufferLineCloseLeft<cr>", "Close all to the left" },
-    -- l = {
-    --   "<cmd>BufferLineCloseRight<cr>",
-    --   "Close all to the right",
-    -- },
-    -- D = {
-    --   "<cmd>BufferLineSortByDirectory<cr>",
-    --   "Sort by directory",
-    -- },
-    -- L = {
-    --   "<cmd>BufferLineSortByExtension<cr>",
-    --   "Sort by language",
-    -- },
-    -- p = { "<cmd>BufferLineTogglePin<CR>", "Toggle pin" },
-    -- P = { "<cmd>BufferLineGroupClose ungrouped<CR>", "Delete non-pinned buffers" },
   },
   G = {
     name = "+Git",
@@ -115,10 +84,6 @@ return {
     w = { "<cmd>Telescope diagnostics<cr>", "Diagnostics" },
     t = { [[ <Esc><Cmd>lua require('telescope').extensions.refactoring.refactors()<CR>]], "Refactor" },
     h = { "<cmd>lua require('config.utils').toggle_inlay_hints()<CR>", "Toggle Inlay Hints" },
-
-    -- j = { "<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>", "Previous Diagnostic" },
-    -- k = { "<cmd>lua vim.lsp.diagnostic.goto_next()<cr>", "Next Diagnostic" },
-    -- e = { "<cmd>Telescope quickfix<cr>", "Telescope Quickfix" },
     c = { "<cmd>lua require('config.utils').copyFilePathAndLineNumber()<CR>", "Copy File Path and Line Number" },
   },
   s = {

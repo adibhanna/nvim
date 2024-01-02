@@ -1,19 +1,7 @@
 local api = vim.api
 
-local colors = {
-  fg = "#76787d",
-  bg = "#252829",
-}
-
 -- don't auto comment new line
 api.nvim_create_autocmd("BufEnter", { command = [[set formatoptions-=cro]] })
-
---- Remove all trailing whitespace on save
--- local TrimWhiteSpaceGrp = api.nvim_create_augroup("TrimWhiteSpaceGrp", { clear = true })
--- api.nvim_create_autocmd("BufWritePre", {
---   command = [[:%s/\s\+$//e]],
---   group = TrimWhiteSpaceGrp,
--- })
 
 -- wrap words "softly" (no carriage return) in mail buffer
 api.nvim_create_autocmd("Filetype", {
@@ -142,20 +130,6 @@ vim.api.nvim_create_autocmd("FileType", {
 -- resize neovim split when terminal is resized
 vim.api.nvim_command('autocmd VimResized * wincmd =')
 
--- vim.api.nvim_create_autocmd("ColorScheme", {
---   pattern = "kanagawa",
---   callback = function()
---     if vim.o.background == "light" then
---       vim.fn.system("kitty +kitten themes Kanagawa_light")
---     elseif vim.o.background == "dark" then
---       vim.fn.system("kitty +kitten themes Kanagawa_dragon")
---     else
---       vim.fn.system("kitty +kitten themes Kanagawa")
---     end
---   end,
--- })
-
-
 --fix terraform and hcl comment string
 vim.api.nvim_create_autocmd("FileType", {
   group = vim.api.nvim_create_augroup("FixTerraformCommentString", { clear = true }),
@@ -164,17 +138,3 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
   pattern = { "terraform", "hcl" },
 })
-
-
-
--- vim.api.nvim_create_autocmd({ "OptionSet" }, {
---   pattern = { "background" },
---   callback = function(ev)
---     if vim.o.background == 'dark' then
---       vim.cmd("colorscheme gruvbox-material")
---     else
---       vim.cmd("colorscheme gruvbox-material")
---     end
---     vim.cmd("mode")
---   end
--- })

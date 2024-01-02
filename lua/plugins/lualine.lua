@@ -45,8 +45,8 @@ return {
             path = 1, -- 2 for full path
             symbols = {
               modified = "  ",
-              readonly = "  ",
-              unnamed = "  ",
+              -- readonly = "  ",
+              -- unnamed = "  ",
             }
           },
           -- {

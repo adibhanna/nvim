@@ -13,6 +13,7 @@ return {
         highlight = true,
         lsp = {
           auto_attach = true,
+          preference = { "typescript-tools" },
         },
         click = true,
         separator = " " .. icons.ui.ChevronRight .. " ",
