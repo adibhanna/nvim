@@ -22,6 +22,7 @@ return {
       local telescope = require('telescope')
       local actions = require('telescope.actions')
       local trouble = require("trouble.providers.telescope")
+      local icons = require('config.icons')
 
       telescope.setup {
         file_ignore_patterns = { "%.git/." },
@@ -36,11 +37,15 @@ return {
           },
           previewer = false,
           -- hidden = true,
-          prompt_prefix = "   ",
+          prompt_prefix = " " .. icons.ui.Telescope .. " ",
+          selection_caret = icons.ui.BoldArrowRight .. " ",
           file_ignore_patterns = { "node_modules", "package-lock.json" },
           initial_mode = "insert",
           select_strategy = "reset",
           sorting_strategy = "ascending",
+          -- path_display = { "smart" },
+          color_devicons = true,
+          set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
           -- layout_strategy = "horizontal",
           layout_config = {
             --   width = 0.5,
@@ -48,22 +53,33 @@ return {
             prompt_position = "top",
             preview_cutoff = 120,
           },
+          vimgrep_arguments = {
+            "rg",
+            "--color=never",
+            "--no-heading",
+            "--with-filename",
+            "--line-number",
+            "--column",
+            "--smart-case",
+            "--hidden",
+            "--glob=!.git/",
+          },
         },
         pickers = {
           find_files = {
             -- theme = "dropdown",
-            previewer = true,
+            previewer = false,
             layout_config = {
               -- width = 0.5,
-              height = 0.8,
+              height = 0.4,
               prompt_position = "top",
               preview_cutoff = 120,
             },
           },
           git_files = {
-            previewer = true,
+            previewer = false,
             layout_config = {
-              height = 0.8,
+              height = 0.4,
               prompt_position = "top",
               preview_cutoff = 120,
             },
@@ -81,7 +97,7 @@ return {
             initial_mode = "insert",
             theme = "dropdown",
             layout_config = {
-              width = 0.5,
+              -- width = 0.4,
               height = 0.4,
               prompt_position = "top",
               preview_cutoff = 120,
@@ -140,6 +156,9 @@ return {
                 preview_width = 0.6,
               },
             },
+          },
+          colorscheme = {
+            enable_preview = true,
           },
         },
         extensions = {

@@ -15,20 +15,19 @@ return {
   lazy = false,
   event = { "BufReadPost", "BufNewFile", "VeryLazy" },
   config = function()
+    local icons = require('config.icons')
     require("lualine").setup {
       options = {
         theme = "auto",
         globalstatus = true,
         icons_enabled = true,
-        -- component_separators = '│',
-        -- section_separators = '',
+        component_separators = { left = icons.ui.DividerRight, right = icons.ui.DividerLeft },
+        section_separators = '',
         disabled_filetypes = {
           statusline = {
             'help',
             'neo-tree',
             'Trouble',
-            'alpha',
-            'Outline',
             'spectre_panel',
             'toggleterm',
           },
