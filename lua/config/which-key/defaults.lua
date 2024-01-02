@@ -138,13 +138,6 @@ return {
   t = {
     name = "+Tests"
   },
-  -- z = {
-  --   name = "Folding",
-  --   R = { "<cmd>lua require'ufo'.openAllFolds<cr>", "Open all folds" },
-  --   M = { "<cmd>lua require'ufo'.closeAllFolds<cr>", "Close all folds" },
-  --   -- r = { "<cmd>lua require'ufo'.openFoldsExceptKinds<cr>", "Open fold except kinds" },
-  --   -- m = { "<cmd>lua require'ufo'.closeFoldsWith<cr>", "Close fold with" },
-  -- },
   ['\\'] = {
     name = "+Terminal",
     h = { "<cmd>ToggleTerm direction=horizontal<cr>", "Horizontal" },
