@@ -45,8 +45,8 @@ return {
             path = 1, -- 2 for full path
             symbols = {
               modified = "  ",
-              readonly = "",
-              unnamed = ""
+              readonly = "  ",
+              unnamed = "  ",
             }
           },
           -- {
@@ -61,8 +61,8 @@ return {
           { "searchcount" },
         },
         lualine_x = {
-          { 'diff', source = diff_source },
           { 'b:gitsigns_head', icon = '' },
+          { 'diff', source = diff_source },
           "progress"
         },
         lualine_y = {
