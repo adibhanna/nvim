@@ -127,21 +127,7 @@ return {
             local lua_opts = lsp_zero.nvim_lua_ls()
             lspconfig.lua_ls.setup(lua_opts)
           end,
-          -- lspconfig.lua_ls.setup({
-          --   settings = {
-          --     Lua = {
-          --       diagnostics = {
-          --         globals = { "vim", "custom_nvim" },
-          --       },
-          --       workspace = {
-          --         library = vim.api.nvim_get_runtime_file("", true),
-          --         checkThirdParty = false,
-          --         hint = { enable = true },
-          --         telemetry = { enable = false },
-          --       },
-          --     },
-          --   },
-          -- }),
+
           lspconfig.solidity.setup({
             cmd = { "nomicfoundation-solidity-language-server", "--stdio" },
             filetypes = { "solidity", "sol" },
