@@ -4,12 +4,12 @@ if not status_ok then
 end
 
 local opts = {
-    mode = "n",   -- NORMAL mode
+    mode = "n",     -- NORMAL mode
     prefix = "<leader>",
-    buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
-    silent = true, -- use `silent` when creating keymaps
+    buffer = nil,   -- Global mappings. Specify a buffer number for buffer local mappings
+    silent = true,  -- use `silent` when creating keymaps
     noremap = true, -- use `noremap` when creating keymaps
-    nowait = true, -- use `nowait` when creating keymaps
+    nowait = true,  -- use `nowait` when creating keymaps
 }
 
 local mappings = {
@@ -28,7 +28,32 @@ local mappings = {
         R = { "<cmd>lua require('crates').open_repository()<CR>", "Open Repository" },
         D = { "<cmd>lua require('crates').open_documentation()<CR>", "Open Documentation" },
         C = { "<cmd>lua require('crates').open_crates_io()<CR>", "Open Crate.io" },
-    }
+    },
+    l = {
+        name = "+LSP",
+        a = { "<cmd>lua vim.cmd.RustLsp('codeAction')<cr>", "Rust Code Action" },
+        d = { "<cmd>lua vim.lsp.buf.definition()<cr>", "Definition" },
+        D = { "<cmd>lua vim.lsp.buf.declaration()<cr>", "Declaration" },
+        i = { "<cmd>lua vim.lsp.buf.implementation()<cr>", "Implementation" },
+        o = { "<cmd>lua vim.lsp.buf.type_definition()<cr>", "Type Definition" },
+        R = { "<cmd>Telescope lsp_references<cr>", "References" },
+        s = { "<cmd>lua vim.lsp.buf.signature_help()<cr>", "Display Signature Information" },
+        r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename all references" },
+        f = { "<cmd>lua vim.lsp.buf.format()<cr>", "Format" },
+        k = { "<cmd>lua vim.cmd.RustLsp { 'hover', 'actions' }<cr>", "Hover" },
+        l = { "<cmd>TroubleToggle document_diagnostics<cr>", "Document Diagnostics (Trouble)" },
+        L = { "<cmd>TroubleToggle workspace_diagnostics<cr>", "Workspace Diagnostics (Trouble)" },
+        w = { "<cmd>Telescope diagnostics<cr>", "Diagnostics" },
+        c = { "<cmd>lua require('config.utils').copyFilePathAndLineNumber()<CR>", "Copy File Path and Line Number" },
+    },
 }
 
 which_key.register(mappings, opts)
+
+local bufnr = vim.api.nvim_get_current_buf()
+vim.keymap.set(
+    "n",
+    "K",
+    "<cmd>RustLsp hover actions<CR>",
+    { silent = true, buffer = bufnr, desc = "Rust Hover" }
+)

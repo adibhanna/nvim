@@ -85,11 +85,11 @@ return {
       local lsp_zero = require('lsp-zero')
       lsp_zero.extend_lspconfig()
 
-      lsp_zero.on_attach(function(_, bufnr)
+      lsp_zero.on_attach(function(client, bufnr)
         lsp_zero.default_keymaps({ buffer = bufnr })
         opts = { buffer = bufnr, silent = true }
 
-        vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', opts)
+        -- vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', opts)
         vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
         vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', opts)
         vim.keymap.set('n', 'gi', ':Telescope lsp_implementations<cr>', opts)
