@@ -5,6 +5,8 @@ return {
       "ray-x/guihua.lua",
       "neovim/nvim-lspconfig",
       "nvim-treesitter/nvim-treesitter",
+
+      "leoluz/nvim-dap-go"
     },
     config = function()
       require("go").setup({ lsp_cfg = false })
