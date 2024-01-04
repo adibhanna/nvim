@@ -2,7 +2,7 @@ return {
   {
     "windwp/nvim-ts-autotag",
     config = function()
-      require("nvim-ts-autotag").setup {
+      require("nvim-ts-autotag").setup({
         enable = true,
         enable_rename = true,
         enable_close = false,
@@ -27,8 +27,8 @@ return {
           "handlebars",
           "hbs",
         },
-      }
-    end
+      })
+    end,
   },
   {
     "famiu/bufdelete.nvim",
@@ -38,7 +38,7 @@ return {
       local opts = { noremap = true, silent = true }
       -- keymap("n", "Q", "<cmd>Bdelete!<CR>", opts)
       keymap("n", "Q", ":lua require('bufdelete').bufdelete(0, false)<cr>", opts)
-    end
+    end,
   },
   -- comments
   { "JoosepAlviste/nvim-ts-context-commentstring", lazy = true },
@@ -49,29 +49,29 @@ return {
     config = function(_, _)
       require("mini.comment").setup()
 
-      require('nvim-treesitter.configs').setup {
+      require("nvim-treesitter.configs").setup({
         enable_autocmd = false,
-      }
+      })
       vim.g.skip_ts_context_commentstring_module = true
     end,
   },
   {
-    'stevearc/dressing.nvim',
-    depends = { 'MunifTanjim/nui.nvim' },
+    "stevearc/dressing.nvim",
+    depends = { "MunifTanjim/nui.nvim" },
     opts = {},
     config = function()
-      require('dressing').setup()
-    end
+      require("dressing").setup()
+    end,
   },
   {
     "j-hui/fidget.nvim",
     branch = "legacy",
     enabled = false,
     config = function()
-      require('fidget').setup({
+      require("fidget").setup({
         window = { blend = 0 },
       })
-    end
+    end,
   },
   {
     "dnlhc/glance.nvim",
@@ -79,21 +79,21 @@ return {
       require("glance").setup({
         theme = {
           enable = true,
-          mode = 'auto'
+          mode = "auto",
         },
         border = {
           enable = true,
           top_char = "─",
           bottom_char = "─",
-        }
+        },
       })
     end,
     keys = {
-      { "gD", "<CMD>Glance definitions<CR>",      desc = "Glance definitions" },
-      { "gR", "<CMD>Glance references<CR>",       desc = "Glance references" },
+      { "gD", "<CMD>Glance definitions<CR>", desc = "Glance definitions" },
+      { "gR", "<CMD>Glance references<CR>", desc = "Glance references" },
       { "gY", "<CMD>Glance type_definitions<CR>", desc = "Glance type_definitions" },
-      { "gM", "<CMD>Glance implementations<CR>",  desc = "Glance implementations" }
-    }
+      { "gM", "<CMD>Glance implementations<CR>", desc = "Glance implementations" },
+    },
   },
   {
     "karb94/neoscroll.nvim",
@@ -118,14 +118,26 @@ return {
         -- Configuration here, or leave empty to use defaults
         -- https://github.com/kylechui/nvim-surround
       })
-    end
+    end,
   },
   "tpope/vim-sleuth",
   {
     "bennypowers/splitjoin.nvim",
     keys = {
-      { 'gJ', function() require 'splitjoin'.join() end,  desc = 'Join the object under cursor' },
-      { 'gS', function() require 'splitjoin'.split() end, desc = 'Split the object under cursor' },
+      {
+        "gJ",
+        function()
+          require("splitjoin").join()
+        end,
+        desc = "Join the object under cursor",
+      },
+      {
+        "gS",
+        function()
+          require("splitjoin").split()
+        end,
+        desc = "Split the object under cursor",
+      },
     },
   },
   "folke/neodev.nvim",
@@ -162,12 +174,12 @@ return {
   },
   "editorconfig/editorconfig-vim",
   {
-    'stevearc/aerial.nvim',
+    "stevearc/aerial.nvim",
     opts = {},
     -- Optional dependencies
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
-      "nvim-tree/nvim-web-devicons"
+      "nvim-tree/nvim-web-devicons",
     },
     config = function()
       require("aerial").setup({
@@ -179,7 +191,7 @@ return {
           vim.keymap.set("n", "}", "<cmd>AerialNext<CR>", { buffer = bufnr })
         end,
       })
-    end
+    end,
   },
   {
     "ggandor/flit.nvim",
@@ -196,8 +208,8 @@ return {
   {
     "ggandor/leap.nvim",
     keys = {
-      { "s",  mode = { "n", "x", "o" }, desc = "Leap forward to" },
-      { "S",  mode = { "n", "x", "o" }, desc = "Leap backward to" },
+      { "s", mode = { "n", "x", "o" }, desc = "Leap forward to" },
+      { "S", mode = { "n", "x", "o" }, desc = "Leap backward to" },
       { "gs", mode = { "n", "x", "o" }, desc = "Leap from windows" },
     },
     config = function(_, opts)
@@ -220,8 +232,8 @@ return {
   {
     "SmiteshP/nvim-navic",
     config = function()
-      local icons = require "config.icons"
-      require("nvim-navic").setup {
+      local icons = require("config.icons")
+      require("nvim-navic").setup({
         highlight = true,
         lsp = {
           auto_attach = true,
@@ -231,8 +243,36 @@ return {
         separator = " " .. icons.ui.ChevronRight .. " ",
         depth_limit = 0,
         depth_limit_indicator = "..",
-      }
-    end
+        icons = {
+          File = " ",
+          Module = " ",
+          Namespace = " ",
+          Package = " ",
+          Class = " ",
+          Method = " ",
+          Property = " ",
+          Field = " ",
+          Constructor = " ",
+          Enum = " ",
+          Interface = " ",
+          Function = " ",
+          Variable = " ",
+          Constant = " ",
+          String = " ",
+          Number = " ",
+          Boolean = " ",
+          Array = " ",
+          Object = " ",
+          Key = " ",
+          Null = " ",
+          EnumMember = " ",
+          Struct = " ",
+          Event = " ",
+          Operator = " ",
+          TypeParameter = " ",
+        },
+      })
+    end,
   },
 
   {

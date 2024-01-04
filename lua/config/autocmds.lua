@@ -96,7 +96,7 @@ vim.api.nvim_create_autocmd("ColorScheme", {
     vim.api.nvim_set_hl(0, "FloatBorder", { link = "Normal" })
     vim.api.nvim_set_hl(0, "LspInfoBorder", { link = "Normal" })
     vim.api.nvim_set_hl(0, "NormalFloat", { link = "Normal" })
-    vim.cmd("highlight Comment guifg=#475558")
+    -- vim.cmd("highlight Comment guifg=#475558")
   end,
 })
 
@@ -146,12 +146,12 @@ vim.api.nvim_create_autocmd("FileType", {
 --   group = goformat_sync_grp,
 -- })
 --
--- -- Run gofmt + goimport on save
--- local goimport_sync_grp = vim.api.nvim_create_augroup("GoImport", {})
--- vim.api.nvim_create_autocmd("BufWritePre", {
---   pattern = "*.go",
---   callback = function()
---     require('go.format').goimport()
---   end,
---   group = goimport_sync_grp,
--- })
+-- Run gofmt + goimport on save
+local goimport_sync_grp = vim.api.nvim_create_augroup("GoImport", {})
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = "*.go",
+  callback = function()
+    require('go.format').goimport()
+  end,
+  group = goimport_sync_grp,
+})

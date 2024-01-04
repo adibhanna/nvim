@@ -101,7 +101,7 @@ return {
         vim.keymap.set("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<cr>", opts)
         vim.keymap.set("n", "gi", ":Telescope lsp_implementations<cr>", opts)
         vim.keymap.set("n", "go", "<cmd>lua vim.lsp.buf.type_definition()<cr>", opts)
-        vim.keymap.set("n", "gr", "<cmd>Telescope lsp_references<cr>", { buffer = bufnr })
+        vim.keymap.set("n", "gr", ":Telescope lsp_references<cr>", opts)
         vim.keymap.set("n", "gs", "<cmd>lua vim.lsp.buf.signature_help()<cr>", opts)
         vim.keymap.set("n", "<F2>", "<cmd>lua vim.lsp.buf.rename()<cr>", opts)
         vim.keymap.set({ "n", "x" }, "<F3>", "<cmd>lua vim.lsp.buf.format({async = true})<cr>", opts)
@@ -114,7 +114,11 @@ return {
 
       local lspconfig = require("lspconfig")
 
-      require("mason").setup({})
+      require("mason").setup({
+        ui = {
+          border = "rounded",
+        }
+      })
       require("mason-lspconfig").setup({
         ensure_installed = {
           -- 'tsserver',
