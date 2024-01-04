@@ -63,15 +63,14 @@ api.nvim_create_autocmd(
 
 -- Use LspAttach autocommand to only map the following keys
 -- after the language server attaches to the current buffer
-vim.api.nvim_create_autocmd('LspAttach', {
+vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(ev)
     local opts = { buffer = ev.buf }
-    vim.keymap.set('n', '<leader>v', "<cmd>vsplit | lua vim.lsp.buf.definition()<CR>", opts)
+    vim.keymap.set("n", "<leader>v", "<cmd>vsplit | lua vim.lsp.buf.definition()<CR>", opts)
   end,
 })
 
-
-vim.api.nvim_create_autocmd('ColorScheme', {
+vim.api.nvim_create_autocmd("ColorScheme", {
   callback = function()
     -- change the background color of floating windows and borders.
     -- vim.cmd('highlight NormalFloat guibg=none guifg=none')
@@ -101,8 +100,6 @@ vim.api.nvim_create_autocmd('ColorScheme', {
   end,
 })
 
-
-
 -- close some filetypes with <q>
 vim.api.nvim_create_autocmd("FileType", {
   group = vim.api.nvim_create_augroup("close_with_q", { clear = true }),
@@ -128,7 +125,7 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 -- resize neovim split when terminal is resized
-vim.api.nvim_command('autocmd VimResized * wincmd =')
+vim.api.nvim_command("autocmd VimResized * wincmd =")
 
 --fix terraform and hcl comment string
 vim.api.nvim_create_autocmd("FileType", {

@@ -14,7 +14,6 @@ return {
           "prettier",
           "golangci_lint",
           "gofumpt",
-
         },
         automatic_installation = true,
         handlers = {},
