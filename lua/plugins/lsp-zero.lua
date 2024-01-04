@@ -1,7 +1,7 @@
 return {
   {
-    'VonHeikemen/lsp-zero.nvim',
-    branch = 'v3.x',
+    "VonHeikemen/lsp-zero.nvim",
+    branch = "v3.x",
     lazy = true,
     config = false,
     init = function()
@@ -11,120 +11,120 @@ return {
     end,
   },
   {
-    'williamboman/mason.nvim',
+    "williamboman/mason.nvim",
     lazy = false,
     config = true,
   },
 
   -- Autocompletion
   {
-    'hrsh7th/nvim-cmp',
-    event = 'InsertEnter',
+    "hrsh7th/nvim-cmp",
+    event = "InsertEnter",
     dependencies = {
       {
-        'L3MON4D3/LuaSnip',
+        "L3MON4D3/LuaSnip",
       },
     },
     config = function()
       -- Here is where you configure the autocompletion settings.
-      local lsp_zero = require('lsp-zero')
+      local lsp_zero = require("lsp-zero")
       lsp_zero.extend_cmp()
 
       -- And you can configure cmp even more, if you want to.
-      local cmp = require('cmp')
+      local cmp = require("cmp")
       local cmp_action = lsp_zero.cmp_action()
 
       cmp.setup({
         formatting = lsp_zero.cmp_format(),
         mapping = cmp.mapping.preset.insert({
-          ['<Tab>'] = cmp_action.luasnip_supertab(),
-          ['<S-Tab>'] = cmp_action.luasnip_shift_supertab(),
-          ['<CR>'] = cmp.mapping.confirm({ select = false }),
-          ['<C-Space>'] = cmp.mapping.complete(),
-          ['<C-u>'] = cmp.mapping.scroll_docs(-4),
-          ['<C-d>'] = cmp.mapping.scroll_docs(4),
-          ['<C-f>'] = cmp_action.luasnip_jump_forward(),
-          ['<C-b>'] = cmp_action.luasnip_jump_backward(),
+          ["<Tab>"] = cmp_action.luasnip_supertab(),
+          ["<S-Tab>"] = cmp_action.luasnip_shift_supertab(),
+          ["<CR>"] = cmp.mapping.confirm({ select = false }),
+          ["<C-Space>"] = cmp.mapping.complete(),
+          ["<C-u>"] = cmp.mapping.scroll_docs(-4),
+          ["<C-d>"] = cmp.mapping.scroll_docs(4),
+          ["<C-f>"] = cmp_action.luasnip_jump_forward(),
+          ["<C-b>"] = cmp_action.luasnip_jump_backward(),
         }),
         window = {
           completion = cmp.config.window.bordered(),
           documentation = cmp.config.window.bordered(),
         },
         sources = {
-          { name = 'nvim_lsp' },
-          { name = 'nvim_lua' },
-          { name = 'luasnip' },
-          { name = 'buffer' },
-          { name = 'path' },
-          { name = 'calc' },
-          { name = 'emoji' },
-          { name = 'treesitter' },
-          { name = 'crates' },
-          { name = 'tmux' },
+          { name = "nvim_lsp" },
+          { name = "nvim_lua" },
+          { name = "luasnip" },
+          { name = "buffer" },
+          { name = "path" },
+          { name = "calc" },
+          { name = "emoji" },
+          { name = "treesitter" },
+          { name = "crates" },
+          { name = "tmux" },
         },
         snippet = {
           expand = function(args)
-            require('luasnip').lsp_expand(args.body)
+            require("luasnip").lsp_expand(args.body)
           end,
         },
       })
-    end
+    end,
   },
 
   -- LSP
   {
-    'neovim/nvim-lspconfig',
-    cmd = { 'LspInfo', 'LspInstall', 'LspStart' },
-    event = { 'BufReadPre', 'BufNewFile' },
+    "neovim/nvim-lspconfig",
+    cmd = { "LspInfo", "LspInstall", "LspStart" },
+    event = { "BufReadPre", "BufNewFile" },
     dependencies = {
-      { 'hrsh7th/cmp-nvim-lsp' },
-      { 'williamboman/mason-lspconfig.nvim' },
-      { 'b0o/schemastore.nvim' }
+      { "hrsh7th/cmp-nvim-lsp" },
+      { "williamboman/mason-lspconfig.nvim" },
+      { "b0o/schemastore.nvim" },
     },
     config = function()
-      local lsp_zero = require('lsp-zero')
+      local lsp_zero = require("lsp-zero")
       lsp_zero.extend_lspconfig()
 
       lsp_zero.on_attach(function(client, bufnr)
         lsp_zero.default_keymaps({ buffer = bufnr })
         opts = { buffer = bufnr, silent = true }
 
-        if vim.bo.filetype == 'rust' then
-          vim.keymap.set('n', 'K', '<cmd>RustLsp hover actions<CR>', opts)
+        if vim.bo.filetype == "rust" then
+          vim.keymap.set("n", "K", "<cmd>RustLsp hover actions<CR>", opts)
         else
-          vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', opts)
+          vim.keymap.set("n", "K", "<cmd>lua vim.lsp.buf.hover()<cr>", opts)
         end
 
         -- vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', opts)
-        vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
-        vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', opts)
-        vim.keymap.set('n', 'gi', ':Telescope lsp_implementations<cr>', opts)
-        vim.keymap.set('n', 'go', '<cmd>lua vim.lsp.buf.type_definition()<cr>', opts)
-        vim.keymap.set('n', 'gr', '<cmd>Telescope lsp_references<cr>', { buffer = bufnr })
-        vim.keymap.set('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
-        vim.keymap.set('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
-        vim.keymap.set({ 'n', 'x' }, '<F3>', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
-        vim.keymap.set('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
+        vim.keymap.set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<cr>", opts)
+        vim.keymap.set("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<cr>", opts)
+        vim.keymap.set("n", "gi", ":Telescope lsp_implementations<cr>", opts)
+        vim.keymap.set("n", "go", "<cmd>lua vim.lsp.buf.type_definition()<cr>", opts)
+        vim.keymap.set("n", "gr", "<cmd>Telescope lsp_references<cr>", { buffer = bufnr })
+        vim.keymap.set("n", "gs", "<cmd>lua vim.lsp.buf.signature_help()<cr>", opts)
+        vim.keymap.set("n", "<F2>", "<cmd>lua vim.lsp.buf.rename()<cr>", opts)
+        vim.keymap.set({ "n", "x" }, "<F3>", "<cmd>lua vim.lsp.buf.format({async = true})<cr>", opts)
+        vim.keymap.set("n", "<F4>", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
 
-        vim.keymap.set('n', 'gl', '<cmd>lua vim.diagnostic.open_float()<cr>', opts)
-        vim.keymap.set('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<cr>', opts)
-        vim.keymap.set('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<cr>', opts)
+        vim.keymap.set("n", "gl", "<cmd>lua vim.diagnostic.open_float()<cr>", opts)
+        vim.keymap.set("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<cr>", opts)
+        vim.keymap.set("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<cr>", opts)
       end)
 
+      local lspconfig = require("lspconfig")
 
-      local lspconfig = require('lspconfig')
-
-      require('mason').setup({})
-      require('mason-lspconfig').setup({
+      require("mason").setup({})
+      require("mason-lspconfig").setup({
         ensure_installed = {
           -- 'tsserver',
-          'eslint',
+          -- "eslint",
           -- 'rust_analyzer',
-          'gopls',
-          'lua_ls',
-          'jsonls',
-          'bashls',
-          'vimls',
+          "gopls",
+          "lua_ls",
+          "jsonls",
+          "bashls",
+          "vimls",
+          "terraform_ls",
         },
         handlers = {
           lsp_zero.default_setup,
@@ -143,112 +143,20 @@ return {
           lspconfig.jsonls.setup({
             settings = {
               json = {
-                schema = require('schemastore').json.schemas(),
+                schema = require("schemastore").json.schemas(),
                 validate = { enable = true },
-              }
-            }
-          }),
-
-          -- lspconfig.tsserver.setup({
-          --   root_dir = lspconfig.util.root_pattern("package.json", "tsconfig.json", "jsconfig.json"),
-          --   filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'vue', 'svelte' },
-          --   cmd = { "typescript-language-server", "--stdio" },
-          -- }),
-
-          lspconfig.eslint.setup({
-            filestypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'vue', 'svelte' },
-            settings = {
-              workingDirectory = { mode = 'auto' },
-              format = { enable = true },
-              lint = { enable = true },
+              },
             },
           }),
 
-          -- lspconfig.rust_analyzer.setup({
-          --   settings = {
-          --     ["rust-analyzer"] = {
-          --       lens = {
-          --         enable = true,
-          --       },
-          --       cargo = {
-          --         allFeatures = true,
-          --         loadOutDirsFromCheck = true,
-          --         runBuildScripts = true,
-          --       },
-          --       check = {
-          --         enable = true,
-          --         allFeatures = true,
-          --         command = "clippy",
-          --         extraArgs = { "--no-deps" },
-          --       },
-          --       procMacro = {
-          --         enable = true,
-          --         ignored = {
-          --           ["async-trait"] = { "async_trait" },
-          --           ["napi-derive"] = { "napi" },
-          --           ["async-recursion"] = { "async_recursion" },
-          --         },
-          --       },
-          --     },
-          --   },
-          -- }),
-
-          lspconfig.gopls.setup({
-            settings = {
-              gopls = {
-                gofumpt = true,
-                codelenses = {
-                  gc_details = false,
-                  generate = true,
-                  regenerate_cgo = true,
-                  run_govulncheck = true,
-                  test = true,
-                  tidy = true,
-                  upgrade_dependency = true,
-                  vendor = true,
-                },
-                hints = {
-                  assignVariableTypes = true,
-                  compositeLiteralFields = true,
-                  compositeLiteralTypes = true,
-                  constantValues = true,
-                  functionTypeParameters = true,
-                  parameterNames = true,
-                  rangeVariableTypes = true,
-                },
-                analyses = {
-                  fieldalignment = true,
-                  nilness = true,
-                  unusedparams = true,
-                  unusedwrite = true,
-                  useany = true,
-                },
-                usePlaceholders = true,
-                completeUnimported = true,
-                staticcheck = true,
-                directoryFilters = { "-.git", "-.vscode", "-.idea", "-.vscode-test", "-node_modules" },
-              }
-            }
-          }),
+          lspconfig.gopls.setup(require("go.lsp").config()),
 
           lspconfig.terraformls.setup({
             cmd = { "terraform-ls", "serve" },
             filetypes = { "terraform", "tf", "terraform-vars" },
             root_dir = lspconfig.util.root_pattern("*.tf", "*.terraform", "*.tfvars", "*.hcl", "*.config"),
-          })
+          }),
         },
-      })
-
-      lsp_zero.format_on_save({
-        format_opts = {
-          async = false,
-          timeout_ms = 10000,
-        },
-        servers = {
-          ['lua_ls'] = { 'lua' },
-          -- ['rust_analyzer'] = { 'rust' },
-          ['gopls'] = { 'go' },
-        }
       })
 
       lsp_zero.set_preferences({
@@ -263,13 +171,13 @@ return {
       })
 
       vim.diagnostic.config({
-        title            = false,
-        underline        = true,
-        virtual_text     = true,
-        signs            = true,
+        title = false,
+        underline = true,
+        virtual_text = true,
+        signs = true,
         update_in_insert = false,
-        severity_sort    = true,
-        float            = {
+        severity_sort = true,
+        float = {
           source = "always",
           style = "minimal",
           border = "rounded",
@@ -277,6 +185,6 @@ return {
           prefix = "",
         },
       })
-    end
-  }
+    end,
+  },
 }

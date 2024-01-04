@@ -138,3 +138,23 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
   pattern = { "terraform", "hcl" },
 })
+
+-- -- Golang format on save
+-- local goformat_sync_grp = vim.api.nvim_create_augroup("GoFormat", {})
+-- vim.api.nvim_create_autocmd("BufWritePre", {
+--   pattern = "*.go",
+--   callback = function()
+--     require('go.format').gofmt()
+--   end,
+--   group = goformat_sync_grp,
+-- })
+--
+-- -- Run gofmt + goimport on save
+-- local goimport_sync_grp = vim.api.nvim_create_augroup("GoImport", {})
+-- vim.api.nvim_create_autocmd("BufWritePre", {
+--   pattern = "*.go",
+--   callback = function()
+--     require('go.format').goimport()
+--   end,
+--   group = goimport_sync_grp,
+-- })

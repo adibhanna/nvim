@@ -1,19 +1,16 @@
 return {
-    "olexsmir/gopher.nvim",
-    ft = "go",
-    dependencies = {
-        "nvim-lua/plenary.nvim",
-        "nvim-treesitter/nvim-treesitter",
+  {
+    "ray-x/go.nvim",
+    dependencies = { -- optional packages
+      "ray-x/guihua.lua",
+      "neovim/nvim-lspconfig",
+      "nvim-treesitter/nvim-treesitter",
     },
     config = function()
-        require("gopher").setup {
-            commands = {
-                go = "go",
-                gomodifytags = "gomodifytags",
-                gotests = "~/go/bin/gotests", -- also you can set custom command path
-                impl = "impl",
-                iferr = "iferr",
-            },
-        }
-    end
+      require("go").setup({ lsp_cfg = false })
+    end,
+    event = { "CmdlineEnter" },
+    ft = { "go", "gomod" },
+    build = ':lua require("go.install").update_all_sync()',
+  },
 }

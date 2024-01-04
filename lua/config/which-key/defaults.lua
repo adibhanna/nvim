@@ -26,14 +26,13 @@ return {
       name = "Manage Clutter",
       d = { "<cmd>lua require('config.utils').declutter_terminal()<CR>", "Declutter Terminal" },
       c = { "<cmd>lua require('config.utils').clutter_terminal()<CR>", "Clutter Terminal" },
-
-    }
+    },
   },
   i = {
     name = "Sessions",
-    s    = { "<cmd>lua require('persistence').load()<cr>", "Load Session" },
-    l    = { "<cmd>lua require('persistence').load({ last = true })<cr>", "Load Last Session" },
-    d    = { "<cmd>lua require('persistence').stop()<cr>", "Stop Persistence" },
+    s = { "<cmd>lua require('persistence').load()<cr>", "Load Session" },
+    l = { "<cmd>lua require('persistence').load({ last = true })<cr>", "Load Last Session" },
+    d = { "<cmd>lua require('persistence').stop()<cr>", "Stop Persistence" },
   },
   r = {
     name = "Replace",
@@ -108,7 +107,7 @@ return {
       g = { "<cmd>Telescope dap configurations<cr>", "Dap Configurations" },
       v = { "<cmd>Telescope dap variables<cr>", "Dap Variables" },
       f = { "<cmd>Telescope dap frames<cr>", "Dap Frames" },
-    }
+    },
   },
   T = {
     name = "+Todo",
@@ -130,9 +129,9 @@ return {
     x = { "<cmd>lua require'dap'.terminate()<cr>", "Exit" },
   },
   t = {
-    name = "+Tests"
+    name = "+Tests",
   },
-  ['\\'] = {
+  ["\\"] = {
     name = "+Terminal",
     h = { "<cmd>ToggleTerm direction=horizontal<cr>", "Horizontal" },
     v = { "<cmd>ToggleTerm direction=vertical size=100 <cr>", "Vertical" },
