@@ -50,10 +50,10 @@ local mappings = {
 
 which_key.register(mappings, opts)
 
-local bufnr = vim.api.nvim_get_current_buf()
-vim.keymap.set(
-    "n",
-    "K",
-    "<cmd>RustLsp hover actions<CR>",
-    { silent = true, buffer = bufnr, desc = "Rust Hover" }
-)
+-- local bufnr = vim.api.nvim_get_current_buf()
+-- vim.keymap.set(
+--     "n",
+--     "K",
+--     "<cmd>RustLsp hover actions<CR>",
+--     { silent = true, buffer = bufnr, desc = "Rust Hover" }
+-- )
