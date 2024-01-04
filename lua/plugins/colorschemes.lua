@@ -113,17 +113,19 @@ return {
       vim.g.gruvbox_material_float_style = 'dim'  -- Background of floating windows
       vim.g.gruvbox_material_statusline_style = 'material'
 
-      -- if (vim.o.background == 'light') then
-      --   vim.g.gruvbox_material_colors_override = { bg0 = '#f9f5d7' }
-      -- else
-      --   vim.g.gruvbox_material_colors_override = { bg0 = '#0e1010' }
-      -- end
-
-      vim.g.gruvbox_material_colors_override = { bg0 = '#000000' } -- #0e1010
-      -- vim.g.gruvbox_material_colors_override = { bg0 = '#121212' }
+      -- vim.g.gruvbox_material_colors_override = { bg0 = '#000000' } -- #0e1010
+      vim.g.gruvbox_material_colors_override = { bg0 = '#121212' }
       vim.g.gruvbox_material_better_performance = 1
       vim.cmd.colorscheme 'gruvbox-material'
     end,
+  },
+  {
+    'AlexvZyl/nordic.nvim',
+    lazy = false,
+    priority = 1000,
+    config = function()
+      -- require 'nordic'.load()
+    end
   },
   {
     "rose-pine/neovim",
