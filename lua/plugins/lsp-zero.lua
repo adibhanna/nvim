@@ -117,7 +117,7 @@ return {
         ensure_installed = {
           -- 'tsserver',
           'eslint',
-          'rust_analyzer',
+          -- 'rust_analyzer',
           'gopls',
           'lua_ls',
           'jsonls',
@@ -162,34 +162,34 @@ return {
             },
           }),
 
-          lspconfig.rust_analyzer.setup({
-            settings = {
-              ["rust-analyzer"] = {
-                lens = {
-                  enable = true,
-                },
-                cargo = {
-                  allFeatures = true,
-                  loadOutDirsFromCheck = true,
-                  runBuildScripts = true,
-                },
-                check = {
-                  enable = true,
-                  allFeatures = true,
-                  command = "clippy",
-                  extraArgs = { "--no-deps" },
-                },
-                procMacro = {
-                  enable = true,
-                  ignored = {
-                    ["async-trait"] = { "async_trait" },
-                    ["napi-derive"] = { "napi" },
-                    ["async-recursion"] = { "async_recursion" },
-                  },
-                },
-              },
-            },
-          }),
+          -- lspconfig.rust_analyzer.setup({
+          --   settings = {
+          --     ["rust-analyzer"] = {
+          --       lens = {
+          --         enable = true,
+          --       },
+          --       cargo = {
+          --         allFeatures = true,
+          --         loadOutDirsFromCheck = true,
+          --         runBuildScripts = true,
+          --       },
+          --       check = {
+          --         enable = true,
+          --         allFeatures = true,
+          --         command = "clippy",
+          --         extraArgs = { "--no-deps" },
+          --       },
+          --       procMacro = {
+          --         enable = true,
+          --         ignored = {
+          --           ["async-trait"] = { "async_trait" },
+          --           ["napi-derive"] = { "napi" },
+          --           ["async-recursion"] = { "async_recursion" },
+          --         },
+          --       },
+          --     },
+          --   },
+          -- }),
 
           lspconfig.gopls.setup({
             settings = {
@@ -244,7 +244,7 @@ return {
         },
         servers = {
           ['lua_ls'] = { 'lua' },
-          ['rust_analyzer'] = { 'rust' },
+          -- ['rust_analyzer'] = { 'rust' },
           ['gopls'] = { 'go' },
         }
       })
