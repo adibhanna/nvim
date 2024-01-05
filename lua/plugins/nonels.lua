@@ -25,14 +25,16 @@ return {
       local null_ls = require("null-ls")
       null_ls.setup({
         sources = {
-          -- Anything not supported by mason.
           null_ls.builtins.formatting.stylua,
           null_ls.builtins.formatting.prettier,
           null_ls.builtins.formatting.gofumpt,
           null_ls.builtins.formatting.terraform_fmt,
+          null_ls.builtins.formatting.buf,
           null_ls.builtins.diagnostics.eslint_d,
           null_ls.builtins.diagnostics.golangci_lint,
           null_ls.builtins.diagnostics.terraform_validate,
+          null_ls.builtins.diagnostics.shellcheck,
+          null_ls.builtins.diagnostics.protolint,
         },
       })
     end,

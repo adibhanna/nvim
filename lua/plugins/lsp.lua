@@ -97,17 +97,9 @@ return {
       vimls = {
         filetypes = { "vim" },
       },
-      -- tsserver = {
-      --   filetypes = {
-      --     "javascript",
-      --     "javascriptreact",
-      --     "javascript.jsx",
-      --     "typescript",
-      --     "typescriptreact",
-      --     "typescript.tsx",
-      --   },
-      -- },
+      -- tsserver = {},
       gopls = {},
+      solidity_ls_nomicfoundation = {},
     }
 
     require("neodev").setup()
