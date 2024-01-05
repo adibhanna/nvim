@@ -3,7 +3,7 @@ return {
     'nvim-telescope/telescope.nvim',
     cmd = 'Telescope',
     version = false,
-    lazy = true,
+    -- lazy = true,
     dependencies = {
       'nvim-lua/plenary.nvim',
       'jvgrootveld/telescope-zoxide',

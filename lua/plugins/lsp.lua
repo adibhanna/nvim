@@ -11,7 +11,31 @@ return {
     { "hrsh7th/cmp-nvim-lsp" },
   },
   config = function()
-    local on_attach = function(_, bufnr)
+    local lsp_formatting = function(bufnr)
+      vim.lsp.buf.format({
+        filter = function(client)
+          -- apply whatever logic you want (in this example, we'll only use null-ls)
+          return client.name == "null-ls"
+        end,
+        bufnr = bufnr,
+      })
+    end
+
+    -- if you want to set up formatting on save, you can use this as a callback
+    local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+
+    local on_attach = function(client, bufnr)
+      if client.supports_method("textDocument/formatting") then
+        vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+        vim.api.nvim_create_autocmd("BufWritePre", {
+          group = augroup,
+          buffer = bufnr,
+          callback = function()
+            lsp_formatting(bufnr)
+          end,
+        })
+      end
+
       local nmap = function(keys, func, desc)
         if desc then
           desc = "LSP: " .. desc
@@ -57,9 +81,9 @@ return {
         },
       },
       terraformls = {
-        cmd = { "terraform-ls", "serve" },
+        cmd = { "terraform-ls" },
+        arg = { "server" },
         filetypes = { "terraform", "tf", "terraform-vars" },
-        root_dir = require("lspconfig").util.root_pattern("*.tf", "*.terraform", "*.tfvars", "*.hcl", "*.config"),
       },
       lua_ls = {
         Lua = {
@@ -73,16 +97,16 @@ return {
       vimls = {
         filetypes = { "vim" },
       },
-      tsserver = {
-        filetypes = {
-          "javascript",
-          "javascriptreact",
-          "javascript.jsx",
-          "typescript",
-          "typescriptreact",
-          "typescript.tsx",
-        },
-      },
+      -- tsserver = {
+      --   filetypes = {
+      --     "javascript",
+      --     "javascriptreact",
+      --     "javascript.jsx",
+      --     "typescript",
+      --     "typescriptreact",
+      --     "typescript.tsx",
+      --   },
+      -- },
       gopls = {},
     }
 
