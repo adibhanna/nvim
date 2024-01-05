@@ -62,10 +62,10 @@ return {
       })
     end,
     keys = {
-      { "gD", "<CMD>Glance definitions<CR>", desc = "Glance definitions" },
-      { "gR", "<CMD>Glance references<CR>", desc = "Glance references" },
+      { "gD", "<CMD>Glance definitions<CR>",      desc = "Glance definitions" },
+      { "gR", "<CMD>Glance references<CR>",       desc = "Glance references" },
       { "gY", "<CMD>Glance type_definitions<CR>", desc = "Glance type_definitions" },
-      { "gM", "<CMD>Glance implementations<CR>", desc = "Glance implementations" },
+      { "gM", "<CMD>Glance implementations<CR>",  desc = "Glance implementations" },
     },
   },
   {
@@ -81,7 +81,10 @@ return {
       })
     end,
   },
-  "windwp/nvim-spectre",
+  {
+    "windwp/nvim-spectre",
+    event = "BufRead",
+  },
   {
     "kylechui/nvim-surround",
     version = "*", -- Use for stability; omit to use `main` branch for the latest features
@@ -181,8 +184,8 @@ return {
   {
     "ggandor/leap.nvim",
     keys = {
-      { "s", mode = { "n", "x", "o" }, desc = "Leap forward to" },
-      { "S", mode = { "n", "x", "o" }, desc = "Leap backward to" },
+      { "s",  mode = { "n", "x", "o" }, desc = "Leap forward to" },
+      { "S",  mode = { "n", "x", "o" }, desc = "Leap backward to" },
       { "gs", mode = { "n", "x", "o" }, desc = "Leap from windows" },
     },
     config = function(_, opts)
