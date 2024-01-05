@@ -14,7 +14,7 @@ return {
     -- Adds a number of user-friendly snippets
     "rafamadriz/friendly-snippets",
 
-    -- Adds  vscode-like pictograms
+    -- Adds vscode-like pictograms
     "onsails/lspkind.nvim",
   },
   config = function()
