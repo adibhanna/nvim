@@ -72,6 +72,7 @@ return {
     s = { "<cmd>lua vim.lsp.buf.signature_help()<cr>", "Display Signature Information" },
     r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename all references" },
     f = { "<cmd>lua vim.lsp.buf.format()<cr>", "Format" },
+    i = { "<cmd>Telescope lsp_implementations<cr>", "Implementation" },
     l = { "<cmd>TroubleToggle document_diagnostics<cr>", "Document Diagnostics (Trouble)" },
     L = { "<cmd>TroubleToggle workspace_diagnostics<cr>", "Workspace Diagnostics (Trouble)" },
     w = { "<cmd>Telescope diagnostics<cr>", "Diagnostics" },
