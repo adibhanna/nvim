@@ -1,7 +1,6 @@
 {
   "FixCursorHold.nvim": { "branch": "master", "commit": "1900f89dc17c603eec29960f57c00bd9ae696495" },
   "LuaSnip": { "branch": "master", "commit": "68153ebb03e65d8a437c6240553645c57f17cf99" },
-  "aerial.nvim": { "branch": "master", "commit": "e2e3bc2df4490690ea005395eecdc8eeb30c4def" },
   "alpha-nvim": { "branch": "main", "commit": "29074eeb869a6cbac9ce1fbbd04f5f5940311b32" },
   "breadcrumbs.nvim": { "branch": "master", "commit": "0bcc58d56eaa3aa576e2762fac87a4188997c6ac" },
   "bufdelete.nvim": { "branch": "master", "commit": "0b9c0f182b09c51170bb9f252f15de7695e4d507" },
@@ -25,6 +24,7 @@
   "lazy.nvim": { "branch": "main", "commit": "96584866b9c5e998cbae300594d0ccfd0c464627" },
   "leap.nvim": { "branch": "main", "commit": "2253ff8e75776a5fc6046d06a68346a97cea40e4" },
   "lorem.nvim": { "branch": "main", "commit": "e7a2b5b7ecd753c267a27c31c6b632b709ac234d" },
+  "lspkind.nvim": { "branch": "master", "commit": "7f26cf5e27e2bd910ce0ea00c514da2bf97423b8" },
   "lualine-so-fancy.nvim": { "branch": "main", "commit": "21284504fed2776668fdea8743a528774de5d2e1" },
   "lualine.nvim": { "branch": "master", "commit": "566b7036f717f3d676362742630518a47f132fff" },
   "mason-lspconfig.nvim": { "branch": "main", "commit": "56e435e09f8729af2d41973e81a0db440f8fe9c9" },
