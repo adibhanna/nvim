@@ -108,7 +108,7 @@ return {
               },
             },
             previewer = false,
-            initial_mode = "insert",
+            initial_mode = "normal",
             -- theme = "dropdown",
             layout_config = {
               height = 0.4,
