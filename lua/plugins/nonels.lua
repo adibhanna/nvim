@@ -2,26 +2,11 @@ return {
   {
     "nvimtools/none-ls.nvim",
     priority = 100,
-    -- "jay-babu/mason-null-ls.nvim",
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
-      "williamboman/mason.nvim",
-      --   "nvimtools/none-ls.nvim",
+      "nvim-lua/plenary.nvim",
     },
     config = function()
-      --   require("mason-null-ls").setup({
-      --     ensure_installed = {
-      --       "stylua",
-      --       "eslint_d",
-      --       "prettier",
-      --       "golangci_lint",
-      --       "gofumpt",
-      --       "terraform_fmt",
-      --       "terraform_validate"
-      --     },
-      --     automatic_installation = false,
-      --     handlers = {},
-      --   })
       local null_ls = require("null-ls")
       null_ls.setup({
         sources = {
@@ -34,7 +19,8 @@ return {
           null_ls.builtins.diagnostics.golangci_lint,
           null_ls.builtins.diagnostics.terraform_validate,
           null_ls.builtins.diagnostics.shellcheck,
-          null_ls.builtins.diagnostics.protolint,
+          -- null_ls.builtins.diagnostics.protolint,
+          null_ls.builtins.completion.spell,
         },
       })
     end,
