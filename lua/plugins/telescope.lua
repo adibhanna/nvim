@@ -1,24 +1,24 @@
 return {
   {
-    'nvim-telescope/telescope.nvim',
-    cmd = 'Telescope',
+    "nvim-telescope/telescope.nvim",
+    cmd = "Telescope",
     version = false,
-    -- lazy = true,
+    lazy = true,
     dependencies = {
-      'nvim-lua/plenary.nvim',
-      'jvgrootveld/telescope-zoxide',
-      'nvim-tree/nvim-web-devicons',
-      { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
-      'nvim-telescope/telescope-ui-select.nvim',
-      'telescope-dap.nvim',
-      'kkharji/sqlite.lua',
-      'nvim-telescope/telescope-frecency.nvim',
+      "nvim-lua/plenary.nvim",
+      "jvgrootveld/telescope-zoxide",
+      "nvim-tree/nvim-web-devicons",
+      { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+      "nvim-telescope/telescope-ui-select.nvim",
+      "telescope-dap.nvim",
+      "kkharji/sqlite.lua",
+      "nvim-telescope/telescope-frecency.nvim",
     },
     config = function()
-      local telescope = require('telescope')
-      local actions = require('telescope.actions')
+      local telescope = require("telescope")
+      local actions = require("telescope.actions")
       local trouble = require("trouble.providers.telescope")
-      local icons = require('config.icons')
+      local icons = require("config.icons")
 
       vim.api.nvim_create_autocmd("FileType", {
         pattern = "TelescopeResults",
@@ -39,7 +39,7 @@ return {
         return string.format("%s\t\t%s", tail, parent)
       end
 
-      telescope.setup {
+      telescope.setup({
         file_ignore_patterns = { "%.git/." },
         defaults = {
           mappings = {
@@ -146,28 +146,28 @@ return {
         },
         extensions = {
           fzf = {
-            fuzzy = true,                   -- false will only do exact matching
+            fuzzy = true, -- false will only do exact matching
             override_generic_sorter = true, -- override the generic sorter
-            override_file_sorter = true,    -- override the file sorter
-            case_mode = "smart_case",       -- or "ignore_case" or "respect_case"
+            override_file_sorter = true, -- override the file sorter
+            case_mode = "smart_case", -- or "ignore_case" or "respect_case"
           },
           ["ui-select"] = {
             require("telescope.themes").get_dropdown({
-              previewer        = false,
-              initial_mode     = "normal",
-              sorting_strategy = 'ascending',
-              layout_strategy  = 'horizontal',
-              layout_config    = {
+              previewer = false,
+              initial_mode = "normal",
+              sorting_strategy = "ascending",
+              layout_strategy = "horizontal",
+              layout_config = {
                 horizontal = {
                   width = 0.5,
                   height = 0.4,
                   preview_width = 0.6,
                 },
               },
-            })
+            }),
           },
           frecency = {
-            default_workspace = 'CWD',
+            default_workspace = "CWD",
             show_scores = true,
             show_unindexed = true,
             disable_devicons = false,
@@ -177,14 +177,14 @@ return {
               "*/lua-language-server/*",
             },
           },
-        }
-      }
-      telescope.load_extension('fzf')
-      telescope.load_extension('ui-select')
-      telescope.load_extension('refactoring')
-      telescope.load_extension('dap')
+        },
+      })
+      telescope.load_extension("fzf")
+      telescope.load_extension("ui-select")
+      telescope.load_extension("refactoring")
+      telescope.load_extension("dap")
       telescope.load_extension("zoxide")
       telescope.load_extension("frecency")
-    end
+    end,
   },
 }
