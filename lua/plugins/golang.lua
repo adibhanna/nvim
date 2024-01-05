@@ -6,10 +6,14 @@ return {
       "neovim/nvim-lspconfig",
       "nvim-treesitter/nvim-treesitter",
 
-      "leoluz/nvim-dap-go"
+      "leoluz/nvim-dap-go",
     },
     config = function()
+      local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
       require("go").setup({
+        capabilities = capabilities,
+        lsp_on_attach = require("config.lsp.on_attach").on_attach,
         lsp_cfg = {
           settings = {
             gopls = {
