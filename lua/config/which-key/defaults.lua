@@ -101,7 +101,6 @@ return {
     z = { "<cmd>Telescope zoxide list<cr>", "Zoxide" },
     e = { "<cmd>Telescope frecency<cr>", "Frecency" },
     b = { "<cmd>Telescope buffers<cr>", "Buffers" },
-    p = { "<cmd>AerialToggle!<cr>", "Areal Toggle" },
     d = {
       name = "+DAP",
       c = { "<cmd>Telescope dap commands<cr>", "Dap Commands" },

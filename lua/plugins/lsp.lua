@@ -14,9 +14,16 @@ return {
     require("mason").setup({
       ui = {
         border = "rounded",
+        icons = {
+          package_installed = "✓",
+          package_pending = "➜",
+          package_uninstalled = "✗",
+        },
       },
     })
-    require("mason-lspconfig").setup()
+    require("mason-lspconfig").setup({
+      ensure_installed = vim.tbl_keys(require("config.lsp.servers")),
+    })
     require("lspconfig.ui.windows").default_options.border = "single"
 
     require("neodev").setup()
@@ -26,9 +33,9 @@ return {
 
     local mason_lspconfig = require("mason-lspconfig")
 
-    mason_lspconfig.setup({
-      ensure_installed = vim.tbl_keys(require("config.lsp.servers")),
-    })
+    -- mason_lspconfig.setup({
+    --   ensure_installed = vim.tbl_keys(require("config.lsp.servers")),
+    -- })
 
     mason_lspconfig.setup_handlers({
       function(server_name)
@@ -57,10 +64,10 @@ return {
       },
     })
 
-    -- set sign icons
-    vim.fn.sign_define("DiagnosticSignError", { text = "E", texthl = "DiagnosticSignError" })
-    vim.fn.sign_define("DiagnosticSignWarn", { text = "W", texthl = "DiagnosticSignWarn" })
-    vim.fn.sign_define("DiagnosticSignInfo", { text = "I", texthl = "DiagnosticSignInfo" })
-    vim.fn.sign_define("DiagnosticSignHint", { text = "H", texthl = "DiagnosticSignHint" })
+    local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
+    for type, icon in pairs(signs) do
+      local hl = "DiagnosticSign" .. type
+      vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+    end
   end,
 }

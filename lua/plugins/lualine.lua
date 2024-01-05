@@ -1,36 +1,29 @@
-local function diff_source()
-  local gitsigns = vim.b.gitsigns_status_dict
-  if gitsigns then
-    return {
-      added = gitsigns.added,
-      modified = gitsigns.changed,
-      removed = gitsigns.removed
-    }
-  end
-end
-
 return {
   "nvim-lualine/lualine.nvim",
+  dependencies = {
+    "meuter/lualine-so-fancy.nvim",
+  },
   enabled = true,
   lazy = false,
   event = { "BufReadPost", "BufNewFile", "VeryLazy" },
   config = function()
-    local icons = require('config.icons')
-    require("lualine").setup {
+    local icons = require("config.icons")
+    require("lualine").setup({
       options = {
-        theme = 'catppuccin',
+        theme = "catppuccin",
         globalstatus = true,
         icons_enabled = true,
+        -- component_separators = { left = "│", right = "│" },
         component_separators = { left = icons.ui.DividerRight, right = icons.ui.DividerLeft },
-        section_separators = '',
+        section_separators = { left = "", right = "" },
         disabled_filetypes = {
           statusline = {
-            'alfa-nvim',
-            'help',
-            'neo-tree',
-            'Trouble',
-            'spectre_panel',
-            'toggleterm',
+            "alfa-nvim",
+            "help",
+            "neo-tree",
+            "Trouble",
+            "spectre_panel",
+            "toggleterm",
           },
           winbar = {},
         },
@@ -38,6 +31,7 @@ return {
       sections = {
         lualine_a = {},
         lualine_b = {
+          "fancy_branch",
         },
         lualine_c = {
           {
@@ -47,28 +41,18 @@ return {
               modified = "  ",
               -- readonly = "  ",
               -- unnamed = "  ",
-            }
+            },
           },
-          -- {
-          --   "aerial",
-          --   sep = " ) ",
-          --   depth = nil,
-          --   dense = true,
-          --   dense_sep = ".",
-          --   colored = false,
-          -- },
-          { "diagnostics", sources = { "nvim_lsp" }, symbols = { error = " ", warn = " ", info = " " } },
-          { "searchcount" },
+          { "fancy_diagnostics", sources = { "nvim_lsp" }, symbols = { error = " ", warn = " ", info = " " } },
+          { "fancy_searchcount" },
         },
         lualine_x = {
-          { 'b:gitsigns_head', icon = '' },
-          { 'diff', source = diff_source },
-          "progress"
+          "fancy_lsp_servers",
+          "fancy_diff",
+          "progress",
         },
-        lualine_y = {
-        },
-        lualine_z = {
-        },
+        lualine_y = {},
+        lualine_z = {},
       },
       inactive_sections = {
         lualine_a = {},
@@ -80,6 +64,6 @@ return {
       },
       tabline = {},
       extensions = { "neo-tree", "lazy" },
-    }
+    })
   end,
 }
