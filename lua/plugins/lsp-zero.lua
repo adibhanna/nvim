@@ -114,10 +114,12 @@ return {
 
       local lspconfig = require("lspconfig")
 
+      require("lspconfig.ui.windows").default_options.border = "single"
+
       require("mason").setup({
         ui = {
           border = "rounded",
-        }
+        },
       })
       require("mason-lspconfig").setup({
         ensure_installed = {
