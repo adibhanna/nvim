@@ -125,22 +125,10 @@ return {
               NormalFloat = { bg = colors.base },
               Pmenu = { bg = colors.mantle, fg = "" },
               PmenuSel = { bg = colors.surface0, fg = "" },
-              -- TelescopePreviewBorder = { bg = colors.crust, fg = colors.crust },
-              -- TelescopePreviewNormal = { bg = colors.crust },
-              -- TelescopePreviewTitle = { fg = colors.crust, bg = colors.crust },
-              -- TelescopePromptBorder = { bg = colors.surface0, fg = colors.surface0 },
-              -- TelescopePromptCounter = { fg = colors.mauve, style = { "bold" } },
-              -- TelescopePromptNormal = { bg = colors.surface0 },
-              -- TelescopePromptPrefix = { bg = colors.surface0 },
-              -- TelescopePromptTitle = { fg = colors.surface0, bg = colors.surface0 },
-              -- TelescopeResultsBorder = { bg = colors.mantle, fg = colors.mantle },
-              -- TelescopeResultsNormal = { bg = colors.mantle },
-              -- TelescopeResultsTitle = { fg = colors.mantle, bg = colors.mantle },
-              -- TelescopeSelection = { bg = colors.surface0 },
               VertSplit = { bg = colors.base, fg = colors.surface0 },
               WhichKeyFloat = { bg = colors.mantle },
               YankHighlight = { bg = colors.surface2 },
-              FidgetTask = { fg = colors.subtext2 },
+              FidgetTask = { fg = colors.subtext1 },
               FidgetTitle = { fg = colors.peach },
 
               IblIndent = { fg = colors.surface0 },
@@ -172,8 +160,8 @@ return {
               SpecialChar = { fg = colors.yellow },
               Type = { fg = colors.yellow, style = { "bold" } },
               Function = { fg = colors.green, style = { "bold" } },
-              Delimiter = { fg = colors.subtext2 },
-              Ignore = { fg = colors.subtext2 },
+              Delimiter = { fg = colors.subtext1 },
+              Ignore = { fg = colors.subtext1 },
               Macro = { fg = colors.teal },
 
               TSAnnotation = { fg = colors.mauve },
@@ -223,7 +211,7 @@ return {
               TSRepeat = { fg = colors.red },
               TSStorageClass = { fg = colors.peach },
               TSStorageClassLifetime = { fg = colors.peach },
-              TSStrike = { fg = colors.subtext2 },
+              TSStrike = { fg = colors.subtext1 },
               TSString = { fg = colors.teal },
               TSStringEscape = { fg = colors.green },
               TSStringRegex = { fg = colors.green },
@@ -369,14 +357,6 @@ return {
       vim.api.nvim_command("colorscheme catppuccin")
     end,
   },
-  -- {
-  --   "nvimdev/nightsky.vim",
-  --   enabled = true,
-  --   priority = 1000,
-  --   config = function()
-  --     -- vim.cmd.colorscheme 'nightsky'
-  --   end,
-  -- },
   {
     "sainnhe/gruvbox-material",
     enabled = true,
@@ -395,112 +375,6 @@ return {
       -- vim.cmd.colorscheme("gruvbox-material")
     end,
   },
-  -- {
-  --   "AlexvZyl/nordic.nvim",
-  --   lazy = false,
-  --   priority = 1000,
-  --   config = function()
-  --     -- require 'nordic'.load()
-  --   end,
-  -- },
-  -- {
-  --   "rose-pine/neovim",
-  --   config = function()
-  --     require("rose-pine").setup({
-  --       disable_background = false,
-  --       disable_float_background = true,
-  --       dark_variant = "moon",
-  --       disable_italics = true,
-  --       groups = {
-  --         background = "base",
-  --         background_nc = "_experimental_nc",
-  --         panel = "surface",
-  --         panel_nc = "base",
-  --         border = "highlight_med",
-  --         comment = "muted",
-  --         link = "iris",
-  --         punctuation = "subtle",
-
-  --         error = "love",
-  --         hint = "iris",
-  --         info = "foam",
-  --         warn = "gold",
-
-  --         headings = {
-  --           h1 = "iris",
-  --           h2 = "foam",
-  --           h3 = "rose",
-  --           h4 = "gold",
-  --           h5 = "pine",
-  --           h6 = "foam",
-  --         },
-  --       },
-  --       highlight_groups = {
-  --         ColorColumn = { bg = "rose" },
-
-  --         -- Blend colours against the "base" background
-  --         CursorLine = { bg = "foam", blend = 10 },
-  --         StatusLine = { fg = "love", bg = "love", blend = 10 },
-  --         Search = { bg = "gold", inherit = false },
-
-  --         TelescopeBorder = { fg = "highlight_high", bg = "none" },
-  --         TelescopeNormal = { bg = "none" },
-  --         TelescopePromptNormal = { bg = "base" },
-  --         TelescopeResultsNormal = { fg = "subtle", bg = "none" },
-  --         TelescopeSelection = { fg = "text", bg = "base" },
-  --         TelescopeSelectionCaret = { fg = "rose", bg = "rose" },
-  --       },
-  --     })
-
-  --     -- vim.cmd.colorscheme 'rose-pine-moon'
-  --   end,
-  -- },
-  -- {
-  --   "LunarVim/primer.nvim",
-  --   lazy = false, -- make sure we load this during startup if it is your main colorscheme
-  --   priority = 1000, -- make sure to load this before all the other start plugins
-  --   config = function()
-  --     -- vim.cmd.colorscheme 'primer_dark'
-  --   end,
-  -- },
-  -- {
-  --   "rebelot/kanagawa.nvim",
-  --   enabled = true,
-  --   config = function()
-  --     require("kanagawa").setup({
-  --       overrides = function(colors)
-  --         local theme = colors.theme
-  --         return {
-  --           Pmenu = { fg = theme.ui.shade0, bg = theme.ui.bg_p1 }, -- add `blend = vim.o.pumblend` to enable transparency
-  --           PmenuSel = { fg = "NONE", bg = theme.ui.bg_p2 },
-  --           PmenuSbar = { bg = theme.ui.bg_m1 },
-  --           PmenuThumb = { bg = theme.ui.bg_p2 },
-  --           TelescopeTitle = { fg = theme.ui.special, bold = true },
-  --           TelescopePromptNormal = { bg = theme.ui.bg_p1 },
-  --           TelescopePromptBorder = { fg = theme.ui.bg_p1, bg = theme.ui.bg_p1 },
-  --           TelescopeResultsNormal = { fg = theme.ui.fg_dim, bg = theme.ui.bg_m1 },
-  --           TelescopeResultsBorder = { fg = theme.ui.bg_m1, bg = theme.ui.bg_m1 },
-  --           TelescopePreviewNormal = { bg = theme.ui.bg_dim },
-  --           TelescopePreviewBorder = { bg = theme.ui.bg_dim, fg = theme.ui.bg_dim },
-  --         }
-  --       end,
-  --       colors = {
-  --         theme = {
-  --           all = {
-  --             ui = {
-  --               bg_gutter = "none",
-  --             },
-  --           },
-  --         },
-  --       },
-  --     })
-  --     -- vim.cmd("colorscheme kanagawa-wave")
-  --   end,
-  -- },
-  -- {
-  --   "ChristianChiarulli/onedark.nvim",
-  --   priority = 1000, -- Ensure it loads first,
-  -- },
   -- {
   --   "2nthony/vitesse.nvim",
   --   dependencies = {
@@ -527,37 +401,6 @@ return {
   --     })
 
   --     -- vim.cmd.colorscheme 'vitesse'
-  --   end,
-  -- },
-  -- {
-  --   "ellisonleao/gruvbox.nvim",
-  --   priority = 1000,
-  --   config = function()
-  --     require("gruvbox").setup({
-  --       terminal_colors = true, -- add neovim terminal colors
-  --       undercurl = false,
-  --       underline = false,
-  --       bold = false,
-  --       italic = {
-  --         strings = false,
-  --         emphasis = false,
-  --         comments = false,
-  --         operators = false,
-  --         folds = false,
-  --       },
-  --       strikethrough = false,
-  --       invert_selection = false,
-  --       invert_signs = true,
-  --       invert_tabline = false,
-  --       invert_intend_guides = false,
-  --       inverse = true, -- invert background for search, diffs, statuslines and errors
-  --       contrast = "hard", -- can be "hard", "soft" or empty string
-  --       palette_overrides = {},
-  --       overrides = {},
-  --       dim_inactive = false,
-  --       transparent_mode = false,
-  --     })
-  --     -- vim.cmd.colorscheme("gruvbox")
   --   end,
   -- },
 }
