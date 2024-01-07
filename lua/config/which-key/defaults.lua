@@ -3,7 +3,6 @@ return {
   [";"] = { ":Alpha<CR>", "Dashboard" },
   w = { ":w!<CR>", "Save" },
   q = { ":confirm q<CR>", "Quit" },
-  c = { ":bd<CR>", "Close Buffer" },
   h = { ":nohlsearch<CR>", "No Highlight" },
   p = { require("telescope.builtin").lsp_document_symbols, "Document Symbols" },
   P = { require("telescope.builtin").lsp_dynamic_workspace_symbols, "Workspace Symbols" },
@@ -11,7 +10,6 @@ return {
   v = "Go to definition in a split",
   a = "Swap next param",
   A = "Swap previous param",
-  U = { ":UndotreeToggle<CR>", "Toggle UndoTree" },
   o = { require("telescope.builtin").buffers, "Open Buffer" },
   W = { "<cmd>noautocmd w<cr>", "Save without formatting (noautocmd)" },
   u = {
@@ -26,7 +24,7 @@ return {
     d = { "<cmd>lua require('persistence').stop()<cr>", "Stop Persistence" },
   },
   r = {
-    name = "Replace",
+    name = "Replace (Spectre)",
     r = { "<cmd>lua require('spectre').open()<cr>", "Replace" },
     w = { "<cmd>lua require('spectre').open_visual({select_word=true})<cr>", "Replace Word" },
     f = { "<cmd>lua require('spectre').open_file_search()<cr>", "Replace Buffer" },
@@ -55,6 +53,7 @@ return {
       "<cmd>Gitsigns diffthis HEAD<cr>",
       "Git Diff",
     },
+    U = { ":UndotreeToggle<CR>", "Toggle UndoTree" },
   },
   l = {
     name = "+LSP",
@@ -119,11 +118,5 @@ return {
   },
   t = {
     name = "+Tests",
-  },
-  ["\\"] = {
-    name = "+Terminal",
-    h = { "<cmd>ToggleTerm direction=horizontal<cr>", "Horizontal" },
-    v = { "<cmd>ToggleTerm direction=vertical size=100 <cr>", "Vertical" },
-    f = { "<cmd>ToggleTerm direction=float<cr>", "Float" },
   },
 }
