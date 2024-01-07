@@ -20,20 +20,13 @@ return {
   },
 
   -- comments
-  { "JoosepAlviste/nvim-ts-context-commentstring", lazy = true },
   {
-    "echasnovski/mini.comment",
-    event = "VeryLazy",
+    "numToStr/Comment.nvim",
     opts = {},
-    config = function(_, _)
-      require("mini.comment").setup()
-
-      require("nvim-treesitter.configs").setup({
-        enable_autocmd = false,
-      })
-      vim.g.skip_ts_context_commentstring_module = true
-    end,
+    lazy = false,
   },
+  -- useful when there are embedded languages in certain types of files (e.g. Vue or React)
+  { "joosepalviste/nvim-ts-context-commentstring", lazy = true },
 
   -- Neovim plugin to improve the default vim.ui interfaces
   {
@@ -65,9 +58,7 @@ return {
         stop_eof = true,
         easing_function = "sine",
         hide_cursor = true,
-        -- respect_scrolloff = true,
         cursor_scrolls_alone = true,
-        -- performance_mode = false
       })
     end,
   },
@@ -152,6 +143,7 @@ return {
     end,
     opts = { labeled_modes = "nx" },
   },
+  -- mouse replacement
   {
     "ggandor/leap.nvim",
     keys = {
@@ -170,12 +162,14 @@ return {
     end,
   },
 
+  -- breadcrumbs
   {
     "LunarVim/breadcrumbs.nvim",
     config = function()
       require("breadcrumbs").setup()
     end,
   },
+  -- Simple winbar/statusline plugin that shows your current code context
   {
     "SmiteshP/nvim-navic",
     config = function()
@@ -222,11 +216,10 @@ return {
     end,
   },
 
+  -- persist sessions
   {
     "folke/persistence.nvim",
     event = "BufReadPre", -- this will only start session saving when an actual file was opened
-    opts = {
-      -- add any custom options here
-    },
+    opts = {},
   },
 }

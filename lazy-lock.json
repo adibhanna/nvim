@@ -1,4 +1,5 @@
 {
+  "Comment.nvim": { "branch": "master", "commit": "0236521ea582747b58869cb72f70ccfa967d2e89" },
   "FixCursorHold.nvim": { "branch": "master", "commit": "1900f89dc17c603eec29960f57c00bd9ae696495" },
   "LuaSnip": { "branch": "master", "commit": "68153ebb03e65d8a437c6240553645c57f17cf99" },
   "alpha-nvim": { "branch": "main", "commit": "29074eeb869a6cbac9ce1fbbd04f5f5940311b32" },
@@ -29,7 +30,6 @@
   "mason-lspconfig.nvim": { "branch": "main", "commit": "0989bdf4fdf7b5aa4c74131d7ffccc3f399ac788" },
   "mason-null-ls.nvim": { "branch": "main", "commit": "4ca4c9cbf86f1153e80160e2618400776030d944" },
   "mason.nvim": { "branch": "main", "commit": "e110bc3be1a7309617cecd77bfe4bf86ba1b8134" },
-  "mini.comment": { "branch": "main", "commit": "67f00d3ebbeae15e84584d971d0c32aad4f4f3a4" },
   "mini.pairs": { "branch": "main", "commit": "552062017ff207e1f35f7028bfb3f27c7421d22d" },
   "neo-tree.nvim": { "branch": "main", "commit": "396ff81e6bb384b0ef12ae427346cbf97d08f808" },
   "neodev.nvim": { "branch": "main", "commit": "be8d4d4cab6c13c6a572269c9d6a63774baba9a0" },
@@ -51,7 +51,6 @@
   "nvim-treesitter": { "branch": "master", "commit": "5032f9952ad2a3a7f7792ac438c4f9e2bd53e0b9" },
   "nvim-treesitter-textobjects": { "branch": "master", "commit": "85b9d0cbd4ff901abcda862b50dbb34e0901848b" },
   "nvim-ts-autotag": { "branch": "main", "commit": "8515e48a277a2f4947d91004d9aa92c29fdc5e18" },
-  "nvim-ts-context-commentstring": { "branch": "main", "commit": "1277b4a1f451b0f18c0790e1a7f12e1e5fdebfee" },
   "nvim-web-devicons": { "branch": "master", "commit": "db0c864375c198cacc171ff373e76bfce2a85045" },
   "persistence.nvim": { "branch": "main", "commit": "ad538bfd5336f1335cdb6fd4e0b0eebfa6e12f32" },
   "plenary.nvim": { "branch": "master", "commit": "55d9fe89e33efd26f532ef20223e5f9430c8b0c0" },
