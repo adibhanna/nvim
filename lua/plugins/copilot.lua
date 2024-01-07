@@ -1,7 +1,6 @@
 return {
     {
         "zbirenbaum/copilot.lua",
-        -- enabled = true,
         cmd = "Copilot",
         build = ":Copilot auth",
         event = "InsertEnter",
@@ -36,14 +35,14 @@ return {
                     },
                 },
             })
-        end
-    },
-    
-    {
-        "zbirenbaum/copilot-cmp",
-        -- after = { "copilot.lua" },
-        config = function()
-            require("copilot_cmp").setup()
         end,
-    }
+    },
+
+    -- {
+    --     "zbirenbaum/copilot-cmp",
+    --     -- after = { "copilot.lua" },
+    --     config = function()
+    --         require("copilot_cmp").setup()
+    --     end,
+    -- }
 }

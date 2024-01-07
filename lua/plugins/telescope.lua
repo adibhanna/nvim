@@ -6,7 +6,6 @@ return {
     lazy = true,
     dependencies = {
       "nvim-lua/plenary.nvim",
-      "jvgrootveld/telescope-zoxide",
       "nvim-tree/nvim-web-devicons",
       { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
       "nvim-telescope/telescope-ui-select.nvim",
@@ -51,17 +50,14 @@ return {
             n = { ["<C-t>"] = trouble.open_with_trouble },
           },
           previewer = false,
-          -- hidden = true,
           prompt_prefix = " " .. icons.ui.Telescope .. " ",
           selection_caret = icons.ui.BoldArrowRight .. " ",
           file_ignore_patterns = { "node_modules", "package-lock.json" },
           initial_mode = "insert",
           select_strategy = "reset",
           sorting_strategy = "ascending",
-          -- path_display = { "smart" },
           color_devicons = true,
           set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
-          -- layout_strategy = "horizontal",
           layout_config = {
             prompt_position = "top",
             preview_cutoff = 120,
@@ -183,7 +179,6 @@ return {
       telescope.load_extension("ui-select")
       telescope.load_extension("refactoring")
       telescope.load_extension("dap")
-      telescope.load_extension("zoxide")
       telescope.load_extension("frecency")
     end,
   },

@@ -24,6 +24,7 @@ api.nvim_create_autocmd("TextYankPost", {
 })
 
 -- go to last loc when opening a buffer
+-- this mean that when you open a file, you will be at the last position 
 api.nvim_create_autocmd("BufReadPost", {
   callback = function()
     local mark = vim.api.nvim_buf_get_mark(0, '"')
@@ -34,6 +35,8 @@ api.nvim_create_autocmd("BufReadPost", {
   end,
 })
 
+-- auto close brackets
+-- this 
 api.nvim_create_autocmd("FileType", { pattern = "man", command = [[nnoremap <buffer><silent> q :quit<CR>]] })
 
 -- show cursor line only in active window
@@ -60,15 +63,6 @@ api.nvim_create_autocmd(
     end,
   }
 )
-
--- Use LspAttach autocommand to only map the following keys
--- after the language server attaches to the current buffer
-vim.api.nvim_create_autocmd("LspAttach", {
-  callback = function(ev)
-    local opts = { buffer = ev.buf }
-    vim.keymap.set("n", "<leader>v", "<cmd>vsplit | lua vim.lsp.buf.definition()<CR>", opts)
-  end,
-})
 
 vim.api.nvim_create_autocmd("ColorScheme", {
   callback = function()
@@ -127,7 +121,7 @@ vim.api.nvim_create_autocmd("FileType", {
 -- resize neovim split when terminal is resized
 vim.api.nvim_command("autocmd VimResized * wincmd =")
 
---fix terraform and hcl comment string
+-- fix terraform and hcl comment string
 vim.api.nvim_create_autocmd("FileType", {
   group = vim.api.nvim_create_augroup("FixTerraformCommentString", { clear = true }),
   callback = function(ev)

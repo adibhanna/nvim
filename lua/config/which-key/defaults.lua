@@ -68,7 +68,6 @@ return {
     L = { "<cmd>TroubleToggle workspace_diagnostics<cr>", "Workspace Diagnostics (Trouble)" },
     w = { require("telescope.builtin").diagnostics, "Diagnostics" },
     t = { require("telescope").extensions.refactoring.refactors, "Refactor" },
-    h = { require("config.utils").toggle_inlay_hints, "Toggle Inlay Hints" },
     c = { require("config.utils").copyFilePathAndLineNumber, "Copy File Path and Line Number" },
   },
   s = {
@@ -88,7 +87,6 @@ return {
     B = { "<cmd>Telescope git_branches<cr>", "Git branches" },
     m = { "<cmd>Telescope git_status<cr>", "Git status" },
     S = { "<cmd>Telescope git_stash<cr>", "Git stash" },
-    z = { "<cmd>Telescope zoxide list<cr>", "Zoxide" },
     e = { "<cmd>Telescope frecency<cr>", "Frecency" },
     b = { "<cmd>Telescope buffers<cr>", "Buffers" },
     d = {

@@ -20,7 +20,7 @@ return {
   config = function()
     local cmp = require("cmp")
     local luasnip = require("luasnip")
-    local lspkind = require("lspkind")
+    -- local lspkind = require("lspkind")
 
     local kind_icons = {
       Text = "",
@@ -95,7 +95,7 @@ return {
         documentation = cmp.config.window.bordered(),
       },
       sources = {
-        { name = "copilot" },
+        -- { name = "copilot" },
         { name = "nvim_lsp" },
         { name = "nvim_lua" },
         { name = "luasnip" },
@@ -112,7 +112,7 @@ return {
           local lspkind_ok, lspkind = pcall(require, "lspkind")
           if not lspkind_ok then
             -- From kind_icons array
-            vim_item.kind = string.format("%s %s", kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
+            vim_item.kind = string.format("%s %s", kind_icons[vim_item.kind], vim_item.kind)
             -- Source
             vim_item.menu = ({
               copilot = "[Copilot]",
