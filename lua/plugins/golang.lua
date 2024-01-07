@@ -13,7 +13,7 @@ return {
 
       require("go").setup({
         capabilities = capabilities,
-        lsp_on_attach = require("config.lsp.on_attach").on_attach,
+        lsp_on_attach = require("plugins.lsp.on_attach").on_attach,
         lsp_cfg = {
           settings = {
             gopls = {

@@ -4,7 +4,7 @@ return {
   dependencies = {
     { "williamboman/mason.nvim", config = true },
     "williamboman/mason-lspconfig.nvim",
-    { "j-hui/fidget.nvim", opts = {} },
+    { "j-hui/fidget.nvim",       opts = {} },
     "folke/neodev.nvim",
     { "b0o/schemastore.nvim" },
     { "hrsh7th/cmp-nvim-lsp" },
@@ -21,7 +21,7 @@ return {
       },
     })
     require("mason-lspconfig").setup({
-      ensure_installed = vim.tbl_keys(require("config.lsp.servers")),
+      ensure_installed = vim.tbl_keys(require("plugins.lsp.servers")),
     })
     require("lspconfig.ui.windows").default_options.border = "single"
 
@@ -36,9 +36,9 @@ return {
       function(server_name)
         require("lspconfig")[server_name].setup({
           capabilities = capabilities,
-          on_attach = require("config.lsp.on_attach").on_attach,
-          settings = require("config.lsp.servers")[server_name],
-          filetypes = (require("config.lsp.servers")[server_name] or {}).filetypes,
+          on_attach = require("plugins.lsp.on_attach").on_attach,
+          settings = require("plugins.lsp.servers")[server_name],
+          filetypes = (require("plugins.lsp.servers")[server_name] or {}).filetypes,
         })
       end,
     })

@@ -1,18 +1,24 @@
 return {
+  -- Autotags
   {
     "windwp/nvim-ts-autotag",
     opts = {},
   },
+
+  -- delete buffer
   {
     "famiu/bufdelete.nvim",
     event = "VeryLazy",
     config = function()
-      local keymap = vim.keymap.set
-      local opts = { noremap = true, silent = true }
-      -- keymap("n", "Q", "<cmd>Bdelete!<CR>", opts)
-      keymap("n", "Q", ":lua require('bufdelete').bufdelete(0, false)<cr>", opts)
+      vim.keymap.set(
+        "n",
+        "Q",
+        ":lua require('bufdelete').bufdelete(0, false)<cr>",
+        { noremap = true, silent = true, desc = "Delete buffer" }
+      )
     end,
   },
+
   -- comments
   { "JoosepAlviste/nvim-ts-context-commentstring", lazy = true },
   {
@@ -28,6 +34,8 @@ return {
       vim.g.skip_ts_context_commentstring_module = true
     end,
   },
+
+  -- Neovim plugin to improve the default vim.ui interfaces
   {
     "stevearc/dressing.nvim",
     dependencies = { "MunifTanjim/nui.nvim" },
@@ -36,6 +44,8 @@ return {
       require("dressing").setup()
     end,
   },
+
+  -- Neovim notifications and LSP progress messages
   {
     "j-hui/fidget.nvim",
     branch = "legacy",
@@ -46,28 +56,8 @@ return {
       })
     end,
   },
-  {
-    "dnlhc/glance.nvim",
-    config = function()
-      require("glance").setup({
-        theme = {
-          enable = true,
-          mode = "auto",
-        },
-        border = {
-          enable = true,
-          top_char = "─",
-          bottom_char = "─",
-        },
-      })
-    end,
-    keys = {
-      { "gD", "<CMD>Glance definitions<CR>",      desc = "Glance definitions" },
-      { "gR", "<CMD>Glance references<CR>",       desc = "Glance references" },
-      { "gY", "<CMD>Glance type_definitions<CR>", desc = "Glance type_definitions" },
-      { "gM", "<CMD>Glance implementations<CR>",  desc = "Glance implementations" },
-    },
-  },
+
+  -- Smooth scrolling neovim plugin written in lua
   {
     "karb94/neoscroll.nvim",
     config = function()
@@ -81,42 +71,34 @@ return {
       })
     end,
   },
+
+  -- find and replace
   {
     "windwp/nvim-spectre",
     event = "BufRead",
   },
+
+  -- Add/change/delete surrounding delimiter pairs with ease
   {
     "kylechui/nvim-surround",
-    version = "*", -- Use for stability; omit to use `main` branch for the latest features
+    version = "*",
     event = "VeryLazy",
     config = function()
-      require("nvim-surround").setup({
-        -- Configuration here, or leave empty to use defaults
-        -- https://github.com/kylechui/nvim-surround
-      })
+      require("nvim-surround").setup()
     end,
   },
-  "tpope/vim-sleuth",
+
+  -- Heuristically set buffer options
   {
-    "bennypowers/splitjoin.nvim",
-    keys = {
-      {
-        "gJ",
-        function()
-          require("splitjoin").join()
-        end,
-        desc = "Join the object under cursor",
-      },
-      {
-        "gS",
-        function()
-          require("splitjoin").split()
-        end,
-        desc = "Split the object under cursor",
-      },
-    },
+    "tpope/vim-sleuth",
   },
-  "folke/neodev.nvim",
+
+  -- Neovim setup for init.lua and plugin development with full signature help, docs and completion for the nvim lua API
+  {
+    "folke/neodev.nvim",
+  },
+
+  -- Neovim Lua plugin to automatically manage character pairs. Part of 'mini.nvim' library.
   {
     "echasnovski/mini.pairs",
     event = "VeryLazy",
@@ -124,6 +106,8 @@ return {
       require("mini.pairs").setup(opts)
     end,
   },
+
+  -- Lorem Ipsum generator for Neovim
   {
     "derektata/lorem.nvim",
     config = function()
@@ -134,13 +118,14 @@ return {
       })
     end,
   },
+
+  -- Indent guide for Neovim
   {
     "lukas-reineke/indent-blankline.nvim",
     event = { "BufReadPost", "BufNewFile" },
     enabled = false,
     version = "2.1.0",
     opts = {
-      -- char = "▏",
       char = "┊",
       -- char = "│",
       filetype_exclude = { "help", "alpha", "dashboard", "neo-tree", "Trouble", "lazy" },
@@ -148,7 +133,13 @@ return {
       show_current_context = false,
     },
   },
-  "editorconfig/editorconfig-vim",
+
+  -- editor config support
+  {
+    "editorconfig/editorconfig-vim",
+  },
+
+  -- Enhanced f/t motions for Leap
   {
     "ggandor/flit.nvim",
     keys = function()

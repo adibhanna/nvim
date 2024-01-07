@@ -4,12 +4,12 @@ if not status_ok then
 end
 
 local opts = {
-    mode = "n",     -- NORMAL mode
+    mode = "n",
     prefix = "<leader>",
-    buffer = nil,   -- Global mappings. Specify a buffer number for buffer local mappings
-    silent = true,  -- use `silent` when creating keymaps
-    noremap = true, -- use `noremap` when creating keymaps
-    nowait = true,  -- use `nowait` when creating keymaps
+    buffer = nil,
+    silent = true,
+    noremap = true,
+    nowait = true,
 }
 
 local mappings = {
@@ -52,4 +52,3 @@ which_key.register(mappings, opts)
 
 vim.keymap.set("n", "K", "<cmd>RustLsp hover actions<CR>", { silent = true, desc = "Rust Hover" })
 vim.keymap.set("n", "gl", "<cmd>RustLsp explainError<CR>", { silent = true, desc = "Explain error" })
--- explainError
