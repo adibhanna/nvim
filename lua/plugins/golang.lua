@@ -53,6 +53,7 @@ return {
           },
         },
         luasnip = true,
+        trouble = true,
       })
 
     end,
