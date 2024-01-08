@@ -55,7 +55,6 @@ return {
         luasnip = true,
         trouble = true,
       })
-
     end,
     event = { "CmdlineEnter" },
     ft = { "go", "gomod" },
