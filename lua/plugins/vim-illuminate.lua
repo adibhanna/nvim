@@ -37,8 +37,8 @@ return {
       end, { desc = dir:sub(1, 1):upper() .. dir:sub(2) .. " Reference", buffer = buffer })
     end
 
-    map("]]", "next")
-    map("[[", "prev")
+    map("]w", "next")
+    map("[w", "prev")
 
     vim.api.nvim_create_autocmd("FileType", {
       callback = function()
@@ -49,7 +49,7 @@ return {
     })
   end,
   keys = {
-    { "]]", desc = "Next Reference" },
-    { "[[", desc = "Prev Reference" },
+    { "]w", desc = "Next Reference" },
+    { "[w", desc = "Prev Reference" },
   },
 }

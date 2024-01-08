@@ -70,6 +70,12 @@ return {
         on_attach = function(bufnr)
           vim.keymap.set('n', '<leader>H', require('gitsigns').preview_hunk,
             { buffer = bufnr, desc = 'Preview git hunk' })
+
+          vim.keymap.set('n', ']]', require('gitsigns').next_hunk,
+            { buffer = bufnr, desc = 'Next git hunk' })
+
+          vim.keymap.set('n', '[[', require('gitsigns').prev_hunk,
+            { buffer = bufnr, desc = 'Previous git hunk' })
         end,
       }
     end
