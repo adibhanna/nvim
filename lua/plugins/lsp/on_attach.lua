@@ -20,11 +20,11 @@ M.on_attach = function(_, bufnr)
   nmap("gs", vim.lsp.buf.signature_help, "Signature Documentation")
 
   nmap("gD", vim.lsp.buf.declaration, "Goto Declaration")
-  nmap("<leader>wa", vim.lsp.buf.add_workspace_folder, "Workspace Add Folder")
-  nmap("<leader>wr", vim.lsp.buf.remove_workspace_folder, "Workspace Remove Folder")
-  nmap("<leader>wl", function()
-    print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-  end, "Workspace List Folders")
+  -- nmap("<leader>Wa", vim.lsp.buf.add_workspace_folder, "Workspace Add Folder")
+  -- nmap("<leader>Wr", vim.lsp.buf.remove_workspace_folder, "Workspace Remove Folder")
+  -- nmap("<leader>Wl", function()
+  --   print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+  -- end, "Workspace List Folders")
 
   nmap("<leader>v", "<cmd>vsplit | lua vim.lsp.buf.definition()<cr>", "Goto Definition in Vertical Split")
 end

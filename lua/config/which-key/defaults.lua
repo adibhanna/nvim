@@ -68,6 +68,18 @@ return {
     w = { require("telescope.builtin").diagnostics, "Diagnostics" },
     t = { require("telescope").extensions.refactoring.refactors, "Refactor" },
     c = { require("config.utils").copyFilePathAndLineNumber, "Copy File Path and Line Number" },
+
+    W = {
+      name = "+Workspace",
+      a = { vim.lsp.buf.add_workspace_folder, "Add Folder" },
+      r = { vim.lsp.buf.remove_workspace_folder, "Remove Folder" },
+      l = {
+        function()
+          print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+        end,
+        "List Folders",
+      },
+    },
   },
   s = {
     name = "+Search",
