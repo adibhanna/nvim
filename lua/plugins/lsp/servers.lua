@@ -35,7 +35,7 @@ return {
   },
   -- tsserver = {},
   gopls = {},
-  golangci_lint_ls = {},
+  -- golangci_lint_ls = {},
 
   solidity_ls_nomicfoundation = {},
   yamlls = {

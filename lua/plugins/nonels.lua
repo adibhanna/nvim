@@ -17,14 +17,14 @@ return {
           "prettier", -- prettier formatter
           "stylua", -- lua formatter
           "eslint_d", -- js linter
-          "golangci_lint", -- go linter
+          -- "golangci_lint", -- go linter
           "terraform_fmt", -- terraform formatter
           "terraform_validate", -- terraform linter
           "shellcheck", -- shell linter
           "yamllint", -- yaml linter
           "buf", -- buf formatter
           "beautysh", -- shell formatter
-          "gofumpt", -- go formatter
+          -- "gofumpt", -- go formatter
           "yamlfmt", -- yaml formatter
           "spell", -- spell checker
         },
@@ -42,7 +42,7 @@ return {
         sources = {
           formatting.stylua,
           formatting.prettier,
-          formatting.gofumpt,
+          -- formatting.gofumpt,
           formatting.terraform_fmt,
           formatting.buf,
           formatting.beautysh,
@@ -53,7 +53,7 @@ return {
               return utils.root_has_file({ ".eslintrc.js", ".eslintrc.cjs" }) -- only enable if root has .eslintrc.js or .eslintrc.cjs
             end,
           }),
-          diagnostics.golangci_lint,
+          -- diagnostics.golangci_lint,
           diagnostics.terraform_validate,
           diagnostics.shellcheck,
           diagnostics.yamllint,
