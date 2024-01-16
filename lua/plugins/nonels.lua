@@ -27,6 +27,7 @@ return {
           -- "gofumpt", -- go formatter
           "yamlfmt", -- yaml formatter
           "spell", -- spell checker
+          "black", -- python formatter
         },
       })
 
@@ -47,6 +48,8 @@ return {
           formatting.buf,
           formatting.beautysh,
           formatting.yamlfmt,
+          formatting.black,
+
           -- diagnostics.eslint_d,
           diagnostics.eslint_d.with({ -- js/ts linter
             condition = function(utils)

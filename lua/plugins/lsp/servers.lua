@@ -35,6 +35,7 @@ return {
   },
   tsserver = {},
   gopls = {},
+  pyright = {},
   -- golangci_lint_ls = {},
 
   solidity_ls_nomicfoundation = {},
