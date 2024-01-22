@@ -354,7 +354,7 @@ return {
       vim.api.nvim_set_hl(0, "NavicText", { default = true, bg = "none", fg = "#eedaad" })
       vim.api.nvim_set_hl(0, "NavicSeparator", { default = true, bg = "none", fg = "#eedaad" })
 
-      vim.api.nvim_command("colorscheme catppuccin")
+      -- vim.api.nvim_command("colorscheme catppuccin")
     end,
   },
   {
@@ -364,69 +364,22 @@ return {
     config = function()
       vim.g.gruvbox_material_transparent_background = 0
       vim.g.gruvbox_material_foreground = "mix"
-      vim.g.gruvbox_material_background = "hard"    -- soft, medium, hard
-      vim.g.gruvbox_material_ui_contrast = "high"   -- The contrast of line numbers, indent lines, etc.
+      vim.g.gruvbox_material_background = "hard" -- soft, medium, hard
+      vim.g.gruvbox_material_ui_contrast = "high" -- The contrast of line numbers, indent lines, etc.
       vim.g.gruvbox_material_float_style = "bright" -- Background of floating windows
       vim.g.gruvbox_material_statusline_style = "material"
 
       -- vim.g.gruvbox_material_colors_override = { bg0 = '#000000' } -- #0e1010
       -- vim.g.gruvbox_material_colors_override = { bg0 = "#121212" }
-      vim.g.gruvbox_material_better_performance = 1
+      -- vim.g.gruvbox_material_better_performance = 1
 
-      -- vim.cmd.colorscheme("gruvbox-material")
+      vim.cmd.colorscheme("gruvbox-material")
     end,
   },
   {
-    "loctvl842/monokai-pro.nvim",
-    config = function()
-      require("monokai-pro").setup({
-        transparent_background = false,
-        terminal_colors = true,
-        devicons = true, -- highlight the icons of `nvim-web-devicons`
-        styles = {
-          comment = { italic = true },
-          keyword = { italic = true },       -- any other keyword
-          type = { italic = true },          -- (preferred) int, long, char, etc
-          storageclass = { italic = true },  -- static, register, volatile, etc
-          structure = { italic = true },     -- struct, union, enum, etc
-          parameter = { italic = true },     -- parameter pass in function
-          annotation = { italic = true },
-          tag_attribute = { italic = true }, -- attribute of tag in reactjs
-        },
-        filter = "octagon",                      -- classic | octagon | pro | machine | ristretto | spectrum
-        -- Enable this will disable filter option
-        day_night = {
-          enable = false,            -- turn off by default
-          day_filter = "octagon",        -- classic | octagon | pro | machine | ristretto | spectrum
-          night_filter = "spectrum", -- classic | octagon | pro | machine | ristretto | spectrum
-        },
-        inc_search = "background",   -- underline | background
-        background_clear = {
-          "float_win",
-          "toggleterm",
-          "telescope",
-          "which-key",
-          "renamer",
-          "notify",
-          -- "nvim-tree",
-          "neo-tree",
-          -- "bufferline", -- better used if background of `neo-tree` or `nvim-tree` is cleared
-        }, -- "float_win", "toggleterm", "telescope", "which-key", "renamer", "neo-tree", "nvim-tree", "bufferline"
-        plugins = {
-          bufferline = {
-            underline_selected = false,
-            underline_visible = false,
-          },
-          indent_blankline = {
-            context_highlight = "default", -- default | pro
-            context_start_underline = false,
-          },
-        },
-        ---@param c Colorscheme
-        override = function(c) end,
-      })
-
-      -- vim.cmd("colorscheme monokai-pro-octagon")
-    end,
+    "folke/tokyonight.nvim",
+    lazy = false,
+    priority = 1000,
+    opts = {},
   },
 }
