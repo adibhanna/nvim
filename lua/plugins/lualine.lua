@@ -14,7 +14,7 @@ return {
         globalstatus = true,
         icons_enabled = true,
         -- component_separators = { left = "│", right = "│" },
-        component_separators = { left = icons.ui.DividerRight, right = icons.ui.DividerLeft },
+        component_separators = { left = icons.ui.DividerRight, right = "|" },
         section_separators = { left = "", right = "" },
         disabled_filetypes = {
           statusline = {
