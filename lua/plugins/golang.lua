@@ -10,6 +10,7 @@ return {
     },
     config = function()
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
+      vim.notify = require("notify")
 
       require("go").setup({
         capabilities = capabilities,
