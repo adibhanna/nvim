@@ -387,7 +387,7 @@ return {
     "LunarVim/primer.nvim",
     priority = 1000,
     config = function()
-      vim.cmd.colorscheme 'primer_dark'
+      -- vim.cmd.colorscheme 'primer_dark'
     end
   },
 }
