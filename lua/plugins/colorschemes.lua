@@ -368,6 +368,7 @@ return {
       vim.g.gruvbox_material_ui_contrast = "high" -- The contrast of line numbers, indent lines, etc.
       vim.g.gruvbox_material_float_style = "bright" -- Background of floating windows
       vim.g.gruvbox_material_statusline_style = "material"
+      vim.g.gruvbox_material_cursor = "auto"
 
       -- vim.g.gruvbox_material_colors_override = { bg0 = '#000000' } -- #0e1010
       -- vim.g.gruvbox_material_colors_override = { bg0 = "#121212" }
@@ -381,5 +382,12 @@ return {
     lazy = false,
     priority = 1000,
     opts = {},
+  },
+  {
+    "LunarVim/primer.nvim",
+    priority = 1000,
+    config = function()
+      vim.cmd.colorscheme 'primer_dark'
+    end
   },
 }
