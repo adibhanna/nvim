@@ -379,15 +379,38 @@ return {
   },
   {
     "folke/tokyonight.nvim",
+    enabled = false,
     lazy = false,
     priority = 1000,
     opts = {},
   },
   {
     "LunarVim/primer.nvim",
+    enabled = false,
     priority = 1000,
     config = function()
       -- vim.cmd.colorscheme 'primer_dark'
-    end
+    end,
+  },
+  {
+    "oxfist/night-owl.nvim",
+    enabled = false,
+    lazy = false, -- make sure we load this during startup if it is your main colorscheme
+    priority = 1000, -- make sure to load this before all the other start plugins
+    config = function()
+      local night_owl = require("night-owl")
+
+      -- 👇 Add your own personal settings here
+      night_owl.setup({
+        -- These are the default settings
+        bold = false,
+        italics = false,
+        underline = false,
+        undercurl = false,
+      })
+
+      -- load the colorscheme here
+      -- vim.cmd.colorscheme("night-owl")
+    end,
   },
 }
