@@ -128,6 +128,12 @@ return {
     u = { require("dapui").toggle, "UI" },
     x = { require("dap").terminate, "Exit" },
   },
+  n = {
+    name = "+Neogen",
+    g = { "<cmd>lua require('neogen').generate()<cr>", "Generate" },
+    f = { "<cmd>lua require('neogen').generate({ type = 'function' })<cr>", "Generate Function" },
+    t = { "<cmd>lua require('neogen').generate({ type = 'type' })<cr>", "Generate Type" },
+  },
   t = {
     name = "+Tests",
   },
