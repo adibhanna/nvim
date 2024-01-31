@@ -130,9 +130,9 @@ return {
   },
   n = {
     name = "+Neogen",
-    g = { "<cmd>lua require('neogen').generate()<cr>", "Generate" },
-    f = { "<cmd>lua require('neogen').generate({ type = 'function' })<cr>", "Generate Function" },
-    t = { "<cmd>lua require('neogen').generate({ type = 'type' })<cr>", "Generate Type" },
+    g = { "<cmd>lua require('neogen').generate()<cr>", "Generate Annotatin" },
+    f = { "<cmd>lua require('neogen').generate({ type = 'func' })<cr>", "Generate Function Annotation" },
+    t = { "<cmd>lua require('neogen').generate({ type = 'type' })<cr>", "Generate Type Annotation" },
   },
   t = {
     name = "+Tests",
