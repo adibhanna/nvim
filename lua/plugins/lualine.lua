@@ -7,7 +7,7 @@ return {
   lazy = false,
   event = { "BufReadPost", "BufNewFile", "VeryLazy" },
   config = function()
-    local icons = require("config.icons")
+    -- local icons = require("config.icons")
     require("lualine").setup({
       options = {
         -- theme = "auto",
