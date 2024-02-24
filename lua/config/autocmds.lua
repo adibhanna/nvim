@@ -24,7 +24,7 @@ api.nvim_create_autocmd("TextYankPost", {
 })
 
 -- go to last loc when opening a buffer
--- this mean that when you open a file, you will be at the last position 
+-- this mean that when you open a file, you will be at the last position
 api.nvim_create_autocmd("BufReadPost", {
   callback = function()
     local mark = vim.api.nvim_buf_get_mark(0, '"')
@@ -36,7 +36,7 @@ api.nvim_create_autocmd("BufReadPost", {
 })
 
 -- auto close brackets
--- this 
+-- this
 api.nvim_create_autocmd("FileType", { pattern = "man", command = [[nnoremap <buffer><silent> q :quit<CR>]] })
 
 -- show cursor line only in active window
@@ -90,6 +90,9 @@ vim.api.nvim_create_autocmd("ColorScheme", {
     vim.api.nvim_set_hl(0, "FloatBorder", { link = "Normal" })
     vim.api.nvim_set_hl(0, "LspInfoBorder", { link = "Normal" })
     vim.api.nvim_set_hl(0, "NormalFloat", { link = "Normal" })
+
+    vim.cmd("highlight Winbar guibg=none")
+
     -- vim.cmd("highlight Comment guifg=#475558")
     -- vim.cmd("highlight Comment guifg=green")
   end,
