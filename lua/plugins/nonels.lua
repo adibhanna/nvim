@@ -28,7 +28,7 @@ return {
           "shellcheck", -- shell linter
           "yamllint", -- yaml linter
           "buf", -- buf formatter
-          "beautysh", -- shell formatter
+          "shfmt", -- shell formatter
           -- "gofumpt", -- go formatter
           "yamlfmt", -- yaml formatter
           "spell", -- spell checker
@@ -51,7 +51,7 @@ return {
           -- formatting.gofumpt,
           formatting.terraform_fmt,
           formatting.buf,
-          formatting.beautysh,
+          formatting.shfmt,
           formatting.yamlfmt,
           formatting.black,
 
