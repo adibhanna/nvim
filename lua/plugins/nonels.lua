@@ -5,8 +5,13 @@ return {
     dependencies = {
       "jay-babu/mason-null-ls.nvim",
       "nvim-lua/plenary.nvim",
+      "nvimtools/none-ls-extras.nvim",
+      "gbprod/none-ls-shellcheck.nvim",
     },
     config = function()
+      require("null-ls").register(require("none-ls-shellcheck.diagnostics"))
+      require("null-ls").register(require("none-ls-shellcheck.code_actions"))
+
       local mason_null_ls = require("mason-null-ls")
       local null_ls = require("null-ls")
 
@@ -51,11 +56,11 @@ return {
           formatting.black,
 
           -- diagnostics.eslint_d,
-          diagnostics.eslint_d.with({ -- js/ts linter
-            condition = function(utils)
-              return utils.root_has_file({ ".eslintrc.js", ".eslintrc.cjs" }) -- only enable if root has .eslintrc.js or .eslintrc.cjs
-            end,
-          }),
+          -- diagnosticsueslint_d.with({ -- js/ts linter
+          --   condition = function(utils)
+          --     return utils.root_has_file({ ".eslintrc.js", ".eslintrc.cjs" }) -- only enable if root has .eslintrc.js or .eslintrc.cjs
+          --   end,
+          -- }),
           -- diagnostics.golangci_lint,
           diagnostics.terraform_validate,
           diagnostics.shellcheck,
