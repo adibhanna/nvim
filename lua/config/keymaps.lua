@@ -39,8 +39,8 @@ map("i", "jj", "<ESC>", opts)
 map("i", "jk", "<ESC>", opts)
 
 -- Move to start/end of line
-map({ 'n', 'x', 'o' }, 'H', '^', opts)
-map({ 'n', 'x', 'o' }, 'L', 'g_', opts)
+map({ "n", "x", "o" }, "H", "^", opts)
+map({ "n", "x", "o" }, "L", "g_", opts)
 
 -- Navigate buffers
 map("n", "<Right>", ":bnext<CR>", opts)
@@ -54,7 +54,7 @@ map("n", "-", ":resize -5<CR>")
 
 -- Map enter to ciw in normal mode
 map("n", "<CR>", "ciw", opts)
-map("n", "<BS>", 'ci', opts)
+map("n", "<BS>", "ci", opts)
 
 map("n", "n", "nzzv", opts)
 map("n", "N", "Nzzv", opts)
@@ -73,18 +73,22 @@ map("n", "<C-s>", ":Telescope current_buffer_fuzzy_find<CR>", opts)
 map("n", "<Leader>m", ":Telescope git_status<CR>", opts)
 
 -- Split line with X
-map('n', 'X', ':keeppatterns substitute/\\s*\\%#\\s*/\\r/e <bar> normal! ==^<cr>', { silent = true })
+map("n", "X", ":keeppatterns substitute/\\s*\\%#\\s*/\\r/e <bar> normal! ==^<cr>", { silent = true })
 
 -- Select all
-map('n', '<C-a>', 'ggVG', opts)
+map("n", "<C-a>", "ggVG", opts)
 
 -- write file in current directory
 -- :w %:h/<new-file-name>
-map('n', '<C-n>', ':w %:h/', opts)
+map("n", "<C-n>", ":w %:h/", opts)
 
 -- delete forward
 -- w{number}dw
 -- delete backward
 -- w{number}db
 
-map('n', '<C-P>', ':lua require("config.utils").toggle_go_test()<CR>', opts)
+map("n", "<C-P>", ':lua require("config.utils").toggle_go_test()<CR>', opts)
+
+map("n", "<Esc>", ":nohlsearch<CR>", opts)
+
+
