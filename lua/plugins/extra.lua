@@ -244,4 +244,8 @@ return {
     end,
     -- version = "*"
   },
+
+  -- {
+  --   "xiyaowong/transparent.nvim"
+  -- },
 }

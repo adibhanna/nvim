@@ -31,7 +31,7 @@ return {
           "shfmt", -- shell formatter
           -- "gofumpt", -- go formatter
           "yamlfmt", -- yaml formatter
-          "spell", -- spell checker
+          -- "spell", -- spell checker
           "black", -- python formatter
         },
       })
@@ -63,7 +63,7 @@ return {
           -- }),
           -- diagnostics.golangci_lint,
           diagnostics.terraform_validate,
-          diagnostics.shellcheck,
+          -- diagnostics.shellcheck,
           diagnostics.yamllint,
 
           code_actions.gitsigns,
