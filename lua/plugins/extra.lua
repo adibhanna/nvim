@@ -106,6 +106,7 @@ return {
   -- Lorem Ipsum generator for Neovim
   {
     "derektata/lorem.nvim",
+    enabled = false,
     config = function()
       local lorem = require("lorem")
       lorem.setup({

@@ -66,7 +66,7 @@ return {
     l = { "<cmd>TroubleToggle document_diagnostics<cr>", "Document Diagnostics (Trouble)" },
     L = { "<cmd>TroubleToggle workspace_diagnostics<cr>", "Workspace Diagnostics (Trouble)" },
     w = { require("telescope.builtin").diagnostics, "Diagnostics" },
-    t = { require("telescope").extensions.refactoring.refactors, "Refactor" },
+    -- t = { require("telescope").extensions.refactoring.refactors, "Refactor" },
     c = { require("config.utils").copyFilePathAndLineNumber, "Copy File Path and Line Number" },
 
     W = {
