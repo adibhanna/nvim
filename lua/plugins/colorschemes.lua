@@ -6,6 +6,7 @@ return {
     config = function()
       require("catppuccin").setup({
         integrations = {
+          which_key = true,
           cmp = true,
           gitsigns = true,
           treesitter = true,
@@ -374,8 +375,8 @@ return {
     config = function()
       vim.g.gruvbox_material_transparent_background = 0
       vim.g.gruvbox_material_foreground = "mix"
-      vim.g.gruvbox_material_background = "hard" -- soft, medium, hard
-      vim.g.gruvbox_material_ui_contrast = "high" -- The contrast of line numbers, indent lines, etc.
+      vim.g.gruvbox_material_background = "hard"    -- soft, medium, hard
+      vim.g.gruvbox_material_ui_contrast = "high"   -- The contrast of line numbers, indent lines, etc.
       vim.g.gruvbox_material_float_style = "bright" -- Background of floating windows
       vim.g.gruvbox_material_statusline_style = "material"
       vim.g.gruvbox_material_cursor = "auto"
@@ -440,7 +441,7 @@ return {
   {
     "oxfist/night-owl.nvim",
     enabled = false,
-    lazy = false, -- make sure we load this during startup if it is your main colorscheme
+    lazy = false,    -- make sure we load this during startup if it is your main colorscheme
     priority = 1000, -- make sure to load this before all the other start plugins
     config = function()
       local night_owl = require("night-owl")
