@@ -233,16 +233,28 @@ return {
   {
     "danymat/neogen",
     dependencies = {
-        "nvim-treesitter/nvim-treesitter",
-        "L3MON4D3/LuaSnip",
+      "nvim-treesitter/nvim-treesitter",
+      "L3MON4D3/LuaSnip",
     },
     config = function()
-        local neogen = require("neogen")
+      local neogen = require("neogen")
 
-        neogen.setup({
-            snippet_engine = "luasnip"
-        })
+      neogen.setup({
+        snippet_engine = "luasnip",
+      })
     end,
     -- version = "*"
+  },
+
+  {
+    "ThePrimeagen/refactoring.nvim",
+    enabled = false,
+    dependencies = {
+      { "nvim-lua/plenary.nvim" },
+      { "nvim-treesitter/nvim-treesitter" },
+    },
+    config = function()
+      require("refactoring").setup({})
+    end,
   },
 }
