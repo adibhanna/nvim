@@ -6,7 +6,7 @@ return {
     config = function()
       require("catppuccin").setup({
 
-        transparent_background = true, -- disables setting the background color.
+        transparent_background = false, -- disables setting the background color.
         integrations = {
           which_key = true,
           cmp = true,
