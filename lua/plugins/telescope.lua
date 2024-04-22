@@ -163,6 +163,10 @@ return {
               },
             }),
           },
+          package_info = {
+            -- Optional theme (the extension doesn't set a default theme)
+            -- theme = "ivy",
+          },
           -- frecency = {
           --   default_workspace = "CWD",
           --   show_scores = true,
@@ -182,6 +186,7 @@ return {
       telescope.load_extension("dap")
       -- telescope.load_extension("frecency")
       telescope.load_extension("notify")
+      telescope.load_extension("package_info")
     end,
   },
 }

@@ -115,13 +115,13 @@ return {
       "Search Neovim Config",
     },
   },
-  T = {
-    name = "+Todo",
-    t = { "<cmd>TodoTelescope<cr>", "Todo" },
-    T = { "<cmd>TodoTelescope keywords=TODO,FIX,FIXME<cr>", "Todo/Fix/Fixme" },
-    x = { "<cmd>TodoTrouble<cr>", "Todo (Trouble)" },
-    X = { "<cmd>TodoTrouble keywords=TODO,FIX,FIXME<cr><cr>", "Todo/Fix/Fixme (Trouble)" },
-  },
+  -- T = {
+  --   name = "+Todo",
+  --   t = { "<cmd>TodoTelescope<cr>", "Todo" },
+  --   T = { "<cmd>TodoTelescope keywords=TODO,FIX,FIXME<cr>", "Todo/Fix/Fixme" },
+  --   x = { "<cmd>TodoTrouble<cr>", "Todo (Trouble)" },
+  --   X = { "<cmd>TodoTrouble keywords=TODO,FIX,FIXME<cr><cr>", "Todo/Fix/Fixme (Trouble)" },
+  -- },
   d = {
     name = "Debug",
     b = { require("dap").toggle_breakpoint, "Breakpoint" },
