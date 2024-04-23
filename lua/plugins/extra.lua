@@ -169,59 +169,91 @@ return {
   },
 
   -- breadcrumbs
-  {
-    "LunarVim/breadcrumbs.nvim",
-    config = function()
-      require("breadcrumbs").setup()
-    end,
-  },
+  -- {
+  --   "LunarVim/breadcrumbs.nvim",
+  --   config = function()
+  --     require("breadcrumbs").setup()
+  --   end,
+  -- },
   -- Simple winbar/statusline plugin that shows your current code context
+  -- {
+  --   "SmiteshP/nvim-navic",
+  --   config = function()
+  --     local icons = require("config.icons")
+  --     require("nvim-navic").setup({
+  --       highlight = true,
+  --       lsp = {
+  --         auto_attach = true,
+  --         preference = { "typescript-tools" },
+  --       },
+  --       click = true,
+  --       separator = " " .. icons.ui.ChevronRight .. " ",
+  --       depth_limit = 0,
+  --       depth_limit_indicator = "..",
+  --       icons = {
+  --         File = " ",
+  --         Module = " ",
+  --         Namespace = " ",
+  --         Package = " ",
+  --         Class = " ",
+  --         Method = " ",
+  --         Property = " ",
+  --         Field = " ",
+  --         Constructor = " ",
+  --         Enum = " ",
+  --         Interface = " ",
+  --         Function = " ",
+  --         Variable = " ",
+  --         Constant = " ",
+  --         String = " ",
+  --         Number = " ",
+  --         Boolean = " ",
+  --         Array = " ",
+  --         Object = " ",
+  --         Key = " ",
+  --         Null = " ",
+  --         EnumMember = " ",
+  --         Struct = " ",
+  --         Event = " ",
+  --         Operator = " ",
+  --         TypeParameter = " ",
+  --       },
+  --     })
+  --   end,
+  -- },
+
   {
-    "SmiteshP/nvim-navic",
+    "utilyre/barbecue.nvim",
+    name = "barbecue",
+    version = "*",
+    dependencies = {
+      "SmiteshP/nvim-navic",
+      "nvim-tree/nvim-web-devicons", -- optional dependency
+    },
+    opts = {
+      -- configurations go here
+    },
     config = function()
-      local icons = require("config.icons")
-      require("nvim-navic").setup({
-        highlight = true,
-        lsp = {
-          auto_attach = true,
-          preference = { "typescript-tools" },
-        },
-        click = true,
-        separator = " " .. icons.ui.ChevronRight .. " ",
-        depth_limit = 0,
-        depth_limit_indicator = "..",
-        icons = {
-          File = " ",
-          Module = " ",
-          Namespace = " ",
-          Package = " ",
-          Class = " ",
-          Method = " ",
-          Property = " ",
-          Field = " ",
-          Constructor = " ",
-          Enum = " ",
-          Interface = " ",
-          Function = " ",
-          Variable = " ",
-          Constant = " ",
-          String = " ",
-          Number = " ",
-          Boolean = " ",
-          Array = " ",
-          Object = " ",
-          Key = " ",
-          Null = " ",
-          EnumMember = " ",
-          Struct = " ",
-          Event = " ",
-          Operator = " ",
-          TypeParameter = " ",
-        },
+      require("barbecue").setup({
+        create_autocmd = false, -- prevent barbecue from updating itself automatically
+      })
+
+      vim.api.nvim_create_autocmd({
+        "WinScrolled", -- or WinResized on NVIM-v0.9 and higher
+        "BufWinEnter",
+        "CursorHold",
+        "InsertLeave",
+
+        -- include this if you have set `show_modified` to `true`
+        -- "BufModifiedSet",
+      }, {
+        group = vim.api.nvim_create_augroup("barbecue.updater", {}),
+        callback = function()
+          require("barbecue.ui").update()
+        end,
       })
     end,
   },
-
   -- persist sessions
   {
     "folke/persistence.nvim",
