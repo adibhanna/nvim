@@ -63,8 +63,8 @@ return {
     r = { vim.lsp.buf.rename, "Rename all references" },
     f = { vim.lsp.buf.format, "Format" },
     i = { require("telescope.builtin").lsp_implementations, "Implementation" },
-    l = { "<cmd>TroubleToggle document_diagnostics<cr>", "Document Diagnostics (Trouble)" },
-    L = { "<cmd>TroubleToggle workspace_diagnostics<cr>", "Workspace Diagnostics (Trouble)" },
+    -- l = { "<cmd>TroubleToggle document_diagnostics<cr>", "Document Diagnostics (Trouble)" },
+    -- L = { "<cmd>TroubleToggle workspace_diagnostics<cr>", "Workspace Diagnostics (Trouble)" },
     w = { require("telescope.builtin").diagnostics, "Diagnostics" },
     -- t = { require("telescope").extensions.refactoring.refactors, "Refactor" },
     c = { require("config.utils").copyFilePathAndLineNumber, "Copy File Path and Line Number" },
@@ -143,4 +143,7 @@ return {
   t = {
     name = "+Tests",
   },
+  x = {
+    name = "+Trouble",
+  }
 }
