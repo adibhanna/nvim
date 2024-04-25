@@ -98,7 +98,6 @@ return {
             },
           },
           buffers = {
-            -- path_display = formattedName,
             mappings = {
               i = {
                 ["<c-d>"] = actions.delete_buffer,
