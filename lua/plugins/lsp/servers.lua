@@ -51,4 +51,8 @@ return {
     cmd = { "yaml-language-server", "--stdio" },
     filetypes = { "yaml" },
   },
+  -- gleam = {
+  --   cmd = { "gleam", "lsp" },
+  --   filetypes = { "gleam" },
+  -- },
 }

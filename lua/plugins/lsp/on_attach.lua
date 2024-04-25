@@ -1,3 +1,4 @@
+-- NOTE: this is not used. to remove
 M = {}
 M.on_attach = function(_, bufnr)
   local nmap = function(keys, func, desc)

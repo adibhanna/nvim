@@ -28,7 +28,7 @@ return {
     require("neodev").setup()
 
     vim.api.nvim_create_autocmd("LspAttach", {
-      group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
+      group = vim.api.nvim_create_augroup("lsp-attach", { clear = true }),
       callback = function(event)
         local map = function(keys, func, desc)
           vim.keymap.set("n", keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
@@ -82,6 +82,15 @@ return {
           filetypes = (require("plugins.lsp.servers")[server_name] or {}).filetypes,
         })
       end,
+    })
+
+    -- Gleam LSP 
+    -- For some reason mason doesn't work with gleam lsp
+    require("lspconfig").gleam.setup({
+      cmd = { "gleam", "lsp" },
+      filetypes = { "gleam" },
+      root_dir = require("lspconfig").util.root_pattern("gleam.toml", ".git"),
+      capabilities =  capabilities,
     })
 
     vim.diagnostic.config({
