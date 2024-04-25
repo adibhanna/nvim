@@ -28,15 +28,15 @@ return {
           end)
         end,
       })
-
-      local function formattedName(_, path)
-        local tail = vim.fs.basename(path)
-        local parent = vim.fs.dirname(path)
-        if parent == "." then
-          return tail
-        end
-        return string.format("%s\t\t%s", tail, parent)
-      end
+      --
+      -- local function formattedName(_, path)
+      --   local tail = vim.fs.basename(path)
+      --   local parent = vim.fs.dirname(path)
+      --   if parent == "." then
+      --     return tail
+      --   end
+      --   return string.format("%s\t\t%s", tail, parent)
+      -- end
 
       telescope.setup({
         file_ignore_patterns = { "%.git/." },
@@ -49,6 +49,9 @@ return {
             },
 
             n = { ["<C-t>"] = trouble.open },
+          },
+          path_display = {
+            "filename_first",
           },
           previewer = false,
           prompt_prefix = " " .. icons.ui.Telescope .. " ",
@@ -78,7 +81,7 @@ return {
         pickers = {
           find_files = {
             previewer = false,
-            path_display = formattedName,
+            -- path_display = formattedName,
             layout_config = {
               height = 0.4,
               prompt_position = "top",
@@ -87,7 +90,7 @@ return {
           },
           git_files = {
             previewer = false,
-            path_display = formattedName,
+            -- path_display = formattedName,
             layout_config = {
               height = 0.4,
               prompt_position = "top",
@@ -95,7 +98,7 @@ return {
             },
           },
           buffers = {
-            path_display = formattedName,
+            -- path_display = formattedName,
             mappings = {
               i = {
                 ["<c-d>"] = actions.delete_buffer,
