@@ -390,7 +390,4 @@ return {
       -- vim.cmd.colorscheme("gruvbox-material")
     end,
   },
-  {
-    "EdenEast/nightfox.nvim",
-  },
 }
