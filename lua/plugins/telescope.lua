@@ -28,7 +28,7 @@ return {
           end)
         end,
       })
-      --
+
       -- local function formattedName(_, path)
       --   local tail = vim.fs.basename(path)
       --   local parent = vim.fs.dirname(path)
@@ -50,6 +50,7 @@ return {
 
             n = { ["<C-t>"] = trouble.open },
           },
+          -- path_display = formattedName,
           path_display = {
             "filename_first",
           },
