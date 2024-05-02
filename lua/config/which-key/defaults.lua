@@ -12,6 +12,9 @@ return {
   A = "Swap previous param",
   o = { require("telescope.builtin").buffers, "Open Buffer" },
   W = { "<cmd>noautocmd w<cr>", "Save without formatting (noautocmd)" },
+  b = {
+    r = { "<cmd>Git status<CR>", "Git Status" },
+  },
   u = {
     name = "UI",
     v = { require("config.utils").toggle_set_color_column, "Toggle Color Line" },

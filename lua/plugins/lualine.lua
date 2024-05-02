@@ -3,7 +3,7 @@ return {
   dependencies = {
     "meuter/lualine-so-fancy.nvim",
   },
-  enabled = true,
+  enabled = false,
   lazy = false,
   event = { "BufReadPost", "BufNewFile", "VeryLazy" },
   config = function()
@@ -65,6 +65,11 @@ return {
       },
       tabline = {},
       extensions = { "neo-tree", "lazy" },
+    })
+
+    require("lualine").hide({
+      place = { "statusline", "tabline", "winbar" }, -- The segment this change applies to.
+      unhide = false, -- whether to re-enable lualine again/
     })
   end,
 }

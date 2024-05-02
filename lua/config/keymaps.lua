@@ -93,3 +93,4 @@ map("n", "<Esc>", ":nohlsearch<CR>", opts)
 
 -- ctrl + x to cut full line
 map("n", "<C-x>", "dd", opts)
+
