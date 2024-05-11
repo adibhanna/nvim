@@ -1,8 +1,3 @@
--- TODO
-
--- references:
--- https://github.com/nvim-neo-tree/neo-tree.nvim
--- https://github.com/nvim-neo-tree/neo-tree.nvim/wiki/Recipes
 return {
   "nvim-neo-tree/neo-tree.nvim",
   dependencies = {
@@ -12,8 +7,8 @@ return {
   },
   event = "VeryLazy",
   keys = {
-    { "<leader>e",     ":Neotree toggle float<CR>", silent = true, desc = "Float File Explorer" },
-    { "<leader><tab>", ":Neotree toggle left<CR>",  silent = true, desc = "Left File Explorer" },
+    { "<leader>e", ":Neotree toggle float<CR>", silent = true, desc = "Float File Explorer" },
+    { "<leader><tab>", ":Neotree toggle left<CR>", silent = true, desc = "Left File Explorer" },
   },
   config = function()
     require("neo-tree").setup({
@@ -70,6 +65,14 @@ return {
             ".DS_Store",
             "thumbs.db",
           },
+        },
+      },
+      source_selector = {
+        winbar = true,
+        sources = {
+          { source = "filesystem", display_name = "   Files " },
+          { source = "buffers", display_name = "   Bufs " },
+          { source = "git_status", display_name = "   Git " },
         },
       },
       event_handlers = {

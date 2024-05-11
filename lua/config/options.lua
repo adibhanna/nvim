@@ -50,3 +50,16 @@ vim.opt.fillchars = { eob = " " }               -- change the character at the e
 -- vim.opt.tabstop = 2                           -- insert 2 spaces for a tab
 vim.opt.laststatus = 0                          -- Always display the status line
 
+vim.filetype.add({
+    extension = {
+        env = "dotenv",
+    },
+    filename = {
+        [".env"] = "dotenv",
+        ["env"] = "dotenv",
+    },
+    pattern = {
+        ["[jt]sconfig.*.json"] = "jsonc",
+        ["%.env%.[%w_.-]+"] = "dotenv",
+    },
+})
