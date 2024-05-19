@@ -66,6 +66,7 @@ return {
     r = { vim.lsp.buf.rename, "Rename all references" },
     f = { vim.lsp.buf.format, "Format" },
     i = { require("telescope.builtin").lsp_implementations, "Implementation" },
+    -- h = { vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled()), "Inlay Hints" },
     -- l = { "<cmd>TroubleToggle document_diagnostics<cr>", "Document Diagnostics (Trouble)" },
     -- L = { "<cmd>TroubleToggle workspace_diagnostics<cr>", "Workspace Diagnostics (Trouble)" },
     w = { require("telescope.builtin").diagnostics, "Diagnostics" },

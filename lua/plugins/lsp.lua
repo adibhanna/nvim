@@ -4,7 +4,7 @@ return {
   dependencies = {
     { "williamboman/mason.nvim", config = true },
     "williamboman/mason-lspconfig.nvim",
-    { "j-hui/fidget.nvim", opts = {} },
+    { "j-hui/fidget.nvim",       opts = {} },
     "folke/neodev.nvim",
     { "b0o/schemastore.nvim" },
     { "hrsh7th/cmp-nvim-lsp" },
@@ -84,13 +84,13 @@ return {
       end,
     })
 
-    -- Gleam LSP 
+    -- Gleam LSP
     -- For some reason mason doesn't work with gleam lsp
     require("lspconfig").gleam.setup({
       cmd = { "gleam", "lsp" },
       filetypes = { "gleam" },
       root_dir = require("lspconfig").util.root_pattern("gleam.toml", ".git"),
-      capabilities =  capabilities,
+      capabilities = capabilities,
     })
 
     vim.diagnostic.config({
