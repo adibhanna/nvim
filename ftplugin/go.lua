@@ -15,7 +15,7 @@ local opts = {
 local mappings = {
     g = {
         name = "Go",
-        -- TODO
+        c = { ":GoCmt<CR>", "Go: Comment" },
     },
     t = {
         f = { ":GoTestFile<CR>", "Go: Test File" },
