@@ -57,4 +57,5 @@ return {
   -- },
 
   zls = {},
+  clangd = {},
 }
