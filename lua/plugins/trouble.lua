@@ -1,6 +1,5 @@
 return {
   "folke/trouble.nvim",
-  branch = "dev", -- IMPORTANT!
   cmd = { "TroubleToggle", "Trouble" },
   opts = { use_diagnostic_signs = true },
   lazy = true,
