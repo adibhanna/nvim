@@ -11,6 +11,7 @@ return {
     require("lualine").setup({
       options = {
         theme = "auto",
+        -- theme = "github_dark",
         -- theme = "catppuccin",
         globalstatus = true,
         icons_enabled = true,
