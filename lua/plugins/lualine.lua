@@ -10,9 +10,9 @@ return {
     -- local icons = require("config.icons")
     require("lualine").setup({
       options = {
-        theme = "auto",
+        -- theme = "auto",
         -- theme = "github_dark",
-        -- theme = "catppuccin",
+        theme = "catppuccin",
         globalstatus = true,
         icons_enabled = true,
         -- component_separators = { left = "│", right = "│" },

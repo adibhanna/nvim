@@ -374,7 +374,7 @@ return {
       -- vim.g.gruvbox_material_colors_override = { bg0 = "#121212" }
       -- vim.g.gruvbox_material_better_performance = 1
 
-      -- vim.cmd.colorscheme("gruvbox-material")
+      vim.cmd.colorscheme("gruvbox-material")
     end,
   },
   {
@@ -503,79 +503,6 @@ return {
     end,
   },
 
-  {
-    "rebelot/kanagawa.nvim",
-    priority = 1000,
-    lazy = false,
-    config = function()
-      require("kanagawa").setup({
-        compile = true,
-        undercurl = true,
-        commentStyle = { italic = true },
-        functionStyle = {},
-        keywordStyle = { italic = true },
-        statementStyle = { bold = true },
-        typeStyle = {},
-        transparent = false,
-        dimInactive = false,
-        terminalColors = true,
-        colors = {
-          -- palette = {
-          --   sumiInk0 = "#000000",
-          --   fujiWhite = "#FFFFFF",
-          -- },
-          theme = {
-            wave = {
-              ui = {
-                float = {
-                  bg = "none",
-                },
-              },
-            },
-            dragon = {
-              syn = {
-                parameter = "yellow",
-              },
-            },
-            all = {
-              ui = {
-                bg_gutter = "none",
-              },
-            },
-          },
-        },
-        overrides = function(colors)
-          local theme = colors.theme
-          return {
-            NormalFloat = { bg = "none" },
-            FloatBorder = { bg = "none" },
-            FloatTitle = { bg = "none" },
-            NormalDark = { fg = theme.ui.fg_dim, bg = theme.ui.bg_m3 },
-            LazyNormal = { bg = theme.ui.bg_m3, fg = theme.ui.fg_dim },
-            MasonNormal = { bg = theme.ui.bg_m3, fg = theme.ui.fg_dim },
-            TelescopeTitle = { fg = theme.ui.special, bold = true },
-            TelescopePromptNormal = { bg = theme.ui.bg_p1 },
-            TelescopePromptBorder = { fg = theme.ui.bg_p1, bg = theme.ui.bg_p1 },
-            TelescopeResultsNormal = { fg = theme.ui.fg_dim, bg = theme.ui.bg_m1 },
-            TelescopeResultsBorder = { fg = theme.ui.bg_m1, bg = theme.ui.bg_m1 },
-            TelescopePreviewNormal = { bg = theme.ui.bg_dim },
-            TelescopePreviewBorder = { bg = theme.ui.bg_dim, fg = theme.ui.bg_dim },
-            Pmenu = { fg = theme.ui.shade0, bg = theme.ui.bg_p1 }, -- add `blend = vim.o.pumblend` to enable transparency
-            PmenuSel = { fg = "NONE", bg = theme.ui.bg_p2 },
-            PmenuSbar = { bg = theme.ui.bg_m1 },
-            PmenuThumb = { bg = theme.ui.bg_p2 },
-          }
-        end,
-        theme = "wave",
-        -- background = {
-        --   dark = "wave",
-        --   light = "lotus",
-        -- },
-      })
-
-      -- vim.cmd("colorscheme kanagawa")
-    end,
-  },
 
   {
     "projekt0n/github-nvim-theme",
@@ -622,14 +549,13 @@ return {
             -- ...
           },
         },
-        palettes = {
-        },
+        palettes = {},
         specs = {},
         groups = {},
       })
 
       -- setup must be called before loading
-      vim.cmd("colorscheme github_dark_dimmed")
+      -- vim.cmd("colorscheme github_dark_dimmed")
     end,
   },
 }
