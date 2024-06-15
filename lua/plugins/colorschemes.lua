@@ -374,7 +374,7 @@ return {
       -- vim.g.gruvbox_material_colors_override = { bg0 = "#121212" }
       -- vim.g.gruvbox_material_better_performance = 1
 
-      vim.cmd.colorscheme("gruvbox-material")
+      -- vim.cmd.colorscheme("gruvbox-material")
     end,
   },
   {
@@ -447,7 +447,7 @@ return {
           }
         end,
       })
-      -- vim.cmd("colorscheme tokyonight")
+      vim.cmd("colorscheme tokyonight")
     end,
   },
   {
