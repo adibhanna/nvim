@@ -67,7 +67,7 @@ return {
           diagnostics.yamllint,
 
           code_actions.gitsigns,
-          code_actions.refactoring,
+          -- code_actions.refactoring,
         },
         -- configure format on save
         -- on_attach = function(current_client, bufnr)
