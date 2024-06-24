@@ -101,7 +101,7 @@ return {
       update_in_insert = false,
       severity_sort = true,
       float = {
-        source = "always",
+        source = 'if_many',
         style = "minimal",
         border = "rounded",
         header = "",
