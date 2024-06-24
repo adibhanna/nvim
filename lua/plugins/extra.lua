@@ -84,14 +84,29 @@ return {
     "tpope/vim-sleuth",
   },
 
-  -- Neovim setup for init.lua and plugin development with full signature help, docs and completion for the nvim lua API
   {
-    "folke/neodev.nvim",
-    config = function()
-      require("neodev").setup({
-        library = { plugins = { "neotest" }, types = true },
-      })
-    end,
+    {
+      "folke/lazydev.nvim",
+      ft = "lua", -- only load on lua files
+      opts = {
+        library = {
+          -- See the configuration section for more details
+          -- Load luvit types when the `vim.uv` word is found
+          { path = "luvit-meta/library", words = { "vim%.uv" } },
+        },
+      },
+    },
+    { "Bilal2453/luvit-meta", lazy = true }, -- optional `vim.uv` typings
+    {                                      -- optional completion source for require statements and module annotations
+      "hrsh7th/nvim-cmp",
+      opts = function(_, opts)
+        opts.sources = opts.sources or {}
+        table.insert(opts.sources, {
+          name = "lazydev",
+          group_index = 0, -- set group index to 0 to skip loading LuaLS completions
+        })
+      end,
+    },
   },
 
   -- Neovim Lua plugin to automatically manage character pairs. Part of 'mini.nvim' library.
@@ -153,8 +168,8 @@ return {
   {
     "ggandor/leap.nvim",
     keys = {
-      { "s", mode = { "n", "x", "o" }, desc = "Leap forward to" },
-      { "S", mode = { "n", "x", "o" }, desc = "Leap backward to" },
+      { "s",  mode = { "n", "x", "o" }, desc = "Leap forward to" },
+      { "S",  mode = { "n", "x", "o" }, desc = "Leap backward to" },
       { "gs", mode = { "n", "x", "o" }, desc = "Leap from windows" },
     },
     config = function(_, opts)
@@ -312,13 +327,13 @@ return {
       local search = statusline.section_searchcount({ trunc_width = 75 })
 
       statusline.combine_groups({
-        { hl = mode_hl, strings = { mode } },
+        { hl = mode_hl,                 strings = { mode } },
         { hl = "MiniStatuslineDevinfo", strings = { git, diagnostics } },
         "%<", -- Mark general truncate point
         { hl = "MiniStatuslineFilename", strings = { filename } },
         "%=", -- End left alignment
         { hl = "MiniStatuslineFileinfo", strings = { fileinfo } },
-        { hl = mode_hl, strings = { search, location } },
+        { hl = mode_hl,                  strings = { search, location } },
       })
     end,
   },

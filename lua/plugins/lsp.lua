@@ -5,7 +5,6 @@ return {
     { "williamboman/mason.nvim", config = true },
     "williamboman/mason-lspconfig.nvim",
     { "j-hui/fidget.nvim",       opts = {} },
-    "folke/neodev.nvim",
     { "b0o/schemastore.nvim" },
     { "hrsh7th/cmp-nvim-lsp" },
   },
@@ -24,8 +23,6 @@ return {
       ensure_installed = vim.tbl_keys(require("plugins.lsp.servers")),
     })
     require("lspconfig.ui.windows").default_options.border = "single"
-
-    require("neodev").setup()
 
     vim.api.nvim_create_autocmd("LspAttach", {
       group = vim.api.nvim_create_augroup("lsp-attach", { clear = true }),
