@@ -70,6 +70,9 @@ return {
         transparent_background = false,
         show_end_of_buffer = false,
         integration_default = false,
+        no_bold = true,
+        no_italic = true,
+        no_underline = false,
         integrations = {
           barbecue = { dim_dirname = true, bold_basename = true, dim_context = false, alt_background = false },
           cmp = true,
@@ -354,7 +357,7 @@ return {
       vim.api.nvim_set_hl(0, "NavicText", { default = true, bg = "none", fg = "#eedaad" })
       vim.api.nvim_set_hl(0, "NavicSeparator", { default = true, bg = "none", fg = "#eedaad" })
       --
-      -- vim.api.nvim_command("colorscheme catppuccin")
+      vim.api.nvim_command("colorscheme catppuccin")
     end,
   },
   {
@@ -374,7 +377,7 @@ return {
       -- vim.g.gruvbox_material_colors_override = { bg0 = "#121212" }
       -- vim.g.gruvbox_material_better_performance = 1
 
-      vim.cmd.colorscheme("gruvbox-material")
+      -- vim.cmd.colorscheme("gruvbox-material")
     end,
   },
   {
