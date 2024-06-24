@@ -71,8 +71,8 @@ return {
         show_end_of_buffer = false,
         integration_default = false,
         no_bold = true,
-        no_italic = true,
-        no_underline = false,
+        no_italic = false,
+        no_underline = true,
         integrations = {
           barbecue = { dim_dirname = true, bold_basename = true, dim_context = false, alt_background = false },
           cmp = true,
