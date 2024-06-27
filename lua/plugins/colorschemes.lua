@@ -361,6 +361,9 @@ return {
     end,
   },
   {
+    "Yazeed1s/oh-lucy.nvim"
+  },
+  {
     "sainnhe/gruvbox-material",
     enabled = true,
     priority = 1000,
