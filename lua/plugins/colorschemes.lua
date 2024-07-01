@@ -356,12 +356,36 @@ return {
       vim.api.nvim_set_hl(0, "NavicIconsOperator", { default = true, bg = "none", fg = "#eedaad" })
       vim.api.nvim_set_hl(0, "NavicText", { default = true, bg = "none", fg = "#eedaad" })
       vim.api.nvim_set_hl(0, "NavicSeparator", { default = true, bg = "none", fg = "#eedaad" })
-      --
-      vim.api.nvim_command("colorscheme catppuccin")
+
+      -- vim.api.nvim_command("colorscheme catppuccin")
     end,
   },
   {
-    "Yazeed1s/oh-lucy.nvim"
+    "Yazeed1s/oh-lucy.nvim",
+  },
+  -- Lua
+
+  {
+    "olivercederborg/poimandres.nvim",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      require("poimandres").setup({
+        -- leave this setup function empty for default config
+        -- or refer to the configuration section
+        -- for configuration options
+        bold_vert_split = false,          -- use bold vertical separators
+        dim_nc_background = false,        -- dim 'non-current' window backgrounds
+        disable_background = false,       -- disable background
+        disable_float_background = false, -- disable background for floats
+        disable_italics = false,          -- disable italics
+      })
+    end,
+
+    -- optionally set the colorscheme within lazy config
+    init = function()
+      -- vim.cmd("colorscheme poimandres")
+    end,
   },
   {
     "sainnhe/gruvbox-material",
@@ -370,8 +394,8 @@ return {
     config = function()
       vim.g.gruvbox_material_transparent_background = 0
       vim.g.gruvbox_material_foreground = "mix"
-      vim.g.gruvbox_material_background = "hard" -- soft, medium, hard
-      vim.g.gruvbox_material_ui_contrast = "high" -- The contrast of line numbers, indent lines, etc.
+      vim.g.gruvbox_material_background = "hard"    -- soft, medium, hard
+      vim.g.gruvbox_material_ui_contrast = "high"   -- The contrast of line numbers, indent lines, etc.
       vim.g.gruvbox_material_float_style = "bright" -- Background of floating windows
       vim.g.gruvbox_material_statusline_style = "material"
       vim.g.gruvbox_material_cursor = "auto"
@@ -380,7 +404,7 @@ return {
       -- vim.g.gruvbox_material_colors_override = { bg0 = "#121212" }
       -- vim.g.gruvbox_material_better_performance = 1
 
-      -- vim.cmd.colorscheme("gruvbox-material")
+      vim.cmd.colorscheme("gruvbox-material")
     end,
   },
   {
@@ -392,9 +416,9 @@ return {
       require("tokyonight").setup({
         -- your configuration comes here
         -- or leave it empty to use the default settings
-        style = "storm", -- The theme comes in three styles, `storm`, `moon`, a darker variant `night` and `day`
-        light_style = "day", -- The theme is used when the background is set to light
-        transparent = false, -- Enable this to disable setting the background color
+        style = "storm",        -- The theme comes in three styles, `storm`, `moon`, a darker variant `night` and `day`
+        light_style = "day",    -- The theme is used when the background is set to light
+        transparent = false,    -- Enable this to disable setting the background color
         terminal_colors = true, -- Configure the colors used when opening a `:terminal` in [Neovim](https://github.com/neovim/neovim)
         styles = {
           -- Style to be applied to different syntax groups
@@ -404,14 +428,14 @@ return {
           functions = {},
           variables = {},
           -- Background styles. Can be "dark", "transparent" or "normal"
-          sidebars = "dark", -- style for sidebars, see below
-          floats = "dark", -- style for floating windows
+          sidebars = "dark",              -- style for sidebars, see below
+          floats = "dark",                -- style for floating windows
         },
-        sidebars = { "qf", "help" }, -- Set a darker background on sidebar-like windows. For example: `["qf", "vista_kind", "terminal", "packer"]`
-        day_brightness = 0.3, -- Adjusts the brightness of the colors of the **Day** style. Number between 0 and 1, from dull to vibrant colors
+        sidebars = { "qf", "help" },      -- Set a darker background on sidebar-like windows. For example: `["qf", "vista_kind", "terminal", "packer"]`
+        day_brightness = 0.3,             -- Adjusts the brightness of the colors of the **Day** style. Number between 0 and 1, from dull to vibrant colors
         hide_inactive_statusline = false, -- Enabling this option, will hide inactive statuslines and replace them with a thin border instead. Should work with the standard **StatusLine** and **LuaLine**.
-        dim_inactive = false, -- dims inactive windows
-        lualine_bold = false, -- When `true`, section headers in the lualine theme will be bold
+        dim_inactive = false,             -- dims inactive windows
+        lualine_bold = false,             -- When `true`, section headers in the lualine theme will be bold
 
         --- You can override specific color groups to use other groups or a hex color
         --- function will be called with a ColorScheme table
@@ -465,20 +489,20 @@ return {
           -- Compiled file's destination location
           compile_path = vim.fn.stdpath("cache") .. "/nightfox",
           compile_file_suffix = "_compiled", -- Compiled file suffix
-          transparent = false, -- Disable setting background
-          terminal_colors = true, -- Set terminal colors (vim.g.terminal_color_*) used in `:terminal`
-          dim_inactive = false, -- Non focused panes set to alternative background
-          module_default = true, -- Default enable value for modules
+          transparent = false,               -- Disable setting background
+          terminal_colors = true,            -- Set terminal colors (vim.g.terminal_color_*) used in `:terminal`
+          dim_inactive = false,              -- Non focused panes set to alternative background
+          module_default = true,             -- Default enable value for modules
           colorblind = {
-            enable = false, -- Enable colorblind support
-            simulate_only = false, -- Only show simulated colorblind colors and not diff shifted
+            enable = false,                  -- Enable colorblind support
+            simulate_only = false,           -- Only show simulated colorblind colors and not diff shifted
             severity = {
-              protan = 0.3, -- Severity [0,1] for protan (red)
-              deutan = 0.6, -- Severity [0,1] for deutan (green)
-              tritan = 0, -- Severity [0,1] for tritan (blue)
+              protan = 0.3,                  -- Severity [0,1] for protan (red)
+              deutan = 0.6,                  -- Severity [0,1] for deutan (green)
+              tritan = 0,                    -- Severity [0,1] for tritan (blue)
             },
           },
-          styles = { -- Style to be applied to different syntax groups
+          styles = {           -- Style to be applied to different syntax groups
             comments = "NONE", -- Value is any valid attr-list value `:help attr-list`
             conditionals = "NONE",
             constants = "NONE",
@@ -509,7 +533,6 @@ return {
     end,
   },
 
-
   {
     "projekt0n/github-nvim-theme",
     priority = 1000,
@@ -521,14 +544,14 @@ return {
           -- Compiled file's destination location
           compile_path = vim.fn.stdpath("cache") .. "/github-theme",
           compile_file_suffix = "_compiled", -- Compiled file suffix
-          hide_end_of_buffer = true, -- Hide the '~' character at the end of the buffer for a cleaner look
-          hide_nc_statusline = true, -- Override the underline style for non-active statuslines
-          transparent = false, -- Disable setting background
-          terminal_colors = true, -- Set terminal colors (vim.g.terminal_color_*) used in `:terminal`
-          dim_inactive = false, -- Non focused panes set to alternative background
-          module_default = true, -- Default enable value for modules
-          styles = { -- Style to be applied to different syntax groups
-            comments = "NONE", -- Value is any valid attr-list value `:help attr-list`
+          hide_end_of_buffer = true,         -- Hide the '~' character at the end of the buffer for a cleaner look
+          hide_nc_statusline = true,         -- Override the underline style for non-active statuslines
+          transparent = false,               -- Disable setting background
+          terminal_colors = true,            -- Set terminal colors (vim.g.terminal_color_*) used in `:terminal`
+          dim_inactive = false,              -- Non focused panes set to alternative background
+          module_default = true,             -- Default enable value for modules
+          styles = {                         -- Style to be applied to different syntax groups
+            comments = "NONE",               -- Value is any valid attr-list value `:help attr-list`
             functions = "NONE",
             keywords = "NONE",
             variables = "NONE",

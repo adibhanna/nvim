@@ -50,14 +50,24 @@ return {
         -- https://github.com/nvim-lua/kickstart.nvim/blob/master/init.lua#L502
         local client = vim.lsp.get_client_by_id(event.data.client_id)
         if client and client.server_capabilities.documentHighlightProvider then
+          local highlight_augroup = vim.api.nvim_create_augroup("nvim-lsp-highlight", { clear = false })
           vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
             buffer = event.buf,
+            group = highlight_augroup,
             callback = vim.lsp.buf.document_highlight,
           })
 
           vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
             buffer = event.buf,
+            group = highlight_augroup,
             callback = vim.lsp.buf.clear_references,
+          })
+          vim.api.nvim_create_autocmd("LspDetach", {
+            group = vim.api.nvim_create_augroup("nvim-lsp-detach", { clear = true }),
+            callback = function(event2)
+              vim.lsp.buf.clear_references()
+              vim.api.nvim_clear_autocmds({ group = "nvim-lsp-highlight", buffer = event2.buf })
+            end,
           })
         end
       end,
@@ -98,7 +108,7 @@ return {
       update_in_insert = false,
       severity_sort = true,
       float = {
-        source = 'if_many',
+        source = "if_many",
         style = "minimal",
         border = "rounded",
         header = "",
