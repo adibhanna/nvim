@@ -183,6 +183,23 @@ return {
     end,
   },
 
+  {
+    "echasnovski/mini.icons",
+    opts = {},
+    lazy = true,
+    specs = {
+      { "nvim-tree/nvim-web-devicons", enabled = false, optional = true },
+    },
+    init = function()
+      package.preload["nvim-web-devicons"] = function()
+        -- needed since it will be false when loading and mini will fail
+        package.loaded["nvim-web-devicons"] = {}
+        require("mini.icons").mock_nvim_web_devicons()
+        return package.loaded["nvim-web-devicons"]
+      end
+    end,
+  },
+
   -- breadcrumbs
   -- {
   --   "LunarVim/breadcrumbs.nvim",
@@ -305,36 +322,71 @@ return {
     end,
   },
 
+  -- {
+  --   "echasnovski/mini.statusline",
+  --   enabled = false,
+  --   version = "*",
+  --   config = function()
+  --     vim.cmd("highlight MiniStatuslineFilename guifg=#C7D3F8 guibg=#1E2032")
+  --
+  --     local statusline = require("mini.statusline")
+  --
+  --     statusline.setup({
+  --       use_icons = vim.g.have_nerd_font,
+  --     })
+  --
+  --     local mode, mode_hl = statusline.section_mode({ trunc_width = 120 })
+  --     local git = statusline.section_git({ trunc_width = 75 })
+  --     local diagnostics = statusline.section_diagnostics({ trunc_width = 75 })
+  --     local filename = statusline.section_filename({ trunc_width = 140 })
+  --     local fileinfo = statusline.section_fileinfo({ trunc_width = 120 })
+  --     local location = statusline.section_location({ trunc_width = 75 })
+  --     local search = statusline.section_searchcount({ trunc_width = 75 })
+  --
+  --     statusline.combine_groups({
+  --       { hl = mode_hl,                 strings = { mode } },
+  --       { hl = "MiniStatuslineDevinfo", strings = { git, diagnostics } },
+  --       "%<", -- Mark general truncate point
+  --       { hl = "MiniStatuslineFilename", strings = { filename } },
+  --       "%=", -- End left alignment
+  --       { hl = "MiniStatuslineFileinfo", strings = { fileinfo } },
+  --       { hl = mode_hl,                  strings = { search, location } },
+  --     })
+  --   end,
+  -- },
+
   {
-    "echasnovski/mini.statusline",
-    enabled = false,
-    version = "*",
+    "echasnovski/mini.nvim",
     config = function()
-      vim.cmd("highlight MiniStatuslineFilename guifg=#C7D3F8 guibg=#1E2032")
+      -- Better Around/Inside textobjects
+      --
+      -- Examples:
+      --  - va)  - [V]isually select [A]round [)]paren
+      --  - yinq - [Y]ank [I]nside [N]ext [']quote
+      --  - ci'  - [C]hange [I]nside [']quote
+      require("mini.ai").setup({ n_lines = 500 })
 
+      -- Add/delete/replace surroundings (brackets, quotes, etc.)
+      --
+      -- - saiw) - [S]urround [A]dd [I]nner [W]ord [)]Paren
+      -- - sd'   - [S]urround [D]elete [']quotes
+      -- - sr)'  - [S]urround [R]eplace [)] [']
+      require("mini.surround").setup()
+
+      -- Simple and easy statusline.
+      --  You could remove this setup call if you don't like it,
+      --  and try some other statusline plugin
       local statusline = require("mini.statusline")
+      -- set use_icons to true if you have a Nerd Font
+      statusline.setup({ use_icons = vim.g.have_nerd_font })
 
-      statusline.setup({
-        use_icons = vim.g.have_nerd_font,
-      })
-
-      local mode, mode_hl = statusline.section_mode({ trunc_width = 120 })
-      local git = statusline.section_git({ trunc_width = 75 })
-      local diagnostics = statusline.section_diagnostics({ trunc_width = 75 })
-      local filename = statusline.section_filename({ trunc_width = 140 })
-      local fileinfo = statusline.section_fileinfo({ trunc_width = 120 })
-      local location = statusline.section_location({ trunc_width = 75 })
-      local search = statusline.section_searchcount({ trunc_width = 75 })
-
-      statusline.combine_groups({
-        { hl = mode_hl,                 strings = { mode } },
-        { hl = "MiniStatuslineDevinfo", strings = { git, diagnostics } },
-        "%<", -- Mark general truncate point
-        { hl = "MiniStatuslineFilename", strings = { filename } },
-        "%=", -- End left alignment
-        { hl = "MiniStatuslineFileinfo", strings = { fileinfo } },
-        { hl = mode_hl,                  strings = { search, location } },
-      })
+      -- You can configure sections in the statusline by overriding their
+      -- default behavior. For example, here we set the section for
+      -- cursor location to LINE:COLUMN
+      ---@diagnostic disable-next-line: duplicate-set-field
+      statusline.section_location = function()
+        return "%2l:%-2v"
+      end
     end,
   },
 }

@@ -22,7 +22,7 @@ return {
           "prettier", -- prettier formatter
           "stylua", -- lua formatter
           "eslint_d", -- js linter
-          -- "golangci_lint", -- go linter
+          "golangci_lint", -- go linter
           "terraform_fmt", -- terraform formatter
           "terraform_validate", -- terraform linter
           "shellcheck", -- shell linter
@@ -61,13 +61,13 @@ return {
           --     return utils.root_has_file({ ".eslintrc.js", ".eslintrc.cjs" }) -- only enable if root has .eslintrc.js or .eslintrc.cjs
           --   end,
           -- }),
-          -- diagnostics.golangci_lint,
+          diagnostics.golangci_lint,
           diagnostics.terraform_validate,
           -- diagnostics.shellcheck,
           diagnostics.yamllint,
 
           code_actions.gitsigns,
-          -- code_actions.refactoring,
+          code_actions.refactoring,
         },
         -- configure format on save
         -- on_attach = function(current_client, bufnr)
