@@ -37,4 +37,8 @@ return {
       end)
     end,
   },
+
+  {
+    "mzlogin/vim-markdown-toc",
+  },
 }
