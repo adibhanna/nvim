@@ -283,4 +283,8 @@ return {
       end
     end,
   },
+
+  {
+    "fladson/vim-kitty"
+  }
 }

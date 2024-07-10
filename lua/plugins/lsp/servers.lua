@@ -47,4 +47,6 @@ return {
 
   zls = {},
   clangd = {},
+  marksman = {},
+  -- "markdownlint-cli2", "markdown-toc"
 }

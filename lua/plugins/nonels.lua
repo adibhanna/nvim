@@ -65,6 +65,7 @@ return {
           diagnostics.terraform_validate,
           -- diagnostics.shellcheck,
           diagnostics.yamllint,
+          diagnostics.markdownlint_cli2,
 
           code_actions.gitsigns,
           code_actions.refactoring,
