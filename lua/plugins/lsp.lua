@@ -46,6 +46,40 @@ return {
 
         map("<leader>v", "<cmd>vsplit | lua vim.lsp.buf.definition()<cr>", "Goto Definition in Vertical Split")
 
+        local wk = require("which-key")
+        wk.add({
+          { "<leader>la", vim.lsp.buf.code_action,                           desc = "Code Action" },
+          { "<leader>lA", vim.lsp.buf.range_code_action,                     desc = "Range Code Actions" },
+          { "<leader>ls", vim.lsp.buf.signature_help,                        desc = "Display Signature Information" },
+          { "<leader>lr", vim.lsp.buf.rename,                                desc = "Rename all references" },
+          { "<leader>lf", vim.lsp.buf.format,                                desc = "Format" },
+          { "<leader>li", require("telescope.builtin").lsp_implementations,  desc = "Implementation" },
+          { "<leader>lw", require("telescope.builtin").diagnostics,          desc = "Diagnostics" },
+          { "<leader>lc", require("config.utils").copyFilePathAndLineNumber, desc = "Copy File Path and Line Number" },
+
+          -- W = {
+          --   name = "+Workspace",
+          --   a = { vim.lsp.buf.add_workspace_folder, "Add Folder" },
+          --   r = { vim.lsp.buf.remove_workspace_folder, "Remove Folder" },
+          --   l = {
+          --     function()
+          --       print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+          --     end,
+          --     "List Folders",
+          --   },
+          -- },
+
+          { "<leader>Wa", vim.lsp.buf.add_workspace_folder,                  desc = "Workspace Add Folder" },
+          { "<leader>Wr", vim.lsp.buf.remove_workspace_folder,               desc = "Workspace Remove Folder" },
+          {
+            "<leader>Wl",
+            function()
+              print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+            end,
+            desc = "Workspace List Folders",
+          }
+        })
+
         -- Thank you teej
         -- https://github.com/nvim-lua/kickstart.nvim/blob/master/init.lua#L502
         local client = vim.lsp.get_client_by_id(event.data.client_id)

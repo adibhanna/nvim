@@ -48,7 +48,7 @@ local mappings = {
     },
 }
 
-which_key.register(mappings, opts)
+-- which_key.register(mappings, opts)
 
 vim.keymap.set("n", "K", "<cmd>RustLsp hover actions<CR>", { silent = true, desc = "Rust Hover" })
 vim.keymap.set("n", "gl", "<cmd>RustLsp explainError<CR>", { silent = true, desc = "Explain error" })

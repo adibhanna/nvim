@@ -11,16 +11,9 @@ local opts = {
     noremap = true,
     nowait = true,
 }
-
-local mappings = {
-    g = {
-        name = "Go",
-        c = { ":GoCmt<CR>", "Go: Comment" },
-    },
-    t = {
-        f = { ":GoTestFile<CR>", "Go: Test File" },
-        m = { ":GoTestFunc<CR>", "Go: Test Function" },
-    },
-}
-
-which_key.register(mappings, opts)
+local wk = require("which-key")
+wk.add({
+    { "<leader>gc", ":GoCmt<CR>",      desc = "Go: Comment" },
+    { "<leader>tf", ":GoTestFile<CR>", desc = "Go: Test File" },
+    { "<leader>tm", ":GoTestFunc<CR>", desc = "Go: Test Function" },
+})

@@ -67,6 +67,29 @@ return {
   {
     "windwp/nvim-spectre",
     event = "BufRead",
+    keys = {
+      {
+        "<leader>Rr",
+        function()
+          require("spectre").open()
+        end,
+        desc = "Replace",
+      },
+      {
+        "<leader>Rw",
+        function()
+          require("spectre").open_visual({ select_word = true })
+        end,
+        desc = "Replace Word",
+      },
+      {
+        "<leader>Rf",
+        function()
+          require("spectre").open_file_search()
+        end,
+        desc = "Replace Buffer",
+      },
+    },
   },
 
   -- Add/change/delete surrounding delimiter pairs with ease
@@ -97,7 +120,7 @@ return {
       },
     },
     { "Bilal2453/luvit-meta", lazy = true }, -- optional `vim.uv` typings
-    { -- optional completion source for require statements and module annotations
+    {                                        -- optional completion source for require statements and module annotations
       "hrsh7th/nvim-cmp",
       opts = function(_, opts)
         opts.sources = opts.sources or {}
@@ -159,8 +182,8 @@ return {
   {
     "ggandor/leap.nvim",
     keys = {
-      { "s", mode = { "n", "x", "o" }, desc = "Leap forward to" },
-      { "S", mode = { "n", "x", "o" }, desc = "Leap backward to" },
+      { "s",  mode = { "n", "x", "o" }, desc = "Leap forward to" },
+      { "S",  mode = { "n", "x", "o" }, desc = "Leap backward to" },
       { "gs", mode = { "n", "x", "o" }, desc = "Leap from windows" },
     },
     config = function(_, opts)
@@ -227,7 +250,29 @@ return {
         snippet_engine = "luasnip",
       })
     end,
-    -- version = "*"
+    keys = {
+      {
+        "<leader>ng",
+        function()
+          require("neogen").generate()
+        end,
+        desc = "Generate code annotations",
+      },
+      {
+        "<leader>nf",
+        function()
+          require("neogen").generate({ type = "func" })
+        end,
+        desc = "Generate Function Annotation",
+      },
+      {
+        "<leader>nt",
+        function()
+          require("neogen").generate({ type = "type" })
+        end,
+        desc = "Generate Type Annotation",
+      },
+    }
   },
 
   {
