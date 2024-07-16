@@ -167,7 +167,7 @@ return {
     "mbbill/undotree",
     keys = {
       {
-        "<leader>gU",
+        "<leader>GU",
         ":UndotreeToggle<CR>",
         desc = "Toggle UndoTree"
       },
