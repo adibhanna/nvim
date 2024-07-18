@@ -14,6 +14,15 @@ return {
       -- "nvim-telescope/telescope-frecency.nvim",
     },
     keys = {
+      -- f = { require("config.utils").telescope_git_or_file, "Find Files (Root)" },
+              -- map("<leader>o", require("telescope.builtin").buffers, "Buffers")
+
+      {
+        "<leader>f", function() require("config.utils").telescope_git_or_file() end, desc = "Find Files (Root)",
+      },
+      {
+        "<leader>o", function() require("telescope.builtin").buffers() end, desc = "Buffers",
+      },
       {
         "<leader>sf",
         function()
