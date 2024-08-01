@@ -53,6 +53,7 @@ return {
   -- Smooth scrolling neovim plugin written in lua
   {
     "karb94/neoscroll.nvim",
+    enabled = false,
     config = function()
       require("neoscroll").setup({
         stop_eof = true,
@@ -66,6 +67,7 @@ return {
   -- find and replace
   {
     "windwp/nvim-spectre",
+    enabled = false,
     event = "BufRead",
     keys = {
       {
@@ -148,8 +150,8 @@ return {
   -- Indent guide for Neovim
   {
     "lukas-reineke/indent-blankline.nvim",
-    event = { "BufReadPost", "BufNewFile" },
     enabled = false,
+    event = { "BufReadPost", "BufNewFile" },
     version = "2.1.0",
     opts = {
       char = "┊",
