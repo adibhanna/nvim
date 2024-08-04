@@ -53,7 +53,7 @@ return {
   -- Smooth scrolling neovim plugin written in lua
   {
     "karb94/neoscroll.nvim",
-    enabled = false,
+    -- enabled = false,
     config = function()
       require("neoscroll").setup({
         stop_eof = true,
