@@ -4,7 +4,7 @@ return {
     "nvim-lua/plenary.nvim",
     "nvim-treesitter/nvim-treesitter",
     "antoinemadec/FixCursorHold.nvim",
-    "nvim-neotest/neotest-go",
+    "nvim-neotest/neotest-golang",
   },
   keys = {
     {
@@ -74,7 +74,7 @@ return {
     require("neotest").setup({
       -- your neotest config here
       adapters = {
-        require("neotest-go"),
+        require("neotest-golang"),
       },
       icons = {
         child_indent = "│",
