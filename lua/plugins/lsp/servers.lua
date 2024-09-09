@@ -35,7 +35,8 @@ return {
   vimls = {
     filetypes = { "vim" },
   },
-  tsserver = {},
+  -- tsserver = {},
+  ts_ls = {},
   gopls = {},
   pyright = {},
 
