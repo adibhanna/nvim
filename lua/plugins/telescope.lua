@@ -15,7 +15,10 @@ return {
     },
     keys = {
       -- f = { require("config.utils").telescope_git_or_file, "Find Files (Root)" },
-              -- map("<leader>o", require("telescope.builtin").buffers, "Buffers")
+      -- map("<leader>o", require("telescope.builtin").buffers, "Buffers")
+      {
+        "<leader>gt", ":Telescope golang_test_files<cr>", desc = "Search golang Tests",
+      },
 
       {
         "<leader>f", function() require("config.utils").telescope_git_or_file() end, desc = "Find Files (Root)",
@@ -319,6 +322,7 @@ return {
           --   },
           -- },
         },
+        -- golang_test_files = require('config.telescope.golang_test_files'),
       })
       telescope.load_extension("fzf")
       telescope.load_extension("ui-select")
@@ -327,6 +331,7 @@ return {
       -- telescope.load_extension("frecency")
       telescope.load_extension("notify")
       telescope.load_extension("package_info")
+      telescope.load_extension('golang_test_files')
     end,
   },
 }
