@@ -165,8 +165,8 @@ local function golang_test_files(opts)
 end
 
 -- Add the picker to Telescope extensions
-return require("telescope").register_extension({
-    exports = {
-        golang_test_files = golang_test_files,
-    },
-})
+-- return require("telescope").register_extension({
+--     exports = {
+--         golang_test_files = golang_test_files,
+--     },
+-- })
