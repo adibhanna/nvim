@@ -177,6 +177,7 @@ return {
       --   end
       --   return string.format("%s\t\t%s", tail, parent)
       -- end
+
       local function document_symbols_for_selected(prompt_bufnr)
         local action_state = require("telescope.actions.state")
         local actions = require("telescope.actions")
@@ -231,15 +232,21 @@ return {
 
             local flat_symbols = flatten_symbols(result)
 
+            -- Define highlight group for symbol kind
+            vim.cmd([[highlight TelescopeSymbolKind guifg=#61AFEF]])
+
             require("telescope.pickers").new({}, {
               prompt_title = "Document Symbols: " .. vim.fn.fnamemodify(entry.path, ":t"),
               finder = require("telescope.finders").new_table({
                 results = flat_symbols,
                 entry_maker = function(symbol)
-                  local kind = vim.lsp.protocol.SymbolKind[symbol.kind] or "Unknown"
+                  local kind = vim.lsp.protocol.SymbolKind[symbol.kind] or "Other"
                   return {
                     value = symbol,
-                    display = string.format("%s [%s]", symbol.name, kind),
+                    display = function(entry)
+                      local display_text = string.format("%-50s %s", entry.value.name, kind)
+                      return display_text, { { { #entry.value.name + 1, #display_text }, "TelescopeSymbolKind" } }
+                    end,
                     ordinal = symbol.name,
                     filename = entry.path,
                     lnum = symbol.selectionRange.start.line + 1,
@@ -262,7 +269,6 @@ return {
           end)
         end)
       end
-
 
       telescope.setup({
         file_ignore_patterns = { "%.git/." },
