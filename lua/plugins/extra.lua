@@ -275,7 +275,7 @@ return {
         end,
         desc = "Generate Type Annotation",
       },
-    }
+    },
   },
 
   {
@@ -325,6 +325,8 @@ return {
   },
 
   {
-    "fladson/vim-kitty"
-  }
+    "fladson/vim-kitty",
+    "MunifTanjim/nui.nvim",
+    "rcarriga/nvim-notify",
+  },
 }
