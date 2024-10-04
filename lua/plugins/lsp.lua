@@ -36,8 +36,8 @@ return {
         map("gi", require("telescope.builtin").lsp_implementations, "Goto Implementation")
         map("go", require("telescope.builtin").lsp_type_definitions, "Type Definition")
         map("<leader>p", require("telescope.builtin").lsp_document_symbols, "Document Symbols")
-        map("<leader>P", require("telescope.builtin").lsp_workspace_symbols, "Workspace Symbols")
-        map("<leader>Ps", require("telescope.builtin").lsp_dynamic_workspace_symbols, "Workspace Symbols")
+        map("<leader>ws", require("telescope.builtin").lsp_workspace_symbols, "Workspace Symbols")
+        map("<leader>Ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "Workspace Symbols")
 
         map("gl", vim.diagnostic.open_float, "Open Diagnostic Float")
         map("K", vim.lsp.buf.hover, "Hover Documentation")
