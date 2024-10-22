@@ -122,7 +122,7 @@ return {
       },
     },
     { "Bilal2453/luvit-meta", lazy = true }, -- optional `vim.uv` typings
-    {                                        -- optional completion source for require statements and module annotations
+    { -- optional completion source for require statements and module annotations
       "hrsh7th/nvim-cmp",
       opts = function(_, opts)
         opts.sources = opts.sources or {}
@@ -184,8 +184,8 @@ return {
   {
     "ggandor/leap.nvim",
     keys = {
-      { "s",  mode = { "n", "x", "o" }, desc = "Leap forward to" },
-      { "S",  mode = { "n", "x", "o" }, desc = "Leap backward to" },
+      { "s", mode = { "n", "x", "o" }, desc = "Leap forward to" },
+      { "S", mode = { "n", "x", "o" }, desc = "Leap backward to" },
       { "gs", mode = { "n", "x", "o" }, desc = "Leap from windows" },
     },
     config = function(_, opts)
@@ -346,6 +346,29 @@ return {
           vim.cmd("ShowkeysToggle")
         end,
         desc = "Show key presses",
+      },
+    },
+  },
+
+  { "nvchad/volt", lazy = true },
+
+  {
+    "nvchad/minty",
+    cmd = { "Shades", "Huefy" },
+    keys = {
+      {
+        "<leader>ks",
+        function()
+          vim.cmd("Shades")
+        end,
+        desc = "Shades",
+      },
+      {
+        "<leader>kh",
+        function()
+          vim.cmd("Huefy")
+        end,
+        desc = "Huefy",
       },
     },
   },
