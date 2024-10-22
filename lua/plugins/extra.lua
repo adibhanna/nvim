@@ -341,7 +341,7 @@ return {
 
     keys = {
       {
-        "<leader>sk",
+        "<leader>kt",
         function()
           vim.cmd("ShowkeysToggle")
         end,
