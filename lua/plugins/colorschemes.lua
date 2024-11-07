@@ -357,7 +357,7 @@ return {
       vim.api.nvim_set_hl(0, "NavicText", { default = true, bg = "none", fg = "#eedaad" })
       vim.api.nvim_set_hl(0, "NavicSeparator", { default = true, bg = "none", fg = "#eedaad" })
 
-      -- vim.api.nvim_command("colorscheme catppuccin")
+      vim.api.nvim_command("colorscheme catppuccin")
     end,
   },
   {
@@ -382,7 +382,7 @@ return {
       -- vim.g.gruvbox_material_colors_override = { bg0 = '#16181A' } -- #0e1010
       -- vim.g.gruvbox_material_better_performance = 1
 
-      vim.cmd.colorscheme("gruvbox-material")
+      -- vim.cmd.colorscheme("gruvbox-material")
     end,
   },
 
@@ -403,7 +403,7 @@ return {
     "datsfilipe/vesper.nvim",
     config = function()
       require("vesper").setup({
-        transparent = false, -- Boolean: Sets the background to transparent
+        transparent = true, -- Boolean: Sets the background to transparent
         italics = {
           comments = false,  -- Boolean: Italicizes comments
           keywords = false,  -- Boolean: Italicizes keywords
@@ -431,7 +431,7 @@ return {
         hide_fillchars = false,
         borderless_telescope = true,
         terminal_colors = true,
-        cache = false,
+        cache = true,
 
         -- vim.api.nvim_command("colorscheme cyberdream")
       })
