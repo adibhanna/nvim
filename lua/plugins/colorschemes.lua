@@ -357,7 +357,7 @@ return {
       vim.api.nvim_set_hl(0, "NavicText", { default = true, bg = "none", fg = "#eedaad" })
       vim.api.nvim_set_hl(0, "NavicSeparator", { default = true, bg = "none", fg = "#eedaad" })
 
-      vim.api.nvim_command("colorscheme catppuccin")
+      -- vim.api.nvim_command("colorscheme catppuccin")
     end,
   },
   {
@@ -386,7 +386,7 @@ return {
     end,
   },
 
-  { "bluz71/vim-moonfly-colors",  name = "moonfly",  lazy = false, priority = 1000 },
+  { "bluz71/vim-moonfly-colors", name = "moonfly", lazy = false, priority = 1000 },
   { "bluz71/vim-nightfly-colors", name = "nightfly", lazy = false, priority = 1000 },
 
   {
@@ -417,15 +417,15 @@ return {
     "datsfilipe/vesper.nvim",
     config = function()
       require("vesper").setup({
-        transparent = true,  -- Boolean: Sets the background to transparent
+        transparent = true, -- Boolean: Sets the background to transparent
         italics = {
-          comments = false,  -- Boolean: Italicizes comments
-          keywords = false,  -- Boolean: Italicizes keywords
+          comments = false, -- Boolean: Italicizes comments
+          keywords = false, -- Boolean: Italicizes keywords
           functions = false, -- Boolean: Italicizes functions
-          strings = false,   -- Boolean: Italicizes strings
+          strings = false, -- Boolean: Italicizes strings
           variables = false, -- Boolean: Italicizes variables
         },
-        overrides = {},      -- A dictionary of group names, can be a function returning a dictionary or a table.
+        overrides = {}, -- A dictionary of group names, can be a function returning a dictionary or a table.
         palette_overrides = {},
       })
     end,
@@ -449,6 +449,14 @@ return {
 
         -- vim.api.nvim_command("colorscheme cyberdream")
       })
+    end,
+  },
+  {
+    "wtfox/jellybeans.nvim",
+    priority = 1000,
+    config = function()
+      require("jellybeans").setup()
+      vim.cmd.colorscheme("jellybeans")
     end,
   },
 }
