@@ -394,16 +394,16 @@ return {
     lazy = false,
     priority = 1000,
     config = function()
-      local lackluster = require("lackluster")
-      require("nvim-web-devicons").setup({
-        color_icons = false,
-        override = {
-          ["default_icon"] = {
-            color = lackluster.color.gray4,
-            name = "Default",
-          },
-        },
-      })
+      -- local lackluster = require("lackluster")
+      -- require("nvim-web-devicons").setup({
+      --   color_icons = false,
+      --   override = {
+      --     ["default_icon"] = {
+      --       color = lackluster.color.gray4,
+      --       name = "Default",
+      --     },
+      --   },
+      -- })
 
       -- vim.cmd.colorscheme("lackluster-night")
     end,
