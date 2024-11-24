@@ -2,13 +2,23 @@ return {
   "folke/which-key.nvim",
   event = "VeryLazy",
   opts = {
+    preset = "helix",
+    delay = 0,
     icons = {
-      mappings = false
+      rules = false,
+      breadcrumb = " ", -- symbol used in the command line area that shows your active key combo
+      separator = "󱦰  ", -- symbol used between a key and it's label
+      group = "󰹍 ", -- symbol prepended to a group
     },
-
+    plugins = {
+      spelling = {
+        enabled = false,
+      },
+    },
     win = {
-      border = "single", -- none, single, double, shadow
-      title = false
+      height = {
+        max = math.huge,
+      },
     },
     spec = {
       {
@@ -23,9 +33,9 @@ return {
         { "<leader>N", group = "Package Info" },
         { "<leader>g", group = "Go" },
         { "<leader>W", group = "Workspace" },
-        { "[",         group = "prev" },
-        { "]",         group = "next" },
-        { "g",         group = "goto" },
+        { "[", group = "prev" },
+        { "]", group = "next" },
+        { "g", group = "goto" },
       },
     },
   },
