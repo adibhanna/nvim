@@ -459,4 +459,11 @@ return {
       -- vim.cmd.colorscheme("jellybeans")
     end,
   },
+
+  {
+    "bettervim/yugen.nvim",
+    config = function()
+      -- vim.cmd.colorscheme("yugen")
+    end,
+  },
 }
