@@ -22,33 +22,33 @@ return {
     local luasnip = require("luasnip")
     -- local lspkind = require("lspkind")
 
-    local kind_icons = {
-      Text = "",
-      Method = "󰆧",
-      Function = "󰊕",
-      Constructor = "",
-      Field = "󰇽",
-      Variable = "󰂡",
-      Class = "󰠱",
-      Interface = "",
-      Module = "",
-      Property = "󰜢",
-      Unit = "",
-      Value = "󰎠",
-      Enum = "",
-      Keyword = "󰌋",
-      Snippet = "",
-      Color = "󰏘",
-      File = "󰈙",
-      Reference = "",
-      Folder = "󰉋",
-      EnumMember = "",
-      Constant = "󰏿",
-      Struct = "",
-      Event = "",
-      Operator = "󰆕",
-      TypeParameter = "󰅲",
-    }
+    -- local kind_icons = {
+    --   Text = "",
+    --   Method = "󰆧",
+    --   Function = "󰊕",
+    --   Constructor = "",
+    --   Field = "󰇽",
+    --   Variable = "󰂡",
+    --   Class = "󰠱",
+    --   Interface = "",
+    --   Module = "",
+    --   Property = "󰜢",
+    --   Unit = "",
+    --   Value = "󰎠",
+    --   Enum = "",
+    --   Keyword = "󰌋",
+    --   Snippet = "",
+    --   Color = "󰏘",
+    --   File = "󰈙",
+    --   Reference = "",
+    --   Folder = "󰉋",
+    --   EnumMember = "",
+    --   Constant = "󰏿",
+    --   Struct = "",
+    --   Event = "",
+    --   Operator = "󰆕",
+    --   TypeParameter = "󰅲",
+    -- }
     require("luasnip.loaders.from_vscode").lazy_load()
     luasnip.config.setup({})
 
@@ -91,10 +91,10 @@ return {
           end
         end, { "i", "s" }),
       }),
-      window = {
-        completion = cmp.config.window.bordered(),
-        documentation = cmp.config.window.bordered(),
-      },
+      -- window = {
+      --   completion = cmp.config.window.bordered(),
+      --   documentation = cmp.config.window.bordered(),
+      -- },
       sources = {
         { name = "copilot" },
         { name = "nvim_lsp" },
