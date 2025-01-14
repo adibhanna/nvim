@@ -153,4 +153,3 @@ vim.api.nvim_create_autocmd("BufWritePre", {
   end,
   group = goimport_sync_grp,
 })
-
