@@ -385,6 +385,18 @@ return {
       vim.cmd.colorscheme("gruvbox-material")
     end,
   },
+  {
+    "f-person/auto-dark-mode.nvim",
+    config = {
+      update_interval = 1000,
+      set_dark_mode = function()
+        vim.api.nvim_set_option_value("background", "dark", {})
+      end,
+      set_light_mode = function()
+        vim.api.nvim_set_option_value("background", "light", {})
+      end,
+    },
+  },
 
   -- { "bluz71/vim-moonfly-colors", name = "moonfly", lazy = false, priority = 1000 },
   -- { "bluz71/vim-nightfly-colors", name = "nightfly", lazy = false, priority = 1000 },
