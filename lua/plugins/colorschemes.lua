@@ -382,7 +382,7 @@ return {
       -- vim.g.gruvbox_material_colors_override = { bg0 = '#16181A' } -- #0e1010
       -- vim.g.gruvbox_material_better_performance = 1
 
-      vim.cmd.colorscheme("gruvbox-material")
+      -- vim.cmd.colorscheme("gruvbox-material")
     end,
   },
 
@@ -466,40 +466,93 @@ return {
       -- vim.cmd.colorscheme("yugen")
     end,
   },
-
+  -- lua/plugins/rose-pine.lua
   {
-    "ellisonleao/gruvbox.nvim",
-    priority = 1000,
+    "rose-pine/neovim",
+    name = "rose-pine",
     config = function()
-      require("gruvbox").setup({
-        terminal_colors = true,
-        undercurl = false,
-        underline = false,
-        bold = false,
-        italic = {
-          strings = false,
-          emphasis = false,
-          comments = false,
-          operators = false,
-          folds = false,
+      require("rose-pine").setup({
+        variant = "auto", -- auto, main, moon, or dawn
+        dark_variant = "main", -- main, moon, or dawn
+        dim_inactive_windows = false,
+        extend_background_behind_borders = true,
+
+        enable = {
+          terminal = true,
+          legacy_highlights = true, -- Improve compatibility for previous versions of Neovim
+          migrations = true, -- Handle deprecated options automatically
         },
-        strikethrough = true,
-        invert_selection = false,
-        invert_signs = false,
-        invert_tabline = false,
-        invert_intend_guides = false,
-        inverse = true,
-        contrast = "hard",
-        palette_overrides = {},
-        overrides = {
-          SignColumn = { bg = "#1C2021" },
+
+        styles = {
+          bold = false,
+          italic = false,
+          transparency = false,
         },
-        dim_inactive = false,
-        transparent_mode = false,
+
+        groups = {
+          border = "muted",
+          link = "iris",
+          panel = "surface",
+
+          error = "love",
+          hint = "iris",
+          info = "foam",
+          note = "pine",
+          todo = "rose",
+          warn = "gold",
+
+          git_add = "foam",
+          git_change = "rose",
+          git_delete = "love",
+          git_dirty = "rose",
+          git_ignore = "muted",
+          git_merge = "iris",
+          git_rename = "pine",
+          git_stage = "iris",
+          git_text = "rose",
+          git_untracked = "subtle",
+
+          h1 = "iris",
+          h2 = "foam",
+          h3 = "rose",
+          h4 = "gold",
+          h5 = "pine",
+          h6 = "foam",
+        },
+
+        palette = {
+          -- Override the builtin palette per variant
+          -- moon = {
+          --     base = '#18191a',
+          --     overlay = '#363738',
+          -- },
+        },
+
+        highlight_groups = {
+          TelescopeBorder = { fg = "highlight_high", bg = "none" },
+          TelescopeNormal = { bg = "none" },
+          TelescopePromptNormal = { bg = "base" },
+          TelescopeResultsNormal = { fg = "subtle", bg = "none" },
+          TelescopeSelection = { fg = "text", bg = "base" },
+          TelescopeSelectionCaret = { fg = "rose", bg = "rose" },
+        },
+        before_highlight = function(group, highlight, palette)
+          -- Disable all undercurls
+          -- if highlight.undercurl then
+          --     highlight.undercurl = false
+          -- end
+          --
+          -- Change palette colour
+          -- if highlight.fg == palette.pine then
+          --     highlight.fg = palette.foam
+          -- end
+        end,
       })
 
-      -- vim.cmd.colorscheme("gruvbox")
+      -- vim.cmd("colorscheme rose-pine-main")
+      -- vim.cmd("colorscheme rose-pine-moon")
+      -- vim.cmd("colorscheme rose-pine-dawn")
+      vim.cmd("colorscheme rose-pine-main")
     end,
-    opts = {},
   },
 }
