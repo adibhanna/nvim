@@ -87,9 +87,9 @@ vim.api.nvim_create_autocmd("ColorScheme", {
     -- vim.cmd('highlight NeoTreeFloatBorder gui=none guifg=' .. colors.fg .. ' guibg=none')
     -- vim.cmd('highlight NeoTreeEndOfBuffer guibg=#252e33') -- 1d2021
 
-    vim.api.nvim_set_hl(0, "FloatBorder", { link = "Normal" })
-    vim.api.nvim_set_hl(0, "LspInfoBorder", { link = "Normal" })
-    vim.api.nvim_set_hl(0, "NormalFloat", { link = "Normal" })
+    -- vim.api.nvim_set_hl(0, "FloatBorder", { link = "Normal" })
+    -- vim.api.nvim_set_hl(0, "LspInfoBorder", { link = "Normal" })
+    -- vim.api.nvim_set_hl(0, "NormalFloat", { link = "Normal" })
 
 
     vim.cmd("highlight Winbar guibg=none")
