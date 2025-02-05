@@ -65,6 +65,7 @@
   "package-info.nvim": { "branch": "master", "commit": "3de4f3569ce60e248707df042b72769b3ec343b8" },
   "persistence.nvim": { "branch": "main", "commit": "f6aad7dde7fcf54148ccfc5f622c6d5badd0cc3d" },
   "plenary.nvim": { "branch": "master", "commit": "3707cdb1e43f5cea73afb6037e6494e7ce847a66" },
+  "poimandres.nvim": { "branch": "main", "commit": "a488957d803943a4201ac3b774913fcafa9e6b3a" },
   "rose-pine": { "branch": "main", "commit": "42f0724e0bca9f57f0bcfa688787c37b8d4befe8" },
   "rustaceanvim": { "branch": "master", "commit": "bc8c4b8f7606d5b7c067cd8369e25c1a7ff77bd0" },
   "schemastore.nvim": { "branch": "main", "commit": "085d1a9c4f30de56e312931582e80805f0ed3621" },
