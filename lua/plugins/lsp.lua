@@ -31,13 +31,13 @@ return {
           vim.keymap.set("n", keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
         end
 
-        map("gd", require("telescope.builtin").lsp_definitions, "Goto Definition")
-        map("gr", require("telescope.builtin").lsp_references, "Goto References")
-        map("gi", require("telescope.builtin").lsp_implementations, "Goto Implementation")
-        map("go", require("telescope.builtin").lsp_type_definitions, "Type Definition")
-        map("<leader>p", require("telescope.builtin").lsp_document_symbols, "Document Symbols")
-        map("<leader>ws", require("telescope.builtin").lsp_workspace_symbols, "Workspace Symbols")
-        map("<leader>Ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "Workspace Symbols")
+        -- map("gd", require("telescope.builtin").lsp_definitions, "Goto Definition")
+        -- map("gr", require("telescope.builtin").lsp_references, "Goto References")
+        -- map("gi", require("telescope.builtin").lsp_implementations, "Goto Implementation")
+        -- map("go", require("telescope.builtin").lsp_type_definitions, "Type Definition")
+        -- map("<leader>p", require("telescope.builtin").lsp_document_symbols, "Document Symbols")
+        -- map("<leader>ws", require("telescope.builtin").lsp_workspace_symbols, "Workspace Symbols")
+        -- map("<leader>Ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "Workspace Symbols")
 
         map("gl", vim.diagnostic.open_float, "Open Diagnostic Float")
         map("K", vim.lsp.buf.hover, "Hover Documentation")
@@ -53,8 +53,8 @@ return {
           { "<leader>ls", vim.lsp.buf.signature_help,                        desc = "Display Signature Information" },
           { "<leader>lr", vim.lsp.buf.rename,                                desc = "Rename all references" },
           { "<leader>lf", vim.lsp.buf.format,                                desc = "Format" },
-          { "<leader>li", require("telescope.builtin").lsp_implementations,  desc = "Implementation" },
-          { "<leader>lw", require("telescope.builtin").diagnostics,          desc = "Diagnostics" },
+          -- { "<leader>li", require("telescope.builtin").lsp_implementations,  desc = "Implementation" },
+          -- { "<leader>lw", require("telescope.builtin").diagnostics,          desc = "Diagnostics" },
           { "<leader>lc", require("config.utils").copyFilePathAndLineNumber, desc = "Copy File Path and Line Number" },
 
           -- W = {

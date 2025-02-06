@@ -1,6 +1,7 @@
 return {
   {
     "nvim-telescope/telescope.nvim",
+    enabled = false,
     cmd = "Telescope",
     version = false,
     lazy = true,
@@ -8,7 +9,7 @@ return {
       "nvim-lua/plenary.nvim",
       "nvim-tree/nvim-web-devicons",
       { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-      "nvim-telescope/telescope-ui-select.nvim",
+      -- "nvim-telescope/telescope-ui-select.nvim",
       "telescope-dap.nvim",
       "kkharji/sqlite.lua",
       -- "nvim-telescope/telescope-frecency.nvim",
@@ -390,21 +391,21 @@ return {
             override_file_sorter = true,    -- override the file sorter
             case_mode = "smart_case",       -- or "ignore_case" or "respect_case"
           },
-          ["ui-select"] = {
-            require("telescope.themes").get_dropdown({
-              previewer = false,
-              initial_mode = "normal",
-              sorting_strategy = "ascending",
-              layout_strategy = "horizontal",
-              layout_config = {
-                horizontal = {
-                  width = 0.5,
-                  height = 0.4,
-                  preview_width = 0.6,
-                },
-              },
-            }),
-          },
+          -- ["ui-select"] = {
+          --   require("telescope.themes").get_dropdown({
+          --     previewer = false,
+          --     initial_mode = "normal",
+          --     sorting_strategy = "ascending",
+          --     layout_strategy = "horizontal",
+          --     layout_config = {
+          --       horizontal = {
+          --         width = 0.5,
+          --         height = 0.4,
+          --         preview_width = 0.6,
+          --       },
+          --     },
+          --   }),
+          -- },
           package_info = {
             -- Optional theme (the extension doesn't set a default theme)
             -- theme = "ivy",
@@ -424,14 +425,15 @@ return {
         -- golang_test_files = require('config.telescope.golang_test_files'),
       })
       telescope.load_extension("fzf")
-      telescope.load_extension("ui-select")
+      -- telescope.load_extension("ui-select")
       -- telescope.load_extension("refactoring")
       telescope.load_extension("dap")
       -- telescope.load_extension("frecency")
-      telescope.load_extension("notify")
+      -- telescope.load_extension("notify")
       telescope.load_extension("package_info")
       -- telescope.load_extension('golang_test_files')
       telescope.load_extension("makefile_targets")
+      telescope.load_extension("noice")
     end,
   },
 }

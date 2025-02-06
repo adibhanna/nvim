@@ -8,6 +8,7 @@ return {
   -- delete buffer
   {
     "famiu/bufdelete.nvim",
+    enabled = false,
     event = "VeryLazy",
     config = function()
       vim.keymap.set(
@@ -41,19 +42,19 @@ return {
   -- Neovim notifications and LSP progress messages
   {
     "j-hui/fidget.nvim",
-    branch = "legacy",
-    enabled = false,
-    config = function()
-      require("fidget").setup({
-        window = { blend = 0 },
-      })
-    end,
+    -- branch = "legacy",
+    -- enabled = false,
+    -- config = function()
+    --   require("fidget").setup({
+    --     window = { blend = 0 },
+    --   })
+    -- end,
   },
 
   -- Smooth scrolling neovim plugin written in lua
   {
     "karb94/neoscroll.nvim",
-    -- enabled = false,
+    enabled = false,
     config = function()
       require("neoscroll").setup({
         stop_eof = true,
@@ -67,7 +68,7 @@ return {
   -- find and replace
   {
     "windwp/nvim-spectre",
-    enabled = false,
+    enabled = true,
     event = "BufRead",
     keys = {
       {
@@ -285,14 +286,14 @@ return {
 
       require("mini.pairs").setup()
 
-      local statusline = require("mini.statusline")
-      statusline.setup({
-        use_icons = vim.g.have_nerd_font,
-      })
-      ---@diagnostic disable-next-line: duplicate-set-field
-      statusline.section_location = function()
-        return "%2l:%-2v"
-      end
+      -- local statusline = require("mini.statusline")
+      -- statusline.setup({
+      --   use_icons = vim.g.have_nerd_font,
+      -- })
+      -- ---@diagnostic disable-next-line: duplicate-set-field
+      -- statusline.section_location = function()
+      --   return "%2l:%-2v"
+      -- end
     end,
   },
 
@@ -318,14 +319,14 @@ return {
     "fladson/vim-kitty",
     "MunifTanjim/nui.nvim",
   },
-  {
-    "rcarriga/nvim-notify",
-    config = function()
-      require("notify").setup({
-        background_colour = "#000000",
-      })
-    end,
-  },
+  -- {
+  --   "rcarriga/nvim-notify",
+  --   config = function()
+  --     require("notify").setup({
+  --       background_colour = "#000000",
+  --     })
+  --   end,
+  -- },
   {
     "nvchad/showkeys",
     cmd = "ShowkeysToggle",

@@ -88,65 +88,73 @@ return {
         desc = "Prev Hunk"
       },
       {
-        "<leader>Gl", function()
+        "<leader>Gl",
+        function()
           require("gitsigns").blame_line()
         end,
         desc = "Blame"
       },
       {
-        "<leader>Gp", function()
+        "<leader>Gp",
+        function()
           require("gitsigns").preview_hunk()
         end,
         desc = "Preview Hunk"
       },
       {
-        "<leader>Gr", function()
+        "<leader>Gr",
+        function()
           require("gitsigns").reset_hunk()
         end,
         desc = "Reset Hunk"
       },
       {
-        "<leader>GR", function()
+        "<leader>GR",
+        function()
           require("gitsigns").reset_buffer()
         end,
         desc = "Reset Buffer"
       },
       {
-        "<leader>Gj", function()
+        "<leader>Gj",
+        function()
           require("gitsigns").next_hunk({ navigation_message = false })
         end,
         desc = "Next Hunk"
       },
       {
-        "<leader>Gs", function()
+        "<leader>Gs",
+        function()
           require("gitsigns").stage_hunk()
         end,
         desc = "Stage Hunk"
       },
       {
-        "<leader>Gu", function()
+        "<leader>Gu",
+        function()
           require("gitsigns").undo_stage_hunk()
         end,
         desc = "Undo Stage Hunk"
       },
+      -- {
+      --   "<leader>Go", require("telescope.builtin").git_status,
+      --   desc = "Open changed file"
+      -- },
+      -- {
+      --   "<leader>Gb", require("telescope.builtin").git_branches,
+      --   desc = "Checkout branch"
+      -- },
+      -- {
+      --   "<leader>Gc", require("telescope.builtin").git_commits,
+      --   desc = "Checkout commit"
+      -- },
+      -- {
+      --   "<leader>GC", require("telescope.builtin").git_bcommits,
+      --   desc = "Checkout commit(for current file)"
+      -- },
       {
-        "<leader>Go", require("telescope.builtin").git_status,
-        desc = "Open changed file"
-      },
-      {
-        "<leader>Gb", require("telescope.builtin").git_branches,
-        desc = "Checkout branch"
-      },
-      {
-        "<leader>Gc", require("telescope.builtin").git_commits,
-        desc = "Checkout commit"
-      },
-      {
-        "<leader>GC", require("telescope.builtin").git_bcommits,
-        desc = "Checkout commit(for current file)"
-      },
-      {
-        "<leader>Gd", function()
+        "<leader>Gd",
+        function()
           vim.cmd("Gitsigns diffthis HEAD")
         end,
         desc = "Git Diff HEAD"

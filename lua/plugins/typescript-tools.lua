@@ -58,11 +58,11 @@ return {
       -- -- Install a different dependency version
       -- vim.keymap.set({ "n" }, "<LEADER>np", require("package-info").change_version, { silent = true, noremap = true })
 
-      { "<leader>Ns", "<cmd>lua require('package-info').show()<CR>", desc = "Show dependency versions" },
-      { "<leader>Nc", "<cmd>lua require('package-info').hide()<CR>", desc = "Hide dependency versions" },
-      { "<leader>NT", "<cmd>lua require('package-info').toggle()<CR>", desc = "Toggle dependency versions" },
-      { "<leader>Nu", "<cmd>lua require('package-info').update()<CR>", desc = "Update dependency on the line" },
-      { "<leader>Nd", "<cmd>lua require('package-info').delete()<CR>", desc = "Delete dependency on the line" },
+      { "<leader>Ns", "<cmd>lua require('package-info').show()<CR>",    desc = "Show dependency versions" },
+      { "<leader>Nc", "<cmd>lua require('package-info').hide()<CR>",    desc = "Hide dependency versions" },
+      { "<leader>NT", "<cmd>lua require('package-info').toggle()<CR>",  desc = "Toggle dependency versions" },
+      { "<leader>Nu", "<cmd>lua require('package-info').update()<CR>",  desc = "Update dependency on the line" },
+      { "<leader>Nd", "<cmd>lua require('package-info').delete()<CR>",  desc = "Delete dependency on the line" },
       { "<leader>Ni", "<cmd>lua require('package-info').install()<CR>", desc = "Install a new dependency" },
       {
         "<leader>Np",
