@@ -493,7 +493,7 @@ return {
   --       transparent = true,
   --       italic_comments = false,
   --       hide_fillchars = false,
-  --       borderless_telescope = true,
+  --       -- borderless_telescope = true,
   --       terminal_colors = true,
   --       cache = true,
   --
@@ -509,14 +509,13 @@ return {
   --     -- vim.cmd.colorscheme("jellybeans")
   --   end,
   -- },
-  --
+
   {
     "bettervim/yugen.nvim",
     config = function()
       -- vim.cmd.colorscheme("yugen")
     end,
   },
-  -- lua/plugins/rose-pine.lua
   {
     "rose-pine/neovim",
     name = "rose-pine",
@@ -536,7 +535,7 @@ return {
         styles = {
           bold = false,
           italic = false,
-          transparency = true,
+          transparency = false,
         },
 
         groups = {
