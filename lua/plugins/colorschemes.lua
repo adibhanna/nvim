@@ -357,15 +357,9 @@ return {
       vim.api.nvim_set_hl(0, "NavicText", { default = true, bg = "none", fg = "#eedaad" })
       vim.api.nvim_set_hl(0, "NavicSeparator", { default = true, bg = "none", fg = "#eedaad" })
 
-      vim.api.nvim_command("colorscheme catppuccin")
+      -- vim.api.nvim_command("colorscheme catppuccin")
     end,
   },
-  -- {
-  --   "michaeldyrynda/carbon",
-  --   config = function()
-  --     -- vim.cmd("colorscheme carbon")
-  --   end,
-  -- },
   {
     "sainnhe/gruvbox-material",
     enabled = true,
@@ -382,7 +376,7 @@ return {
       -- vim.g.gruvbox_material_colors_override = { bg0 = '#16181A' } -- #0e1010
       -- vim.g.gruvbox_material_better_performance = 1
 
-      -- vim.cmd.colorscheme("gruvbox-material")
+      vim.cmd.colorscheme("gruvbox-material")
     end,
   },
   {
