@@ -76,7 +76,7 @@ return {
   },
   pyright = {},
 
-  solidity_ls_nomicfoundation = {},
+  -- solidity_ls_nomicfoundation = {},
   yamlls = {
     cmd = { "yaml-language-server", "--stdio" },
     filetypes = { "yaml" },

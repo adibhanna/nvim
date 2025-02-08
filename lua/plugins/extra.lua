@@ -5,21 +5,6 @@ return {
     opts = {},
   },
 
-  -- delete buffer
-  {
-    "famiu/bufdelete.nvim",
-    enabled = false,
-    event = "VeryLazy",
-    config = function()
-      vim.keymap.set(
-        "n",
-        "Q",
-        ":lua require('bufdelete').bufdelete(0, false)<cr>",
-        { noremap = true, silent = true, desc = "Delete buffer" }
-      )
-    end,
-  },
-
   -- comments
   {
     "numToStr/Comment.nvim",
@@ -42,27 +27,6 @@ return {
   -- Neovim notifications and LSP progress messages
   {
     "j-hui/fidget.nvim",
-    -- branch = "legacy",
-    -- enabled = false,
-    -- config = function()
-    --   require("fidget").setup({
-    --     window = { blend = 0 },
-    --   })
-    -- end,
-  },
-
-  -- Smooth scrolling neovim plugin written in lua
-  {
-    "karb94/neoscroll.nvim",
-    enabled = false,
-    config = function()
-      require("neoscroll").setup({
-        stop_eof = true,
-        easing_function = "sine",
-        hide_cursor = true,
-        cursor_scrolls_alone = true,
-      })
-    end,
   },
 
   -- find and replace
@@ -132,21 +96,6 @@ return {
           group_index = 0, -- set group index to 0 to skip loading LuaLS completions
         })
       end,
-    },
-  },
-
-  -- Indent guide for Neovim
-  {
-    "lukas-reineke/indent-blankline.nvim",
-    enabled = false,
-    event = { "BufReadPost", "BufNewFile" },
-    version = "2.1.0",
-    opts = {
-      char = "┊",
-      -- char = "│",
-      filetype_exclude = { "help", "alpha", "dashboard", "neo-tree", "Trouble", "lazy" },
-      show_trailing_blankline_indent = false,
-      show_current_context = false,
     },
   },
 
@@ -226,46 +175,6 @@ return {
     opts = {},
   },
 
-  -- better code annotation
-  {
-    "danymat/neogen",
-    enabled = false,
-    dependencies = {
-      "nvim-treesitter/nvim-treesitter",
-      "L3MON4D3/LuaSnip",
-    },
-    config = function()
-      local neogen = require("neogen")
-
-      neogen.setup({
-        snippet_engine = "luasnip",
-      })
-    end,
-    keys = {
-      {
-        "<leader>ng",
-        function()
-          require("neogen").generate()
-        end,
-        desc = "Generate code annotations",
-      },
-      {
-        "<leader>nf",
-        function()
-          require("neogen").generate({ type = "func" })
-        end,
-        desc = "Generate Function Annotation",
-      },
-      {
-        "<leader>nt",
-        function()
-          require("neogen").generate({ type = "type" })
-        end,
-        desc = "Generate Type Annotation",
-      },
-    },
-  },
-
   {
     "echasnovski/mini.nvim",
     config = function()
@@ -302,31 +211,12 @@ return {
     enabled = true,
     opts = {},
     lazy = true,
-    -- specs = {
-    --   { "nvim-tree/nvim-web-devicons", enabled = false, optional = true },
-    -- },
-    -- init = function()
-    --   package.preload["nvim-web-devicons"] = function()
-    --     -- needed since it will be false when loading and mini will fail
-    --     package.loaded["nvim-web-devicons"] = {}
-    --     require("mini.icons").mock_nvim_web_devicons()
-    --     return package.loaded["nvim-web-devicons"]
-    --   end
-    -- end,
   },
 
   {
     "fladson/vim-kitty",
     "MunifTanjim/nui.nvim",
   },
-  -- {
-  --   "rcarriga/nvim-notify",
-  --   config = function()
-  --     require("notify").setup({
-  --       background_colour = "#000000",
-  --     })
-  --   end,
-  -- },
   {
     "nvchad/showkeys",
     cmd = "ShowkeysToggle",
@@ -339,7 +229,7 @@ return {
 
     keys = {
       {
-        "<leader>kt",
+        "<leader>ut",
         function()
           vim.cmd("ShowkeysToggle")
         end,
