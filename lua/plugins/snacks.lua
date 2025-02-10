@@ -36,32 +36,32 @@ return {
       end,
       desc = "Smart Find Files",
     },
-    {
-      "<leader>o",
-      function()
-        Snacks.picker.pickers({
-          finder = "buffers",
-          format = "buffer",
-          hidden = false,
-          unloaded = true,
-          current = true,
-          sort_lastused = true,
-          layout = {
-            preset = "vscode",
-          },
-          win = {
-            input = {
-              keys = {
-                ["dd"] = "bufdelete",
-                ["<c-d>"] = { "bufdelete", mode = { "n", "i" } },
-              },
-            },
-            list = { keys = { ["dd"] = "bufdelete" } },
-          },
-        })
-      end,
-      desc = "Buffers",
-    },
+    -- {
+    --   "<leader>o",
+    --   function()
+    --     Snacks.picker.pickers({
+    --       finder = "buffers",
+    --       format = "buffer",
+    --       hidden = false,
+    --       unloaded = true,
+    --       current = true,
+    --       sort_lastused = true,
+    --       layout = {
+    --         preset = "vscode",
+    --       },
+    -- win = {
+    --   input = {
+    --     keys = {
+    --       ["dd"] = "bufdelete",
+    --       ["<c-d>"] = { "bufdelete", mode = { "n", "i" } },
+    --     },
+    --   },
+    --   list = { keys = { ["dd"] = "bufdelete" } },
+    -- },
+    --     })
+    --   end,
+    --   desc = "Buffers",
+    -- },
     {
       "<leader>/",
       function()
@@ -91,7 +91,23 @@ return {
       desc = "File Explorer",
     },
     -- find
-    -- { "<leader>o",       function() Snacks.picker.buffers() end,                                 desc = "Buffers" },
+    {
+      "<leader>o",
+      function()
+        Snacks.picker.buffers({
+          win = {
+            input = {
+              keys = {
+                ["dd"] = "bufdelete",
+                ["<c-d>"] = { "bufdelete", mode = { "n", "i" } },
+              },
+            },
+            list = { keys = { ["dd"] = "bufdelete" } },
+          },
+        })
+      end,
+      desc = "Buffers",
+    },
     {
       "<leader>fc",
       function()
@@ -102,44 +118,28 @@ return {
     {
       "<leader>ff",
       function()
-        Snacks.picker.files({
-          layout = {
-            preset = "vscode",
-          },
-        })
+        Snacks.picker.files()
       end,
       desc = "Find Files",
     },
     {
       "<leader>fg",
       function()
-        Snacks.picker.git_files({
-          layout = {
-            preset = "vscode",
-          },
-        })
+        Snacks.picker.git_files()
       end,
       desc = "Find Git Files",
     },
     {
       "<leader>fp",
       function()
-        Snacks.picker.projects({
-          layout = {
-            preset = "vscode",
-          },
-        })
+        Snacks.picker.projects()
       end,
       desc = "Projects",
     },
     {
       "<leader>fr",
       function()
-        Snacks.picker.recent({
-          layout = {
-            preset = "vscode",
-          },
-        })
+        Snacks.picker.recent()
       end,
       desc = "Recent",
     },
