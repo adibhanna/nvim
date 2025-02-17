@@ -19,20 +19,20 @@ return {
 
       mason_null_ls.setup({
         ensure_installed = {
-          "prettier",           -- prettier formatter
-          "stylua",             -- lua formatter
-          "eslint_d",           -- js linter
-          "golangci_lint",      -- go linter
-          "terraform_fmt",      -- terraform formatter
+          "prettier", -- prettier formatter
+          "stylua", -- lua formatter
+          "eslint_d", -- js linter
+          "golangci_lint", -- go linter
+          "terraform_fmt", -- terraform formatter
           "terraform_validate", -- terraform linter
-          "shellcheck",         -- shell linter
-          "yamllint",           -- yaml linter
-          "buf",                -- buf formatter
-          "shfmt",              -- shell formatter
+          "shellcheck", -- shell linter
+          "yamllint", -- yaml linter
+          "buf", -- buf formatter
+          "shfmt", -- shell formatter
           -- "gofumpt", -- go formatter
-          "yamlfmt",            -- yaml formatter
+          "yamlfmt", -- yaml formatter
           -- "spell", -- spell checker
-          "black",              -- python formatter
+          "black", -- python formatter
         },
       })
 
