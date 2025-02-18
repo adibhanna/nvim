@@ -13,21 +13,21 @@ return {
     filetypes = { "terraform", "tf", "terraform-vars" },
   },
   lua_ls = {
-    -- settings = {
-    --   Lua = {
-    --     runtime = { version = "LuaJIT" },
-    --     workspace = {
-    --       checkThirdParty = false,
-    --       library = {
-    --         "${3rd}/luv/library",
-    --         unpack(vim.api.nvim_get_runtime_file("", true)),
-    --       },
-    --     },
-    --     completion = {
-    --       callSnippet = "Replace",
-    --     },
-    --   },
-    -- },
+    settings = {
+      Lua = {
+        runtime = { version = "LuaJIT" },
+        workspace = {
+          checkThirdParty = false,
+          library = {
+            "${3rd}/luv/library",
+            unpack(vim.api.nvim_get_runtime_file("", true)),
+          },
+        },
+        completion = {
+          callSnippet = "Replace",
+        },
+      },
+    },
   },
   bashls = {
     filetypes = { "sh", "zsh" },

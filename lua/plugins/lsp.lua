@@ -4,7 +4,7 @@ return {
   dependencies = {
     { "williamboman/mason.nvim", config = true },
     "williamboman/mason-lspconfig.nvim",
-    { "j-hui/fidget.nvim",       opts = {} },
+    { "j-hui/fidget.nvim", opts = {} },
     { "b0o/schemastore.nvim" },
     { "hrsh7th/cmp-nvim-lsp" },
   },
@@ -48,11 +48,11 @@ return {
 
         local wk = require("which-key")
         wk.add({
-          { "<leader>la", vim.lsp.buf.code_action,                           desc = "Code Action" },
-          { "<leader>lA", vim.lsp.buf.range_code_action,                     desc = "Range Code Actions" },
-          { "<leader>ls", vim.lsp.buf.signature_help,                        desc = "Display Signature Information" },
-          { "<leader>lr", vim.lsp.buf.rename,                                desc = "Rename all references" },
-          { "<leader>lf", vim.lsp.buf.format,                                desc = "Format" },
+          { "<leader>la", vim.lsp.buf.code_action, desc = "Code Action" },
+          { "<leader>lA", vim.lsp.buf.range_code_action, desc = "Range Code Actions" },
+          { "<leader>ls", vim.lsp.buf.signature_help, desc = "Display Signature Information" },
+          { "<leader>lr", vim.lsp.buf.rename, desc = "Rename all references" },
+          { "<leader>lf", vim.lsp.buf.format, desc = "Format" },
           -- { "<leader>li", require("telescope.builtin").lsp_implementations,  desc = "Implementation" },
           -- { "<leader>lw", require("telescope.builtin").diagnostics,          desc = "Diagnostics" },
           { "<leader>lc", require("config.utils").copyFilePathAndLineNumber, desc = "Copy File Path and Line Number" },
@@ -69,15 +69,15 @@ return {
           --   },
           -- },
 
-          { "<leader>Wa", vim.lsp.buf.add_workspace_folder,                  desc = "Workspace Add Folder" },
-          { "<leader>Wr", vim.lsp.buf.remove_workspace_folder,               desc = "Workspace Remove Folder" },
+          { "<leader>Wa", vim.lsp.buf.add_workspace_folder, desc = "Workspace Add Folder" },
+          { "<leader>Wr", vim.lsp.buf.remove_workspace_folder, desc = "Workspace Remove Folder" },
           {
             "<leader>Wl",
             function()
               print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
             end,
             desc = "Workspace List Folders",
-          }
+          },
         })
 
         -- Thank you teej
@@ -137,7 +137,7 @@ return {
       title = false,
       underline = true,
       virtual_text = true,
-      signs = true,
+      -- signs = true,
       update_in_insert = false,
       severity_sort = true,
       float = {
@@ -146,6 +146,20 @@ return {
         border = "rounded",
         header = "",
         prefix = "",
+      },
+      signs = {
+        text = {
+          [vim.diagnostic.severity.ERROR] = "",
+          [vim.diagnostic.severity.WARN] = "",
+          [vim.diagnostic.severity.INFO] = "",
+          [vim.diagnostic.severity.HINT] = "",
+        },
+        numhl = {
+          [vim.diagnostic.severity.WARN] = "WarningMsg",
+          [vim.diagnostic.severity.ERROR] = "ErrorMsg",
+          [vim.diagnostic.severity.INFO] = "DiagnosticInfo",
+          [vim.diagnostic.severity.HINT] = "DiagnosticHint",
+        },
       },
     })
 
