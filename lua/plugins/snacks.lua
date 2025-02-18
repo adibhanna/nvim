@@ -37,32 +37,6 @@ return {
       desc = "Smart Find Files",
     },
     {
-      "<leader>o",
-      function()
-        Snacks.picker.pickers({
-          finder = "buffers",
-          format = "buffer",
-          hidden = false,
-          unloaded = true,
-          current = true,
-          sort_lastused = true,
-          layout = {
-            preset = "vscode",
-          },
-          win = {
-            input = {
-              keys = {
-                ["dd"] = "bufdelete",
-                ["<c-d>"] = { "bufdelete", mode = { "n", "i" } },
-              },
-            },
-            list = { keys = { ["dd"] = "bufdelete" } },
-          },
-        })
-      end,
-      desc = "Buffers",
-    },
-    {
       "<leader>/",
       function()
         Snacks.picker.grep()
@@ -91,7 +65,23 @@ return {
       desc = "File Explorer",
     },
     -- find
-    -- { "<leader>o",       function() Snacks.picker.buffers() end,                                 desc = "Buffers" },
+    {
+      "<leader>o",
+      function()
+        Snacks.picker.buffers({
+          win = {
+            input = {
+              keys = {
+                ["dd"] = "bufdelete",
+                ["<c-d>"] = { "bufdelete", mode = { "n", "i" } },
+              },
+            },
+            list = { keys = { ["dd"] = "bufdelete" } },
+          },
+        })
+      end,
+      desc = "Buffers",
+    },
     {
       "<leader>fc",
       function()
@@ -102,44 +92,28 @@ return {
     {
       "<leader>ff",
       function()
-        Snacks.picker.files({
-          layout = {
-            preset = "vscode",
-          },
-        })
+        Snacks.picker.files()
       end,
       desc = "Find Files",
     },
     {
       "<leader>fg",
       function()
-        Snacks.picker.git_files({
-          layout = {
-            preset = "vscode",
-          },
-        })
+        Snacks.picker.git_files()
       end,
       desc = "Find Git Files",
     },
     {
       "<leader>fp",
       function()
-        Snacks.picker.projects({
-          layout = {
-            preset = "vscode",
-          },
-        })
+        Snacks.picker.projects()
       end,
       desc = "Projects",
     },
     {
       "<leader>fr",
       function()
-        Snacks.picker.recent({
-          layout = {
-            preset = "vscode",
-          },
-        })
+        Snacks.picker.recent()
       end,
       desc = "Recent",
     },
@@ -563,8 +537,8 @@ return {
         Snacks.toggle.diagnostics():map("<leader>ud")
         Snacks.toggle.line_number():map("<leader>ul")
         Snacks.toggle
-            .option("conceallevel", { off = 0, on = vim.o.conceallevel > 0 and vim.o.conceallevel or 2 })
-            :map("<leader>uc")
+          .option("conceallevel", { off = 0, on = vim.o.conceallevel > 0 and vim.o.conceallevel or 2 })
+          :map("<leader>uc")
         Snacks.toggle.treesitter():map("<leader>uT")
         Snacks.toggle.option("background", { off = "light", on = "dark", name = "Dark Background" }):map("<leader>ub")
         Snacks.toggle.inlay_hints():map("<leader>uh")

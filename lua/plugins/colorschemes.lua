@@ -365,7 +365,7 @@ return {
     enabled = true,
     priority = 1000,
     config = function()
-      vim.g.gruvbox_material_transparent_background = 0
+      vim.g.gruvbox_material_transparent_background = 1
       vim.g.gruvbox_material_foreground = "mix"
       vim.g.gruvbox_material_background = "hard"
       vim.g.gruvbox_material_ui_contrast = "high"
@@ -596,6 +596,15 @@ return {
       -- vim.cmd("colorscheme rose-pine-main")
       -- vim.cmd("colorscheme rose-pine-moon")
       -- vim.cmd("colorscheme rose-pine-dawn")
+    end,
+  },
+
+  {
+    "rjshkhr/shadow.nvim",
+    priority = 1000,
+    config = function()
+      vim.opt.termguicolors = true
+      -- vim.cmd.colorscheme("shadow")
     end,
   },
 }
