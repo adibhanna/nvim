@@ -405,6 +405,7 @@ return {
       -- vim.cmd("colorscheme github_dark_dimmed")
     end,
   },
+  { "RRethy/base16-nvim" },
 
   {
     "olivercederborg/poimandres.nvim",
