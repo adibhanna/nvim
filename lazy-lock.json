@@ -34,6 +34,7 @@
   "mini.nvim": { "branch": "main", "commit": "4e873f36552ac7c15a824f36783c629493f78d0c" },
   "neotest": { "branch": "master", "commit": "d66cf4e05a116957f0d3a7755a24291c7d1e1f72" },
   "neotest-go": { "branch": "main", "commit": "92950ad7be2ca02a41abca5c6600ff6ffaf5b5d6" },
+  "night-owl.nvim": { "branch": "main", "commit": "86ed124c2f7e118670649701288e024444bf91e5" },
   "noice.nvim": { "branch": "main", "commit": "dbfc5fbab19ff1c3e29a3268ffa5eda4c09c72ce" },
   "none-ls-extras.nvim": { "branch": "main", "commit": "6557f20e631d2e9b2a9fd27a5c045d701a3a292c" },
   "none-ls-shellcheck.nvim": { "branch": "main", "commit": "0f84461241e76e376a95fb7391deac82dc3efdbf" },

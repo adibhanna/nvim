@@ -376,7 +376,7 @@ return {
       -- vim.g.gruvbox_material_colors_override = { bg0 = '#16181A' } -- #0e1010
       -- vim.g.gruvbox_material_better_performance = 1
 
-      vim.cmd.colorscheme("gruvbox-material")
+      -- vim.cmd.colorscheme("gruvbox-material")
     end,
   },
   {
@@ -416,11 +416,11 @@ return {
         -- or refer to the configuration section
         -- for configuration options
 
-        bold_vert_split = false,          -- use bold vertical separators
-        dim_nc_background = false,        -- dim 'non-current' window backgrounds
-        disable_background = false,       -- disable background
+        bold_vert_split = false, -- use bold vertical separators
+        dim_nc_background = false, -- dim 'non-current' window backgrounds
+        disable_background = false, -- disable background
         disable_float_background = false, -- disable background for floats
-        disable_italics = false,          -- disable italics
+        disable_italics = false, -- disable italics
       })
     end,
 
@@ -515,7 +515,7 @@ return {
     name = "rose-pine",
     config = function()
       require("rose-pine").setup({
-        variant = "auto",      -- auto, main, moon, or dawn
+        variant = "auto", -- auto, main, moon, or dawn
         dark_variant = "main", -- main, moon, or dawn
         dim_inactive_windows = false,
         extend_background_behind_borders = true,
@@ -523,7 +523,7 @@ return {
         enable = {
           terminal = true,
           legacy_highlights = true, -- Improve compatibility for previous versions of Neovim
-          migrations = true,        -- Handle deprecated options automatically
+          migrations = true, -- Handle deprecated options automatically
         },
 
         styles = {
@@ -604,6 +604,23 @@ return {
     config = function()
       vim.opt.termguicolors = true
       -- vim.cmd.colorscheme("shadow")
+    end,
+  },
+
+  {
+    "oxfist/night-owl.nvim",
+    lazy = false, -- make sure we load this during startup if it is your main colorscheme
+    priority = 1000, -- make sure to load this before all the other start plugins
+    config = function()
+      -- load the colorscheme here
+      require("night-owl").setup({
+        bold = false,
+        italics = false,
+        underline = false,
+        undercurl = false,
+        transparent_background = true,
+      })
+      vim.cmd.colorscheme("night-owl")
     end,
   },
 }
