@@ -376,7 +376,7 @@ return {
       -- vim.g.gruvbox_material_colors_override = { bg0 = '#16181A' } -- #0e1010
       -- vim.g.gruvbox_material_better_performance = 1
 
-      vim.cmd.colorscheme("gruvbox-material")
+      -- vim.cmd.colorscheme("gruvbox-material")
     end,
   },
   {
@@ -622,6 +622,31 @@ return {
       --   transparent_background = true,
       -- })
       -- vim.cmd.colorscheme("night-owl")
+    end,
+  },
+  {
+    "Shatur/neovim-ayu",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      require("ayu").setup({
+        options = {
+          theme = "ayu-mirage",
+        },
+        -- overrides = {
+        --   Normal = { bg = "None" },
+        --   NormalFloat = { bg = "none" },
+        --   ColorColumn = { bg = "None" },
+        --   SignColumn = { bg = "None" },
+        --   Folded = { bg = "None" },
+        --   FoldColumn = { bg = "None" },
+        --   CursorLine = { bg = "None" },
+        --   CursorColumn = { bg = "None" },
+        --   VertSplit = { bg = "None" },
+        -- },
+      })
+
+      vim.cmd.colorscheme("ayu-mirage")
     end,
   },
 }
