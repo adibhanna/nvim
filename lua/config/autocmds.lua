@@ -108,29 +108,8 @@ vim.api.nvim_create_autocmd("FileType", {
   pattern = { "terraform", "hcl" },
 })
 
--- -- Golang format on save
--- local goformat_sync_grp = vim.api.nvim_create_augroup("GoFormat", {})
--- vim.api.nvim_create_autocmd("BufWritePre", {
---   pattern = "*.go",
---   callback = function()
---     require('go.format').gofmt()
---   end,
---   group = goformat_sync_grp,
--- })
---
--- Run gofmt + goimport on save
--- local goimport_sync_grp = vim.api.nvim_create_augroup("GoImport", {})
--- vim.api.nvim_create_autocmd("BufWritePre", {
---   pattern = "*.go",
---   callback = function()
---     require("go.format").goimport()
---   end,
---   group = goimport_sync_grp,
--- })
-
-
 vim.api.nvim_create_autocmd("LspAttach", {
-  group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
+  group = vim.api.nvim_create_augroup('lsp-attach', { clear = true }),
   callback = function(event)
     local map = function(keys, func, desc)
       vim.keymap.set("n", keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
@@ -173,7 +152,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
     local client = vim.lsp.get_client_by_id(event.data.client_id)
     if client and client_supports_method(client, vim.lsp.protocol.Methods.textDocument_documentHighlight, event.buf) then
-      local highlight_augroup = vim.api.nvim_create_augroup('kickstart-lsp-highlight', { clear = false })
+      local highlight_augroup = vim.api.nvim_create_augroup('lsp-highlight', { clear = false })
       vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
         buffer = event.buf,
         group = highlight_augroup,
@@ -187,10 +166,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
       })
 
       vim.api.nvim_create_autocmd('LspDetach', {
-        group = vim.api.nvim_create_augroup('kickstart-lsp-detach', { clear = true }),
+        group = vim.api.nvim_create_augroup('lsp-detach', { clear = true }),
         callback = function(event2)
           vim.lsp.buf.clear_references()
-          vim.api.nvim_clear_autocmds { group = 'kickstart-lsp-highlight', buffer = event2.buf }
+          vim.api.nvim_clear_autocmds { group = 'lsp-highlight', buffer = event2.buf }
         end,
       })
     end
@@ -232,35 +211,35 @@ vim.api.nvim_create_autocmd("LspAttach", {
     },
   })
 
---   vim.diagnostic.config({
---     title = false,
---     underline = true,
---     virtual_text = true, --{ current_line = true },
---     virtual_lines = false,
---     update_in_insert = false,
---     severity_sort = true,
---     -- float = {
---     --   source = "if_many",
---     --   style = "minimal",
---     --   border = "rounded",
---     --   header = "",
---     --   prefix = "",
---     -- },
---     -- signs = {
---     --   text = {
---     --     [vim.diagnostic.severity.ERROR] = "",
---     --     [vim.diagnostic.severity.WARN] = "",
---     --     [vim.diagnostic.severity.INFO] = "",
---     --     [vim.diagnostic.severity.HINT] = "",
---     --   },
---     --   numhl = {
---     --     [vim.diagnostic.severity.WARN] = "WarningMsg",
---     --     [vim.diagnostic.severity.ERROR] = "ErrorMsg",
---     --     [vim.diagnostic.severity.INFO] = "DiagnosticInfo",
---     --     [vim.diagnostic.severity.HINT] = "DiagnosticHint",
---     --   },
---     -- },
---   })
+  --   vim.diagnostic.config({
+  --     title = false,
+  --     underline = true,
+  --     virtual_text = true, --{ current_line = true },
+  --     virtual_lines = false,
+  --     update_in_insert = false,
+  --     severity_sort = true,
+  --     -- float = {
+  --     --   source = "if_many",
+  --     --   style = "minimal",
+  --     --   border = "rounded",
+  --     --   header = "",
+  --     --   prefix = "",
+  --     -- },
+  --     -- signs = {
+  --     --   text = {
+  --     --     [vim.diagnostic.severity.ERROR] = "",
+  --     --     [vim.diagnostic.severity.WARN] = "",
+  --     --     [vim.diagnostic.severity.INFO] = "",
+  --     --     [vim.diagnostic.severity.HINT] = "",
+  --     --   },
+  --     --   numhl = {
+  --     --     [vim.diagnostic.severity.WARN] = "WarningMsg",
+  --     --     [vim.diagnostic.severity.ERROR] = "ErrorMsg",
+  --     --     [vim.diagnostic.severity.INFO] = "DiagnosticInfo",
+  --     --     [vim.diagnostic.severity.HINT] = "DiagnosticHint",
+  --     --   },
+  --     -- },
+  --   })
 
 })
 

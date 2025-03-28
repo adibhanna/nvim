@@ -1,13 +1,5 @@
 return {
-    filetypes = { "rust" },
     cmd = { "rust-analyzer" },
+    filetypes = { "rust" },
     root_markers = { '.git', 'Cargo.toml' },
-    settings = {
-        autoformat = true,
-        ["rust-analyzer"] = {
-            check = {
-                command = "clippy"
-            },
-        },
-    },
 }
