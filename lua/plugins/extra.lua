@@ -59,16 +59,6 @@ return {
     },
   },
 
-  -- Add/change/delete surrounding delimiter pairs with ease
-  {
-    "kylechui/nvim-surround",
-    version = "*",
-    event = "VeryLazy",
-    config = function()
-      require("nvim-surround").setup()
-    end,
-  },
-
   -- Heuristically set buffer options
   {
     "tpope/vim-sleuth",
