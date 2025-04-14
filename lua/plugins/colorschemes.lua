@@ -376,7 +376,7 @@ return {
       -- vim.g.gruvbox_material_colors_override = { bg0 = '#16181A' } -- #0e1010
       -- vim.g.gruvbox_material_better_performance = 1
 
-      vim.cmd.colorscheme("gruvbox-material")
+      -- vim.cmd.colorscheme("gruvbox-material")
     end,
   },
   {
@@ -391,4 +391,40 @@ return {
       end,
     },
   },
+   {
+        'rebelot/kanagawa.nvim',
+        lazy = false,
+        opts = {
+            theme = 'wave',
+            undercurl = true, -- enable undercurls
+            commentStyle = { italic = false },
+            functionStyle = {},
+            keywordStyle = { italic = true, bold = true },
+            statementStyle = { bold = true },
+            typeStyle = {},
+            variablebuiltinStyle = { italic = true },
+            specialReturn = true, -- special highlight for the return keyword
+            specialException = true, -- special highlight for exception handling keywords
+            transparent = false,
+            colors = {
+                theme = {
+                    all = {
+                        ui = {
+                            bg_gutter = 'NONE',
+                            float = {
+                                bg = 'NONE',
+                                bg_border = 'NONE',
+                            },
+                        },
+                    },
+                },
+            },
+        },
+        config = function(_, opts)
+            local kanagawa = require('kanagawa')
+            kanagawa.setup(opts)
+
+            vim.cmd('colorscheme kanagawa')
+        end,
+    },
 }
