@@ -376,7 +376,7 @@ return {
       -- vim.g.gruvbox_material_colors_override = { bg0 = '#16181A' } -- #0e1010
       -- vim.g.gruvbox_material_better_performance = 1
 
-      -- vim.cmd.colorscheme("gruvbox-material")
+      vim.cmd.colorscheme("gruvbox-material")
     end,
   },
   {
@@ -466,8 +466,8 @@ return {
         -----DIAGNOSTICS and CODE STYLE-----
         --
         diagnostics = {
-          darker = true, -- Darker colors for diagnostic
-          undercurl = true, -- Use undercurl for diagnostics
+          darker = true,     -- Darker colors for diagnostic
+          undercurl = true,  -- Use undercurl for diagnostics
           background = true, -- Use background color for virtual text
         },
         -- The following table accepts values the same as the `gui` option for normal
@@ -512,7 +512,7 @@ return {
       })
       -- Convenience function that simply calls `:colorscheme <theme>` with the theme
       -- specified in your config.
-      require("neomodern").load()
+      -- require("neomodern").load()
     end,
   },
 }

@@ -1,31 +1,36 @@
+local blink = require("blink.cmp")
 return {
     cmd = { "lua-language-server" },
-    root_markers = {
-        ".luarc.json",
-        ".luarc.jsonc",
-        ".luacheckrc",
-        ".stylua.toml",
-        "stylua.toml",
-        "selene.toml",
-        "selene.yml",
-        ".git",
-    },
+    root_markers = { ".luarc.json", ".luarc.jsonc" },
     filetypes = { "lua" },
     settings = {
         Lua = {
-            runtime = {
-                version = "LuaJIT",
-            },
             diagnostics = {
-                disable = { "lowercase-global" },
-            },
-            workspace = {
-                checkThirdParty = false,
-                library = {
-                    vim.env.VIMRUNTIME,
-                    "${3rd}/love2d/library",
+                globals = {
+                    "vim",
+                    "Snacks",
                 },
+            },
+            hint = {
+                enable = true,
+                setType = false,
+                paramType = true,
+                paramName = "Disable",
+                semicolon = "Disable",
+                arrayIndex = "Disable",
             },
         },
     },
+    capabilities = vim.tbl_deep_extend(
+        "force",
+        {},
+        vim.lsp.protocol.make_client_capabilities(),
+        blink.get_lsp_capabilities(),
+        {
+            fileOperations = {
+                didRename = true,
+                willRename = true,
+            },
+        }
+    ),
 }

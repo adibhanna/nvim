@@ -182,65 +182,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end
   end,
 
-  vim.diagnostic.config({
-    severity_sort = true,
-    title = false,
-    float = { border = 'rounded', source = 'if_many' },
-    underline = { severity = vim.diagnostic.severity.ERROR },
-    update_in_insert = false,
-    signs = vim.g.have_nerd_font and {
-      text = {
-        [vim.diagnostic.severity.ERROR] = '󰅚 ',
-        [vim.diagnostic.severity.WARN] = '󰀪 ',
-        [vim.diagnostic.severity.INFO] = '󰋽 ',
-        [vim.diagnostic.severity.HINT] = '󰌶 ',
-      },
-    } or {},
-    virtual_text = {
-      source = 'if_many',
-      spacing = 2,
-      format = function(diagnostic)
-        local diagnostic_message = {
-          [vim.diagnostic.severity.ERROR] = diagnostic.message,
-          [vim.diagnostic.severity.WARN] = diagnostic.message,
-          [vim.diagnostic.severity.INFO] = diagnostic.message,
-          [vim.diagnostic.severity.HINT] = diagnostic.message,
-        }
-        return diagnostic_message[diagnostic.severity]
-      end,
-    },
-  })
-
-  --   vim.diagnostic.config({
-  --     title = false,
-  --     underline = true,
-  --     virtual_text = true, --{ current_line = true },
-  --     virtual_lines = false,
-  --     update_in_insert = false,
-  --     severity_sort = true,
-  --     -- float = {
-  --     --   source = "if_many",
-  --     --   style = "minimal",
-  --     --   border = "rounded",
-  --     --   header = "",
-  --     --   prefix = "",
-  --     -- },
-  --     -- signs = {
-  --     --   text = {
-  --     --     [vim.diagnostic.severity.ERROR] = "",
-  --     --     [vim.diagnostic.severity.WARN] = "",
-  --     --     [vim.diagnostic.severity.INFO] = "",
-  --     --     [vim.diagnostic.severity.HINT] = "",
-  --     --   },
-  --     --   numhl = {
-  --     --     [vim.diagnostic.severity.WARN] = "WarningMsg",
-  --     --     [vim.diagnostic.severity.ERROR] = "ErrorMsg",
-  --     --     [vim.diagnostic.severity.INFO] = "DiagnosticInfo",
-  --     --     [vim.diagnostic.severity.HINT] = "DiagnosticHint",
-  --     --   },
-  --     -- },
-  --   })
-
 })
 
 vim.api.nvim_create_autocmd("FileType", {
