@@ -30,7 +30,7 @@ return {
                     ["<C-f>"] = {},
                 },
                 cmdline = {
-                    enabled = true,
+                    enabled = false,
                     completion = { menu = { auto_show = true } },
                     keymap = {
                         ["<CR>"] = { "accept_and_enter", "fallback" },
