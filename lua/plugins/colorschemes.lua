@@ -515,4 +515,91 @@ return {
       -- require("neomodern").load()
     end,
   },
+  -- Lazy
+  {
+    "vague2k/vague.nvim",
+    config = function()
+      -- NOTE: you do not need to call setup if you don't want to.
+      require("vague").setup({
+        transparent = false, -- don't set background
+        style = {
+          -- "none" is the same thing as default. But "italic" and "bold" are also valid options
+          boolean = "none",
+          number = "none",
+          float = "none",
+          error = "none",
+          comments = "none",
+          conditionals = "none",
+          functions = "none",
+          headings = "none",
+          operators = "none",
+          strings = "none",
+          variables = "none",
+
+          -- keywords
+          keywords = "none",
+          keyword_return = "none",
+          keywords_loop = "none",
+          keywords_label = "none",
+          keywords_exception = "none",
+
+          -- builtin
+          builtin_constants = "none",
+          builtin_functions = "none",
+          builtin_types = "none",
+          builtin_variables = "none",
+        },
+        -- plugin styles where applicable
+        -- make an issue/pr if you'd like to see more styling options!
+        plugins = {
+          cmp = {
+            match = "none",
+            match_fuzzy = "none",
+          },
+          dashboard = {
+            footer = "none",
+          },
+          lsp = {
+            diagnostic_error = "none",
+            diagnostic_hint = "none",
+            diagnostic_info = "none",
+            diagnostic_warn = "none",
+          },
+          neotest = {
+            focused = "none",
+            adapter_name = "none",
+          },
+          telescope = {
+            match = "none",
+          },
+        },
+        -- Override colors
+        colors = {
+          bg = "#141415",
+          fg = "#cdcdcd",
+          floatBorder = "#878787",
+          line = "#252530",
+          comment = "#606079",
+          builtin = "#b4d4cf",
+          func = "#c48282",
+          string = "#e8b589",
+          number = "#e0a363",
+          property = "#c3c3d5",
+          constant = "#aeaed1",
+          parameter = "#bb9dbd",
+          visual = "#333738",
+          error = "#df6882",
+          warning = "#f3be7c",
+          hint = "#7e98e8",
+          operator = "#90a0b5",
+          keyword = "#6e94b2",
+          type = "#9bb4bc",
+          search = "#405065",
+          plus = "#8cb66d",
+          delta = "#f3be7c",
+        },
+      })
+      -- vim.cmd.colorscheme("vague")
+    end
+  },
 }

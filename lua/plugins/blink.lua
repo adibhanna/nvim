@@ -38,7 +38,7 @@ return {
                 },
                 completion = {
                     menu = {
-                        border = "none",
+                        border = "rounded",
                         scrolloff = 1,
                         scrollbar = false,
                         draw = {
