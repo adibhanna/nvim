@@ -8,6 +8,9 @@ return {
         -- event = "InsertEnter",
         version = "*",
         config = function()
+            vim.cmd('highlight Pmenu guibg=none')
+            vim.cmd('highlight PmenuExtra guibg=none')
+
             require("blink.cmp").setup({
                 snippets = { preset = "luasnip" },
                 signature = { enabled = true },
@@ -52,7 +55,7 @@ return {
                     },
                     documentation = {
                         window = {
-                            border = "rounded",
+                            border = nil,
                             scrollbar = false,
                             winhighlight = 'Normal:BlinkCmpDoc,FloatBorder:BlinkCmpDocBorder,EndOfBuffer:BlinkCmpDoc',
                             -- winhighlight =
