@@ -38,7 +38,7 @@ return {
                 },
                 completion = {
                     menu = {
-                        border = "rounded",
+                        border = nil,
                         scrolloff = 1,
                         scrollbar = false,
                         draw = {
@@ -54,12 +54,16 @@ return {
                         window = {
                             border = "rounded",
                             scrollbar = false,
+                            winhighlight = 'Normal:BlinkCmpDoc,FloatBorder:BlinkCmpDocBorder,EndOfBuffer:BlinkCmpDoc',
+                            -- winhighlight =
+                            -- 'Normal:BlinkCmpMenu,FloatBorder:BlinkCmpMenuBorder,CursorLine:BlinkCmpMenuSelection,Search:None',
                         },
                         auto_show = true,
                         auto_show_delay_ms = 500,
                     },
                 },
             })
+
             require("luasnip.loaders.from_vscode").lazy_load()
         end,
     },
