@@ -376,7 +376,15 @@ return {
       -- vim.g.gruvbox_material_colors_override = { bg0 = '#16181A' } -- #0e1010
       -- vim.g.gruvbox_material_better_performance = 1
 
-      vim.cmd.colorscheme("gruvbox-material")
+      -- vim.cmd.colorscheme("gruvbox-material")
+    end,
+  },
+  {
+    "wtfox/jellybeans.nvim",
+    priority = 1000,
+    config = function()
+      require("jellybeans").setup()
+      vim.cmd.colorscheme("jellybeans")
     end,
   },
   {
@@ -521,7 +529,7 @@ return {
     config = function()
       -- NOTE: you do not need to call setup if you don't want to.
       require("vague").setup({
-        transparent = false, -- don't set background
+        transparent = true, -- don't set background
         style = {
           -- "none" is the same thing as default. But "italic" and "bold" are also valid options
           boolean = "none",
@@ -599,6 +607,7 @@ return {
           delta = "#f3be7c",
         },
       })
+
       -- vim.cmd.colorscheme("vague")
     end
   },
