@@ -243,15 +243,6 @@ return {
   },
 
   {
-    "olimorris/codecompanion.nvim",
-    opts = {},
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "nvim-treesitter/nvim-treesitter",
-    },
-  },
-
-  {
     "tris203/precognition.nvim",
     enabled = false,
     --event = "VeryLazy",
