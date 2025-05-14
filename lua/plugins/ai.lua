@@ -41,6 +41,12 @@ return {
                 end,
             }
         },
+        keys = {
+            { "<leader>ic", "<cmd>CodeCompanion<cr>", desc = "CodeCompanion" },
+            { "<leader>iC", "<cmd>CodeCompanionChat<cr>", desc = "CodeCompanion Chat" },
+            { "<leader>ia", "<cmd>CodeCompanionActions<cr>", desc = "CodeCompanion Actions" },
+            { "<leader>id", "<cmd>CodeCompanionCmd<cr>", desc = "CodeCompanion CMD" },
+        },
         dependencies = {
             "j-hui/fidget.nvim",
             "ravitemer/codecompanion-history.nvim", -- Save and load conversation history
