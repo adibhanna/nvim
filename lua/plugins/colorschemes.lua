@@ -357,7 +357,7 @@ return {
       vim.api.nvim_set_hl(0, "NavicText", { default = true, bg = "none", fg = "#eedaad" })
       vim.api.nvim_set_hl(0, "NavicSeparator", { default = true, bg = "none", fg = "#eedaad" })
 
-      vim.api.nvim_command("colorscheme catppuccin")
+      -- vim.api.nvim_command("colorscheme catppuccin")
     end,
   },
   {
@@ -379,298 +379,354 @@ return {
       -- vim.cmd.colorscheme("gruvbox-material")
     end,
   },
+
   {
-    "wtfox/jellybeans.nvim",
-    priority = 1000,
+    'projekt0n/github-nvim-theme',
+    name = 'github-theme',
+    lazy = false,    -- make sure we load this during startup if it is your main colorscheme
+    priority = 1020, -- make sure to load this before all the other start plugins
     config = function()
-      -- require("jellybeans").setup()
-      -- vim.cmd.colorscheme("jellybeans")
-    end,
-  },
-  {
-    "f-person/auto-dark-mode.nvim",
-    config = {
-      update_interval = 1000,
-      set_dark_mode = function()
-        vim.api.nvim_set_option_value("background", "dark", {})
-      end,
-      set_light_mode = function()
-        vim.api.nvim_set_option_value("background", "light", {})
-      end,
-    },
-  },
-  {
-    'rebelot/kanagawa.nvim',
-    lazy = false,
-    opts = {
-      theme = 'wave',
-      undercurl = true, -- enable undercurls
-      commentStyle = { italic = false },
-      functionStyle = {},
-      keywordStyle = { italic = true, bold = true },
-      statementStyle = { bold = true },
-      typeStyle = {},
-      variablebuiltinStyle = { italic = true },
-      specialReturn = true,    -- special highlight for the return keyword
-      specialException = true, -- special highlight for exception handling keywords
-      transparent = false,
-      colors = {
-        theme = {
-          all = {
-            ui = {
-              bg_gutter = 'NONE',
-              float = {
-                bg = 'NONE',
-                bg_border = 'NONE',
-              },
+      -- Default options
+      require('github-theme').setup({
+        options = {
+          -- Compiled file's destination location
+          compile_path = vim.fn.stdpath('cache') .. '/github-theme',
+          compile_file_suffix = '_compiled', -- Compiled file suffix
+          hide_end_of_buffer = true,         -- Hide the '~' character at the end of the buffer for a cleaner look
+          hide_nc_statusline = true,         -- Override the underline style for non-active statuslines
+          transparent = false,               -- Disable setting bg (make neovim's background transparent)
+          terminal_colors = true,            -- Set terminal colors (vim.g.terminal_color_*) used in `:terminal`
+          dim_inactive = false,              -- Non focused panes set to alternative background
+          module_default = true,             -- Default enable value for modules
+          styles = {                         -- Style to be applied to different syntax groups
+            comments = 'NONE',               -- Value is any valid attr-list value `:help attr-list`
+            functions = 'NONE',
+            keywords = 'NONE',
+            variables = 'NONE',
+            conditionals = 'NONE',
+            constants = 'NONE',
+            numbers = 'NONE',
+            operators = 'NONE',
+            strings = 'NONE',
+            types = 'NONE',
+          },
+          inverse = { -- Inverse highlight for different types
+            match_paren = false,
+            visual = false,
+            search = false,
+          },
+          darken = { -- Darken floating windows and sidebar-like windows
+            floats = true,
+            sidebars = {
+              enable = true,
+              list = {}, -- Apply dark background to specific windows
             },
           },
+          modules = { -- List of various plugins and additional options
+            -- ...
+          },
         },
-      },
-    },
-    config = function(_, opts)
-      local kanagawa = require('kanagawa')
-      kanagawa.setup(opts)
+        palettes = {},
+        specs = {},
+        groups = {},
+      })
 
-      -- vim.cmd('colorscheme kanagawa')
+      -- setup must be called before loading
+      vim.cmd('colorscheme github_light')
     end,
   },
-  -- Using lazy.nvim
-  {
-    "cdmill/neomodern.nvim",
-    lazy = false,
-    priority = 1000,
-    config = function()
-      require("neomodern").setup({
-        -----MAIN OPTIONS-----
-        --
-        -- Can be one of: 'iceclimber' | 'gyokuro' | 'hojicha' | 'roseprime'
-        theme = "gyokuro",
-        -- Can be one of: 'light' | 'dark', or set via vim.o.background
-        variant = "dark",
-        -- Use an alternate, darker bg
-        alt_bg = false,
-        -- If true, docstrings will be highlighted like strings, otherwise they will be
-        -- highlighted like comments. Note, behavior is dependent on the language server.
-        colored_docstrings = true,
-        -- If true, highlights the {sign,fold} column the same as cursorline
-        cursorline_gutter = true,
-        -- If true, highlights the gutter darker than the bg
-        dark_gutter = true,
-        -- if true favor treesitter highlights over semantic highlights
-        favor_treesitter_hl = false,
-        -- Don't set background of floating windows. Recommended for when using floating
-        -- windows with borders.
-        plain_float = false,
-        -- Show the end-of-buffer character
-        show_eob = true,
-        -- If true, enable the vim terminal colors
-        term_colors = true,
-        -- Keymap (in normal mode) to toggle between light and dark variants.
-        toggle_variant_key = nil,
-        -- Don't set background
-        transparent = false,
-
-        -----DIAGNOSTICS and CODE STYLE-----
-        --
-        diagnostics = {
-          darker = true,     -- Darker colors for diagnostic
-          undercurl = true,  -- Use undercurl for diagnostics
-          background = true, -- Use background color for virtual text
-        },
-        -- The following table accepts values the same as the `gui` option for normal
-        -- highlights. For example, `bold`, `italic`, `underline`, `none`.
-        code_style = {
-          comments = "italic",
-          conditionals = "none",
-          functions = "none",
-          keywords = "none",
-          headings = "bold", -- Markdown headings
-          operators = "none",
-          keyword_return = "none",
-          strings = "none",
-          variables = "none",
-        },
-
-        -----PLUGINS-----
-        --
-        -- The following options allow for more control over some plugin appearances.
-        -- plugin = {
-        --   lualine = {
-        --     -- Bold lualine_a sections
-        --     bold = true,
-        --     -- Don't set section/component backgrounds. Recommended to not set
-        --     -- section/component separators.
-        --     plain = false,
-        --   },
-        --   cmp = { -- works for nvim.cmp and blink.nvim
-        --     -- Don't highlight lsp-kind items. Only the current selection will be highlighted.
-        --     plain = false,
-        --     -- Reverse lsp-kind items' highlights in blink/cmp menu.
-        --     reverse = false,
-        --   },
-        -- },
-
-        -- CUSTOM HIGHLIGHTS --
-        --
-        -- Override default colors
-        colors = {},
-        -- Override highlight groups
-        highlights = {},
-      })
-      -- Convenience function that simply calls `:colorscheme <theme>` with the theme
-      -- specified in your config.
-      -- require("neomodern").load()
-    end,
-  },
-  -- Lazy
-  {
-    "vague2k/vague.nvim",
-    config = function()
-      -- NOTE: you do not need to call setup if you don't want to.
-      require("vague").setup({
-        transparent = true, -- don't set background
-        style = {
-          -- "none" is the same thing as default. But "italic" and "bold" are also valid options
-          boolean = "none",
-          number = "none",
-          float = "none",
-          error = "none",
-          comments = "none",
-          conditionals = "none",
-          functions = "none",
-          headings = "none",
-          operators = "none",
-          strings = "none",
-          variables = "none",
-
-          -- keywords
-          keywords = "none",
-          keyword_return = "none",
-          keywords_loop = "none",
-          keywords_label = "none",
-          keywords_exception = "none",
-
-          -- builtin
-          builtin_constants = "none",
-          builtin_functions = "none",
-          builtin_types = "none",
-          builtin_variables = "none",
-        },
-        -- plugin styles where applicable
-        -- make an issue/pr if you'd like to see more styling options!
-        plugins = {
-          cmp = {
-            match = "none",
-            match_fuzzy = "none",
-          },
-          dashboard = {
-            footer = "none",
-          },
-          lsp = {
-            diagnostic_error = "none",
-            diagnostic_hint = "none",
-            diagnostic_info = "none",
-            diagnostic_warn = "none",
-          },
-          neotest = {
-            focused = "none",
-            adapter_name = "none",
-          },
-          telescope = {
-            match = "none",
-          },
-        },
-        -- Override colors
-        colors = {
-          bg = "#141415",
-          fg = "#cdcdcd",
-          floatBorder = "#878787",
-          line = "#252530",
-          comment = "#606079",
-          builtin = "#b4d4cf",
-          func = "#c48282",
-          string = "#e8b589",
-          number = "#e0a363",
-          property = "#c3c3d5",
-          constant = "#aeaed1",
-          parameter = "#bb9dbd",
-          visual = "#333738",
-          error = "#df6882",
-          warning = "#f3be7c",
-          hint = "#7e98e8",
-          operator = "#90a0b5",
-          keyword = "#6e94b2",
-          type = "#9bb4bc",
-          search = "#405065",
-          plus = "#8cb66d",
-          delta = "#f3be7c",
-        },
-      })
-
-      -- vim.cmd.colorscheme("vague")
-    end
-  },
-  {
-    "loctvl842/monokai-pro.nvim",
-    config = function()
-      require("monokai-pro").setup({
-        transparent_background = false,
-        terminal_colors        = true,
-        devicons               = true, -- highlight the icons of `nvim-web-devicons`
-        styles                 = {
-          comment = { italic = false },
-          keyword = { italic = false },       -- any other keyword
-          type = { italic = false },          -- (preferred) int, long, char, etc
-          storageclass = { italic = false },  -- static, register, volatile, etc
-          structure = { italic = false },     -- struct, union, enum, etc
-          parameter = { italic = false },     -- parameter pass in function
-          annotation = { italic = false },
-          tag_attribute = { italic = false }, -- attribute of tag in reactjs
-        },
-        filter                 = "pro",       -- classic | octagon | pro | machine | ristretto | spectrum
-        -- Enable this will disable filter option
-        day_night              = {
-          enable = false,                      -- turn off by default
-          day_filter = "pro",                  -- classic | octagon | pro | machine | ristretto | spectrum
-          night_filter = "spectrum",           -- classic | octagon | pro | machine | ristretto | spectrum
-        },
-        inc_search             = "background", -- underline | background
-        background_clear       = {
-          -- "float_win",
-          -- "toggleterm",
-          -- "telescope",
-          "which-key",
-          -- "renamer",
-          "notify",
-          -- "nvim-tree",
-          -- "neo-tree",
-          -- "bufferline", -- better used if background of `neo-tree` or `nvim-tree` is cleared
-        }, -- "float_win", "toggleterm", "telescope", "which-key", "renamer", "neo-tree", "nvim-tree", "bufferline"
-        plugins                = {
-          bufferline = {
-            underline_selected = false,
-            underline_visible = false,
-          },
-          indent_blankline = {
-            context_highlight = "default", -- default | pro
-            context_start_underline = false,
-          },
-        },
-        override               = function(c)
-          local hp = require("monokai-pro.color_helper")
-          local common_fg = hp.lighten(c.sideBar.foreground, 30)
-          return {
-            SnacksPicker = { bg = c.editor.background, fg = common_fg },
-            SnacksPickerBorder = { bg = c.editor.background, fg = c.tab.unfocusedActiveBorder },
-            SnacksPickerTree = { fg = c.editorLineNumber.foreground },
-            NonText = { fg = c.base.dimmed3 }, -- not sure if this should be broken into all hl groups importing NonText
-          }
-        end,
-      })
-
-      -- vim.cmd([[colorscheme monokai-pro-spectrum]])
-      -- vim.cmd.colorscheme("monokai-pro-machine")
-    end
-  }
+  -- {
+  --   "wtfox/jellybeans.nvim",
+  --   priority = 1000,
+  --   config = function()
+  --     -- require("jellybeans").setup()
+  --     -- vim.cmd.colorscheme("jellybeans")
+  --   end,
+  -- },
+  -- {
+  --   "f-person/auto-dark-mode.nvim",
+  --   config = {
+  --     update_interval = 1000,
+  --     set_dark_mode = function()
+  --       vim.api.nvim_set_option_value("background", "dark", {})
+  --     end,
+  --     set_light_mode = function()
+  --       vim.api.nvim_set_option_value("background", "light", {})
+  --     end,
+  --   },
+  -- },
+  -- {
+  --   'rebelot/kanagawa.nvim',
+  --   lazy = false,
+  --   opts = {
+  --     theme = 'wave',
+  --     undercurl = true, -- enable undercurls
+  --     commentStyle = { italic = false },
+  --     functionStyle = {},
+  --     keywordStyle = { italic = true, bold = true },
+  --     statementStyle = { bold = true },
+  --     typeStyle = {},
+  --     variablebuiltinStyle = { italic = true },
+  --     specialReturn = true,    -- special highlight for the return keyword
+  --     specialException = true, -- special highlight for exception handling keywords
+  --     transparent = false,
+  --     colors = {
+  --       theme = {
+  --         all = {
+  --           ui = {
+  --             bg_gutter = 'NONE',
+  --             float = {
+  --               bg = 'NONE',
+  --               bg_border = 'NONE',
+  --             },
+  --           },
+  --         },
+  --       },
+  --     },
+  --   },
+  --   config = function(_, opts)
+  --     local kanagawa = require('kanagawa')
+  --     kanagawa.setup(opts)
+  --
+  --     -- vim.cmd('colorscheme kanagawa')
+  --   end,
+  -- },
+  -- -- Using lazy.nvim
+  -- {
+  --   "cdmill/neomodern.nvim",
+  --   lazy = false,
+  --   priority = 1000,
+  --   config = function()
+  --     require("neomodern").setup({
+  --       -----MAIN OPTIONS-----
+  --       --
+  --       -- Can be one of: 'iceclimber' | 'gyokuro' | 'hojicha' | 'roseprime'
+  --       theme = "gyokuro",
+  --       -- Can be one of: 'light' | 'dark', or set via vim.o.background
+  --       variant = "dark",
+  --       -- Use an alternate, darker bg
+  --       alt_bg = false,
+  --       -- If true, docstrings will be highlighted like strings, otherwise they will be
+  --       -- highlighted like comments. Note, behavior is dependent on the language server.
+  --       colored_docstrings = true,
+  --       -- If true, highlights the {sign,fold} column the same as cursorline
+  --       cursorline_gutter = true,
+  --       -- If true, highlights the gutter darker than the bg
+  --       dark_gutter = true,
+  --       -- if true favor treesitter highlights over semantic highlights
+  --       favor_treesitter_hl = false,
+  --       -- Don't set background of floating windows. Recommended for when using floating
+  --       -- windows with borders.
+  --       plain_float = false,
+  --       -- Show the end-of-buffer character
+  --       show_eob = true,
+  --       -- If true, enable the vim terminal colors
+  --       term_colors = true,
+  --       -- Keymap (in normal mode) to toggle between light and dark variants.
+  --       toggle_variant_key = nil,
+  --       -- Don't set background
+  --       transparent = false,
+  --
+  --       -----DIAGNOSTICS and CODE STYLE-----
+  --       --
+  --       diagnostics = {
+  --         darker = true,     -- Darker colors for diagnostic
+  --         undercurl = true,  -- Use undercurl for diagnostics
+  --         background = true, -- Use background color for virtual text
+  --       },
+  --       -- The following table accepts values the same as the `gui` option for normal
+  --       -- highlights. For example, `bold`, `italic`, `underline`, `none`.
+  --       code_style = {
+  --         comments = "italic",
+  --         conditionals = "none",
+  --         functions = "none",
+  --         keywords = "none",
+  --         headings = "bold", -- Markdown headings
+  --         operators = "none",
+  --         keyword_return = "none",
+  --         strings = "none",
+  --         variables = "none",
+  --       },
+  --
+  --       -----PLUGINS-----
+  --       --
+  --       -- The following options allow for more control over some plugin appearances.
+  --       -- plugin = {
+  --       --   lualine = {
+  --       --     -- Bold lualine_a sections
+  --       --     bold = true,
+  --       --     -- Don't set section/component backgrounds. Recommended to not set
+  --       --     -- section/component separators.
+  --       --     plain = false,
+  --       --   },
+  --       --   cmp = { -- works for nvim.cmp and blink.nvim
+  --       --     -- Don't highlight lsp-kind items. Only the current selection will be highlighted.
+  --       --     plain = false,
+  --       --     -- Reverse lsp-kind items' highlights in blink/cmp menu.
+  --       --     reverse = false,
+  --       --   },
+  --       -- },
+  --
+  --       -- CUSTOM HIGHLIGHTS --
+  --       --
+  --       -- Override default colors
+  --       colors = {},
+  --       -- Override highlight groups
+  --       highlights = {},
+  --     })
+  --     -- Convenience function that simply calls `:colorscheme <theme>` with the theme
+  --     -- specified in your config.
+  --     -- require("neomodern").load()
+  --   end,
+  -- },
+  -- -- Lazy
+  -- {
+  --   "vague2k/vague.nvim",
+  --   config = function()
+  --     -- NOTE: you do not need to call setup if you don't want to.
+  --     require("vague").setup({
+  --       transparent = true, -- don't set background
+  --       style = {
+  --         -- "none" is the same thing as default. But "italic" and "bold" are also valid options
+  --         boolean = "none",
+  --         number = "none",
+  --         float = "none",
+  --         error = "none",
+  --         comments = "none",
+  --         conditionals = "none",
+  --         functions = "none",
+  --         headings = "none",
+  --         operators = "none",
+  --         strings = "none",
+  --         variables = "none",
+  --
+  --         -- keywords
+  --         keywords = "none",
+  --         keyword_return = "none",
+  --         keywords_loop = "none",
+  --         keywords_label = "none",
+  --         keywords_exception = "none",
+  --
+  --         -- builtin
+  --         builtin_constants = "none",
+  --         builtin_functions = "none",
+  --         builtin_types = "none",
+  --         builtin_variables = "none",
+  --       },
+  --       -- plugin styles where applicable
+  --       -- make an issue/pr if you'd like to see more styling options!
+  --       plugins = {
+  --         cmp = {
+  --           match = "none",
+  --           match_fuzzy = "none",
+  --         },
+  --         dashboard = {
+  --           footer = "none",
+  --         },
+  --         lsp = {
+  --           diagnostic_error = "none",
+  --           diagnostic_hint = "none",
+  --           diagnostic_info = "none",
+  --           diagnostic_warn = "none",
+  --         },
+  --         neotest = {
+  --           focused = "none",
+  --           adapter_name = "none",
+  --         },
+  --         telescope = {
+  --           match = "none",
+  --         },
+  --       },
+  --       -- Override colors
+  --       colors = {
+  --         bg = "#141415",
+  --         fg = "#cdcdcd",
+  --         floatBorder = "#878787",
+  --         line = "#252530",
+  --         comment = "#606079",
+  --         builtin = "#b4d4cf",
+  --         func = "#c48282",
+  --         string = "#e8b589",
+  --         number = "#e0a363",
+  --         property = "#c3c3d5",
+  --         constant = "#aeaed1",
+  --         parameter = "#bb9dbd",
+  --         visual = "#333738",
+  --         error = "#df6882",
+  --         warning = "#f3be7c",
+  --         hint = "#7e98e8",
+  --         operator = "#90a0b5",
+  --         keyword = "#6e94b2",
+  --         type = "#9bb4bc",
+  --         search = "#405065",
+  --         plus = "#8cb66d",
+  --         delta = "#f3be7c",
+  --       },
+  --     })
+  --
+  --     -- vim.cmd.colorscheme("vague")
+  --   end
+  -- },
+  -- {
+  --   "loctvl842/monokai-pro.nvim",
+  --   config = function()
+  --     require("monokai-pro").setup({
+  --       transparent_background = false,
+  --       terminal_colors        = true,
+  --       devicons               = true, -- highlight the icons of `nvim-web-devicons`
+  --       styles                 = {
+  --         comment = { italic = false },
+  --         keyword = { italic = false },       -- any other keyword
+  --         type = { italic = false },          -- (preferred) int, long, char, etc
+  --         storageclass = { italic = false },  -- static, register, volatile, etc
+  --         structure = { italic = false },     -- struct, union, enum, etc
+  --         parameter = { italic = false },     -- parameter pass in function
+  --         annotation = { italic = false },
+  --         tag_attribute = { italic = false }, -- attribute of tag in reactjs
+  --       },
+  --       filter                 = "pro",       -- classic | octagon | pro | machine | ristretto | spectrum
+  --       -- Enable this will disable filter option
+  --       day_night              = {
+  --         enable = false,                      -- turn off by default
+  --         day_filter = "pro",                  -- classic | octagon | pro | machine | ristretto | spectrum
+  --         night_filter = "spectrum",           -- classic | octagon | pro | machine | ristretto | spectrum
+  --       },
+  --       inc_search             = "background", -- underline | background
+  --       background_clear       = {
+  --         -- "float_win",
+  --         -- "toggleterm",
+  --         -- "telescope",
+  --         "which-key",
+  --         -- "renamer",
+  --         "notify",
+  --         -- "nvim-tree",
+  --         -- "neo-tree",
+  --         -- "bufferline", -- better used if background of `neo-tree` or `nvim-tree` is cleared
+  --       }, -- "float_win", "toggleterm", "telescope", "which-key", "renamer", "neo-tree", "nvim-tree", "bufferline"
+  --       plugins                = {
+  --         bufferline = {
+  --           underline_selected = false,
+  --           underline_visible = false,
+  --         },
+  --         indent_blankline = {
+  --           context_highlight = "default", -- default | pro
+  --           context_start_underline = false,
+  --         },
+  --       },
+  --       override               = function(c)
+  --         local hp = require("monokai-pro.color_helper")
+  --         local common_fg = hp.lighten(c.sideBar.foreground, 30)
+  --         return {
+  --           SnacksPicker = { bg = c.editor.background, fg = common_fg },
+  --           SnacksPickerBorder = { bg = c.editor.background, fg = c.tab.unfocusedActiveBorder },
+  --           SnacksPickerTree = { fg = c.editorLineNumber.foreground },
+  --           NonText = { fg = c.base.dimmed3 }, -- not sure if this should be broken into all hl groups importing NonText
+  --         }
+  --       end,
+  --     })
+  --
+  --     -- vim.cmd([[colorscheme monokai-pro-spectrum]])
+  --     -- vim.cmd.colorscheme("monokai-pro-machine")
+  --   end
+  -- }
 }
