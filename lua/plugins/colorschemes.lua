@@ -432,7 +432,27 @@ return {
       })
 
       -- setup must be called before loading
-      vim.cmd('colorscheme github_light')
+      -- vim.cmd('colorscheme github_light')
+    end,
+  },
+  {
+    "folke/tokyonight.nvim",
+    lazy = false,
+    priority = 1000,
+    opts = {
+      transparent = true,
+      styles = {
+        comments = { italic = false },
+        keywords = { italic = false },
+        functions = {},
+        variables = {},
+        sidebars = "dark",
+        floats = "dark",
+      },
+    },
+    config = function(_, opts)
+      require("tokyonight").setup(opts)
+      vim.cmd.colorscheme("tokyonight-moon")
     end,
   },
   -- {
