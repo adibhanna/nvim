@@ -4,6 +4,7 @@ vim.lsp.enable({
     "zls",
     "ts-ls",
     "rust-analyzer",
+    "intelephense",
 })
 
 vim.diagnostic.config({
