@@ -94,37 +94,6 @@ return {
     "editorconfig/editorconfig-vim",
   },
 
-  -- Enhanced f/t motions for Leap
-  -- {
-  --   "ggandor/flit.nvim",
-  --   keys = function()
-  --     ---@type LazyKeys[]
-  --     local ret = {}
-  --     for _, key in ipairs({ "f", "F", "t", "T" }) do
-  --       ret[#ret + 1] = { key, mode = { "n", "x", "o" }, desc = key }
-  --     end
-  --     return ret
-  --   end,
-  --   opts = { labeled_modes = "nx" },
-  -- },
-  -- -- mouse replacement
-  -- {
-  --   "ggandor/leap.nvim",
-  --   keys = {
-  --     { "s",  mode = { "n", "x", "o" }, desc = "Leap forward to" },
-  --     { "S",  mode = { "n", "x", "o" }, desc = "Leap backward to" },
-  --     { "gs", mode = { "n", "x", "o" }, desc = "Leap from windows" },
-  --   },
-  --   config = function(_, opts)
-  --     local leap = require("leap")
-  --     for k, v in pairs(opts) do
-  --       leap.opts[k] = v
-  --     end
-  --     leap.add_default_mappings(true)
-  --     vim.keymap.del({ "x", "o" }, "x")
-  --     vim.keymap.del({ "x", "o" }, "X")
-  --   end,
-  -- },
   {
     "folke/flash.nvim",
     event = "VeryLazy",
@@ -241,36 +210,4 @@ return {
       },
     },
   },
-
-  {
-    "tris203/precognition.nvim",
-    enabled = false,
-    --event = "VeryLazy",
-    opts = {
-      -- startVisible = true,
-      -- showBlankVirtLine = true,
-      -- highlightColor = { link = "Comment" },
-      -- hints = {
-      --      Caret = { text = "^", prio = 2 },
-      --      Dollar = { text = "$", prio = 1 },
-      --      MatchingPair = { text = "%", prio = 5 },
-      --      Zero = { text = "0", prio = 1 },
-      --      w = { text = "w", prio = 10 },
-      --      b = { text = "b", prio = 9 },
-      --      e = { text = "e", prio = 8 },
-      --      W = { text = "W", prio = 7 },
-      --      B = { text = "B", prio = 6 },
-      --      E = { text = "E", prio = 5 },
-      -- },
-      -- gutterHints = {
-      --     G = { text = "G", prio = 10 },
-      --     gg = { text = "gg", prio = 9 },
-      --     PrevParagraph = { text = "{", prio = 8 },
-      --     NextParagraph = { text = "}", prio = 8 },
-      -- },
-      -- disabled_fts = {
-      --     "startify",
-      -- },
-    },
-  }
 }
