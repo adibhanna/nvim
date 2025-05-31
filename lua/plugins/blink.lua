@@ -10,6 +10,8 @@ return {
         config = function()
             vim.cmd('highlight Pmenu guibg=none')
             vim.cmd('highlight PmenuExtra guibg=none')
+            vim.cmd('highlight FloatBorder guibg=none')
+            vim.cmd('highlight NormalFloat guibg=none')
 
             require("blink.cmp").setup({
                 snippets = { preset = "luasnip" },
