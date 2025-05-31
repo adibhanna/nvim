@@ -58,8 +58,6 @@ return {
                             border = nil,
                             scrollbar = false,
                             winhighlight = 'Normal:BlinkCmpDoc,FloatBorder:BlinkCmpDocBorder,EndOfBuffer:BlinkCmpDoc',
-                            -- winhighlight =
-                            -- 'Normal:BlinkCmpMenu,FloatBorder:BlinkCmpMenuBorder,CursorLine:BlinkCmpMenuSelection,Search:None',
                         },
                         auto_show = true,
                         auto_show_delay_ms = 500,
