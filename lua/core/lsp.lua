@@ -281,16 +281,41 @@ local function lsp_status_short()
     return "󰒋 " .. table.concat(names, ",")
 end
 
--- Set statusline with LSP info
-vim.opt.statusline = table.concat({
-    "%f",                          -- File name
-    "%m",                          -- Modified flag
-    "%r",                          -- Readonly flag
-    "%=",                          -- Right align
-    "%{v:lua.lsp_status_short()}", -- LSP status
-    " %l:%c",                      -- Line:Column
-    " %p%%"                        -- Percentage through file
-}, " ")
+local function git_branch()
+    local ok, handle = pcall(io.popen, "git branch --show-current 2>/dev/null")
+    if not ok or not handle then
+        return ""
+    end
+    local branch = handle:read("*a")
+    handle:close()
+    if branch and branch ~= "" then
+        branch = branch:gsub("\n", "")
+        return "󰊢 " .. branch
+    end
+    return ""
+end
+-- Safe wrapper functions for statusline
+local function safe_git_branch()
+    local ok, result = pcall(git_branch)
+    return ok and result or ""
+end
 
--- Make function global so statusline can access it
-_G.lsp_status_short = lsp_status_short
+local function safe_lsp_status()
+    local ok, result = pcall(lsp_status_short)
+    return ok and result or ""
+end
+
+_G.git_branch = safe_git_branch
+_G.lsp_status = safe_lsp_status
+
+-- THEN set the statusline
+vim.opt.statusline = table.concat({
+    "%{v:lua.git_branch()}", -- Git branch
+    "%f",                    -- File name
+    "%m",                    -- Modified flag
+    "%r",                    -- Readonly flag
+    "%=",                    -- Right align
+    "%{v:lua.lsp_status()}", -- LSP status
+    " %l:%c",                -- Line:Column
+    " %p%%"                  -- Percentage through file
+}, " ")
