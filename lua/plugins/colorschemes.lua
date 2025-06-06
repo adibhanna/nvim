@@ -379,7 +379,22 @@ return {
       vim.cmd.colorscheme("gruvbox-material")
     end,
   },
-
+  {
+    "cormacrelf/dark-notify",
+    config = function()
+      require("dark_notify").run()
+    end,
+  },
+  {
+    "ellisonleao/gruvbox.nvim",
+    priority = 1000, -- make sure to load this before all the other start plugins
+    config = function()
+      require("gruvbox").setup({
+        contrast = "hard"
+      })
+      -- vim.cmd([[colorscheme gruvbox]])
+    end,
+  },
   {
     'projekt0n/github-nvim-theme',
     name = 'github-theme',
