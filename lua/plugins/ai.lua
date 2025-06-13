@@ -1,6 +1,7 @@
 return {
     {
         "olimorris/codecompanion.nvim",
+        enabled = false,
         opts = {
             extensions = {
                 history = {
@@ -42,10 +43,10 @@ return {
             }
         },
         keys = {
-            { "<leader>ic", "<cmd>CodeCompanion<cr>", desc = "CodeCompanion" },
-            { "<leader>iC", "<cmd>CodeCompanionChat<cr>", desc = "CodeCompanion Chat" },
+            { "<leader>ic", "<cmd>CodeCompanion<cr>",        desc = "CodeCompanion" },
+            { "<leader>iC", "<cmd>CodeCompanionChat<cr>",    desc = "CodeCompanion Chat" },
             { "<leader>ia", "<cmd>CodeCompanionActions<cr>", desc = "CodeCompanion Actions" },
-            { "<leader>id", "<cmd>CodeCompanionCmd<cr>", desc = "CodeCompanion CMD" },
+            { "<leader>id", "<cmd>CodeCompanionCmd<cr>",     desc = "CodeCompanion CMD" },
         },
         dependencies = {
             "j-hui/fidget.nvim",
@@ -76,10 +77,10 @@ return {
                     action_palette = {
                         width = 95,
                         height = 10,
-                        prompt = "Prompt ",       -- Prompt used for interactive LLM calls
-                        provider = "snacks",      -- Can be "default", "telescope", "mini_pick" or "snacks". If not specified, the plugin will autodetect installed providers.
+                        prompt = "Prompt ",                     -- Prompt used for interactive LLM calls
+                        provider = "snacks",                    -- Can be "default", "telescope", "mini_pick" or "snacks". If not specified, the plugin will autodetect installed providers.
                         opts = {
-                            show_default_actions = true, -- Show the default actions in the action palette?
+                            show_default_actions = true,        -- Show the default actions in the action palette?
                             show_default_prompt_library = true, -- Show the default prompt library in the action palette?
                         },
                     },
@@ -89,7 +90,7 @@ return {
     },
     {
         "zbirenbaum/copilot.lua",
-        enabled = false,
+        enabled = true,
         cmd = "Copilot",
         build = ":Copilot auth",
         event = "InsertEnter",
