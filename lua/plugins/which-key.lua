@@ -30,6 +30,7 @@ return {
         { "<leader>l", group = "LSP" },
         { "<leader>c", group = "LSP (Trouble)" },
         { "<leader>t", group = "Test" },
+        { "<leader>D", group = "Debugger" },
         { "<leader>s", group = "Search" },
         { "<leader>x", group = "diagnostics/quickfix (Trouble)" },
         { "<leader>u", group = "Toggle Features" },
