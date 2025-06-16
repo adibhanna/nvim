@@ -49,6 +49,11 @@ return {
 
             -- Other (system tools)
             rust = { "rustfmt" }, -- comes with Rust installation
+
+            -- Additional file types (uncomment as needed)
+            -- markdown = { "markdownlint" },
+            -- yaml = { "yamllint" },
+            -- toml = { "taplo" },
         },
         default_format_opts = {
             lsp_format = "fallback",

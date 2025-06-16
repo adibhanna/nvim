@@ -50,9 +50,12 @@ local current_path = vim.env.PATH or ""
 -- Remove any existing Mason bin entries to prevent duplicates
 local path_entries = vim.split(current_path, ":")
 local clean_path_entries = {}
+local seen = {}
 
 for _, entry in ipairs(path_entries) do
-    if entry ~= mason_bin then
+    -- Skip Mason bin entries and duplicates
+    if entry ~= mason_bin and entry ~= "" and not seen[entry] then
+        seen[entry] = true
         table.insert(clean_path_entries, entry)
     end
 end
