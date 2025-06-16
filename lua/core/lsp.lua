@@ -1,3 +1,4 @@
+-- Mason PATH is handled by core.mason-path
 vim.lsp.enable({
     "lua-ls",
     "gopls",
@@ -6,6 +7,9 @@ vim.lsp.enable({
     "rust-analyzer",
     "intelephense",
 })
+
+-- LSP servers are automatically managed by Mason
+-- Use :MasonVerify to check which tools are Mason-managed
 
 vim.diagnostic.config({
     virtual_text = true,
@@ -284,6 +288,39 @@ local function git_branch()
     end
     return ""
 end
+
+local function formatter_status()
+    local ok, conform = pcall(require, "conform")
+    if not ok then
+        return ""
+    end
+
+    local formatters = conform.list_formatters_to_run(0)
+    if #formatters == 0 then
+        return ""
+    end
+
+    local formatter_names = {}
+    for _, formatter in ipairs(formatters) do
+        table.insert(formatter_names, formatter.name)
+    end
+
+    return "󰉿 " .. table.concat(formatter_names, ",")
+end
+
+local function linter_status()
+    local ok, lint = pcall(require, "lint")
+    if not ok then
+        return ""
+    end
+
+    local linters = lint.linters_by_ft[vim.bo.filetype] or {}
+    if #linters == 0 then
+        return ""
+    end
+
+    return "󰁨 " .. table.concat(linters, ",")
+end
 -- Safe wrapper functions for statusline
 local function safe_git_branch()
     local ok, result = pcall(git_branch)
@@ -295,17 +332,31 @@ local function safe_lsp_status()
     return ok and result or ""
 end
 
+local function safe_formatter_status()
+    local ok, result = pcall(formatter_status)
+    return ok and result or ""
+end
+
+local function safe_linter_status()
+    local ok, result = pcall(linter_status)
+    return ok and result or ""
+end
+
 _G.git_branch = safe_git_branch
 _G.lsp_status = safe_lsp_status
+_G.formatter_status = safe_formatter_status
+_G.linter_status = safe_linter_status
 
 -- THEN set the statusline
 vim.opt.statusline = table.concat({
-    "%{v:lua.git_branch()}", -- Git branch
-    "%f",                    -- File name
-    "%m",                    -- Modified flag
-    "%r",                    -- Readonly flag
-    "%=",                    -- Right align
-    "%{v:lua.lsp_status()}", -- LSP status
-    " %l:%c",                -- Line:Column
-    " %p%%"                  -- Percentage through file
+    "%{v:lua.git_branch()}",       -- Git branch
+    "%f",                          -- File name
+    "%m",                          -- Modified flag
+    "%r",                          -- Readonly flag
+    "%=",                          -- Right align
+    "%{v:lua.linter_status()}",    -- Linter status
+    "%{v:lua.formatter_status()}", -- Formatter status
+    "%{v:lua.lsp_status()}",       -- LSP status
+    " %l:%c",                      -- Line:Column
+    " %p%%"                        -- Percentage through file
 }, " ")

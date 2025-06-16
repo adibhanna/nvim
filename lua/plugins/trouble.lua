@@ -1,7 +1,7 @@
 return {
   "folke/trouble.nvim",
-  cmd = { "TroubleToggle", "Trouble" },
-  opts = { use_diagnostic_signs = true },
+  cmd = "Trouble",
+  opts = {}, -- for default options, refer to the configuration section for custom setup.
   lazy = true,
   specs = {
     "folke/snacks.nvim",
