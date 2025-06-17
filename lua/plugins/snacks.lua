@@ -15,6 +15,9 @@ return {
     },
     picker = {
       enabled = true,
+      sources = {
+        files = { hidden = true },
+      },
     },
     quickfile = { enabled = true },
     scope = { enabled = true },
