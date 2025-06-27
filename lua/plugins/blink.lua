@@ -21,11 +21,16 @@ return {
                     nerd_font_variant = "normal",
                 },
                 sources = {
-                    per_filetype = {
-                        codecompanion = { "codecompanion" },
-                    },
-                    default = { "lsp", "path", "snippets", "buffer" },
+                    -- per_filetype = {
+                    --     codecompanion = { "codecompanion" },
+                    -- },
+                    default = { "lazydev", "lsp", "path", "snippets", "buffer" },
                     providers = {
+                        lazydev = {
+                            name = "LazyDev",
+                            module = "lazydev.integrations.blink",
+                            score_offset = 100,
+                        },
                         cmdline = {
                             min_keyword_length = 2,
                         },
