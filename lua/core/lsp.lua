@@ -6,6 +6,9 @@ vim.lsp.enable({
     "ts-ls",
     "rust-analyzer",
     "intelephense",
+    "tailwindcss",
+    "html-ls",
+    "css-ls",
 })
 
 -- LSP servers are automatically managed by Mason

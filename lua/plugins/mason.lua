@@ -13,7 +13,10 @@ return {
                 "zls",
                 "typescript-language-server",
                 "rust-analyzer",
-                "intelephense", -- PHP LSP
+                "intelephense",                -- PHP LSP
+                "tailwindcss-language-server", -- Tailwind CSS LSP
+                "html-lsp",                    -- HTML LSP
+                "css-lsp",                     -- CSS LSP
 
                 -- Formatters (for conform.nvim and general use)
                 "stylua",
