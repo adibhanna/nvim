@@ -34,6 +34,7 @@ return {
                     "regex",
                     "tsx",
                     "typescript",
+                    "vue",
                     "vim",
                     "vimdoc",
                     "yaml",
@@ -44,7 +45,9 @@ return {
                     "gosum",
                     "terraform",
                     "proto",
-                    "zig"
+                    "zig",
+                    "php",
+                    "blade",
                 },
                 incremental_selection = {
                     enable = true,

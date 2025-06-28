@@ -7,7 +7,6 @@ return {
         "blade",
         "javascriptreact",
         "typescriptreact",
-        "vue",
         "svelte",
     },
     root_markers = { "index.html", ".git" },
