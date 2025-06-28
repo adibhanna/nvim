@@ -13,9 +13,9 @@ return {
         "blade",
         "css",
         "scss",
-        "rust",
-        "php",
-        "go",
+        -- "rust",
+        -- "php",
+        -- "go",
     },
     root_markers = {
         "tailwind.config.js",

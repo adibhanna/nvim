@@ -8,15 +8,16 @@ return {
         opts = {
             ensure_installed = {
                 -- LSP servers (matching your vim.lsp.enable() config)
-                "lua-language-server",
-                "gopls",
-                "zls",
-                "typescript-language-server",
-                "rust-analyzer",
+                "lua-language-server",         -- Lua LSP
+                "gopls",                       -- Go LSP
+                "zls",                         -- Zig LSP
+                "typescript-language-server",  -- TypeScript LSP
+                "rust-analyzer",               -- Rust LSP
                 "intelephense",                -- PHP LSP
                 "tailwindcss-language-server", -- Tailwind CSS LSP
                 "html-lsp",                    -- HTML LSP
                 "css-lsp",                     -- CSS LSP
+                "vue-language-server",         -- Vue LSP
 
                 -- Formatters (for conform.nvim and general use)
                 "stylua",
