@@ -9,7 +9,7 @@ vim.lsp.enable({
     "tailwindcss",
     "html-ls",
     "css-ls",
-    "vue-ls", -- Re-enabled: Using vue-ls + ts-ls with Vue TypeScript plugin
+    "vue-ls",
 })
 
 -- LSP servers are automatically managed by Mason
