@@ -13,9 +13,6 @@ return {
         "blade",
         "css",
         "scss",
-        -- "rust",
-        -- "php",
-        -- "go",
     },
     root_markers = {
         "tailwind.config.js",
@@ -63,15 +60,6 @@ return {
                 },
             },
         },
-    },
-    handlers = {
-        ["textDocument/hover"] = function(_, result, ctx, config)
-            -- Suppress "No information available" when Tailwind returns empty docs
-            if not (result and result.contents) or result.contents == '' or (type(result.contents) == 'table' and vim.tbl_isempty(result.contents)) then
-                return
-            end
-            vim.lsp.handlers.hover(_, result, ctx, config)
-        end,
     },
     capabilities = vim.tbl_deep_extend(
         "force",

@@ -35,15 +35,6 @@ return {
         -- Remove TypeScript-specific settings to avoid conflicts with ts-ls
         -- Let the TypeScript Language Server handle TypeScript features
     },
-    handlers = {
-        ["textDocument/hover"] = function(_, result, ctx, config)
-            -- Suppress "No information available" when Vue returns empty docs
-            if not (result and result.contents) or result.contents == '' or (type(result.contents) == 'table' and vim.tbl_isempty(result.contents)) then
-                return
-            end
-            vim.lsp.handlers.hover(_, result, ctx, config)
-        end,
-    },
     capabilities = vim.tbl_deep_extend(
         "force",
         {},
