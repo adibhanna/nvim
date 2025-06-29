@@ -9,7 +9,8 @@ return {
     config = function()
       require('laravel').setup({
         notifications = false,
-        debug = false
+        debug = false,
+        keymaps = true
       })
     end,
   },
