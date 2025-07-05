@@ -288,7 +288,7 @@ local function git_branch()
     handle:close()
     if branch and branch ~= "" then
         branch = branch:gsub("\n", "")
-        return "󰊢 " .. branch
+        return " 󰊢 " .. branch
     end
     return ""
 end
