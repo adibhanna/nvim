@@ -111,7 +111,7 @@ return {
           },
           snacks = {
             enabled = true,
-            indent_scope_color = "lavender", -- catppuccin color (eg. `lavender`) Default: text
+            -- indent_scope_color = "lavender", -- catppuccin color (eg. `lavender`) Default: text
           },
           -- barbecue = { dim_dirname = true, bold_basename = true, dim_context = false, alt_background = false },
           -- cmp = true,
@@ -171,6 +171,45 @@ return {
               BlinkCmpSignatureHelp = { bg = colors.mantle, fg = colors.text },
               BlinkCmpSignatureHelpBorder = { bg = colors.mantle, fg = colors.surface2 },
               BlinkCmpSignatureHelpActiveParameter = { bg = colors.surface0, fg = colors.peach, bold = true },
+
+              -- Snacks.nvim picker NvChad style
+              SnacksPicker = { bg = colors.base },
+              SnacksPickerBorder = { fg = colors.surface0, bg = colors.base },
+              SnacksPickerPreview = { bg = colors.base },
+              SnacksPickerPreviewBorder = { fg = colors.base, bg = colors.base },
+              SnacksPickerPreviewTitle = { fg = colors.base, bg = colors.green },
+              SnacksPickerBoxBorder = { fg = colors.base, bg = colors.base },
+              SnacksPickerInputBorder = { fg = colors.base, bg = colors.base },
+              SnacksPickerInputSearch = { fg = colors.red, bg = colors.base },
+              SnacksPickerList = { bg = colors.base },
+              SnacksPickerListBorder = { fg = colors.base, bg = colors.base },
+              SnacksPickerListTitle = { fg = colors.base, bg = colors.base },
+
+              -- Snacks core components
+              SnacksNotifierNormal = { bg = colors.mantle, fg = colors.text },
+              SnacksNotifierBorder = { bg = colors.mantle, fg = colors.surface2 },
+              SnacksNotifierTitle = { bg = colors.mantle, fg = colors.text, bold = true },
+              SnacksNotifierIcon = { bg = colors.mantle, fg = colors.blue },
+              SnacksNotifierIconInfo = { bg = colors.mantle, fg = colors.blue },
+              SnacksNotifierIconWarn = { bg = colors.mantle, fg = colors.yellow },
+              SnacksNotifierIconError = { bg = colors.mantle, fg = colors.red },
+
+              -- Snacks Dashboard
+              SnacksDashboardNormal = { bg = colors.base, fg = colors.text },
+              SnacksDashboardDesc = { bg = colors.base, fg = colors.subtext1 },
+              SnacksDashboardFile = { bg = colors.base, fg = colors.text },
+              SnacksDashboardDir = { bg = colors.base, fg = colors.blue },
+              SnacksDashboardFooter = { bg = colors.base, fg = colors.overlay1 },
+              SnacksDashboardHeader = { bg = colors.base, fg = colors.text, bold = true },
+              SnacksDashboardIcon = { bg = colors.base, fg = colors.blue },
+              SnacksDashboardKey = { bg = colors.base, fg = colors.peach },
+              SnacksDashboardTerminal = { bg = colors.base, fg = colors.text },
+              SnacksDashboardSpecial = { bg = colors.base, fg = colors.peach },
+
+              -- Snacks Terminal
+              SnacksTerminalNormal = { bg = colors.mantle, fg = colors.text },
+              SnacksTerminalBorder = { bg = colors.mantle, fg = colors.surface2 },
+              SnacksTerminalTitle = { bg = colors.mantle, fg = colors.text, bold = true },
 
               CmpItemMenu = { fg = colors.surface2 },
               CursorLineNr = { fg = colors.text },
