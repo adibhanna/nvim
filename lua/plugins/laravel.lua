@@ -1,7 +1,7 @@
 return {
   {
-    -- 'adibhanna/laravel.nvim',
-    dir = "~/Developer/opensource/laravel.nvim",
+    'adibhanna/laravel.nvim',
+    -- dir = "~/Developer/opensource/laravel.nvim",
     ft = { 'php', 'blade' },
     dependencies = {
       'folke/snacks.nvim', -- Optional: for enhanced UI
@@ -18,6 +18,7 @@ return {
   {
     -- dir = "~/Developer/opensource/phprefactoring.nvim",
     'adibhanna/phprefactoring.nvim',
+    enabled = false,
     dependencies = {
       'MunifTanjim/nui.nvim',
     },
@@ -25,5 +26,13 @@ return {
     config = function()
       require('phprefactoring').setup()
     end,
+  },
+  {
+    dir = "~/Developer/opensource/simplemarkdown.nvim",
+    enabled = false,
+    ft = 'markdown',
+    config = function()
+      require('simplemarkdown').setup()
+    end
   }
 }
