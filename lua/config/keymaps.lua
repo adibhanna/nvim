@@ -89,4 +89,7 @@ vim.keymap.set("n", "<C-n>", ":w %:h/", opts)
 
 vim.keymap.set("n", "<C-P>", ':lua require("config.utils").toggle_go_test()<CR>', opts)
 
+-- Get highlighted line numbers in visual mode
+vim.keymap.set("v", "<leader>ln", ':lua require("config.utils").get_highlighted_line_numbers()<CR>', opts)
+
 vim.keymap.set("n", "<Esc>", ":nohlsearch<CR>", opts)
