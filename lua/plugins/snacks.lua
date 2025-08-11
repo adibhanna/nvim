@@ -54,11 +54,11 @@ return {
       desc = "Command History",
     },
     {
-      "<leader>n",
+      "<leader>sn",
       function()
         Snacks.picker.notifications()
       end,
-      desc = "Notification History",
+      desc = "Search Notifications",
     },
     {
       "<leader>e",
@@ -222,13 +222,7 @@ return {
       end,
       desc = "Autocmds",
     },
-    {
-      "<leader>sb",
-      function()
-        Snacks.picker.lines()
-      end,
-      desc = "Buffer Lines",
-    },
+    -- Removed duplicate mapping for <leader>sb (already defined at line 175-180)
     {
       "<leader>sc",
       function()

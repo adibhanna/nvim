@@ -53,8 +53,8 @@ vim.keymap.set("n", "=", ":resize +5<CR>")
 vim.keymap.set("n", "-", ":resize -5<CR>")
 
 -- Map enter to ciw in normal mode
-vim.keymap.set("n", "<CR>", "ciw", opts)
-vim.keymap.set("n", "<BS>", "ci", opts)
+-- vim.keymap.set("n", "<CR>", "ciw", opts)  -- Commented out: This overwrites word on Enter - too disruptive
+-- vim.keymap.set("n", "<BS>", "ci", opts)   -- Commented out: This changes text on Backspace - too disruptive
 
 vim.keymap.set("n", "n", "nzzv", opts)
 vim.keymap.set("n", "N", "Nzzv", opts)
