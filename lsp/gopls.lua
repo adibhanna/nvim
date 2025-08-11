@@ -26,6 +26,10 @@ return {
                 rangeVariableTypes = false,
             },
             analyses = {
+                -- NOTE: To temporarily enable disabled analyzers for specific debugging:
+                -- :lua vim.lsp.stop_client(vim.lsp.get_clients({name = "gopls"}))
+                -- Then edit this file and save, LSP will restart with new settings
+
                 -- Essential analyzers for catching common issues
                 nilness = true,      -- Check for nil pointer dereferences
                 unusedparams = true, -- Find unused function parameters
@@ -38,14 +42,12 @@ return {
                 simplifyslice = true,        -- Simplify slice expressions
                 simplifyrange = true,        -- Simplify range loops
                 simplifycompositelit = true, -- Simplify composite literals
-                shadow = true,               -- Check for shadowed variables
-                printf = true,               -- Check printf-style functions
-                structtag = true,            -- Check struct tags
 
                 -- Performance-intensive analyzers (disabled for better performance)
-                -- Enable these selectively when needed:
-                -- fieldalignment = false,  -- Check struct field alignment (can be slow)
-                -- nilness = false,         -- Advanced nil checking (resource intensive)
+                shadow = false,    -- Check for shadowed variables (can be slow)
+                printf = false,    -- Check printf-style functions (can be slow)
+                structtag = false, -- Check struct tags (can be slow)
+                -- fieldalignment = false,  -- Check struct field alignment (very slow)
                 -- unusedvariable = false,  -- Can be slow on large codebases
 
                 -- Less commonly needed analyzers (disabled)

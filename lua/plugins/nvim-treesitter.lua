@@ -16,7 +16,7 @@ return {
                     additional_vim_regex_highlighting = false,
                 },
                 indent = { enable = true },
-                auto_install = true,
+                auto_install = false,
                 ensure_installed = {
                     "bash",
                     "c",

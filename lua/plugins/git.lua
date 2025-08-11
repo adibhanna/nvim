@@ -1,7 +1,8 @@
 return {
   {
     "lewis6991/gitsigns.nvim",
-    lazy = false,
+    lazy = true,
+    event = { "BufReadPre", "BufNewFile" },
     config = function()
       -- local icons = require('config.icons')
       require("gitsigns").setup({
