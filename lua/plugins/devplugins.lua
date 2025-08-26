@@ -1,6 +1,7 @@
 return {
   {
     'adibhanna/laravel.nvim',
+    enabled = false,
     -- dir = "~/Developer/opensource/laravel.nvim",
     ft = { 'php', 'blade' },
     dependencies = {
@@ -41,4 +42,11 @@ return {
   --     -- vim.cmd('colorscheme forest-night')
   --   end
   -- }
+  -- {
+  --   dir = "~/Developer/opensource/review.nvim",
+  --   config = function()
+  --     require('review').setup({})
+  --   end,
+  -- },
+
 }
