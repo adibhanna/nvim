@@ -34,7 +34,7 @@ return {
                     -- per_filetype = {
                     --     codecompanion = { "codecompanion" },
                     -- },
-                    default = { "lsp", "path", "supermaven", "snippets", "lazydev", "buffer", "laravel" },
+                    default = { "lsp", "path", "supermaven", "snippets", "lazydev", "buffer" },
                     providers = {
                         supermaven = {
                             name = 'supermaven',
@@ -46,10 +46,10 @@ return {
                             module = "lazydev.integrations.blink",
                             score_offset = 100,
                         },
-                        laravel = {
-                            name = "laravel",
-                            module = "laravel.blink_source",
-                        },
+                        -- laravel = {
+                        --     name = "laravel",
+                        --     module = "laravel.blink_source",
+                        -- },
                         cmdline = {
                             min_keyword_length = 2,
                         },

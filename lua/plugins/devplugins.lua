@@ -42,11 +42,4 @@ return {
   --     -- vim.cmd('colorscheme forest-night')
   --   end
   -- }
-  -- {
-  --   dir = "~/Developer/opensource/review.nvim",
-  --   config = function()
-  --     require('review').setup({})
-  --   end,
-  -- },
-
 }
