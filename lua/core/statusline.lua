@@ -101,16 +101,16 @@ _G.open_file_explorer = open_file_explorer
 _G.open_lsp_symbols = open_lsp_symbols
 _G.open_git_branches = open_git_branches
 
-local function setup_statusline_colors()
-    vim.api.nvim_set_hl(0, "StatusLine", { bg = "NONE", fg = "#d4be98" })
-    vim.api.nvim_set_hl(0, "StatusLineNC", { bg = "NONE", fg = "#7c6f64" })
-end
-
-setup_statusline_colors()
-vim.api.nvim_create_autocmd("ColorScheme", {
-    callback = setup_statusline_colors
-})
-
+-- local function setup_statusline_colors()
+--     vim.api.nvim_set_hl(0, "StatusLine", { bg = "NONE", fg = "#d4be98" })
+--     vim.api.nvim_set_hl(0, "StatusLineNC", { bg = "NONE", fg = "#7c6f64" })
+-- end
+--
+-- setup_statusline_colors()
+-- vim.api.nvim_create_autocmd("ColorScheme", {
+--     callback = setup_statusline_colors
+-- })
+--
 vim.opt.statusline = " %@v:lua.open_file_explorer@ 󰉋 %X"
     .. "%@v:lua.open_lsp_symbols@ 󰒕 %X"
     .. "%@v:lua.open_git_branches@ 󰊢 %X"
