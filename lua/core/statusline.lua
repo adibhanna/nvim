@@ -123,6 +123,6 @@ vim.opt.statusline = " %@v:lua.open_file_explorer@ 󰉋 %X"
     .. " %{v:lua.formatter_status()}"
     .. " %{v:lua.lsp_status()}"
     .. " %l:%c"
-    .. " %p%%"
+    .. " %p%% "
 
 vim.opt.fillchars:append({ stl = "─", stlnc = "─" })
