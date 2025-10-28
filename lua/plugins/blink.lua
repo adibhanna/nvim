@@ -4,16 +4,6 @@ return {
         "saghen/blink.cmp",
         dependencies = {
             "rafamadriz/friendly-snippets",
-            {
-                "supermaven-inc/supermaven-nvim",
-                opts = {
-                    disable_inline_completion = true, -- disables inline completion for use with cmp
-                    disable_keymaps = true            -- disables built in keymaps for more manual control
-                }
-            },
-            {
-                "huijiro/blink-cmp-supermaven"
-            },
         },
         -- event = "InsertEnter",
         version = "*",
@@ -31,16 +21,8 @@ return {
                     nerd_font_variant = "normal",
                 },
                 sources = {
-                    -- per_filetype = {
-                    --     codecompanion = { "codecompanion" },
-                    -- },
-                    default = { "lsp", "path", "supermaven", "snippets", "lazydev", "buffer" },
+                    default = { "lsp", "path", "snippets", "lazydev", "buffer" },
                     providers = {
-                        supermaven = {
-                            name = 'supermaven',
-                            module = "blink-cmp-supermaven",
-                            async = true
-                        },
                         lazydev = {
                             name = "LazyDev",
                             module = "lazydev.integrations.blink",

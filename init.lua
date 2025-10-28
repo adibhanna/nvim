@@ -1,5 +1,6 @@
 require("core.mason-path")
 require("core.lsp")
+require("core.statusline")
 require("config.options")
 require("config.keymaps")
 require("config.autocmds")
