@@ -64,37 +64,6 @@ return {
     "tpope/vim-sleuth",
   },
 
-  {
-    {
-      "folke/lazydev.nvim",
-      ft = "lua", -- only load on lua files
-      opts = {
-        library = {
-          -- See the configuration section for more details
-          -- Load luvit types when the `vim.uv` word is found
-          { path = "${3rd}/luv/library", words = { "vim%.uv" } },
-        },
-      },
-    },
-    -- {
-    --   "saghen/blink.cmp",
-    --   opts = {
-    --     sources = {
-    --       -- add lazydev to your completion providers
-    --       default = { "lazydev", "lsp", "path", "snippets", "buffer" },
-    --       providers = {
-    --         lazydev = {
-    --           name = "LazyDev",
-    --           module = "lazydev.integrations.blink",
-    --           -- make lazydev completions top priority (see `:h blink.cmp`)
-    --           score_offset = 100,
-    --         },
-    --       },
-    --     },
-    --   },
-    -- }
-  },
-
   -- editor config support
   {
     "editorconfig/editorconfig-vim",
@@ -115,38 +84,38 @@ return {
     },
   },
 
-  {
-    "utilyre/barbecue.nvim",
-    name = "barbecue",
-    version = "*",
-    dependencies = {
-      "SmiteshP/nvim-navic",
-      "nvim-tree/nvim-web-devicons", -- optional dependency
-    },
-    opts = {
-      -- configurations go here
-    },
-    config = function()
-      require("barbecue").setup({
-        create_autocmd = false, -- prevent barbecue from updating itself automatically
-      })
+  -- {
+  --   "utilyre/barbecue.nvim",
+  --   name = "barbecue",
+  --   version = "*",
+  --   dependencies = {
+  --     "SmiteshP/nvim-navic",
+  --     "nvim-tree/nvim-web-devicons", -- optional dependency
+  --   },
+  --   opts = {
+  --     -- configurations go here
+  --   },
+  --   config = function()
+  --     require("barbecue").setup({
+  --       create_autocmd = false, -- prevent barbecue from updating itself automatically
+  --     })
 
-      vim.api.nvim_create_autocmd({
-        "WinScrolled", -- or WinResized on NVIM-v0.9 and higher
-        "BufWinEnter",
-        "CursorHold",
-        "InsertLeave",
+  --     vim.api.nvim_create_autocmd({
+  --       "WinScrolled", -- or WinResized on NVIM-v0.9 and higher
+  --       "BufWinEnter",
+  --       "CursorHold",
+  --       "InsertLeave",
 
-        -- include this if you have set `show_modified` to `true`
-        -- "BufModifiedSet",
-      }, {
-        group = vim.api.nvim_create_augroup("barbecue.updater", {}),
-        callback = function()
-          require("barbecue.ui").update()
-        end,
-      })
-    end,
-  },
+  --       -- include this if you have set `show_modified` to `true`
+  --       -- "BufModifiedSet",
+  --     }, {
+  --       group = vim.api.nvim_create_augroup("barbecue.updater", {}),
+  --       callback = function()
+  --         require("barbecue.ui").update()
+  --       end,
+  --     })
+  --   end,
+  -- },
   -- persist sessions
   {
     "folke/persistence.nvim",
@@ -174,14 +143,27 @@ return {
 
       require("mini.pairs").setup()
 
-      -- local statusline = require("mini.statusline")
-      -- statusline.setup({
-      --   use_icons = vim.g.have_nerd_font,
-      -- })
-      -- ---@diagnostic disable-next-line: duplicate-set-field
-      -- statusline.section_location = function()
-      --   return "%2l:%-2v"
-      -- end
+      local statusline = require("mini.statusline")
+      statusline.setup({
+        use_icons = vim.g.have_nerd_font,
+        set_vim_settings = false,
+      })
+      ---@diagnostic disable-next-line: duplicate-set-field
+      statusline.section_location = function()
+        return "%2l:%-2v"
+      end
+
+      -- Set all statusline sections to use one color
+      vim.api.nvim_set_hl(0, "MiniStatuslineModeNormal", { link = "StatusLine" })
+      vim.api.nvim_set_hl(0, "MiniStatuslineModeInsert", { link = "StatusLine" })
+      vim.api.nvim_set_hl(0, "MiniStatuslineModeVisual", { link = "StatusLine" })
+      vim.api.nvim_set_hl(0, "MiniStatuslineModeReplace", { link = "StatusLine" })
+      vim.api.nvim_set_hl(0, "MiniStatuslineModeCommand", { link = "StatusLine" })
+      vim.api.nvim_set_hl(0, "MiniStatuslineModeOther", { link = "StatusLine" })
+      vim.api.nvim_set_hl(0, "MiniStatuslineDevinfo", { link = "StatusLine" })
+      vim.api.nvim_set_hl(0, "MiniStatuslineFilename", { link = "StatusLine" })
+      vim.api.nvim_set_hl(0, "MiniStatuslineFileinfo", { link = "StatusLine" })
+      vim.api.nvim_set_hl(0, "MiniStatuslineInactive", { link = "StatusLine" })
     end,
   },
 
