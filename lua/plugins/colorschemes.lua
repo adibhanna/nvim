@@ -1,5 +1,11 @@
 return {
   {
+    "adibhanna/yukinord.nvim",
+    config = function()
+      vim.cmd("colorscheme yukinord")
+    end,
+  },
+  {
     "sainnhe/gruvbox-material",
     enabled = true,
     priority = 1000,
@@ -32,7 +38,7 @@ return {
     end,
   },
   {
-    'adibhanna/forest-night.nvim',
+    "adibhanna/forest-night.nvim",
     priority = 1000,
     config = function()
       -- vim.cmd('colorscheme forest-night')
@@ -114,7 +120,7 @@ return {
         no_underline = true,
         integrations = {
           blink_cmp = {
-            style = 'bordered',
+            style = "bordered",
           },
           snacks = {
             enabled = true,
@@ -469,15 +475,15 @@ return {
       -- vim.api.nvim_set_hl(0, "NavicText", { default = true, bg = "none", fg = "#eedaad" })
       -- vim.api.nvim_set_hl(0, "NavicSeparator", { default = true, bg = "none", fg = "#eedaad" })
 
-      vim.api.nvim_command("colorscheme catppuccin")
+      -- vim.api.nvim_command("colorscheme catppuccin")
     end,
   },
   {
-    'AlexvZyl/nordic.nvim',
+    "AlexvZyl/nordic.nvim",
     lazy = false,
     priority = 1000,
     config = function()
-      require('nordic').setup({
+      require("nordic").setup({
         -- This callback can be used to override the colors used in the base palette.
         on_palette = function(palette) end,
         -- This callback can be used to override the colors used in the extended palette.
@@ -508,17 +514,17 @@ return {
           -- Bold cursorline number.
           bold_number = true,
           -- Available styles: 'dark', 'light'.
-          theme = 'dark',
+          theme = "dark",
           -- Blending the cursorline bg with the buffer bg.
           blend = 0.85,
         },
         noice = {
           -- Available styles: `classic`, `flat`.
-          style = 'flat',
+          style = "flat",
         },
         telescope = {
           -- Available styles: `classic`, `flat`.
-          style = 'flat',
+          style = "flat",
         },
         leap = {
           -- Dims the backdrop when using leap.
@@ -527,40 +533,40 @@ return {
         ts_context = {
           -- Enables dark background for treesitter-context window
           dark_background = true,
-        }
+        },
       })
       -- require('nordic').load()
-    end
+    end,
   },
   {
-    'projekt0n/github-nvim-theme',
-    name = 'github-theme',
-    lazy = false,    -- make sure we load this during startup if it is your main colorscheme
+    "projekt0n/github-nvim-theme",
+    name = "github-theme",
+    lazy = false, -- make sure we load this during startup if it is your main colorscheme
     priority = 1000, -- make sure to load this before all the other start plugins
     config = function()
       -- Default options
-      require('github-theme').setup({
+      require("github-theme").setup({
         options = {
           -- Compiled file's destination location
-          compile_path = vim.fn.stdpath('cache') .. '/github-theme',
-          compile_file_suffix = '_compiled', -- Compiled file suffix
-          hide_end_of_buffer = true,         -- Hide the '~' character at the end of the buffer for a cleaner look
-          hide_nc_statusline = true,         -- Override the underline style for non-active statuslines
-          transparent = false,               -- Disable setting bg (make neovim's background transparent)
-          terminal_colors = true,            -- Set terminal colors (vim.g.terminal_color_*) used in `:terminal`
-          dim_inactive = false,              -- Non focused panes set to alternative background
-          module_default = true,             -- Default enable value for modules
-          styles = {                         -- Style to be applied to different syntax groups
-            comments = 'NONE',               -- Value is any valid attr-list value `:help attr-list`
-            functions = 'NONE',
-            keywords = 'NONE',
-            variables = 'NONE',
-            conditionals = 'NONE',
-            constants = 'NONE',
-            numbers = 'NONE',
-            operators = 'NONE',
-            strings = 'NONE',
-            types = 'NONE',
+          compile_path = vim.fn.stdpath("cache") .. "/github-theme",
+          compile_file_suffix = "_compiled", -- Compiled file suffix
+          hide_end_of_buffer = true, -- Hide the '~' character at the end of the buffer for a cleaner look
+          hide_nc_statusline = true, -- Override the underline style for non-active statuslines
+          transparent = false, -- Disable setting bg (make neovim's background transparent)
+          terminal_colors = true, -- Set terminal colors (vim.g.terminal_color_*) used in `:terminal`
+          dim_inactive = false, -- Non focused panes set to alternative background
+          module_default = true, -- Default enable value for modules
+          styles = { -- Style to be applied to different syntax groups
+            comments = "NONE", -- Value is any valid attr-list value `:help attr-list`
+            functions = "NONE",
+            keywords = "NONE",
+            variables = "NONE",
+            conditionals = "NONE",
+            constants = "NONE",
+            numbers = "NONE",
+            operators = "NONE",
+            strings = "NONE",
+            types = "NONE",
           },
           inverse = { -- Inverse highlight for different types
             match_paren = false,
@@ -586,5 +592,5 @@ return {
       -- setup must be called before loading
       -- vim.cmd('colorscheme github_dark_dimmed') -- vim.cmd('colorscheme github_dark')
     end,
-  }
+  },
 }
