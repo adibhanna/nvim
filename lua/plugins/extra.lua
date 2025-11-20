@@ -122,16 +122,16 @@ return {
       end
 
       -- Set all statusline sections to use one color
-      vim.api.nvim_set_hl(0, "MiniStatuslineModeNormal", { link = "StatusLine" })
-      vim.api.nvim_set_hl(0, "MiniStatuslineModeInsert", { link = "StatusLine" })
-      vim.api.nvim_set_hl(0, "MiniStatuslineModeVisual", { link = "StatusLine" })
-      vim.api.nvim_set_hl(0, "MiniStatuslineModeReplace", { link = "StatusLine" })
-      vim.api.nvim_set_hl(0, "MiniStatuslineModeCommand", { link = "StatusLine" })
-      vim.api.nvim_set_hl(0, "MiniStatuslineModeOther", { link = "StatusLine" })
-      vim.api.nvim_set_hl(0, "MiniStatuslineDevinfo", { link = "StatusLine" })
-      vim.api.nvim_set_hl(0, "MiniStatuslineFilename", { link = "StatusLine" })
-      vim.api.nvim_set_hl(0, "MiniStatuslineFileinfo", { link = "StatusLine" })
-      vim.api.nvim_set_hl(0, "MiniStatuslineInactive", { link = "StatusLine" })
+      -- vim.api.nvim_set_hl(0, "MiniStatuslineModeNormal", { link = "StatusLine" })
+      -- vim.api.nvim_set_hl(0, "MiniStatuslineModeInsert", { link = "StatusLine" })
+      -- vim.api.nvim_set_hl(0, "MiniStatuslineModeVisual", { link = "StatusLine" })
+      -- vim.api.nvim_set_hl(0, "MiniStatuslineModeReplace", { link = "StatusLine" })
+      -- vim.api.nvim_set_hl(0, "MiniStatuslineModeCommand", { link = "StatusLine" })
+      -- vim.api.nvim_set_hl(0, "MiniStatuslineModeOther", { link = "StatusLine" })
+      -- vim.api.nvim_set_hl(0, "MiniStatuslineDevinfo", { link = "StatusLine" })
+      -- vim.api.nvim_set_hl(0, "MiniStatuslineFilename", { link = "StatusLine" })
+      -- vim.api.nvim_set_hl(0, "MiniStatuslineFileinfo", { link = "StatusLine" })
+      -- vim.api.nvim_set_hl(0, "MiniStatuslineInactive", { link = "StatusLine" })
     end,
   },
 
@@ -142,28 +142,28 @@ return {
     lazy = true,
   },
 
-  {
-    "fladson/vim-kitty",
-    "MunifTanjim/nui.nvim",
-  },
-  {
-    "nvchad/showkeys",
-    cmd = "ShowkeysToggle",
-    opts = {
-      timeout = 1,
-      maxkeys = 6,
-      -- bottom-left, bottom-right, bottom-center, top-left, top-right, top-center
-      position = "bottom-right",
-    },
-
-    keys = {
-      {
-        "<leader>ut",
-        function()
-          vim.cmd("ShowkeysToggle")
-        end,
-        desc = "Show key presses",
-      },
-    },
-  },
+  -- {
+  --   "fladson/vim-kitty",
+  --   "MunifTanjim/nui.nvim",
+  -- },
+  -- {
+  --   "nvchad/showkeys",
+  --   cmd = "ShowkeysToggle",
+  --   opts = {
+  --     timeout = 1,
+  --     maxkeys = 6,
+  --     -- bottom-left, bottom-right, bottom-center, top-left, top-right, top-center
+  --     position = "bottom-right",
+  --   },
+  --
+  --   keys = {
+  --     {
+  --       "<leader>ut",
+  --       function()
+  --         vim.cmd("ShowkeysToggle")
+  --       end,
+  --       desc = "Show key presses",
+  --     },
+  --   },
+  -- },
 }

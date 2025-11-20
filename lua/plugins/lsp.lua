@@ -68,20 +68,20 @@ return {
                     end
 
                     -- Document highlight on cursor hold
-                    if client.server_capabilities.documentHighlightProvider then
-                        local highlight_group = vim.api.nvim_create_augroup("LspDocumentHighlight_" .. bufnr,
-                            { clear = true })
-                        vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
-                            buffer = bufnr,
-                            group = highlight_group,
-                            callback = vim.lsp.buf.document_highlight,
-                        })
-                        vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
-                            buffer = bufnr,
-                            group = highlight_group,
-                            callback = vim.lsp.buf.clear_references,
-                        })
-                    end
+                    -- if client.server_capabilities.documentHighlightProvider then
+                    --     local highlight_group = vim.api.nvim_create_augroup("LspDocumentHighlight_" .. bufnr,
+                    --         { clear = true })
+                    --     vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+                    --         buffer = bufnr,
+                    --         group = highlight_group,
+                    --         callback = vim.lsp.buf.document_highlight,
+                    --     })
+                    --     vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
+                    --         buffer = bufnr,
+                    --         group = highlight_group,
+                    --         callback = vim.lsp.buf.clear_references,
+                    --     })
+                    -- end
                 end,
             })
 
@@ -141,49 +141,6 @@ return {
             local handlers = {
                 -- Default handler
                 default_setup,
-
-                -- -- Custom handlers
-                -- ["lua_ls"] = function()
-                --     lspconfig.lua_ls.setup({
-                --         cmd = { "lua-language-server" },
-                --         filetypes = { "lua" },
-                --         root_dir = lspconfig.util.root_pattern(
-                --             ".luarc.json",
-                --             ".luarc.jsonc",
-                --             ".luacheckrc",
-                --             ".stylua.toml",
-                --             "stylua.toml",
-                --             "selene.toml",
-                --             "selene.yml",
-                --             ".git"
-                --         ),
-                --         settings = {
-                --             Lua = {
-                --                 diagnostics = {
-                --                     disable = { "missing-fields" },
-                --                 },
-                --                 telemetry = {
-                --                     enable = false,
-                --                 },
-                --                 hint = {
-                --                     enable = true,
-                --                     setType = false,
-                --                     paramType = true,
-                --                     paramName = "Disable",
-                --                     semicolon = "Disable",
-                --                     arrayIndex = "Disable",
-                --                 },
-                --                 workspace = {
-                --                     library = {
-                --                         vim.env.VIMRUNTIME,
-                --                         '${3rd}/luv/library',
-                --                         '${3rd}/busted/library',
-                --                     },
-                --                 },
-                --             },
-                --         },
-                --     })
-                -- end,
 
                 ["intelephense"] = function()
                     local get_intelephense_license = function()
