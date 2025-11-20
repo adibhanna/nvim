@@ -68,20 +68,20 @@ return {
                     end
 
                     -- Document highlight on cursor hold
-                    -- if client.server_capabilities.documentHighlightProvider then
-                    --     local highlight_group = vim.api.nvim_create_augroup("LspDocumentHighlight_" .. bufnr,
-                    --         { clear = true })
-                    --     vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
-                    --         buffer = bufnr,
-                    --         group = highlight_group,
-                    --         callback = vim.lsp.buf.document_highlight,
-                    --     })
-                    --     vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
-                    --         buffer = bufnr,
-                    --         group = highlight_group,
-                    --         callback = vim.lsp.buf.clear_references,
-                    --     })
-                    -- end
+                    if client.server_capabilities.documentHighlightProvider then
+                        local highlight_group = vim.api.nvim_create_augroup("LspDocumentHighlight_" .. bufnr,
+                            { clear = true })
+                        vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+                            buffer = bufnr,
+                            group = highlight_group,
+                            callback = vim.lsp.buf.document_highlight,
+                        })
+                        vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
+                            buffer = bufnr,
+                            group = highlight_group,
+                            callback = vim.lsp.buf.clear_references,
+                        })
+                    end
                 end,
             })
 
