@@ -142,6 +142,18 @@ return {
                 -- Default handler
                 default_setup,
 
+                ["lua_ls"] = function()
+                    lspconfig.lua_ls.setup({
+                        settings = {
+                            Lua = {
+                                diagnostics = {
+                                    disable = { "inject-field" },
+                                },
+                            },
+                        },
+                    })
+                end,
+
                 ["intelephense"] = function()
                     local get_intelephense_license = function()
                         local f = assert(io.open(os.getenv("HOME") .. "/intelephense/license.txt", "rb"))
