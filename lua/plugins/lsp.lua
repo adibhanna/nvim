@@ -198,6 +198,7 @@ return {
                     "stylua",
                     "goimports",
                     "golangci-lint",
+                    "bashls"
                 },
             })
         end,
