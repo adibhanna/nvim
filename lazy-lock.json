@@ -48,6 +48,7 @@
   "vim-fugitive": { "branch": "master", "commit": "61b51c09b7c9ce04e821f6cf76ea4f6f903e3cf4" },
   "vim-rhubarb": { "branch": "master", "commit": "5496d7c94581c4c9ad7430357449bb57fc59f501" },
   "vim-sleuth": { "branch": "master", "commit": "be69bff86754b1aa5adcbb527d7fcd1635a84080" },
+  "vscode-diff.nvim": { "branch": "main", "commit": "b7298f84f0769edabdebab7f048ddc8cdedf3d7f" },
   "which-key.nvim": { "branch": "main", "commit": "3aab2147e74890957785941f0c1ad87d0a44c15a" },
   "yukinord.nvim": { "branch": "main", "commit": "cbd6b2402a64f3c49edfe08580b325e6efb2f414" }
 }

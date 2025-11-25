@@ -20,6 +20,7 @@ vim.opt.undodir = vim.fn.stdpath("data") .. "/undo"
 vim.opt.updatetime = 100
 vim.opt.timeoutlen = 1000
 vim.opt.confirm = true
+vim.opt.autoread = true
 
 -- ============================================================================
 -- UI/Display

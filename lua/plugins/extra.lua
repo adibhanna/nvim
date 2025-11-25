@@ -141,29 +141,21 @@ return {
     opts = {},
     lazy = true,
   },
-
-  -- {
-  --   "fladson/vim-kitty",
-  --   "MunifTanjim/nui.nvim",
-  -- },
-  -- {
-  --   "nvchad/showkeys",
-  --   cmd = "ShowkeysToggle",
-  --   opts = {
-  --     timeout = 1,
-  --     maxkeys = 6,
-  --     -- bottom-left, bottom-right, bottom-center, top-left, top-right, top-center
-  --     position = "bottom-right",
-  --   },
-  --
-  --   keys = {
-  --     {
-  --       "<leader>ut",
-  --       function()
-  --         vim.cmd("ShowkeysToggle")
-  --       end,
-  --       desc = "Show key presses",
-  --     },
-  --   },
-  -- },
+  {
+    "esmuellert/vscode-diff.nvim",
+    dependencies = { "MunifTanjim/nui.nvim" },
+    config = function()
+      require("vscode-diff").setup({
+        highlights = {
+          -- Yukinord-compatible diff colors
+          -- Line backgrounds: subtle, blended with yukinord's bg
+          line_insert = "#2a3325", -- green-tinted bg based on yukinord green #a3be8c
+          line_delete = "#362c2e", -- red-tinted bg based on yukinord red #bf616a
+          -- Character highlights: more saturated versions
+          char_insert = "#3d4f35", -- deeper green for inserted chars
+          char_delete = "#4d3538", -- deeper red for deleted chars
+        },
+      })
+    end,
+  },
 }
