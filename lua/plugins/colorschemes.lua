@@ -1,11 +1,12 @@
 return {
   {
     -- dir = "~/Developer/opensource/yukinord/neovim",
+    -- dir = "/Users/adibhanna/Developer/opensource/yukinord.nvim",
     "adibhanna/yukinord.nvim",
     config = function()
       require("yukinord").setup({
-        transparent = true, -- Makes main editor background transparent
-        transparent_sidebar = true, -- Also makes sidebars (NvimTree, terminal) transparent
+        -- transparent = true, -- Makes main editor background transparent
+        -- transparent_sidebar = true, -- Also makes sidebars (NvimTree, terminal) transparent
       })
       vim.cmd("colorscheme yukinord")
     end,

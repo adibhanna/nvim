@@ -15,14 +15,14 @@ return {
   { "joosepalviste/nvim-ts-context-commentstring", lazy = true },
 
   -- Neovim plugin to improve the default vim.ui interfaces
-  {
-    "stevearc/dressing.nvim",
-    dependencies = { "MunifTanjim/nui.nvim" },
-    opts = {},
-    config = function()
-      require("dressing").setup()
-    end,
-  },
+  -- {
+  --   "stevearc/dressing.nvim",
+  --   dependencies = { "MunifTanjim/nui.nvim" },
+  --   opts = {},
+  --   config = function()
+  --     require("dressing").setup()
+  --   end,
+  -- },
 
   -- Neovim notifications and LSP progress messages
   {
@@ -165,8 +165,8 @@ return {
           },
           explorer = {
             select = "<CR>", -- Open diff for selected file
-            hover = "K", -- Show file diff preview
-            refresh = "R", -- Refresh git status
+            hover = "K",     -- Show file diff preview
+            refresh = "R",   -- Refresh git status
           },
         },
       })
