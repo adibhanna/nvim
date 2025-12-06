@@ -237,6 +237,7 @@ return {
                     "black",
                     "isort",
                     "shfmt",
+                    "pint",
                 },
             })
         end,
