@@ -29,7 +29,8 @@ return {
                 -- Code actions
                 map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, "Code action")
                 map("n", "<leader>rn", vim.lsp.buf.rename, "Rename symbol")
-                map("n", "<leader>cf", function() vim.lsp.buf.format({ async = true }) end, "Format buffer")
+                -- Format keybinding handled by conform.nvim plugin
+                -- map("n", "<leader>cf", function() vim.lsp.buf.format({ async = true }) end, "Format buffer")
 
                 -- Diagnostics
                 map("n", "[d", function() vim.diagnostic.jump({ count = -1 }) end, "Previous diagnostic")
@@ -201,17 +202,41 @@ return {
         config = function()
             require("mason-tool-installer").setup({
                 ensure_installed = {
+                    -- Language Servers
                     "lua_ls",
                     "gopls",
                     "zls",
                     "ts_ls",
                     "rust-analyzer",
                     "intelephense",
+                    "bashls",
+                    "pyright",
+                    "cssls",
+                    "html",
+                    "jsonls",
+                    "yamlls",
+
+                    -- Linters
                     "eslint_d",
+                    "luacheck",
+                    "golangci-lint",
+                    "shellcheck",
+                    "markdownlint",
+                    "yamllint",
+                    "jsonlint",
+                    "htmlhint",
+                    "stylelint",
+                    "phpstan",
+                    "ruff",
+                    "mypy",
+
+                    -- Formatters
                     "stylua",
                     "goimports",
-                    "golangci-lint",
-                    "bashls"
+                    "prettier",
+                    "black",
+                    "isort",
+                    "shfmt",
                 },
             })
         end,
