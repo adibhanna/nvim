@@ -44,6 +44,13 @@ return {
                 map("n", "<leader>wl", function()
                     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
                 end, "List workspace folders")
+
+                -- Inlay hints toggle (useful for manual control)
+                if vim.lsp.inlay_hint then
+                    map("n", "<leader>ih", function()
+                        vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = bufnr }), { bufnr = bufnr })
+                    end, "Toggle inlay hints")
+                end
             end
 
             -- ============================================================================
