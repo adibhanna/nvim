@@ -22,7 +22,15 @@ return {
                 map("n", "gt", vim.lsp.buf.type_definition, "Go to type definition")
 
                 -- Information
-                map("n", "K", vim.lsp.buf.hover, "Hover documentation")
+                -- map("n", "K", vim.lsp.buf.hover, "Hover documentation")
+                map("n", "K", function()
+                    vim.lsp.buf.hover({
+                        border = "single", -- Sets a single line border for hover
+                        max_height = 25,   -- Sets a maximum height
+                        max_width = 120    -- Sets a maximum width
+                    })
+                end, "Hover documentation")
+
                 map("n", "<C-k>", vim.lsp.buf.signature_help, "Signature help")
                 map("i", "<C-k>", vim.lsp.buf.signature_help, "Signature help")
 

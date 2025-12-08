@@ -49,10 +49,12 @@ return {
                 },
                 completion = {
                     menu = {
-                        border = nil,
+                        border = "padded",
                         scrolloff = 1,
                         scrollbar = false,
                         draw = {
+                            padding = 1,
+                            gap = 1,
                             columns = {
                                 { "kind_icon" },
                                 { "label",      "label_description", gap = 1 },
@@ -63,7 +65,7 @@ return {
                     },
                     documentation = {
                         window = {
-                            border = nil,
+                            border = "padded",
                             scrollbar = false,
                             winhighlight = 'Normal:BlinkCmpDoc,FloatBorder:BlinkCmpDocBorder,EndOfBuffer:BlinkCmpDoc',
                         },
