@@ -40,6 +40,8 @@ vim.opt.showtabline = 0
 vim.opt.cmdheight = 1
 vim.opt.pumheight = 10
 vim.opt.fillchars = { eob = " " }
+vim.o.winborder = 'single'
+
 
 -- ============================================================================
 -- Search
