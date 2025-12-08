@@ -1,8 +1,8 @@
 return {
   {
-    -- dir = "~/Developer/opensource/yukinord/neovim",
+    dir = "~/Developer/opensource/yukinord/neovim",
     -- dir = "/Users/adibhanna/Developer/opensource/yukinord.nvim",
-    "adibhanna/yukinord.nvim",
+    -- "adibhanna/yukinord.nvim",
     config = function()
       require("yukinord").setup({
         -- transparent = true, -- Makes main editor background transparent

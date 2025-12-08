@@ -25,7 +25,7 @@ return {
                 -- map("n", "K", vim.lsp.buf.hover, "Hover documentation")
                 map("n", "K", function()
                     vim.lsp.buf.hover({
-                        border = "single", -- Sets a single line border for hover
+                        border = "rounded", -- Sets a single line border for hover
                         max_height = 25,   -- Sets a maximum height
                         max_width = 120    -- Sets a maximum width
                     })
