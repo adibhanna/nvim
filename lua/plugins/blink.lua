@@ -8,11 +8,6 @@ return {
         -- event = "InsertEnter",
         version = "*",
         config = function()
-            -- vim.cmd('highlight Pmenu guibg=none')
-            -- vim.cmd('highlight PmenuExtra guibg=none')
-            -- vim.cmd('highlight FloatBorder guibg=none')
-            -- vim.cmd('highlight NormalFloat guibg=none')
-
             require("blink.cmp").setup({
                 snippets = { preset = "luasnip" },
                 signature = { enabled = true },
@@ -21,7 +16,7 @@ return {
                     nerd_font_variant = "normal",
                 },
                 sources = {
-                    default = { "lsp", "path", "snippets", "lazydev", "buffer" },
+                    default = { "lazydev", "lsp", "path", "buffer", "snippets" },
                     providers = {
                         lazydev = {
                             name = "LazyDev",
@@ -49,10 +44,12 @@ return {
                 },
                 completion = {
                     menu = {
-                        border = nil,
+                        border = "rounded",
                         scrolloff = 1,
                         scrollbar = false,
                         draw = {
+                            padding = 1,
+                            gap = 1,
                             columns = {
                                 { "kind_icon" },
                                 { "label",      "label_description", gap = 1 },
@@ -63,7 +60,7 @@ return {
                     },
                     documentation = {
                         window = {
-                            border = nil,
+                            border = "rounded",
                             scrollbar = false,
                             winhighlight = 'Normal:BlinkCmpDoc,FloatBorder:BlinkCmpDocBorder,EndOfBuffer:BlinkCmpDoc',
                         },

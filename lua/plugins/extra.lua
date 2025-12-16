@@ -15,14 +15,14 @@ return {
   { "joosepalviste/nvim-ts-context-commentstring", lazy = true },
 
   -- Neovim plugin to improve the default vim.ui interfaces
-  {
-    "stevearc/dressing.nvim",
-    dependencies = { "MunifTanjim/nui.nvim" },
-    opts = {},
-    config = function()
-      require("dressing").setup()
-    end,
-  },
+  -- {
+  --   "stevearc/dressing.nvim",
+  --   dependencies = { "MunifTanjim/nui.nvim" },
+  --   opts = {},
+  --   config = function()
+  --     require("dressing").setup()
+  --   end,
+  -- },
 
   -- Neovim notifications and LSP progress messages
   {
@@ -64,37 +64,6 @@ return {
     "tpope/vim-sleuth",
   },
 
-  {
-    {
-      "folke/lazydev.nvim",
-      ft = "lua", -- only load on lua files
-      opts = {
-        library = {
-          -- See the configuration section for more details
-          -- Load luvit types when the `vim.uv` word is found
-          { path = "${3rd}/luv/library", words = { "vim%.uv" } },
-        },
-      },
-    },
-    -- {
-    --   "saghen/blink.cmp",
-    --   opts = {
-    --     sources = {
-    --       -- add lazydev to your completion providers
-    --       default = { "lazydev", "lsp", "path", "snippets", "buffer" },
-    --       providers = {
-    --         lazydev = {
-    --           name = "LazyDev",
-    --           module = "lazydev.integrations.blink",
-    --           -- make lazydev completions top priority (see `:h blink.cmp`)
-    --           score_offset = 100,
-    --         },
-    --       },
-    --     },
-    --   },
-    -- }
-  },
-
   -- editor config support
   {
     "editorconfig/editorconfig-vim",
@@ -115,38 +84,6 @@ return {
     },
   },
 
-  {
-    "utilyre/barbecue.nvim",
-    name = "barbecue",
-    version = "*",
-    dependencies = {
-      "SmiteshP/nvim-navic",
-      "nvim-tree/nvim-web-devicons", -- optional dependency
-    },
-    opts = {
-      -- configurations go here
-    },
-    config = function()
-      require("barbecue").setup({
-        create_autocmd = false, -- prevent barbecue from updating itself automatically
-      })
-
-      vim.api.nvim_create_autocmd({
-        "WinScrolled", -- or WinResized on NVIM-v0.9 and higher
-        "BufWinEnter",
-        "CursorHold",
-        "InsertLeave",
-
-        -- include this if you have set `show_modified` to `true`
-        -- "BufModifiedSet",
-      }, {
-        group = vim.api.nvim_create_augroup("barbecue.updater", {}),
-        callback = function()
-          require("barbecue.ui").update()
-        end,
-      })
-    end,
-  },
   -- persist sessions
   {
     "folke/persistence.nvim",
@@ -174,14 +111,27 @@ return {
 
       require("mini.pairs").setup()
 
-      -- local statusline = require("mini.statusline")
-      -- statusline.setup({
-      --   use_icons = vim.g.have_nerd_font,
-      -- })
-      -- ---@diagnostic disable-next-line: duplicate-set-field
-      -- statusline.section_location = function()
-      --   return "%2l:%-2v"
-      -- end
+      local statusline = require("mini.statusline")
+      statusline.setup({
+        use_icons = vim.g.have_nerd_font,
+        set_vim_settings = false,
+      })
+      ---@diagnostic disable-next-line: duplicate-set-field
+      statusline.section_location = function()
+        return "%2l:%-2v"
+      end
+
+      -- Set all statusline sections to use one color
+      -- vim.api.nvim_set_hl(0, "MiniStatuslineModeNormal", { link = "StatusLine" })
+      -- vim.api.nvim_set_hl(0, "MiniStatuslineModeInsert", { link = "StatusLine" })
+      -- vim.api.nvim_set_hl(0, "MiniStatuslineModeVisual", { link = "StatusLine" })
+      -- vim.api.nvim_set_hl(0, "MiniStatuslineModeReplace", { link = "StatusLine" })
+      -- vim.api.nvim_set_hl(0, "MiniStatuslineModeCommand", { link = "StatusLine" })
+      -- vim.api.nvim_set_hl(0, "MiniStatuslineModeOther", { link = "StatusLine" })
+      -- vim.api.nvim_set_hl(0, "MiniStatuslineDevinfo", { link = "StatusLine" })
+      -- vim.api.nvim_set_hl(0, "MiniStatuslineFilename", { link = "StatusLine" })
+      -- vim.api.nvim_set_hl(0, "MiniStatuslineFileinfo", { link = "StatusLine" })
+      -- vim.api.nvim_set_hl(0, "MiniStatuslineInactive", { link = "StatusLine" })
     end,
   },
 
@@ -191,29 +141,35 @@ return {
     opts = {},
     lazy = true,
   },
-
   {
-    "fladson/vim-kitty",
-    "MunifTanjim/nui.nvim",
-  },
-  {
-    "nvchad/showkeys",
-    cmd = "ShowkeysToggle",
-    opts = {
-      timeout = 1,
-      maxkeys = 6,
-      -- bottom-left, bottom-right, bottom-center, top-left, top-right, top-center
-      position = "bottom-right",
-    },
+    "esmuellert/vscode-diff.nvim",
+    dependencies = { "MunifTanjim/nui.nvim" },
+    config = function()
+      require("vscode-diff").setup({
+        highlights = {
+          -- Yukinord-compatible diff colors
+          -- Line backgrounds: subtle, blended with yukinord's bg
+          line_insert = "#2a3325", -- green-tinted bg based on yukinord green #a3be8c
+          line_delete = "#362c2e", -- red-tinted bg based on yukinord red #bf616a
+          -- Character highlights: more saturated versions
+          char_insert = "#3d4f35", -- deeper green for inserted chars
+          char_delete = "#4d3538", -- deeper red for deleted chars
+        },
 
-    keys = {
-      {
-        "<leader>ut",
-        function()
-          vim.cmd("ShowkeysToggle")
-        end,
-        desc = "Show key presses",
-      },
-    },
+        keymaps = {
+          view = {
+            next_hunk = "]c", -- Jump to next change
+            prev_hunk = "[c", -- Jump to previous change
+            next_file = "]f", -- Next file in explorer mode
+            prev_file = "[f", -- Previous file in explorer mode
+          },
+          explorer = {
+            select = "<CR>", -- Open diff for selected file
+            hover = "K",     -- Show file diff preview
+            refresh = "R",   -- Refresh git status
+          },
+        },
+      })
+    end,
   },
 }

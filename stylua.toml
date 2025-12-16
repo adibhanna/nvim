@@ -1,3 +1,37 @@
+# StyLua configuration for Neovim Lua development
+# https://github.com/JohnnyMorganz/StyLua
+
+# Column width for line wrapping (100 is a good balance for modern displays)
+column_width = 100
+
+# Line endings (Unix for cross-platform compatibility)
+line_endings = "Unix"
+
+# Indentation settings
 indent_type = "Spaces"
 indent_width = 2
-column_width = 120
+
+# Quote style
+# AutoPreferDouble: Automatically determines quote style, preferring double quotes
+# Options: "AutoPreferDouble", "AutoPreferSingle", "ForceDouble", "ForceSingle"
+quote_style = "AutoPreferDouble"
+
+# Call parentheses
+# Always: Always use parentheses for function calls
+# Options: "Always", "NoSingleString", "NoSingleTable", "None"
+call_parentheses = "Always"
+
+# Collapse simple statements
+# Never: Keep simple statements expanded for better readability
+# Options: "Never", "FunctionOnly", "ConditionalOnly", "Always"
+collapse_simple_statement = "Never"
+
+# Space after function names
+# Never: No space between function name and parentheses (Lua convention)
+# Options: "Never", "Definitions", "Calls", "Always"
+space_after_function_names = "Never"
+
+# Sort requires
+# Enable to automatically sort require statements
+[sort_requires]
+enabled = false

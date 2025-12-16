@@ -11,6 +11,7 @@ ignore = {
     "631", -- Line too long
     "212", -- Unused argument
     "213", -- Unused loop variable
+    "122", -- Setting read-only field (false positive for vim.opt and vim.g)
 }
 
 -- Read-only globals
