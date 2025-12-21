@@ -84,6 +84,8 @@ Leader key: `<Space>`
 | `<leader><space>` | Smart find (files/buffers) |
 | `<leader>/` | Grep in project |
 | `<leader>:` | Command history |
+| `<leader>o` | Open buffers (`<C-d>` to delete) |
+| `<leader>p` | Buffer structure (LSP symbols) |
 | `<leader>e` | File explorer |
 | `<leader>z` | Zen mode |
 | `<leader>Z` | Zoom current window |
