@@ -1,24 +1,19 @@
 return {
-  "coder/claudecode.nvim",
-  dependencies = { "folke/snacks.nvim" },
-  config = true,
-  keys = {
-    { "<leader>a",  nil,                              desc = "AI/Claude Code" },
-    { "<leader>Cc", "<cmd>ClaudeCode<cr>",            desc = "Toggle Claude" },
-    { "<leader>Cf", "<cmd>ClaudeCodeFocus<cr>",       desc = "Focus Claude" },
-    { "<leader>Cr", "<cmd>ClaudeCode --resume<cr>",   desc = "Resume Claude" },
-    { "<leader>Cn", "<cmd>ClaudeCode --continue<cr>", desc = "Continue Claude" },
-    { "<leader>Cm", "<cmd>ClaudeCodeSelectModel<cr>", desc = "Select Claude model" },
-    { "<leader>Cb", "<cmd>ClaudeCodeAdd %<cr>",       desc = "Add current buffer" },
-    { "<leader>Cs", "<cmd>ClaudeCodeSend<cr>",        mode = "v",                  desc = "Send to Claude" },
-    {
-      "<leader>Ct",
-      "<cmd>ClaudeCodeTreeAdd<cr>",
-      desc = "Add file",
-      ft = { "NvimTree", "neo-tree", "oil", "minifiles", "netrw" },
+    "coder/claudecode.nvim",
+    dependencies = { "folke/snacks.nvim" },
+    config = true,
+    keys = {
+        -- All under <leader>a for AI
+        { "<leader>aa", "<cmd>ClaudeCode<cr>", desc = "Toggle Claude" },
+        { "<leader>af", "<cmd>ClaudeCodeFocus<cr>", desc = "Focus Claude" },
+        { "<leader>ar", "<cmd>ClaudeCode --resume<cr>", desc = "Resume" },
+        { "<leader>ac", "<cmd>ClaudeCode --continue<cr>", desc = "Continue" },
+        { "<leader>am", "<cmd>ClaudeCodeSelectModel<cr>", desc = "Select Model" },
+        { "<leader>ab", "<cmd>ClaudeCodeAdd %<cr>", desc = "Add Buffer" },
+        { "<leader>as", "<cmd>ClaudeCodeSend<cr>", mode = "v", desc = "Send Selection" },
+        { "<leader>at", "<cmd>ClaudeCodeTreeAdd<cr>", desc = "Add File (tree)", ft = { "NvimTree", "neo-tree", "oil", "minifiles", "netrw" } },
+        -- Diff management
+        { "<leader>ay", "<cmd>ClaudeCodeDiffAccept<cr>", desc = "Accept Diff" },
+        { "<leader>an", "<cmd>ClaudeCodeDiffDeny<cr>", desc = "Deny Diff" },
     },
-    -- Diff management
-    { "<leader>Ca", "<cmd>ClaudeCodeDiffAccept<cr>", desc = "Accept diff" },
-    { "<leader>Cd", "<cmd>ClaudeCodeDiffDeny<cr>",   desc = "Deny diff" },
-  },
 }

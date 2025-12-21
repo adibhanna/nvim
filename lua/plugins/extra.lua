@@ -2,6 +2,7 @@ return {
   -- Autotags
   {
     "windwp/nvim-ts-autotag",
+    event = { "BufReadPost", "BufNewFile" },
     opts = {},
   },
 
@@ -14,48 +15,27 @@ return {
   -- useful when there are embedded languages in certain types of files (e.g. Vue or React)
   { "joosepalviste/nvim-ts-context-commentstring", lazy = true },
 
-  -- Neovim plugin to improve the default vim.ui interfaces
-  -- {
-  --   "stevearc/dressing.nvim",
-  --   dependencies = { "MunifTanjim/nui.nvim" },
-  --   opts = {},
-  --   config = function()
-  --     require("dressing").setup()
-  --   end,
-  -- },
-
   -- Neovim notifications and LSP progress messages
   {
     "j-hui/fidget.nvim",
+    event = "LspAttach",
+    opts = {
+      notification = {
+        window = {
+          winblend = 0,
+        },
+      },
+    },
   },
 
-  -- find and replace
+  -- find and replace (under <leader>s for Search)
   {
     "windwp/nvim-spectre",
-    enabled = true,
-    event = "BufRead",
+    dependencies = { "nvim-lua/plenary.nvim" },
     keys = {
-      {
-        "<leader>Rr",
-        function()
-          require("spectre").open()
-        end,
-        desc = "Replace",
-      },
-      {
-        "<leader>Rw",
-        function()
-          require("spectre").open_visual({ select_word = true })
-        end,
-        desc = "Replace Word",
-      },
-      {
-        "<leader>Rf",
-        function()
-          require("spectre").open_file_search()
-        end,
-        desc = "Replace Buffer",
-      },
+      { "<leader>sS", function() require("spectre").open() end, desc = "Search & Replace" },
+      { "<leader>sW", function() require("spectre").open_visual({ select_word = true }) end, desc = "Replace Word" },
+      { "<leader>sF", function() require("spectre").open_file_search() end, desc = "Replace in File" },
     },
   },
 
@@ -120,18 +100,6 @@ return {
       statusline.section_location = function()
         return "%2l:%-2v"
       end
-
-      -- Set all statusline sections to use one color
-      -- vim.api.nvim_set_hl(0, "MiniStatuslineModeNormal", { link = "StatusLine" })
-      -- vim.api.nvim_set_hl(0, "MiniStatuslineModeInsert", { link = "StatusLine" })
-      -- vim.api.nvim_set_hl(0, "MiniStatuslineModeVisual", { link = "StatusLine" })
-      -- vim.api.nvim_set_hl(0, "MiniStatuslineModeReplace", { link = "StatusLine" })
-      -- vim.api.nvim_set_hl(0, "MiniStatuslineModeCommand", { link = "StatusLine" })
-      -- vim.api.nvim_set_hl(0, "MiniStatuslineModeOther", { link = "StatusLine" })
-      -- vim.api.nvim_set_hl(0, "MiniStatuslineDevinfo", { link = "StatusLine" })
-      -- vim.api.nvim_set_hl(0, "MiniStatuslineFilename", { link = "StatusLine" })
-      -- vim.api.nvim_set_hl(0, "MiniStatuslineFileinfo", { link = "StatusLine" })
-      -- vim.api.nvim_set_hl(0, "MiniStatuslineInactive", { link = "StatusLine" })
     end,
   },
 

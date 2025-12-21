@@ -288,38 +288,24 @@ return {
       vim.notify(string.format("Linting %s for this buffer", status), vim.log.levels.INFO)
     end, { desc = "Toggle linting for current buffer" })
 
-    -- Keybindings
+    -- Keybindings (under <leader>l = LSP/Lint)
     vim.keymap.set("n", "<leader>ll", function()
       if should_lint() then
         lint.try_lint()
-        vim.notify("Linting...", vim.log.levels.INFO, { title = "nvim-lint" })
+        vim.notify("Linting...", vim.log.levels.INFO)
       else
-        vim.notify("No linters configured or file too large", vim.log.levels.WARN, { title = "nvim-lint" })
+        vim.notify("No linters configured", vim.log.levels.WARN)
       end
-    end, { desc = "Trigger linting for current file" })
+    end, { desc = "Lint" })
 
-    vim.keymap.set("n", "<leader>li", "<cmd>LintInfo<cr>", { desc = "Show linting information" })
-    vim.keymap.set("n", "<leader>lt", "<cmd>LintToggle<cr>", { desc = "Toggle linting for buffer" })
+    vim.keymap.set("n", "<leader>lI", "<cmd>LintInfo<cr>", { desc = "Lint Info" })
+    vim.keymap.set("n", "<leader>lL", "<cmd>LintToggle<cr>", { desc = "Toggle Lint" })
 
     -- Clear diagnostics from nvim-lint
-    vim.keymap.set("n", "<leader>lc", function()
+    vim.keymap.set("n", "<leader>lC", function()
       local ns = require("lint").get_namespace(vim.bo.filetype)
       vim.diagnostic.reset(ns)
-      vim.notify("Lint diagnostics cleared", vim.log.levels.INFO)
-    end, { desc = "Clear lint diagnostics" })
-
-    -- Show diagnostic from all sources at cursor
-    vim.keymap.set("n", "<leader>ld", function()
-      vim.diagnostic.open_float(nil, {
-        scope = "cursor",
-        focusable = false,
-        source = true,
-        header = "Diagnostics:",
-        format = function(diagnostic)
-          local source = diagnostic.source or "unknown"
-          return string.format("[%s] %s", source, diagnostic.message)
-        end,
-      })
-    end, { desc = "Show diagnostic details" })
+      vim.notify("Lint cleared", vim.log.levels.INFO)
+    end, { desc = "Clear Lint" })
   end,
 }

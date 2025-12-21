@@ -3,17 +3,18 @@ return {
     event = { "BufWritePre" },
     cmd = { "ConformInfo" },
     keys = {
+        -- <leader>c = Code
         {
             "<leader>cf",
             function()
                 require("conform").format({ async = true }, function(err, did_edit)
                     if not err and did_edit then
-                        vim.notify("Code formatted", vim.log.levels.INFO, { title = "Conform" })
+                        vim.notify("Formatted", vim.log.levels.INFO)
                     end
                 end)
             end,
             mode = { "n", "v" },
-            desc = "Format buffer",
+            desc = "Format",
         },
     },
     opts = {

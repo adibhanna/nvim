@@ -1,95 +1,65 @@
-local opts = { noremap = true, silent = true }
--- local map = vim.keymap.set
-
--- Keep cursor centered when scrolling
--- vim.keymap.set("n", "<C-d>", "<C-d>zz", opts)
--- vim.keymap.set("n", "<C-u>", "<C-u>zz", opts)
---
 -- Move selected line / block of text in visual mode
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", opts)
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", opts)
-
--- Fast saving
--- vim.keymap.set("n", "<leader>w", ":write!<CR>", { silent = true, desc = "Save file" })
--- vim.keymap.set("n", "<leader>q", ":q!<CR>", opts)
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move Lines Down" })
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move Lines Up" })
 
 -- Remap for dealing with visual line wraps
-vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true })
-vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true })
+vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, desc = "Up (wrapped)" })
+vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, desc = "Down (wrapped)" })
 
 -- better indenting
-vim.keymap.set("v", "<", "<gv")
-vim.keymap.set("v", ">", ">gv")
+vim.keymap.set("v", "<", "<gv", { desc = "Indent Left" })
+vim.keymap.set("v", ">", ">gv", { desc = "Indent Right" })
 
 -- paste over currently selected text without yanking it
-vim.keymap.set("v", "p", '"_dp')
-vim.keymap.set("v", "P", '"_dP')
+vim.keymap.set("v", "p", '"_dp', { desc = "Paste (no yank)" })
+vim.keymap.set("v", "P", '"_dP', { desc = "Paste Before (no yank)" })
 
--- copy everything between { and } including the brackets
--- p puts text after the cursor,
--- P puts text before the cursor.
-vim.keymap.set("n", "YY", "va{Vy", opts)
-
--- Move line on the screen rather than by line in the file
--- vim.keymap.set("n", "j", "gj", opts)
--- vim.keymap.set("n", "k", "gk", opts)
+-- Copy everything between { and } including the brackets
+vim.keymap.set("n", "YY", "va{Vy", { desc = "Yank Block {}" })
 
 -- Exit on jj and jk
-vim.keymap.set("i", "jj", "<ESC>", opts)
-vim.keymap.set("i", "jk", "<ESC>", opts)
+vim.keymap.set("i", "jj", "<ESC>", { desc = "Exit Insert" })
+vim.keymap.set("i", "jk", "<ESC>", { desc = "Exit Insert" })
 
 -- Move to start/end of line
-vim.keymap.set({ "n", "x", "o" }, "H", "^", opts)
-vim.keymap.set({ "n", "x", "o" }, "L", "g_", opts)
+vim.keymap.set({ "n", "x", "o" }, "H", "^", { desc = "Start of Line" })
+vim.keymap.set({ "n", "x", "o" }, "L", "g_", { desc = "End of Line" })
 
 -- Navigate buffers
-vim.keymap.set("n", "<Right>", ":bnext<CR>", opts)
-vim.keymap.set("n", "<Left>", ":bprevious<CR>", opts)
+vim.keymap.set("n", "<Right>", ":bnext<CR>", { desc = "Next Buffer", silent = true })
+vim.keymap.set("n", "<Left>", ":bprevious<CR>", { desc = "Prev Buffer", silent = true })
 
 -- Panes resizing
-vim.keymap.set("n", "+", ":vertical resize +5<CR>")
-vim.keymap.set("n", "_", ":vertical resize -5<CR>")
-vim.keymap.set("n", "=", ":resize +5<CR>")
-vim.keymap.set("n", "-", ":resize -5<CR>")
+vim.keymap.set("n", "+", ":vertical resize +5<CR>", { desc = "Increase Width", silent = true })
+vim.keymap.set("n", "_", ":vertical resize -5<CR>", { desc = "Decrease Width", silent = true })
+vim.keymap.set("n", "=", ":resize +5<CR>", { desc = "Increase Height", silent = true })
+vim.keymap.set("n", "-", ":resize -5<CR>", { desc = "Decrease Height", silent = true })
 
--- Map enter to ciw in normal mode
--- vim.keymap.set("n", "<CR>", "ciw", opts)  -- Commented out: This overwrites word on Enter - too disruptive
--- vim.keymap.set("n", "<BS>", "ci", opts)   -- Commented out: This changes text on Backspace - too disruptive
-
-vim.keymap.set("n", "n", "nzzv", opts)
-vim.keymap.set("n", "N", "Nzzv", opts)
-vim.keymap.set("n", "*", "*zzv", opts)
-vim.keymap.set("n", "#", "#zzv", opts)
-vim.keymap.set("n", "g*", "g*zz", opts)
-vim.keymap.set("n", "g#", "g#zz", opts)
-
--- map ; to resume last search
--- map("n", ";", "<cmd>Telescope resume<cr>", opts)
-
--- search current buffer
--- vim.keymap.set("n", "<C-s>", ":Telescope current_buffer_fuzzy_find<CR>", opts)
+-- Keep search results centered
+vim.keymap.set("n", "n", "nzzv", { desc = "Next Match (centered)" })
+vim.keymap.set("n", "N", "Nzzv", { desc = "Prev Match (centered)" })
+vim.keymap.set("n", "*", "*zzv", { desc = "Search Word (centered)" })
+vim.keymap.set("n", "#", "#zzv", { desc = "Search Word Back (centered)" })
+vim.keymap.set("n", "g*", "g*zz", { desc = "Search Partial (centered)" })
+vim.keymap.set("n", "g#", "g#zz", { desc = "Search Partial Back (centered)" })
 
 -- Split line with X
-vim.keymap.set("n", "X", ":keeppatterns substitute/\\s*\\%#\\s*/\\r/e <bar> normal! ==^<cr>", { silent = true })
+vim.keymap.set("n", "X", ":keeppatterns substitute/\\s*\\%#\\s*/\\r/e <bar> normal! ==^<cr>", { desc = "Split Line", silent = true })
 
 -- ctrl + x to cut full line
-vim.keymap.set("n", "<C-x>", "dd", opts)
+vim.keymap.set("n", "<C-x>", "dd", { desc = "Cut Line" })
 
 -- Select all
-vim.keymap.set("n", "<C-a>", "ggVG", opts)
+vim.keymap.set("n", "<C-a>", "ggVG", { desc = "Select All" })
 
--- write file in current directory
--- :w %:h/<new-file-name>
-vim.keymap.set("n", "<C-n>", ":w %:h/", opts)
+-- Write file in current directory (:w %:h/<new-file-name>)
+vim.keymap.set("n", "<C-n>", ":w %:h/", { desc = "Write New File" })
 
--- delete forward
--- w{number}dw
--- delete backward
--- w{number}db
-
-vim.keymap.set("n", "<C-P>", ':lua require("config.utils").toggle_go_test()<CR>', opts)
+-- Toggle between Go test and implementation files
+vim.keymap.set("n", "<C-P>", ':lua require("config.utils").toggle_go_test()<CR>', { desc = "Toggle Go Test", silent = true })
 
 -- Get highlighted line numbers in visual mode
-vim.keymap.set("v", "<leader>ln", ':lua require("config.utils").get_highlighted_line_numbers()<CR>', opts)
+vim.keymap.set("v", "<leader>ln", ':lua require("config.utils").get_highlighted_line_numbers()<CR>', { desc = "Copy Line Numbers", silent = true })
 
-vim.keymap.set("n", "<Esc>", ":nohlsearch<CR>", opts)
+-- Clear search highlight
+vim.keymap.set("n", "<Esc>", ":nohlsearch<CR>", { desc = "Clear Highlight", silent = true })
