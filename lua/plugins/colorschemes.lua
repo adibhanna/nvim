@@ -1,55 +1,47 @@
+-- Colorschemes: Theme configurations
 return {
+  -- ════════════════════════════════════════════════════════════════════════════
+  -- Yukinord (default)
+  -- ════════════════════════════════════════════════════════════════════════════
   {
-    -- dir = "~/Developer/opensource/yukinord/neovim",
-    -- dir = "/Users/adibhanna/Developer/opensource/yukinord.nvim",
     "adibhanna/yukinord.nvim",
     config = function()
       require("yukinord").setup({
-        -- transparent = true, -- Makes main editor background transparent
-        -- transparent_sidebar = true, -- Also makes sidebars (NvimTree, terminal) transparent
+        transparent = true, -- Makes main editor background transparent
+        transparent_sidebar = true,
       })
       vim.cmd("colorscheme yukinord")
     end,
   },
+
+  -- ════════════════════════════════════════════════════════════════════════════
+  -- Gruvbox Material
+  -- ════════════════════════════════════════════════════════════════════════════
   {
     "sainnhe/gruvbox-material",
-    enabled = true,
     priority = 1000,
     config = function()
-      vim.g.gruvbox_material_transparent_background = 1
+      -- vim.g.gruvbox_material_transparent_background = 1
       vim.g.gruvbox_material_foreground = "mix"
       vim.g.gruvbox_material_background = "hard"
       vim.g.gruvbox_material_ui_contrast = "high"
       vim.g.gruvbox_material_float_style = "bright"
-      vim.g.gruvbox_material_statusline_style = "mix" -- Options: "original", "material", "mix", "afterglow"
+      vim.g.gruvbox_material_statusline_style = "mix"
       vim.g.gruvbox_material_cursor = "auto"
-
-      -- vim.g.gruvbox_material_colors_override = { bg0 = '#16181A' } -- #0e1010
-      -- vim.g.gruvbox_material_better_performance = 1
-
-      -- vim.cmd.colorscheme("gruvbox-material")
-
-      -- Custom statusline highlights
-      -- vim.api.nvim_set_hl(0, "StatusLine", {
-      --   bg = "#1C2021", -- Dark gray background
-      --   fg = "#ebdbb2", -- Light text
-      --   bold = false
-      -- })
-      --
-      -- vim.api.nvim_set_hl(0, "StatusLineNC", {
-      --   bg = "#1C2021", -- Darker background for inactive windows
-      --   fg = "#928374", -- Muted text
-      --   bold = false
-      -- })
     end,
   },
+
+  -- ════════════════════════════════════════════════════════════════════════════
+  -- Forest Night
+  -- ════════════════════════════════════════════════════════════════════════════
   {
     "adibhanna/forest-night.nvim",
     priority = 1000,
-    config = function()
-      -- vim.cmd('colorscheme forest-night')
-    end,
   },
+
+  -- ════════════════════════════════════════════════════════════════════════════
+  -- Catppuccin (with custom gruvbox-inspired colors)
+  -- ════════════════════════════════════════════════════════════════════════════
   {
     "catppuccin/nvim",
     priority = 150,
@@ -125,35 +117,18 @@ return {
         no_italic = true,
         no_underline = true,
         integrations = {
-          blink_cmp = {
-            style = "bordered",
-          },
-          snacks = {
-            enabled = true,
-            -- indent_scope_color = "lavender", -- catppuccin color (eg. `lavender`) Default: text
-          },
-          -- barbecue = { dim_dirname = true, bold_basename = true, dim_context = false, alt_background = false },
-          -- cmp = true,
+          blink_cmp = { style = "bordered" },
+          snacks = { enabled = true },
           gitsigns = true,
-          -- hop = true,
-          -- illuminate = { enabled = true },
           native_lsp = { enabled = true, inlay_hints = { background = true } },
-          -- neogit = true,
-          -- neotree = true,
           semantic_tokens = true,
           treesitter = true,
           treesitter_context = true,
-          -- vimwiki = true,
           which_key = true,
-          -- aerial = true,
           fidget = true,
           mason = true,
           neotest = true,
           dap_ui = true,
-          -- telescope = {
-          --   enabled = true,
-          --   style = "nvchad",
-          -- },
         },
         highlight_overrides = {
           all = function(colors)
@@ -471,99 +446,64 @@ return {
             return {
               IblIndent = { fg = colors.mantle },
               IblScope = { fg = colors.surface1 },
-
               LineNr = { fg = colors.surface1 },
             }
           end,
         },
       })
-      -- vim.api.nvim_set_hl(0, "NavicIconsOperator", { default = true, bg = "none", fg = "#eedaad" })
-      -- vim.api.nvim_set_hl(0, "NavicText", { default = true, bg = "none", fg = "#eedaad" })
-      -- vim.api.nvim_set_hl(0, "NavicSeparator", { default = true, bg = "none", fg = "#eedaad" })
-
-      -- vim.api.nvim_command("colorscheme catppuccin")
     end,
   },
+
+  -- ════════════════════════════════════════════════════════════════════════════
+  -- Nordic
+  -- ════════════════════════════════════════════════════════════════════════════
   {
     "AlexvZyl/nordic.nvim",
     lazy = false,
     priority = 1000,
     config = function()
       require("nordic").setup({
-        -- This callback can be used to override the colors used in the base palette.
-        on_palette = function(palette) end,
-        -- This callback can be used to override the colors used in the extended palette.
-        after_palette = function(palette) end,
-        -- This callback can be used to override highlights before they are applied.
-        on_highlight = function(highlights, palette) end,
-        -- Enable bold keywords.
         bold_keywords = false,
-        -- Enable italic comments.
         italic_comments = false,
-        -- Enable editor background transparency.
-        transparent = {
-          -- Enable transparent background.
-          bg = false,
-          -- Enable transparent background for floating windows.
-          float = false,
-        },
-        -- Enable brighter float border.
+        transparent = { bg = false, float = false },
         bright_border = false,
-        -- Reduce the overall amount of blue in the theme (diverges from base Nord).
         reduced_blue = true,
-        -- Swap the dark background with the normal one.
         swap_backgrounds = false,
-        -- Cursorline options.  Also includes visual/selection.
         cursorline = {
-          -- Bold font in cursorline.
           bold = false,
-          -- Bold cursorline number.
           bold_number = true,
-          -- Available styles: 'dark', 'light'.
           theme = "dark",
-          -- Blending the cursorline bg with the buffer bg.
           blend = 0.85,
         },
-        noice = {
-          -- Available styles: `classic`, `flat`.
-          style = "flat",
-        },
-        telescope = {
-          -- Available styles: `classic`, `flat`.
-          style = "flat",
-        },
-        leap = {
-          -- Dims the backdrop when using leap.
-          dim_backdrop = false,
-        },
-        ts_context = {
-          -- Enables dark background for treesitter-context window
-          dark_background = true,
-        },
+        noice = { style = "flat" },
+        telescope = { style = "flat" },
+        leap = { dim_backdrop = false },
+        ts_context = { dark_background = true },
       })
-      -- require('nordic').load()
     end,
   },
+
+  -- ════════════════════════════════════════════════════════════════════════════
+  -- GitHub Theme
+  -- ════════════════════════════════════════════════════════════════════════════
   {
     "projekt0n/github-nvim-theme",
     name = "github-theme",
-    lazy = false, -- make sure we load this during startup if it is your main colorscheme
-    priority = 1000, -- make sure to load this before all the other start plugins
+    lazy = false,
+    priority = 1000,
     config = function()
-      -- Default options
       require("github-theme").setup({
         options = {
-          -- Compiled file's destination location
           compile_path = vim.fn.stdpath("cache") .. "/github-theme",
-          compile_file_suffix = "_compiled", -- Compiled file suffix
-          hide_end_of_buffer = true, -- Hide the '~' character at the end of the buffer for a cleaner look
-          hide_nc_statusline = true, -- Override the underline style for non-active statuslines
-          transparent = false, -- Disable setting bg (make neovim's background transparent)
-          terminal_colors = true, -- Set terminal colors (vim.g.terminal_color_*) used in `:terminal`
-          dim_inactive = false, -- Non focused panes set to alternative background
-          module_default = true, -- Default enable value for modules
-          styles = { -- Style to be applied to different syntax groups
-            comments = "NONE", -- Value is any valid attr-list value `:help attr-list`
+          compile_file_suffix = "_compiled",
+          hide_end_of_buffer = true,
+          hide_nc_statusline = true,
+          transparent = false,
+          terminal_colors = true,
+          dim_inactive = false,
+          module_default = true,
+          styles = {
+            comments = "NONE",
             functions = "NONE",
             keywords = "NONE",
             variables = "NONE",
@@ -574,29 +514,10 @@ return {
             strings = "NONE",
             types = "NONE",
           },
-          inverse = { -- Inverse highlight for different types
-            match_paren = false,
-            visual = false,
-            search = false,
-          },
-          darken = { -- Darken floating windows and sidebar-like windows
-            floats = true,
-            sidebars = {
-              enable = true,
-              list = {}, -- Apply dark background to specific windows
-            },
-          },
-          modules = { -- List of various plugins and additional options
-            -- ...
-          },
+          inverse = { match_paren = false, visual = false, search = false },
+          darken = { floats = true, sidebars = { enable = true, list = {} } },
         },
-        palettes = {},
-        specs = {},
-        groups = {},
       })
-
-      -- setup must be called before loading
-      -- vim.cmd('colorscheme github_dark_dimmed') -- vim.cmd('colorscheme github_dark')
     end,
   },
 }

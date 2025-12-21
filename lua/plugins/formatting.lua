@@ -1,9 +1,9 @@
+-- Formatting: Conform.nvim configuration
 return {
     "stevearc/conform.nvim",
     event = { "BufWritePre" },
     cmd = { "ConformInfo" },
     keys = {
-        -- <leader>c = Code
         {
             "<leader>cf",
             function()
@@ -48,22 +48,12 @@ return {
             sh = { "shfmt" },
             bash = { "shfmt" },
 
-            -- Other (system tools)
-            rust = { "rustfmt" }, -- comes with Rust installation
-
-            -- Additional file types (uncomment as needed)
-            -- markdown = { "markdownlint" },
-            -- yaml = { "yamllint" },
-            -- toml = { "taplo" },
+            -- Other
+            rust = { "rustfmt" },
         },
         default_format_opts = {
             lsp_format = "fallback",
         },
-        -- format_on_save = {
-        --     timeout_ms = 1000,
-        --     lsp_format = "fallback",
-        -- },
-
     },
     init = function()
         vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"

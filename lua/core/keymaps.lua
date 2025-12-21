@@ -56,10 +56,10 @@ vim.keymap.set("n", "<C-a>", "ggVG", { desc = "Select All" })
 vim.keymap.set("n", "<C-n>", ":w %:h/", { desc = "Write New File" })
 
 -- Toggle between Go test and implementation files
-vim.keymap.set("n", "<C-P>", ':lua require("config.utils").toggle_go_test()<CR>', { desc = "Toggle Go Test", silent = true })
+vim.keymap.set("n", "<C-P>", ':lua require("core.utils").toggle_go_test()<CR>', { desc = "Toggle Go Test", silent = true })
 
 -- Get highlighted line numbers in visual mode
-vim.keymap.set("v", "<leader>ln", ':lua require("config.utils").get_highlighted_line_numbers()<CR>', { desc = "Copy Line Numbers", silent = true })
+vim.keymap.set("v", "<leader>ln", ':lua require("core.utils").get_highlighted_line_numbers()<CR>', { desc = "Copy Line Numbers", silent = true })
 
 -- Clear search highlight
 vim.keymap.set("n", "<Esc>", ":nohlsearch<CR>", { desc = "Clear Highlight", silent = true })

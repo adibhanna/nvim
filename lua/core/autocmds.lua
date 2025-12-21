@@ -35,7 +35,6 @@ api.nvim_create_autocmd("BufReadPost", {
     end,
 })
 
-
 -- show cursor line only in active window
 local cursorGrp = api.nvim_create_augroup("CursorLine", { clear = true })
 api.nvim_create_autocmd({ "InsertLeave", "WinEnter" }, {
@@ -56,7 +55,6 @@ api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
         vim.opt.spelllang = "en"
     end,
 })
-
 
 -- close some filetypes with <q>
 api.nvim_create_autocmd("FileType", {

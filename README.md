@@ -48,30 +48,29 @@ nvim
 
 ```
 ~/.config/nvim/
-├── init.lua                 # Entry point
+├── init.lua                    # Entry point (loads core/)
 ├── lua/
-│   ├── config/
-│   │   ├── autocmds.lua     # Auto commands
-│   │   ├── keymaps.lua      # Core keymaps
-│   │   ├── options.lua      # Neovim options
-│   │   └── utils.lua        # Utility functions
-│   ├── core/
-│   │   └── lazy.lua         # Plugin manager bootstrap
-│   └── plugins/             # Plugin configurations
-│       ├── blink.lua        # Completion
-│       ├── claudecode.lua   # Claude AI integration
-│       ├── colorschemes.lua # Color themes
-│       ├── conform.lua      # Formatting
-│       ├── dap.lua          # Debugging
-│       ├── extra.lua        # Misc plugins
-│       ├── git.lua          # Git integration
-│       ├── lazydev.lua      # Lua development
-│       ├── lsp.lua          # LSP configuration
-│       ├── nvim-lint.lua    # Linting
-│       ├── nvim-treesitter.lua
-│       ├── snacks.lua       # UI utilities
-│       ├── trouble.lua      # Diagnostics list
-│       └── which-key.lua    # Keybinding help
+│   ├── core/                   # Core configuration
+│   │   ├── init.lua            # Loads all core modules
+│   │   ├── options.lua         # Neovim options
+│   │   ├── keymaps.lua         # Core keymaps
+│   │   ├── autocmds.lua        # Auto commands
+│   │   ├── lazy.lua            # Plugin manager bootstrap
+│   │   └── utils.lua           # Utility functions
+│   └── plugins/                # Plugin configurations
+│       ├── ai.lua              # Claude AI integration
+│       ├── coding.lua          # Completion, treesitter, snippets
+│       ├── colorschemes.lua    # Color themes
+│       ├── dap.lua             # Debugging
+│       ├── devplugins.lua      # Custom plugin development
+│       ├── editor.lua          # Flash, mini, persistence, spectre
+│       ├── formatting.lua      # Conform.nvim
+│       ├── git.lua             # Git integration
+│       ├── linting.lua         # nvim-lint
+│       ├── lsp.lua             # LSP configuration
+│       ├── snacks.lua          # UI utilities and pickers
+│       ├── tools.lua           # Notes, file creation
+│       └── ui.lua              # Which-key, diagnostics, trouble
 ```
 
 ## Keybindings
@@ -307,8 +306,6 @@ Leader key: `<Space>`
 | `=` / `-` | Normal | Resize height |
 | `<Left>` / `<Right>` | Normal | Navigate buffers |
 | `n` / `N` | Normal | Next/prev match (centered) |
-| `s` | Normal | Flash jump |
-| `S` | Normal | Flash treesitter |
 
 ### Flash (Motion)
 
@@ -350,7 +347,7 @@ Auto-installed via Mason:
 
 ## Formatters
 
-Configured in `conform.lua`:
+Configured in `formatting.lua`:
 
 | Language | Formatter |
 |----------|-----------|
@@ -365,7 +362,7 @@ Configured in `conform.lua`:
 
 ## Linters
 
-Configured in `nvim-lint.lua`:
+Configured in `linting.lua`:
 
 | Language | Linter |
 |----------|--------|
