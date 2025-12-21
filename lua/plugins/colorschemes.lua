@@ -111,7 +111,7 @@ return {
             surface1 = "#434c5e",  -- yukinord bg4 (line highlight)
             surface0 = "#3b4252",  -- yukinord border
             -- Base backgrounds
-            base = "#1D2129",      -- yukinord bg0 (editor background)
+            base = "#1B212B",      -- yukinord bg0 (editor background)
             mantle = "#14171d",    -- yukinord bg1 (panel background)
             crust = "#0f1115",     -- darker than bg1
           },
@@ -242,21 +242,21 @@ return {
               IblIndent = { fg = colors.surface0 },
               IblScope = { fg = colors.overlay0 },
 
-              -- Statusline (single color like yukinord)
-              StatusLine = { fg = colors.subtext0, bg = colors.surface0 },
-              StatusLineNC = { fg = colors.subtext0, bg = colors.surface0 },
+              -- Statusline (yukinord color #2B3442)
+              StatusLine = { fg = colors.subtext0, bg = "#2B3442" },
+              StatusLineNC = { fg = colors.subtext0, bg = "#2B3442" },
 
-              -- Mini.statusline (all sections same color)
-              MiniStatuslineModeNormal = { fg = colors.subtext0, bg = colors.surface0 },
-              MiniStatuslineModeInsert = { fg = colors.subtext0, bg = colors.surface0 },
-              MiniStatuslineModeVisual = { fg = colors.subtext0, bg = colors.surface0 },
-              MiniStatuslineModeReplace = { fg = colors.subtext0, bg = colors.surface0 },
-              MiniStatuslineModeCommand = { fg = colors.subtext0, bg = colors.surface0 },
-              MiniStatuslineModeOther = { fg = colors.subtext0, bg = colors.surface0 },
-              MiniStatuslineDevinfo = { fg = colors.subtext0, bg = colors.surface0 },
-              MiniStatuslineFilename = { fg = colors.subtext0, bg = colors.surface0 },
-              MiniStatuslineFileinfo = { fg = colors.subtext0, bg = colors.surface0 },
-              MiniStatuslineInactive = { fg = colors.overlay0, bg = colors.surface0 },
+              -- Mini.statusline (all sections same yukinord color)
+              MiniStatuslineModeNormal = { fg = colors.subtext0, bg = "#2B3442" },
+              MiniStatuslineModeInsert = { fg = colors.subtext0, bg = "#2B3442" },
+              MiniStatuslineModeVisual = { fg = colors.subtext0, bg = "#2B3442" },
+              MiniStatuslineModeReplace = { fg = colors.subtext0, bg = "#2B3442" },
+              MiniStatuslineModeCommand = { fg = colors.subtext0, bg = "#2B3442" },
+              MiniStatuslineModeOther = { fg = colors.subtext0, bg = "#2B3442" },
+              MiniStatuslineDevinfo = { fg = colors.subtext0, bg = "#2B3442" },
+              MiniStatuslineFilename = { fg = colors.subtext0, bg = "#2B3442" },
+              MiniStatuslineFileinfo = { fg = colors.subtext0, bg = "#2B3442" },
+              MiniStatuslineInactive = { fg = colors.overlay0, bg = "#2B3442" },
 
               -- Yukinord-style syntax highlighting
               Boolean = { fg = colors.sky },      -- cyan for booleans
