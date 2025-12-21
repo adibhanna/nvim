@@ -96,8 +96,8 @@ api.nvim_create_autocmd("FileType", {
     end,
 })
 
--- Check for external file changes on focus
-api.nvim_create_autocmd({ "FocusGained", "BufEnter" }, {
+-- Check for external file changes (works with Claude Code)
+api.nvim_create_autocmd({ "FocusGained", "BufEnter", "CursorHold" }, {
     callback = function()
         if vim.fn.mode() ~= "c" then
             vim.cmd("checktime")
