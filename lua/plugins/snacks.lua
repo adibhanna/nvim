@@ -33,6 +33,8 @@ return {
         { "<leader><space>", function() Snacks.picker.smart() end, desc = "Smart Find" },
         { "<leader>/", function() Snacks.picker.grep() end, desc = "Grep" },
         { "<leader>:", function() Snacks.picker.command_history() end, desc = "Command History" },
+        { "<leader>o", function() Snacks.picker.buffers({ win = { input = { keys = { ["dd"] = "bufdelete", ["<c-d>"] = { "bufdelete", mode = { "n", "i" } } } }, list = { keys = { ["dd"] = "bufdelete" } } } }) end, desc = "Open Buffers" },
+        { "<leader>p", function() Snacks.picker.lsp_symbols() end, desc = "Buffer Structure" },
         { "<leader>e", function() Snacks.explorer() end, desc = "Explorer" },
         { "<leader>z", function() Snacks.zen() end, desc = "Zen Mode" },
         { "<leader>Z", function() Snacks.zen.zoom() end, desc = "Zoom" },

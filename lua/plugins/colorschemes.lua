@@ -7,10 +7,10 @@ return {
     "adibhanna/yukinord.nvim",
     config = function()
       require("yukinord").setup({
-        transparent = true, -- Makes main editor background transparent
+        transparent = true,
         transparent_sidebar = true,
       })
-      vim.cmd("colorscheme yukinord")
+      -- vim.cmd("colorscheme yukinord")
     end,
   },
 
@@ -81,33 +81,39 @@ return {
             mantle = "#f0ebce",
             crust = "#e8e3c8",
           },
+          -- Yukinord-inspired mocha (Nord-based dark theme)
           mocha = {
-            rosewater = "#ea6962",
-            flamingo = "#ea6962",
-            red = "#ea6962",
-            maroon = "#ea6962",
-            pink = "#d3869b",
-            mauve = "#d3869b",
-            peach = "#e78a4e",
-            yellow = "#d8a657",
-            green = "#a9b665",
-            teal = "#89b482",
-            sky = "#89b482",
-            sapphire = "#89b482",
-            blue = "#7daea3",
-            lavender = "#7daea3",
-            text = "#ebdbb2",
-            subtext1 = "#d5c4a1",
-            subtext0 = "#bdae93",
-            overlay2 = "#a89984",
-            overlay1 = "#928374",
-            overlay0 = "#595959",
-            surface2 = "#4d4d4d",
-            surface1 = "#404040",
-            surface0 = "#292929",
-            base = "#1d2021",
-            mantle = "#191b1c",
-            crust = "#141617",
+            -- Accent colors from Yukinord
+            rosewater = "#d08770", -- orange variant
+            flamingo = "#d08770",  -- orange
+            red = "#bf616a",       -- yukinord red
+            maroon = "#bf616a",    -- yukinord red
+            pink = "#b48ead",      -- yukinord purple
+            mauve = "#b48ead",     -- yukinord purple
+            peach = "#d08770",     -- yukinord orange (strings)
+            yellow = "#ebcb8b",    -- yukinord yellow (functions, numbers)
+            green = "#a3be8c",     -- yukinord green (types)
+            teal = "#8fbcbb",      -- yukinord teal
+            sky = "#88c0d0",       -- yukinord cyan (keywords)
+            sapphire = "#5e81ac",  -- yukinord blue_bright (selection)
+            blue = "#81a1c1",      -- yukinord blue (info)
+            lavender = "#88c0d0",  -- yukinord cyan
+            -- Foreground colors
+            text = "#eceff4",      -- yukinord fg0 (bright)
+            subtext1 = "#e5e9f0",  -- yukinord fg1
+            subtext0 = "#d8dee9",  -- yukinord fg2 (editor foreground)
+            -- Overlay colors (muted)
+            overlay2 = "#8d929c",  -- yukinord fg3 (comments)
+            overlay1 = "#7b8394",  -- between fg3 and fg4
+            overlay0 = "#616e88",  -- yukinord fg4 (line numbers)
+            -- Surface colors (backgrounds)
+            surface2 = "#4c566a",  -- yukinord bg5 (button secondary)
+            surface1 = "#434c5e",  -- yukinord bg4 (line highlight)
+            surface0 = "#3b4252",  -- yukinord border
+            -- Base backgrounds
+            base = "#1D2129",      -- yukinord bg0 (editor background)
+            mantle = "#14171d",    -- yukinord bg1 (panel background)
+            crust = "#0f1115",     -- darker than bg1
           },
         },
         transparent_background = false,
@@ -236,103 +242,121 @@ return {
               IblIndent = { fg = colors.surface0 },
               IblScope = { fg = colors.overlay0 },
 
-              Boolean = { fg = colors.mauve },
-              Number = { fg = colors.mauve },
-              Float = { fg = colors.mauve },
+              -- Statusline (single color like yukinord)
+              StatusLine = { fg = colors.subtext0, bg = colors.surface0 },
+              StatusLineNC = { fg = colors.subtext0, bg = colors.surface0 },
 
-              PreProc = { fg = colors.mauve },
-              PreCondit = { fg = colors.mauve },
-              Include = { fg = colors.mauve },
-              Define = { fg = colors.mauve },
-              Conditional = { fg = colors.red },
-              Repeat = { fg = colors.red },
-              Keyword = { fg = colors.red },
-              Typedef = { fg = colors.red },
-              Exception = { fg = colors.red },
-              Statement = { fg = colors.red },
+              -- Mini.statusline (all sections same color)
+              MiniStatuslineModeNormal = { fg = colors.subtext0, bg = colors.surface0 },
+              MiniStatuslineModeInsert = { fg = colors.subtext0, bg = colors.surface0 },
+              MiniStatuslineModeVisual = { fg = colors.subtext0, bg = colors.surface0 },
+              MiniStatuslineModeReplace = { fg = colors.subtext0, bg = colors.surface0 },
+              MiniStatuslineModeCommand = { fg = colors.subtext0, bg = colors.surface0 },
+              MiniStatuslineModeOther = { fg = colors.subtext0, bg = colors.surface0 },
+              MiniStatuslineDevinfo = { fg = colors.subtext0, bg = colors.surface0 },
+              MiniStatuslineFilename = { fg = colors.subtext0, bg = colors.surface0 },
+              MiniStatuslineFileinfo = { fg = colors.subtext0, bg = colors.surface0 },
+              MiniStatuslineInactive = { fg = colors.overlay0, bg = colors.surface0 },
+
+              -- Yukinord-style syntax highlighting
+              Boolean = { fg = colors.sky },      -- cyan for booleans
+              Number = { fg = colors.yellow },    -- yellow for numbers
+              Float = { fg = colors.yellow },     -- yellow for floats
+
+              PreProc = { fg = colors.sky },      -- cyan for preprocessor
+              PreCondit = { fg = colors.sky },
+              Include = { fg = colors.sky },
+              Define = { fg = colors.sky },
+              Conditional = { fg = colors.mauve }, -- purple for control flow
+              Repeat = { fg = colors.mauve },
+              Keyword = { fg = colors.sky },      -- cyan for keywords
+              Typedef = { fg = colors.green },    -- green for types
+              Exception = { fg = colors.mauve },  -- purple for exceptions
+              Statement = { fg = colors.sky },    -- cyan for statements
 
               Error = { fg = colors.red },
-              StorageClass = { fg = colors.peach },
-              Tag = { fg = colors.peach },
-              Label = { fg = colors.peach },
-              Structure = { fg = colors.peach },
-              Operator = { fg = colors.peach },
-              Title = { fg = colors.peach },
-              Special = { fg = colors.yellow },
+              StorageClass = { fg = colors.sky }, -- cyan
+              Tag = { fg = colors.sky },
+              Label = { fg = colors.sky },
+              Structure = { fg = colors.green },  -- green for structures
+              Operator = { fg = colors.subtext0 }, -- muted operators like yukinord
+              Title = { fg = colors.sky },
+              Special = { fg = colors.peach },    -- orange for special
               SpecialChar = { fg = colors.yellow },
-              Type = { fg = colors.yellow, style = { "bold" } },
-              Function = { fg = colors.green, style = { "bold" } },
-              Delimiter = { fg = colors.subtext1 },
-              Ignore = { fg = colors.subtext1 },
-              Macro = { fg = colors.teal },
+              Type = { fg = colors.green },       -- green for types (like yukinord)
+              Function = { fg = colors.yellow },  -- yellow for functions (like yukinord)
+              Delimiter = { fg = colors.subtext0 }, -- muted delimiters
+              Ignore = { fg = colors.overlay0 },
+              Macro = { fg = colors.sky },        -- cyan for macros
 
-              TSAnnotation = { fg = colors.mauve },
-              TSAttribute = { fg = colors.mauve },
-              TSBoolean = { fg = colors.mauve },
-              TSCharacter = { fg = colors.teal },
+              -- Yukinord-style Treesitter highlights
+              TSAnnotation = { fg = colors.sky },
+              TSAttribute = { fg = colors.sky },
+              TSBoolean = { fg = colors.sky },     -- cyan for booleans
+              TSCharacter = { fg = colors.yellow },
               TSCharacterSpecial = { link = "SpecialChar" },
               TSComment = { link = "Comment" },
-              TSConditional = { fg = colors.red },
-              TSConstBuiltin = { fg = colors.mauve },
-              TSConstMacro = { fg = colors.mauve },
-              TSConstant = { fg = colors.text },
-              TSConstructor = { fg = colors.green },
+              TSConditional = { fg = colors.mauve }, -- purple for control
+              TSConstBuiltin = { fg = colors.sky },  -- cyan for builtin constants
+              TSConstMacro = { fg = colors.sky },
+              TSConstant = { fg = colors.sky },      -- cyan for constants
+              TSConstructor = { fg = colors.green }, -- green for constructors
               TSDebug = { link = "Debug" },
               TSDefine = { link = "Define" },
               TSEnvironment = { link = "Macro" },
               TSEnvironmentName = { link = "Type" },
               TSError = { link = "Error" },
-              TSException = { fg = colors.red },
-              TSField = { fg = colors.blue },
-              TSFloat = { fg = colors.mauve },
-              TSFuncBuiltin = { fg = colors.green },
-              TSFuncMacro = { fg = colors.green },
-              TSFunction = { fg = colors.green },
-              TSFunctionCall = { fg = colors.green },
-              TSInclude = { fg = colors.red },
-              TSKeyword = { fg = colors.red },
-              TSKeywordFunction = { fg = colors.red },
-              TSKeywordOperator = { fg = colors.peach },
-              TSKeywordReturn = { fg = colors.red },
-              TSLabel = { fg = colors.peach },
+              TSException = { fg = colors.mauve },   -- purple for exceptions
+              TSField = { fg = colors.subtext0 },    -- muted for fields
+              TSFloat = { fg = colors.yellow },      -- yellow for numbers
+              TSFuncBuiltin = { fg = colors.yellow },
+              TSFuncMacro = { fg = colors.yellow },
+              TSFunction = { fg = colors.yellow },   -- yellow for functions
+              TSFunctionCall = { fg = colors.yellow },
+              TSInclude = { fg = colors.sky },       -- cyan for imports
+              TSKeyword = { fg = colors.sky },       -- cyan for keywords
+              TSKeywordFunction = { fg = colors.sky },
+              TSKeywordOperator = { fg = colors.subtext0 },
+              TSKeywordReturn = { fg = colors.mauve }, -- purple for return
+              TSLabel = { fg = colors.sky },
               TSLiteral = { link = "String" },
-              TSMath = { fg = colors.blue },
-              TSMethod = { fg = colors.green },
-              TSMethodCall = { fg = colors.green },
-              TSNamespace = { fg = colors.yellow },
+              TSMath = { fg = colors.subtext0 },
+              TSMethod = { fg = colors.yellow },     -- yellow for methods
+              TSMethodCall = { fg = colors.yellow },
+              TSNamespace = { fg = colors.green },   -- green for namespaces
               TSNone = { fg = colors.text },
-              TSNumber = { fg = colors.mauve },
-              TSOperator = { fg = colors.peach },
-              TSParameter = { fg = colors.text },
-              TSParameterReference = { fg = colors.text },
+              TSNumber = { fg = colors.yellow },     -- yellow for numbers
+              TSOperator = { fg = colors.subtext0 }, -- muted operators
+              TSParameter = { fg = colors.subtext0 }, -- muted parameters
+              TSParameterReference = { fg = colors.subtext0 },
               TSPreProc = { link = "PreProc" },
-              TSProperty = { fg = colors.blue },
-              TSPunctBracket = { fg = colors.text },
+              TSProperty = { fg = colors.subtext0 }, -- muted properties
+              TSPunctBracket = { fg = colors.subtext0 },
               TSPunctDelimiter = { link = "Delimiter" },
-              TSPunctSpecial = { fg = colors.blue },
-              TSRepeat = { fg = colors.red },
-              TSStorageClass = { fg = colors.peach },
-              TSStorageClassLifetime = { fg = colors.peach },
-              TSStrike = { fg = colors.subtext1 },
-              TSString = { fg = colors.teal },
-              TSStringEscape = { fg = colors.green },
-              TSStringRegex = { fg = colors.green },
+              TSPunctSpecial = { fg = colors.subtext0 },
+              TSRepeat = { fg = colors.mauve },      -- purple for loops
+              TSStorageClass = { fg = colors.sky },
+              TSStorageClassLifetime = { fg = colors.sky },
+              TSStrike = { fg = colors.overlay1 },
+              TSString = { fg = colors.peach },      -- orange for strings
+              TSStringEscape = { fg = colors.yellow },
+              TSStringRegex = { fg = colors.yellow },
               TSStringSpecial = { link = "SpecialChar" },
-              TSSymbol = { fg = colors.text },
-              TSTag = { fg = colors.peach },
-              TSTagAttribute = { fg = colors.green },
-              TSTagDelimiter = { fg = colors.green },
-              TSText = { fg = colors.green },
+              TSSymbol = { fg = colors.subtext0 },
+              TSTag = { fg = colors.sky },           -- cyan for tags
+              TSTagAttribute = { fg = colors.subtext0 },
+              TSTagDelimiter = { fg = colors.subtext0 },
+              TSText = { fg = colors.subtext0 },
               TSTextReference = { link = "Constant" },
               TSTitle = { link = "Title" },
               TSTodo = { link = "Todo" },
-              TSType = { fg = colors.yellow, style = { "bold" } },
-              TSTypeBuiltin = { fg = colors.yellow, style = { "bold" } },
-              TSTypeDefinition = { fg = colors.yellow, style = { "bold" } },
-              TSTypeQualifier = { fg = colors.peach, style = { "bold" } },
-              TSURI = { fg = colors.blue },
-              TSVariable = { fg = colors.text },
-              TSVariableBuiltin = { fg = colors.mauve },
+              TSType = { fg = colors.green },        -- green for types
+              TSTypeBuiltin = { fg = colors.green },
+              TSTypeDefinition = { fg = colors.green },
+              TSTypeQualifier = { fg = colors.sky },
+              TSURI = { fg = colors.sky, underline = true },
+              TSVariable = { fg = colors.subtext0 }, -- muted variables
+              TSVariableBuiltin = { fg = colors.sky }, -- cyan for builtins
 
               ["@annotation"] = { link = "TSAnnotation" },
               ["@attribute"] = { link = "TSAttribute" },
@@ -451,6 +475,7 @@ return {
           end,
         },
       })
+      vim.cmd("colorscheme catppuccin-mocha")
     end,
   },
 
