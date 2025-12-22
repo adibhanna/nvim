@@ -1,10 +1,26 @@
 -- Colorschemes: Theme configurations
 return {
+  {
+    "f-person/auto-dark-mode.nvim",
+    opts = {
+      update_interval = 1000,
+      set_dark_mode = function()
+        require("yukinord").setup({ style = "dark" })
+        vim.cmd([[colorscheme yukinord]])
+      end,
+      set_light_mode = function()
+        require("yukinord").setup({ style = "light" })
+        vim.cmd([[colorscheme yukinord]])
+      end,
+    },
+  },
+
   -- ════════════════════════════════════════════════════════════════════════════
   -- Yukinord (default)
   -- ════════════════════════════════════════════════════════════════════════════
   {
     "adibhanna/yukinord.nvim",
+    dir = "~/Developer/opensource/yukinord/neovim",
     config = function()
       require("yukinord").setup({
         transparent = true,
@@ -475,7 +491,7 @@ return {
           end,
         },
       })
-      vim.cmd("colorscheme catppuccin-mocha")
+      -- vim.cmd("colorscheme catppuccin-mocha")
     end,
   },
 
