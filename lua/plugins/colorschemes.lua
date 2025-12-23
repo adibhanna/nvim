@@ -20,7 +20,7 @@ return {
   -- ════════════════════════════════════════════════════════════════════════════
   {
     "adibhanna/yukinord.nvim",
-    dir = "~/Developer/opensource/yukinord/neovim",
+    -- dir = "~/Developer/opensource/yukinord/neovim",
     config = function()
       require("yukinord").setup({
         transparent = true,
