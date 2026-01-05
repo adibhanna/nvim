@@ -112,8 +112,13 @@ return {
         },
         auto_install = true,
       })
-      vim.cmd("TSEnable highlight")
-      vim.cmd("TSEnable indent")
+      -- Enable treesitter-based highlighting and indentation
+      vim.api.nvim_create_autocmd("FileType", {
+        callback = function()
+          pcall(vim.treesitter.start)
+        end,
+      })
+      vim.opt.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
     end,
   },
 
