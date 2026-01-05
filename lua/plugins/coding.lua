@@ -1,22 +1,14 @@
--- Coding: Completion, snippets, treesitter, and dev tools
+-- Coding: Completion, treesitter, and dev tools
 return {
-  -- ════════════════════════════════════════════════════════════════════════════
-  -- Snippets
-  -- ════════════════════════════════════════════════════════════════════════════
-  { "L3MON4D3/LuaSnip", keys = {} },
-
   -- ════════════════════════════════════════════════════════════════════════════
   -- Completion (blink.cmp)
   -- ════════════════════════════════════════════════════════════════════════════
   {
     "saghen/blink.cmp",
-    dependencies = {
-      "rafamadriz/friendly-snippets",
-    },
     version = "*",
     config = function()
       require("blink.cmp").setup({
-        snippets = { preset = "luasnip" },
+        snippets = { preset = "default" },
         signature = { enabled = true },
         appearance = {
           use_nvim_cmp_as_default = false,
@@ -72,8 +64,6 @@ return {
           },
         },
       })
-
-      require("luasnip.loaders.from_vscode").lazy_load()
     end,
   },
 
@@ -84,23 +74,46 @@ return {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
     lazy = false,
-    config = function()
-      require("nvim-treesitter").setup({
-        ensure_install = {
-          "bash", "c", "html", "javascript", "json", "lua", "luadoc", "luap",
-          "markdown", "markdown_inline", "python", "query", "regex", "tsx",
-          "typescript", "vue", "vim", "vimdoc", "yaml", "rust", "go", "gomod",
-          "gowork", "gosum", "terraform", "proto", "zig", "php", "blade",
-        },
-      })
-
-      -- Enable treesitter-based highlighting
-      vim.api.nvim_create_autocmd("FileType", {
-        callback = function()
-          pcall(vim.treesitter.start)
-        end,
-      })
-    end,
+    main = "nvim-treesitter.configs",
+    opts = {
+      ensure_installed = {
+        "bash",
+        "c",
+        "css",
+        "go",
+        "gomod",
+        "gosum",
+        "gowork",
+        "html",
+        "javascript",
+        "json",
+        "latex",
+        "lua",
+        "luadoc",
+        "luap",
+        "markdown",
+        "markdown_inline",
+        "php",
+        "proto",
+        "python",
+        "query",
+        "regex",
+        "rust",
+        "scss",
+        "svelte",
+        "terraform",
+        "tsx",
+        "typescript",
+        "vim",
+        "vimdoc",
+        "vue",
+        "yaml",
+        "zig",
+      },
+      auto_install = true,
+      highlight = { enable = true },
+      indent = { enable = true },
+    },
   },
 
   -- ════════════════════════════════════════════════════════════════════════════

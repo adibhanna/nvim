@@ -1,0 +1,157 @@
+*zig.txt*  Zig development commands
+
+==============================================================================
+CONTENTS                                                         *zig-contents*
+
+    1. Build & Run ............................................. |zig-build|
+    2. Testing ................................................. |zig-test|
+    3. Code Quality ............................................ |zig-quality|
+    4. Project Management ...................................... |zig-project|
+    5. Documentation ........................................... |zig-docs|
+    6. Compilation & Analysis .................................. |zig-compile|
+    7. Build Steps ............................................. |zig-steps|
+    8. Navigation .............................................. |zig-nav|
+
+==============================================================================
+1. BUILD & RUN                                                      *zig-build*
+
+:ZigBuild [args]                                                    *:ZigBuild*
+    Run `zig build`.
+    Examples: >
+        :ZigBuild
+        :ZigBuild -Doptimize=Debug
+<
+
+:ZigBuildRelease                                              *:ZigBuildRelease*
+    Run `zig build -Doptimize=ReleaseFast`.
+
+:ZigBuildSafe                                                    *:ZigBuildSafe*
+    Run `zig build -Doptimize=ReleaseSafe`.
+
+:ZigRun [args]                                                        *:ZigRun*
+    Run `zig build run` in a terminal split.
+    Arguments after command are passed to the executable.
+    Examples: >
+        :ZigRun
+        :ZigRun arg1 arg2
+<
+
+:ZigRunFile [args]                                                *:ZigRunFile*
+    Run `zig run` on the current file directly.
+    Useful for single-file scripts.
+    Examples: >
+        :ZigRunFile
+        :ZigRunFile arg1 arg2
+<
+
+==============================================================================
+2. TESTING                                                           *zig-test*
+
+:ZigTest [args]                                                      *:ZigTest*
+    Run `zig build test` in a terminal split.
+    Examples: >
+        :ZigTest
+        :ZigTest --summary
+<
+
+:ZigTestFile                                                      *:ZigTestFile*
+    Run `zig test` on the current file directly.
+
+:ZigTestFilter {name}                                            *:ZigTestFilter*
+    Run tests matching a filter.
+    Example: >
+        :ZigTestFilter myTestName
+<
+
+==============================================================================
+3. CODE QUALITY                                                   *zig-quality*
+
+:ZigFmt                                                              *:ZigFmt*
+    Format the current file with `zig fmt`.
+
+:ZigFmtAll                                                        *:ZigFmtAll*
+    Format all .zig files in the project.
+
+:ZigFmtCheck                                                      *:ZigFmtCheck*
+    Check formatting without making changes.
+
+==============================================================================
+4. PROJECT MANAGEMENT                                             *zig-project*
+
+:ZigInit                                                            *:ZigInit*
+    Initialize a new Zig project with `zig init`.
+    Creates build.zig and src/ directory.
+
+:ZigFetch {url}                                                    *:ZigFetch*
+    Fetch a dependency and get its hash.
+    Hash is automatically copied to clipboard.
+    Example: >
+        :ZigFetch https://github.com/user/repo/archive/v1.0.0.tar.gz
+<
+
+:ZigVersion                                                      *:ZigVersion*
+    Display the installed Zig version.
+
+==============================================================================
+5. DOCUMENTATION                                                     *zig-docs*
+
+:ZigDoc [topic]                                                      *:ZigDoc*
+    Open Zig language documentation in browser.
+    Examples: >
+        :ZigDoc
+        :ZigDoc Pointers
+<
+
+:ZigStdDoc [topic]                                                *:ZigStdDoc*
+    Open Zig standard library documentation in browser.
+    Examples: >
+        :ZigStdDoc
+        :ZigStdDoc std.mem
+<
+
+:ZigHelp [command]                                                  *:ZigHelp*
+    Show `zig help` in a terminal split.
+    Examples: >
+        :ZigHelp
+        :ZigHelp build
+<
+
+==============================================================================
+6. COMPILATION & ANALYSIS                                         *zig-compile*
+
+:ZigAst                                                              *:ZigAst*
+    Run `zig ast-check` on the current file.
+    Shows AST errors and analysis.
+
+:ZigTranslateC {header}                                        *:ZigTranslateC*
+    Translate a C header file to Zig.
+    Example: >
+        :ZigTranslateC /usr/include/stdio.h
+<
+
+==============================================================================
+7. BUILD STEPS                                                      *zig-steps*
+
+:ZigBuildSteps                                                  *:ZigBuildSteps*
+    Show available build steps defined in build.zig.
+    Runs `zig build --help`.
+
+:ZigBuildStep {step}                                            *:ZigBuildStep*
+    Run a specific build step.
+    Examples: >
+        :ZigBuildStep install
+        :ZigBuildStep docs
+<
+
+==============================================================================
+8. NAVIGATION                                                         *zig-nav*
+
+:ZigAlt                                                              *:ZigAlt*
+    Switch between source and test file.
+    - `foo.zig` <-> `foo_test.zig`
+
+:ZigAltV                                                            *:ZigAltV*
+    Switch to alt file in a vertical split.
+
+==============================================================================
+vim:tw=78:ts=4:ft=help:norl:

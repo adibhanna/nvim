@@ -14,19 +14,15 @@ return {
                     vim.keymap.set(mode, lhs, rhs, { buffer = bufnr, desc = desc, silent = true })
                 end
 
-                -- Hover & Signature (no prefix)
+                -- Hover & Signature
                 map("n", "K", function()
                     vim.lsp.buf.hover({ border = "rounded", max_height = 25, max_width = 120 })
                 end, "Hover")
-                map("n", "<C-k>", vim.lsp.buf.signature_help, "Signature Help")
-                map("i", "<C-k>", vim.lsp.buf.signature_help, "Signature Help")
+                map({ "n", "i" }, "<C-k>", vim.lsp.buf.signature_help, "Signature Help")
 
-                -- Navigation (g prefix) - gd, gD, gr, gI, gy handled by Snacks
-                map("n", "gi", vim.lsp.buf.implementation, "Implementation")
-                map("n", "gt", vim.lsp.buf.type_definition, "Type Definition")
-                map("n", "<leader>v", "<cmd>vsplit | lua vim.lsp.buf.definition()<cr>", "Definition in Split")
+                -- gd, gD, gr, gi, gy handled by Snacks picker (snacks.lua)
 
-                -- Diagnostics navigation ([ and ] prefix)
+                -- Diagnostics navigation
                 map("n", "[d", function() vim.diagnostic.jump({ count = -1 }) end, "Prev Diagnostic")
                 map("n", "]d", function() vim.diagnostic.jump({ count = 1 }) end, "Next Diagnostic")
 
@@ -34,7 +30,7 @@ return {
                 map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, "Code Action")
                 map("n", "<leader>cr", vim.lsp.buf.rename, "Rename Symbol")
                 map("n", "<leader>cd", vim.diagnostic.open_float, "Line Diagnostic")
-                -- cf (format) handled by conform.lua
+                map("n", "<leader>cv", "<cmd>vsplit | lua vim.lsp.buf.definition()<cr>", "Definition in Vsplit")
 
                 -- <leader>l = LSP
                 map("n", "<leader>li", "<cmd>LspInfo<cr>", "LSP Info")

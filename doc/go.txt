@@ -1,0 +1,181 @@
+*go.txt*  Go development commands
+
+==============================================================================
+CONTENTS                                                          *go-contents*
+
+    1. Build & Run ............................................. |go-build|
+    2. Testing ................................................. |go-test|
+    3. Module Management ....................................... |go-mod|
+    4. Code Tools .............................................. |go-tools|
+    5. Struct Tags ............................................. |go-tags|
+    6. Navigation .............................................. |go-nav|
+    7. Binary Management ....................................... |go-binaries|
+
+==============================================================================
+1. BUILD & RUN                                                      *go-build*
+
+:GoBuild [args]                                                     *:GoBuild*
+    Run `go build`. Default: `./...`
+    Examples: >
+        :GoBuild
+        :GoBuild ./cmd/myapp
+        :GoBuild -race ./...
+<
+
+:GoRun [args]                                                         *:GoRun*
+    Run `go run` in a terminal split.
+    Examples: >
+        :GoRun
+        :GoRun .
+        :GoRun ./cmd/server
+<
+
+:GoGenerate [args]                                                *:GoGenerate*
+    Run `go generate`. Default: `./...`
+    Examples: >
+        :GoGenerate
+        :GoGenerate ./internal/...
+<
+
+==============================================================================
+2. TESTING                                                           *go-test*
+
+:GoTest [args]                                                       *:GoTest*
+    Run `go test -v` in a terminal split.
+    Examples: >
+        :GoTest
+        :GoTest ./...
+        :GoTest -race ./...
+        :GoTest -tags=integration ./...
+<
+
+:GoTestFunc                                                       *:GoTestFunc*
+    Test the function under cursor. Uses treesitter to find the test
+    function name. Cursor must be inside a `Test*` function.
+
+:GoTestFile                                                       *:GoTestFile*
+    Test the current package (directory of current file).
+
+:GoCoverage [args]                                                *:GoCoverage*
+    Run tests with coverage and open HTML report in browser.
+    Examples: >
+        :GoCoverage
+        :GoCoverage ./internal/...
+<
+
+==============================================================================
+3. MODULE MANAGEMENT                                                  *go-mod*
+
+:GoModTidy                                                        *:GoModTidy*
+    Run `go mod tidy`.
+
+:GoModInit {module}                                               *:GoModInit*
+    Run `go mod init {module}`.
+    Example: >
+        :GoModInit github.com/user/myproject
+<
+
+:GoGet {package}                                                      *:GoGet*
+    Run `go get {package}`.
+    Examples: >
+        :GoGet github.com/gorilla/mux
+        :GoGet -u ./...
+<
+
+==============================================================================
+4. CODE TOOLS                                                       *go-tools*
+
+:GoVet [args]                                                         *:GoVet*
+    Run `go vet`. Default: `./...`
+
+:GoLint [args]                                                       *:GoLint*
+    Run `golangci-lint run`. Default: `./...`
+    Requires: golangci-lint (install via :GoInstallBinaries)
+
+:GoDoc [symbol]                                                       *:GoDoc*
+    Open `go doc` in a terminal split.
+    If no argument, uses word under cursor.
+    Examples: >
+        :GoDoc fmt.Println
+        :GoDoc json.Marshal
+        :GoDoc                   " uses <cword>
+<
+
+:GoImpl {receiver} {interface}                                       *:GoImpl*
+    Generate interface implementation stubs.
+    Requires: impl (install via :GoInstallBinaries)
+    Examples: >
+        :GoImpl 's *Service' io.Reader
+        :GoImpl 'c *Client' http.Handler
+        :GoImpl 'w *Writer' io.WriteCloser
+<
+
+:GoIfErr                                                             *:GoIfErr*
+    Insert `if err != nil { return err }` block at cursor.
+    If `iferr` tool is installed, generates smarter return values.
+
+:GoModernize                                                     *:GoModernize*
+    Run gopls modernize analyzer on current file.
+    Automatically applies fixes for deprecated patterns.
+
+:GoFillStruct                                                   *:GoFillStruct*
+    Fill struct literal with default field values.
+    Uses gopls LSP code action. Cursor must be on a struct literal.
+
+==============================================================================
+5. STRUCT TAGS                                                       *go-tags*
+
+:GoAddTags [tags]                                                  *:GoAddTags*
+    Add struct tags to the struct under cursor. Default: `json`
+    Requires: gomodifytags (install via :GoInstallBinaries)
+    Examples: >
+        :GoAddTags              " adds json tags
+        :GoAddTags json,xml
+        :GoAddTags yaml
+<
+
+:GoRemoveTags [tags]                                            *:GoRemoveTags*
+    Remove struct tags from the struct under cursor. Default: `json`
+    Examples: >
+        :GoRemoveTags
+        :GoRemoveTags json,xml
+<
+
+==============================================================================
+6. NAVIGATION                                                         *go-nav*
+
+:GoAlt                                                                 *:GoAlt*
+    Switch between source and test file.
+    - `foo.go` <-> `foo_test.go`
+
+:GoAltV                                                               *:GoAltV*
+    Switch between source and test file in a vertical split.
+
+==============================================================================
+7. BINARY MANAGEMENT                                              *go-binaries*
+
+:GoInstallBinaries                                        *:GoInstallBinaries*
+    Install all Go tool binaries:
+    - goimports
+    - gomodifytags
+    - impl
+    - iferr
+    - gotests
+    - golangci-lint
+    - dlv (delve debugger)
+    - staticcheck
+    - govulncheck
+
+:GoUpdateBinaries                                          *:GoUpdateBinaries*
+    Update all Go tool binaries to latest versions.
+
+:GoInstallBinary [name]                                    *:GoInstallBinary*
+    Install a specific tool. Tab completion available.
+    Example: >
+        :GoInstallBinary impl
+        :GoInstallBinary golangci-lint
+<
+    Run without arguments to see available tools.
+
+==============================================================================
+vim:tw=78:ts=4:ft=help:norl:

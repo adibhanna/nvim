@@ -8,43 +8,57 @@ return {
     event = "VeryLazy",
     opts = {
       preset = "helix",
-      delay = 300,
+      delay = 250,
       sort = { "alphanum", "local", "order", "group", "mod" },
       icons = {
         rules = false,
-        breadcrumb = " ",
-        separator = " ",
-        group = "",
+        breadcrumb = "»",
+        separator = "→",
+        group = "+",
       },
       plugins = {
+        marks = true,
+        registers = true,
         spelling = { enabled = false },
       },
       win = {
-        height = { max = math.huge },
+        border = "rounded",
+        padding = { 1, 2 },
       },
       spec = {
         mode = { "n", "v" },
-        -- Main groups (alphabetical)
-        { "<leader>a", group = "AI" },
-        { "<leader>b", group = "Buffers" },
-        { "<leader>c", group = "Code" },
-        { "<leader>d", group = "Diagnostics/Debug" },
-        { "<leader>f", group = "Find" },
-        { "<leader>g", group = "Git" },
-        { "<leader>l", group = "LSP" },
-        { "<leader>s", group = "Search" },
-        { "<leader>u", group = "UI" },
-        { "<leader>w", group = "Windows" },
+        -- Top-level quick access
+        { "<leader><space>", desc = "Find Files" },
+        { "<leader>/", desc = "Grep" },
+        { "<leader>,", desc = "Buffers" },
+        { "<leader>.", desc = "Scratch" },
+        { "<leader>e", desc = "Explorer" },
+        { "<leader>q", desc = "Quit" },
+        { "<leader>Q", desc = "Quit All" },
+        -- Main groups with icons
+        { "<leader>b", group = "Buffers", icon = "󰈔" },
+        { "<leader>c", group = "Code", icon = "" },
+        { "<leader>d", group = "Diagnostics", icon = "" },
+        { "<leader>f", group = "Files", icon = "󰈞" },
+        { "<leader>g", group = "Git", icon = "󰊢" },
+        { "<leader>gh", group = "Hunks", icon = "" },
+        { "<leader>l", group = "LSP", icon = "" },
+        { "<leader>m", group = "Markdown", icon = "" },
+        { "<leader>n", group = "Notifications", icon = "󰈸" },
+        { "<leader>s", group = "Search", icon = "" },
+        { "<leader>u", group = "UI/Toggle", icon = "󰙵" },
+        { "<leader>w", group = "Windows", icon = "" },
         -- Navigation groups
         { "[", group = "Prev" },
         { "]", group = "Next" },
         { "g", group = "Goto" },
-        -- Hidden (standalone keymaps)
-        { "<leader>v", hidden = true },
+        -- Surround (mini.surround)
+        { "gs", group = "Surround" },
       },
     },
     keys = {
-      { "<leader>?", function() require("which-key").show({ global = false }) end, desc = "Keymaps (buffer)" },
+      { "<leader>?", function() require("which-key").show({ global = false }) end, desc = "Buffer Keymaps" },
+      { "<leader>K", function() require("which-key").show({ global = true }) end, desc = "All Keymaps" },
     },
   },
 
@@ -110,6 +124,80 @@ return {
           winblend = 0,
         },
       },
+    },
+  },
+
+  -- ════════════════════════════════════════════════════════════════════════════
+  -- Markdown Preview (browser-based with mermaid support)
+  -- ════════════════════════════════════════════════════════════════════════════
+  {
+    "iamcco/markdown-preview.nvim",
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    ft = { "markdown" },
+    build = "cd app && npm install",
+    init = function()
+      vim.g.mkdp_filetypes = { "markdown" }
+      vim.g.mkdp_auto_close = 1
+      vim.g.mkdp_theme = "dark"
+      -- Enable mermaid, katex, and other features
+      vim.g.mkdp_preview_options = {
+        mermaid = { theme = "dark" },
+        katex = {},
+        disable_sync_scroll = 0,
+        sync_scroll_type = "middle",
+        hide_yaml_meta = 1,
+        sequence_diagrams = {},
+        flowchart_diagrams = {},
+      }
+    end,
+    keys = {
+      { "<leader>mp", "<cmd>MarkdownPreviewToggle<cr>", desc = "Markdown Preview", ft = "markdown" },
+    },
+  },
+
+  -- ════════════════════════════════════════════════════════════════════════════
+  -- Render Markdown (in-buffer rendering)
+  -- ════════════════════════════════════════════════════════════════════════════
+  {
+    "MeanderingProgrammer/render-markdown.nvim",
+    ft = { "markdown" },
+    dependencies = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.icons" },
+    opts = {
+      heading = {
+        enabled = true,
+        sign = false,
+        icons = { "# ", "## ", "### ", "#### ", "##### ", "###### " },
+      },
+      code = {
+        enabled = true,
+        sign = false,
+        style = "full",
+        left_pad = 1,
+        right_pad = 1,
+        border = "thin",
+        language_pad = 1,
+      },
+      bullet = {
+        enabled = true,
+        icons = { "●", "○", "◆", "◇" },
+      },
+      checkbox = {
+        enabled = true,
+        unchecked = { icon = "☐ " },
+        checked = { icon = "☑ " },
+      },
+      quote = { enabled = true, icon = "▎" },
+      pipe_table = { enabled = true, style = "full" },
+      callout = {
+        note = { raw = "[!NOTE]", rendered = " Note", highlight = "RenderMarkdownInfo" },
+        tip = { raw = "[!TIP]", rendered = " Tip", highlight = "RenderMarkdownSuccess" },
+        important = { raw = "[!IMPORTANT]", rendered = " Important", highlight = "RenderMarkdownHint" },
+        warning = { raw = "[!WARNING]", rendered = " Warning", highlight = "RenderMarkdownWarn" },
+        caution = { raw = "[!CAUTION]", rendered = " Caution", highlight = "RenderMarkdownError" },
+      },
+    },
+    keys = {
+      { "<leader>mr", "<cmd>RenderMarkdown toggle<cr>", desc = "Render Markdown Toggle", ft = "markdown" },
     },
   },
 

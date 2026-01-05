@@ -1,0 +1,179 @@
+*rust.txt*  Rust/Cargo development commands
+
+==============================================================================
+CONTENTS                                                        *rust-contents*
+
+    1. Build & Run ............................................. |rust-build|
+    2. Testing ................................................. |rust-test|
+    3. Code Quality ............................................ |rust-quality|
+    4. Dependencies ............................................ |rust-deps|
+    5. Documentation ........................................... |rust-docs|
+    6. Project Management ...................................... |rust-project|
+    7. Utilities ............................................... |rust-utils|
+    8. Navigation .............................................. |rust-nav|
+    9. Tool Installation ....................................... |rust-tools|
+
+==============================================================================
+1. BUILD & RUN                                                     *rust-build*
+
+:CargoBuild [args]                                                *:CargoBuild*
+    Run `cargo build`.
+    Examples: >
+        :CargoBuild
+        :CargoBuild --features foo
+        :CargoBuild -p my-crate
+<
+
+:CargoBuildRelease                                          *:CargoBuildRelease*
+    Run `cargo build --release`.
+
+:CargoRun [args]                                                    *:CargoRun*
+    Run `cargo run` in a terminal split.
+    Arguments after command are passed to the binary.
+    Examples: >
+        :CargoRun
+        :CargoRun arg1 arg2
+<
+
+:CargoRunRelease [args]                                      *:CargoRunRelease*
+    Run `cargo run --release`.
+
+==============================================================================
+2. TESTING                                                          *rust-test*
+
+:CargoTest [args]                                                  *:CargoTest*
+    Run `cargo test` in a terminal split.
+    Examples: >
+        :CargoTest
+        :CargoTest test_name
+        :CargoTest -- --nocapture
+<
+
+:CargoTestFunc                                                  *:CargoTestFunc*
+    Test the function under cursor using treesitter.
+    Runs with `--exact --nocapture` flags.
+
+==============================================================================
+3. CODE QUALITY                                                  *rust-quality*
+
+:CargoCheck                                                      *:CargoCheck*
+    Run `cargo check` asynchronously.
+
+:CargoClippy [args]                                              *:CargoClippy*
+    Run `cargo clippy` in a terminal split.
+    Examples: >
+        :CargoClippy
+        :CargoClippy -- -W clippy::pedantic
+<
+
+:CargoFmt                                                          *:CargoFmt*
+    Run `cargo fmt` and reload buffers.
+
+:CargoFmtCheck                                                  *:CargoFmtCheck*
+    Run `cargo fmt --check` to verify formatting.
+
+==============================================================================
+4. DEPENDENCIES                                                     *rust-deps*
+
+:CargoAdd {crate}                                                  *:CargoAdd*
+    Add a dependency using `cargo add`.
+    Examples: >
+        :CargoAdd serde
+        :CargoAdd tokio --features full
+        :CargoAdd --dev mockall
+<
+
+:CargoRemove {crate}                                            *:CargoRemove*
+    Remove a dependency using `cargo remove`.
+
+:CargoUpdate                                                    *:CargoUpdate*
+    Run `cargo update` to update Cargo.lock.
+
+:CargoTree [args]                                                 *:CargoTree*
+    Show dependency tree in a terminal split.
+    Examples: >
+        :CargoTree
+        :CargoTree -i serde
+<
+
+==============================================================================
+5. DOCUMENTATION                                                    *rust-docs*
+
+:CargoDoc[!]                                                       *:CargoDoc*
+    Build documentation with `cargo doc`.
+    Use :CargoDoc! to open in browser.
+
+:RustDoc [crate]                                                    *:RustDoc*
+    Open docs.rs for a crate. If no argument, uses word under cursor.
+    Examples: >
+        :RustDoc serde
+        :RustDoc tokio
+        :RustDoc           " uses <cword>
+<
+
+==============================================================================
+6. PROJECT MANAGEMENT                                            *rust-project*
+
+:CargoNew {name} [--lib]                                          *:CargoNew*
+    Create a new Cargo project.
+    Examples: >
+        :CargoNew my-project
+        :CargoNew my-lib --lib
+<
+
+:CargoInit [--lib]                                                *:CargoInit*
+    Initialize a Cargo project in current directory.
+
+:CargoClean                                                      *:CargoClean*
+    Run `cargo clean` to remove target directory.
+
+==============================================================================
+7. UTILITIES                                                       *rust-utils*
+
+:CargoExpand [item]                                              *:CargoExpand*
+    Expand macros using cargo-expand.
+    Requires: cargo-expand (install via :CargoInstallTools)
+    Examples: >
+        :CargoExpand
+        :CargoExpand main
+<
+
+:CargoAudit                                                      *:CargoAudit*
+    Check for security vulnerabilities.
+    Requires: cargo-audit (install via :CargoInstallTools)
+
+:CargoOutdated                                                  *:CargoOutdated*
+    Check for outdated dependencies.
+    Requires: cargo-outdated (install via :CargoInstallTools)
+
+:CargoBench [args]                                                *:CargoBench*
+    Run benchmarks with `cargo bench`.
+
+==============================================================================
+8. NAVIGATION                                                        *rust-nav*
+
+:RustAlt                                                            *:RustAlt*
+    Switch between lib.rs/main.rs and tests/mod.rs.
+
+==============================================================================
+9. TOOL INSTALLATION                                               *rust-tools*
+
+:CargoInstallTools                                          *:CargoInstallTools*
+    Install useful cargo subcommands:
+    - cargo-expand     (macro expansion)
+    - cargo-audit      (security audit)
+    - cargo-outdated   (check outdated deps)
+    - cargo-edit       (add/remove/upgrade deps)
+    - cargo-watch      (watch for changes)
+    - cargo-nextest    (better test runner)
+    - cargo-flamegraph (flamegraph profiling)
+
+:CargoInstallTool [name]                                    *:CargoInstallTool*
+    Install a specific cargo tool. Tab completion available.
+    Run without arguments to see available tools.
+    Example: >
+        :CargoInstallTool cargo-expand
+<
+
+==============================================================================
+vim:tw=78:ts=4:ft=help:norl:

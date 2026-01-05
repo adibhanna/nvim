@@ -1,242 +1,339 @@
 # Neovim Configuration
 
-A modern Neovim configuration for Neovim 0.11+ with lazy-loading, LSP support, and a clean keybinding structure.
+A minimal, fast Neovim configuration for Neovim 0.11+ with lazy-loading, LSP support, and intuitive keybindings.
 
-## Requirements
-
-### System Dependencies
-
-Install via Homebrew:
-
-```bash
-# Required
-brew install neovim ripgrep fd git
-
-# For Git integration
-brew install lazygit
-
-# For Snacks.image (optional - inline images)
-brew install imagemagick ghostscript
-
-# For LaTeX/Mermaid rendering (optional)
-brew install tectonic mermaid-cli
-```
-
-### Rust (for tree-sitter-cli)
-
-The config auto-installs `tree-sitter-cli` via cargo if not present:
-
-```bash
-# Install Rust if not already installed
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-```
+---
 
 ## Installation
+
+### 1. System Dependencies (Required)
+
+```bash
+# Core requirements
+brew install neovim    # v0.11+ required
+brew install git
+brew install ripgrep   # Fast grep (used by picker)
+brew install fd        # Fast find (used by picker)
+brew install lazygit   # Git TUI
+brew install node      # Required for some LSPs and tools
+brew install npm       # Required for markdown-preview
+```
+
+### 2. Fonts (Required)
+
+Install a [Nerd Font](https://www.nerdfonts.com/) for icons:
+
+```bash
+brew install --cask font-jetbrains-mono-nerd-font
+# or
+brew install --cask font-fira-code-nerd-font
+```
+
+Then set your terminal to use the installed font.
+
+### 3. Language Toolchains (Install what you need)
+
+```bash
+# Go
+brew install go
+# After install, run :GoInstallBinaries in nvim
+
+# Rust
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+# After install, run :CargoInstallTools in nvim
+
+# Zig
+brew install zig
+
+# Python
+brew install python
+pip install pynvim  # Optional: for some plugins
+
+# PHP
+brew install php composer
+
+# Lua (for luarocks, optional)
+brew install lua luarocks
+```
+
+### 4. Optional Dependencies
+
+```bash
+# Markdown preview (browser-based)
+# markdown-preview.nvim will auto-install, but needs npm
+
+# Image rendering (optional)
+brew install imagemagick ghostscript
+
+# Mermaid diagrams (optional)
+npm install -g @mermaid-js/mermaid-cli
+
+# LaTeX rendering (optional)
+brew install tectonic
+```
+
+### 5. Clone and Start
 
 ```bash
 # Backup existing config
 mv ~/.config/nvim ~/.config/nvim.bak
+mv ~/.local/share/nvim ~/.local/share/nvim.bak
+mv ~/.local/state/nvim ~/.local/state/nvim.bak
+mv ~/.cache/nvim ~/.cache/nvim.bak
 
 # Clone this config
 git clone <your-repo> ~/.config/nvim
 
-# Start Neovim (plugins will auto-install)
+# Start Neovim - plugins will auto-install on first launch
 nvim
 ```
+
+### 6. Post-Install Steps
+
+Run these commands in Neovim after first launch:
+
+```vim
+" Wait for lazy.nvim to finish installing plugins, then:
+
+" Generate help tags
+:helptags ALL
+
+" Install treesitter parsers (auto-installs, but can force)
+:TSUpdate
+
+" Check health
+:checkhealth
+
+" For Go development
+:GoInstallBinaries
+
+" For Rust development  
+:CargoInstallTools
+
+" Build markdown-preview (if not auto-built)
+:Lazy build markdown-preview.nvim
+```
+
+### Verify Installation
+
+```vim
+:checkhealth
+```
+
+All checks should pass. Common fixes:
+- Missing CLI tools: `brew install <tool>`
+- Treesitter errors: `:TSUpdate`
+- LSP not working: `:LspInfo` and `:Mason`
+
+---
+
+## What Gets Auto-Installed
+
+### Via Mason (LSP/Linters/Formatters)
+
+| Category | Tools |
+|----------|-------|
+| **LSP Servers** | lua_ls, gopls, zls, ts_ls, rust-analyzer, intelephense, bashls, pyright, cssls, html, jsonls, yamlls |
+| **Linters** | eslint_d, luacheck, golangci-lint, shellcheck, markdownlint, yamllint, jsonlint, htmlhint, stylelint, phpstan, ruff, mypy |
+| **Formatters** | stylua, goimports, prettier, black, isort, shfmt, pint |
+
+### Via Treesitter
+
+Parsers for: bash, c, css, go, html, javascript, json, latex, lua, markdown, php, python, rust, scss, svelte, terraform, tsx, typescript, vim, vue, yaml, zig
+
+---
 
 ## Structure
 
 ```
 ~/.config/nvim/
-├── init.lua                    # Entry point (loads core/)
+├── init.lua                 # Entry point
 ├── lua/
-│   ├── core/                   # Core configuration
-│   │   ├── init.lua            # Loads all core modules
-│   │   ├── options.lua         # Neovim options
-│   │   ├── keymaps.lua         # Core keymaps
-│   │   ├── autocmds.lua        # Auto commands
-│   │   ├── lazy.lua            # Plugin manager bootstrap
-│   │   └── utils.lua           # Utility functions
-│   └── plugins/                # Plugin configurations
-│       ├── ai.lua              # Claude AI integration
-│       ├── coding.lua          # Completion, treesitter, snippets
-│       ├── colorschemes.lua    # Color themes
-│       ├── dap.lua             # Debugging
-│       ├── devplugins.lua      # Custom plugin development
-│       ├── editor.lua          # Flash, mini, persistence, spectre
-│       ├── formatting.lua      # Conform.nvim
-│       ├── git.lua             # Git integration
-│       ├── linting.lua         # nvim-lint
-│       ├── lsp.lua             # LSP configuration
-│       ├── snacks.lua          # UI utilities and pickers
-│       ├── tools.lua           # Notes, file creation
-│       └── ui.lua              # Which-key, diagnostics, trouble
+│   ├── core/
+│   │   ├── init.lua         # Loads all core modules
+│   │   ├── options.lua      # Neovim options
+│   │   ├── keymaps.lua      # Core keybindings
+│   │   ├── autocmds.lua     # Auto commands
+│   │   ├── lazy.lua         # Plugin manager bootstrap
+│   │   └── utils.lua        # Utility functions
+│   └── plugins/
+│       ├── coding.lua       # Completion, treesitter
+│       ├── colorschemes.lua # Themes
+│       ├── editor.lua       # Flash, mini.nvim, persistence
+│       ├── formatting.lua   # Conform.nvim (format on save)
+│       ├── git.lua          # Gitsigns, fugitive, diffview
+│       ├── linting.lua      # nvim-lint
+│       ├── lsp.lua          # LSP + Mason
+│       ├── snacks.lua       # Picker, explorer, notifications
+│       ├── tools.lua        # Notes, file creation
+│       └── ui.lua           # Which-key, trouble, markdown
+├── ftplugin/
+│   ├── go.lua               # Go commands (:GoTest, :GoBuild, etc.)
+│   ├── rust.lua             # Rust commands (:CargoRun, :CargoTest, etc.)
+│   └── zig.lua              # Zig commands (:ZigBuild, :ZigTest, etc.)
+└── doc/
+    ├── go.txt               # :help go.txt
+    ├── rust.txt             # :help rust.txt
+    └── zig.txt              # :help zig.txt
 ```
+
+---
 
 ## Keybindings
 
-Leader key: `<Space>`
+**Leader key:** `<Space>`
 
-### Quick Access (Top-level)
+### Essential (No Prefix)
 
-| Key | Description |
-|-----|-------------|
-| `<leader><space>` | Smart find (files/buffers) |
-| `<leader>/` | Grep in project |
-| `<leader>:` | Command history |
-| `<leader>o` | Open buffers (`<C-d>` to delete) |
-| `<leader>p` | Buffer structure (LSP symbols) |
-| `<leader>e` | File explorer |
-| `<leader>z` | Zen mode |
-| `<leader>Z` | Zoom current window |
-| `<leader>.` | Scratch buffer |
-| `<leader>n` | Notification history |
-| `<leader>N` | Neovim news |
-| `<leader>v` | Definition in vertical split |
-| `<leader>?` | Buffer keymaps |
-| `<C-/>` | Terminal |
+| Key | Action |
+|-----|--------|
+| `<C-s>` | Save file |
+| `<C-h/j/k/l>` | Navigate windows |
+| `<C-Up/Down/Left/Right>` | Resize windows |
+| `<Esc>` | Clear search highlight |
+| `jj` / `jk` | Exit insert mode |
+| `H` / `L` | Start/End of line |
+| `<S-h>` / `<S-l>` | Prev/Next buffer |
 | `Q` | Delete buffer |
+| `K` | Hover documentation |
+| `s` | Flash jump |
+| `S` | Flash treesitter |
 
-### AI (`<leader>a`)
+### Quick Access (Leader)
 
-| Key | Description |
-|-----|-------------|
-| `<leader>aa` | Toggle Claude |
-| `<leader>af` | Focus Claude |
-| `<leader>ar` | Resume session |
-| `<leader>ac` | Continue session |
-| `<leader>am` | Select model |
-| `<leader>ab` | Add buffer to context |
-| `<leader>as` | Send selection (visual) |
-| `<leader>at` | Add file from tree |
-| `<leader>ay` | Accept diff |
-| `<leader>an` | Deny diff |
+| Key | Action |
+|-----|--------|
+| `<leader><space>` | Find files |
+| `<leader>/` | Grep |
+| `<leader>,` | Switch buffer |
+| `<leader>.` | Scratch buffer |
+| `<leader>e` | File explorer |
+| `<leader>q` | Quit |
+| `<leader>Q` | Quit all |
+| `<leader>?` | Buffer keymaps |
+| `<leader>K` | All keymaps |
+| `<C-/>` | Terminal |
 
 ### Buffers (`<leader>b`)
 
-| Key | Description |
-|-----|-------------|
+| Key | Action |
+|-----|--------|
 | `<leader>bb` | Switch buffer |
 | `<leader>bd` | Delete buffer |
 | `<leader>bo` | Delete other buffers |
 
 ### Code (`<leader>c`)
 
-| Key | Description |
-|-----|-------------|
+| Key | Action |
+|-----|--------|
 | `<leader>ca` | Code action |
 | `<leader>cr` | Rename symbol |
-| `<leader>cR` | Rename file |
 | `<leader>cd` | Line diagnostic |
 | `<leader>cf` | Format |
+| `<leader>cv` | Definition in vsplit |
 
-### Diagnostics/Debug (`<leader>d`)
+### Diagnostics (`<leader>d`)
 
-| Key | Description |
-|-----|-------------|
+| Key | Action |
+|-----|--------|
 | `<leader>dd` | Workspace diagnostics |
-| `<leader>dD` | Buffer diagnostics |
+| `<leader>db` | Buffer diagnostics |
 | `<leader>dt` | Trouble (workspace) |
 | `<leader>dT` | Trouble (buffer) |
 | `<leader>dq` | Quickfix list |
 | `<leader>dl` | Location list |
-| `<leader>dL` | Trouble location list |
-| `<leader>dQ` | Trouble quickfix |
-| `<leader>dc` | Debug: Continue |
-| `<leader>db` | Debug: Breakpoint |
-| `<leader>dB` | Debug: Conditional breakpoint |
-| `<leader>di` | Debug: Step into |
-| `<leader>do` | Debug: Step over |
-| `<leader>dO` | Debug: Step out |
-| `<leader>dr` | Debug: Run last |
-| `<leader>du` | Debug: Toggle UI |
 
-### Find/Files (`<leader>f`)
+### Files (`<leader>f`)
 
-| Key | Description |
-|-----|-------------|
+| Key | Action |
+|-----|--------|
 | `<leader>ff` | Find files |
 | `<leader>fr` | Recent files |
 | `<leader>fc` | Config files |
 | `<leader>fg` | Git files |
 | `<leader>fp` | Projects |
+| `<leader>fR` | Rename file |
 
 ### Git (`<leader>g`)
 
-| Key | Description |
-|-----|-------------|
+| Key | Action |
+|-----|--------|
 | `<leader>gg` | Lazygit |
-| `<leader>gb` | Branches |
+| `<leader>gs` | Status |
 | `<leader>gl` | Log |
 | `<leader>gL` | Log (line) |
 | `<leader>gf` | Log (file) |
-| `<leader>gs` | Status |
-| `<leader>gS` | Stash |
-| `<leader>gd` | Diff |
+| `<leader>gd` | Diff (picker) |
 | `<leader>gD` | Diff HEAD |
-| `<leader>gB` | Browse on GitHub |
-| `<leader>gi` | Issues |
-| `<leader>gI` | Issues (all) |
-| `<leader>gp` | Pull requests |
-| `<leader>gP` | Pull requests (all) |
-| `<leader>gh` | Preview hunk |
-| `<leader>gH` | Preview hunk inline |
-| `<leader>ga` | Stage hunk |
-| `<leader>gu` | Undo stage |
-| `<leader>gr` | Reset hunk |
+| `<leader>gc` | Checkout branch |
+| `<leader>go` | Open in browser |
+| `<leader>gb` | Blame line |
+| `<leader>gB` | Blame buffer |
 | `<leader>gR` | Reset buffer |
-| `<leader>gx` | Blame line |
+| `<leader>gS` | Stage buffer |
+| `<leader>gi` | GitHub issues |
+| `<leader>gp` | GitHub PRs |
+
+### Git Hunks (`<leader>gh`)
+
+| Key | Action |
+|-----|--------|
+| `<leader>ghp` | Preview hunk |
+| `<leader>ghP` | Preview hunk inline |
+| `<leader>ghs` | Stage hunk |
+| `<leader>ghu` | Undo stage hunk |
+| `<leader>ghr` | Reset hunk |
+| `]h` / `[h` | Next/Prev hunk |
 
 ### LSP (`<leader>l`)
 
-| Key | Description |
-|-----|-------------|
+| Key | Action |
+|-----|--------|
+| `<leader>ls` | Document symbols |
+| `<leader>lS` | Workspace symbols |
 | `<leader>li` | LSP info |
 | `<leader>lr` | LSP restart |
 | `<leader>lh` | Toggle inlay hints |
-| `<leader>ls` | Document symbols |
-| `<leader>lS` | Workspace symbols |
-| `<leader>lt` | LSP references (Trouble) |
+| `<leader>lt` | References (Trouble) |
 | `<leader>lT` | Symbols (Trouble) |
-| `<leader>ll` | Run linter |
-| `<leader>lI` | Lint info |
-| `<leader>lL` | Toggle lint |
-| `<leader>lC` | Clear lint |
+
+### Markdown (`<leader>m`)
+
+| Key | Action |
+|-----|--------|
+| `<leader>mp` | Preview in browser |
+| `<leader>mr` | Toggle render in buffer |
+
+### Notifications (`<leader>n`)
+
+| Key | Action |
+|-----|--------|
+| `<leader>nn` | Notification history |
+| `<leader>nd` | Dismiss all |
 
 ### Search (`<leader>s`)
 
-| Key | Description |
-|-----|-------------|
-| `<leader>ss` | Grep |
-| `<leader>sw` | Search word under cursor |
+| Key | Action |
+|-----|--------|
+| `<leader>sg` | Grep |
+| `<leader>sw` | Word under cursor |
 | `<leader>sb` | Buffer lines |
-| `<leader>sB` | Grep open buffers |
-| `<leader>sh` | Help tags |
+| `<leader>sB` | Grep buffers |
+| `<leader>sh` | Help |
 | `<leader>sm` | Marks |
 | `<leader>sj` | Jumps |
 | `<leader>sk` | Keymaps |
 | `<leader>sc` | Commands |
-| `<leader>sC` | Command history |
+| `<leader>s:` | Command history |
 | `<leader>s/` | Search history |
 | `<leader>sr` | Registers |
-| `<leader>sa` | Autocmds |
-| `<leader>sH` | Highlights |
-| `<leader>si` | Icons |
-| `<leader>sM` | Man pages |
-| `<leader>sp` | Plugins |
-| `<leader>sn` | Notifications |
+| `<leader>sR` | Resume last |
 | `<leader>su` | Undo history |
-| `<leader>sR` | Resume last search |
-| `<leader>sS` | Search & replace (Spectre) |
-| `<leader>sW` | Replace word (Spectre) |
-| `<leader>sF` | Replace in file (Spectre) |
 
 ### UI/Toggles (`<leader>u`)
 
-| Key | Description |
-|-----|-------------|
-| `<leader>uC` | Colorschemes |
-| `<leader>un` | Dismiss notifications |
+| Key | Action |
+|-----|--------|
 | `<leader>us` | Toggle spelling |
 | `<leader>uw` | Toggle wrap |
 | `<leader>ur` | Toggle relative numbers |
@@ -244,161 +341,181 @@ Leader key: `<Space>`
 | `<leader>uD` | Toggle diagnostics |
 | `<leader>uc` | Toggle conceal |
 | `<leader>uT` | Toggle treesitter |
-| `<leader>ub` | Toggle dark/light |
+| `<leader>ub` | Toggle background |
 | `<leader>uh` | Toggle inlay hints |
 | `<leader>ui` | Toggle indent guides |
 | `<leader>ud` | Toggle dim |
-| `<leader>uU` | Undo tree |
+| `<leader>uC` | Colorschemes |
+| `<leader>uz` | Zen mode |
+| `<leader>uZ` | Zoom |
 
 ### Windows (`<leader>w`)
 
-| Key | Description |
-|-----|-------------|
+| Key | Action |
+|-----|--------|
 | `<leader>wd` | Close window |
 | `<leader>ws` | Split horizontal |
 | `<leader>wv` | Split vertical |
-| `<leader>wh` | Go left |
-| `<leader>wj` | Go down |
-| `<leader>wk` | Go up |
-| `<leader>wl` | Go right |
 | `<leader>ww` | Other window |
 | `<leader>w=` | Equal size |
+| `<leader>wm` | Maximize |
 
-### Navigation
+### Goto (`g`)
 
-| Key | Description |
-|-----|-------------|
-| `gd` | Go to definition |
-| `gD` | Go to declaration |
-| `gr` | Go to references |
-| `gI` | Go to implementation |
-| `gy` | Go to type definition |
-| `gi` | Go to implementation (LSP) |
-| `gt` | Go to type definition (LSP) |
-| `K` | Hover documentation |
-| `<C-k>` | Signature help |
-| `]d` | Next diagnostic |
-| `[d` | Previous diagnostic |
-| `]h` | Next git hunk |
-| `[h` | Previous git hunk |
-| `]]` | Next reference |
-| `[[` | Previous reference |
+| Key | Action |
+|-----|--------|
+| `gd` | Definition |
+| `gD` | Declaration |
+| `gr` | References |
+| `gi` | Implementation |
+| `gy` | Type definition |
+
+### Navigation (`[` / `]`)
+
+| Key | Action |
+|-----|--------|
+| `[d` / `]d` | Prev/Next diagnostic |
+| `[h` / `]h` | Prev/Next hunk |
+| `[b` / `]b` | Prev/Next buffer |
+| `[[` / `]]` | Prev/Next reference |
 
 ### Editing
 
-| Key | Mode | Description |
-|-----|------|-------------|
-| `J` | Visual | Move lines down |
-| `K` | Visual | Move lines up |
-| `<` | Visual | Indent left (stay selected) |
-| `>` | Visual | Indent right (stay selected) |
-| `p` | Visual | Paste without yanking |
-| `H` | Normal | Start of line |
-| `L` | Normal | End of line |
+| Key | Mode | Action |
+|-----|------|--------|
+| `J` / `K` | Visual | Move lines down/up |
+| `<` / `>` | Visual | Indent (stay selected) |
+| `p` | Visual | Paste (no yank) |
 | `X` | Normal | Split line |
 | `YY` | Normal | Yank block {} |
-| `jj` / `jk` | Insert | Exit insert mode |
-| `<C-x>` | Normal | Cut line |
-| `<C-a>` | Normal | Select all |
-| `<C-n>` | Normal | Write new file |
-| `<C-P>` | Normal | Toggle Go test file |
-| `<C-s>` | Normal | Grep buffers |
-| `<Esc>` | Normal | Clear search highlight |
-| `+` / `_` | Normal | Resize width |
-| `=` / `-` | Normal | Resize height |
-| `<Left>` / `<Right>` | Normal | Navigate buffers |
-| `n` / `N` | Normal | Next/prev match (centered) |
+| `n` / `N` | Normal | Next/Prev match (centered) |
 
-### Flash (Motion)
+### Surround (mini.surround)
 
-| Key | Mode | Description |
-|-----|------|-------------|
-| `s` | n/x/o | Flash jump |
-| `S` | n/x/o | Flash treesitter |
-| `r` | o | Remote flash |
-| `R` | o/x | Treesitter search |
-| `<C-s>` | c | Toggle flash search |
+| Key | Action |
+|-----|--------|
+| `gsa` | Add surrounding |
+| `gsd` | Delete surrounding |
+| `gsr` | Replace surrounding |
+| `gsf` | Find surrounding (right) |
+| `gsF` | Find surrounding (left) |
 
-### Mini.surround
+---
 
-| Key | Description |
-|-----|-------------|
-| `sa` | Add surrounding |
-| `sd` | Delete surrounding |
-| `sr` | Replace surrounding |
-| `sf` | Find surrounding (right) |
-| `sF` | Find surrounding (left) |
-| `sh` | Highlight surrounding |
+## Language-Specific Commands
 
-## Language Servers
+### Go (`:help go.txt`)
 
-Auto-installed via Mason:
+| Command | Action |
+|---------|--------|
+| `:GoBuild` | go build |
+| `:GoRun` | go run |
+| `:GoTest` | go test |
+| `:GoTestFunc` | Test function under cursor |
+| `:GoTestFile` | Test current package |
+| `:GoCoverage` | Test with coverage |
+| `:GoModTidy` | go mod tidy |
+| `:GoGet <pkg>` | go get |
+| `:GoVet` | go vet |
+| `:GoLint` | golangci-lint |
+| `:GoDoc <sym>` | go doc |
+| `:GoImpl` | Generate interface stubs |
+| `:GoIfErr` | Insert if err != nil |
+| `:GoAddTags` | Add struct tags |
+| `:GoAlt` | Switch test/source |
+| `:GoInstallBinaries` | Install all Go tools |
 
-- **Lua**: lua_ls
-- **Go**: gopls
-- **TypeScript/JavaScript**: ts_ls
-- **Rust**: rust-analyzer
-- **Python**: pyright
-- **PHP**: intelephense
-- **Zig**: zls
-- **Bash**: bashls
-- **CSS**: cssls
-- **HTML**: html
-- **JSON**: jsonls
-- **YAML**: yamlls
+### Rust (`:help rust.txt`)
 
-## Formatters
+| Command | Action |
+|---------|--------|
+| `:CargoBuild` | cargo build |
+| `:CargoBuildRelease` | cargo build --release |
+| `:CargoRun` | cargo run |
+| `:CargoTest` | cargo test |
+| `:CargoTestFunc` | Test function under cursor |
+| `:CargoCheck` | cargo check |
+| `:CargoClippy` | cargo clippy |
+| `:CargoFmt` | cargo fmt |
+| `:CargoAdd <crate>` | cargo add |
+| `:CargoDoc` | cargo doc |
+| `:RustDoc <crate>` | Open docs.rs |
+| `:CargoInstallTools` | Install cargo subcommands |
 
-Configured in `formatting.lua`:
+### Zig (`:help zig.txt`)
+
+| Command | Action |
+|---------|--------|
+| `:ZigBuild` | zig build |
+| `:ZigBuildRelease` | zig build -Doptimize=ReleaseFast |
+| `:ZigRun` | zig build run |
+| `:ZigRunFile` | zig run <current file> |
+| `:ZigTest` | zig build test |
+| `:ZigTestFile` | zig test <current file> |
+| `:ZigFmt` | zig fmt |
+| `:ZigDoc` | Open Zig docs |
+| `:ZigAlt` | Switch test/source |
+
+---
+
+## Language Servers (Mason)
+
+Auto-installed:
+- **Go:** gopls
+- **Rust:** rust-analyzer
+- **Zig:** zls
+- **Lua:** lua_ls
+- **TypeScript:** ts_ls
+- **Python:** pyright
+- **PHP:** intelephense
+- **Bash:** bashls
+- **CSS/HTML/JSON/YAML:** vscode servers
+
+## Formatters (Conform)
 
 | Language | Formatter |
 |----------|-----------|
 | Go | goimports, gofmt |
+| Rust | rustfmt |
+| Zig | zigfmt |
 | Lua | stylua |
-| JavaScript/TypeScript | prettier |
-| JSON/YAML/HTML/CSS | prettier |
+| JS/TS/JSON/YAML/HTML/CSS | prettier |
 | Python | isort, black |
 | PHP | pint |
 | Shell | shfmt |
-| Rust | rustfmt |
 
-## Linters
+Format on save is **enabled by default**.
 
-Configured in `linting.lua`:
+## Linters (nvim-lint)
 
 | Language | Linter |
 |----------|--------|
 | Go | golangci-lint |
-| JavaScript/TypeScript | eslint_d |
+| JS/TS | eslint_d |
 | Lua | luacheck |
 | Python | ruff, mypy |
 | PHP | phpstan |
 | Shell | shellcheck |
-| YAML | yamllint |
-| JSON | jsonlint |
-| Markdown | markdownlint |
-| HTML | htmlhint |
-| CSS | stylelint |
+
+---
 
 ## Health Check
 
-Run `:checkhealth` to verify your setup. Common issues:
+```vim
+:checkhealth
+```
 
-- **Missing CLI tools**: Install via `brew install <tool>`
-- **Provider warnings**: Already disabled in config
-- **Treesitter errors**: Run `:TSUpdate`
+Common fixes:
+- Missing tools: `brew install <tool>`
+- Treesitter errors: `:TSUpdate`
+- Go tools: `:GoInstallBinaries`
+- Rust tools: `:CargoInstallTools`
 
 ## Colorscheme
 
 Default: `yukinord`
 
-Available (toggle with `<leader>uC`):
-- yukinord
-- gruvbox-material
-- catppuccin
-- nordic
-- github-theme
-- forest-night
+Switch with `<leader>uC`
 
 ---
 

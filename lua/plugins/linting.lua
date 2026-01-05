@@ -22,9 +22,14 @@ return {
     -- Configure luacheck
     local luacheck = lint.linters.luacheck
     luacheck.args = {
-      "--formatter", "plain",
-      "--codes", "--ranges",
-      "--filename", function() return vim.api.nvim_buf_get_name(0) end,
+      "--formatter",
+      "plain",
+      "--codes",
+      "--ranges",
+      "--filename",
+      function()
+        return vim.api.nvim_buf_get_name(0)
+      end,
       "-",
     }
     luacheck.stdin = true
@@ -32,9 +37,13 @@ return {
     -- Configure eslint_d
     if lint.linters.eslint_d then
       lint.linters.eslint_d.args = {
-        "--format", "json",
-        "--stdin", "--stdin-filename",
-        function() return vim.api.nvim_buf_get_name(0) end,
+        "--format",
+        "json",
+        "--stdin",
+        "--stdin-filename",
+        function()
+          return vim.api.nvim_buf_get_name(0)
+        end,
       }
     end
 
@@ -48,7 +57,9 @@ return {
       ignore_exitcode = true,
       parser = function(output, bufnr)
         local diagnostics = {}
-        if not output or output == "" then return diagnostics end
+        if not output or output == "" then
+          return diagnostics
+        end
 
         local ok, decoded = pcall(vim.json.decode, output)
         if ok and decoded and decoded.files then
@@ -67,7 +78,8 @@ return {
           end
         elseif string.find(output, "FAIL") or string.find(output, "differs") then
           table.insert(diagnostics, {
-            lnum = 0, col = 0,
+            lnum = 0,
+            col = 0,
             message = "Code style issues found - run formatter to fix",
             severity = vim.diagnostic.severity.WARN,
             source = "pint",
@@ -124,9 +136,13 @@ return {
 
     local debounce_timer = nil
     local function debounce_lint(ms)
-      if debounce_timer then vim.fn.timer_stop(debounce_timer) end
+      if debounce_timer then
+        vim.fn.timer_stop(debounce_timer)
+      end
       debounce_timer = vim.fn.timer_start(ms or 250, function()
-        vim.schedule(function() lint.try_lint() end)
+        vim.schedule(function()
+          lint.try_lint()
+        end)
       end)
     end
 
@@ -139,8 +155,12 @@ return {
     local function should_lint(bufnr)
       bufnr = bufnr or 0
       local buftype = vim.bo[bufnr].buftype
-      if buftype ~= "" and buftype ~= "acwrite" then return false end
-      if is_file_too_large() then return false end
+      if buftype ~= "" and buftype ~= "acwrite" then
+        return false
+      end
+      if is_file_too_large() then
+        return false
+      end
       local ft = vim.bo[bufnr].filetype
       local linters = lint.linters_by_ft[ft]
       return linters and #linters > 0
@@ -183,7 +203,12 @@ return {
       local running = lint_progress[vim.api.nvim_get_current_buf()] or false
 
       print(string.format("Filetype: %s", ft))
-      print(string.format("Configured linters: %s", #linters > 0 and table.concat(linters, ", ") or "none"))
+      print(
+        string.format(
+          "Configured linters: %s",
+          #linters > 0 and table.concat(linters, ", ") or "none"
+        )
+      )
       print(string.format("Status: %s", running and "running..." or "idle"))
 
       local installed, missing = {}, {}
@@ -197,14 +222,21 @@ return {
           end
         end
       end
-      if #installed > 0 then print(string.format("Installed: %s", table.concat(installed, ", "))) end
-      if #missing > 0 then print(string.format("Missing: %s", table.concat(missing, ", "))) end
+      if #installed > 0 then
+        print(string.format("Installed: %s", table.concat(installed, ", ")))
+      end
+      if #missing > 0 then
+        print(string.format("Missing: %s", table.concat(missing, ", ")))
+      end
     end, { desc = "Show linting information" })
 
     vim.api.nvim_create_user_command("LintToggle", function()
       local bufnr = vim.api.nvim_get_current_buf()
       vim.b[bufnr].lint_enabled = not vim.b[bufnr].lint_enabled
-      vim.notify(string.format("Linting %s", vim.b[bufnr].lint_enabled and "enabled" or "disabled"), vim.log.levels.INFO)
+      vim.notify(
+        string.format("Linting %s", vim.b[bufnr].lint_enabled and "enabled" or "disabled"),
+        vim.log.levels.INFO
+      )
     end, { desc = "Toggle linting" })
 
     vim.keymap.set("n", "<leader>ll", function()
