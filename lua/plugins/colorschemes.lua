@@ -20,7 +20,7 @@ return {
   -- ════════════════════════════════════════════════════════════════════════════
   {
     "adibhanna/yukinord.nvim",
-    dir = "~/Developer/opensource/yukinord/neovim",
+    -- dir = "~/Developer/opensource/yukinord/neovim",
     config = function()
       require("yukinord").setup({
         transparent = true,
@@ -101,35 +101,35 @@ return {
           mocha = {
             -- Accent colors from Yukinord
             rosewater = "#d08770", -- orange variant
-            flamingo = "#d08770",  -- orange
-            red = "#bf616a",       -- yukinord red
-            maroon = "#bf616a",    -- yukinord red
-            pink = "#b48ead",      -- yukinord purple
-            mauve = "#b48ead",     -- yukinord purple
-            peach = "#d08770",     -- yukinord orange (strings)
-            yellow = "#ebcb8b",    -- yukinord yellow (functions, numbers)
-            green = "#a3be8c",     -- yukinord green (types)
-            teal = "#8fbcbb",      -- yukinord teal
-            sky = "#88c0d0",       -- yukinord cyan (keywords)
-            sapphire = "#5e81ac",  -- yukinord blue_bright (selection)
-            blue = "#81a1c1",      -- yukinord blue (info)
-            lavender = "#88c0d0",  -- yukinord cyan
+            flamingo = "#d08770", -- orange
+            red = "#bf616a", -- yukinord red
+            maroon = "#bf616a", -- yukinord red
+            pink = "#b48ead", -- yukinord purple
+            mauve = "#b48ead", -- yukinord purple
+            peach = "#d08770", -- yukinord orange (strings)
+            yellow = "#ebcb8b", -- yukinord yellow (functions, numbers)
+            green = "#a3be8c", -- yukinord green (types)
+            teal = "#8fbcbb", -- yukinord teal
+            sky = "#88c0d0", -- yukinord cyan (keywords)
+            sapphire = "#5e81ac", -- yukinord blue_bright (selection)
+            blue = "#81a1c1", -- yukinord blue (info)
+            lavender = "#88c0d0", -- yukinord cyan
             -- Foreground colors
-            text = "#eceff4",      -- yukinord fg0 (bright)
-            subtext1 = "#e5e9f0",  -- yukinord fg1
-            subtext0 = "#d8dee9",  -- yukinord fg2 (editor foreground)
+            text = "#eceff4", -- yukinord fg0 (bright)
+            subtext1 = "#e5e9f0", -- yukinord fg1
+            subtext0 = "#d8dee9", -- yukinord fg2 (editor foreground)
             -- Overlay colors (muted)
-            overlay2 = "#8d929c",  -- yukinord fg3 (comments)
-            overlay1 = "#7b8394",  -- between fg3 and fg4
-            overlay0 = "#616e88",  -- yukinord fg4 (line numbers)
+            overlay2 = "#8d929c", -- yukinord fg3 (comments)
+            overlay1 = "#7b8394", -- between fg3 and fg4
+            overlay0 = "#616e88", -- yukinord fg4 (line numbers)
             -- Surface colors (backgrounds)
-            surface2 = "#4c566a",  -- yukinord bg5 (button secondary)
-            surface1 = "#434c5e",  -- yukinord bg4 (line highlight)
-            surface0 = "#3b4252",  -- yukinord border
+            surface2 = "#4c566a", -- yukinord bg5 (button secondary)
+            surface1 = "#434c5e", -- yukinord bg4 (line highlight)
+            surface0 = "#3b4252", -- yukinord border
             -- Base backgrounds
-            base = "#1B212B",      -- yukinord bg0 (editor background)
-            mantle = "#14171d",    -- yukinord bg1 (panel background)
-            crust = "#0f1115",     -- darker than bg1
+            base = "#1B212B", -- yukinord bg0 (editor background)
+            mantle = "#14171d", -- yukinord bg1 (panel background)
+            crust = "#0f1115", -- darker than bg1
           },
         },
         transparent_background = false,
@@ -174,7 +174,11 @@ return {
               BlinkCmpScrollBarThumb = { bg = colors.surface2 },
               BlinkCmpScrollBarGutter = { bg = colors.surface0 },
               BlinkCmpLabel = { bg = colors.mantle, fg = colors.text },
-              BlinkCmpLabelDeprecated = { bg = colors.mantle, fg = colors.overlay0, strikethrough = true },
+              BlinkCmpLabelDeprecated = {
+                bg = colors.mantle,
+                fg = colors.overlay0,
+                strikethrough = true,
+              },
               BlinkCmpLabelDetail = { bg = colors.mantle, fg = colors.subtext1 },
               BlinkCmpLabelDescription = { bg = colors.mantle, fg = colors.subtext1 },
               BlinkCmpKind = { bg = colors.mantle, fg = colors.peach },
@@ -186,7 +190,11 @@ return {
               BlinkCmpDocCursorLine = { bg = colors.surface0 },
               BlinkCmpSignatureHelp = { bg = colors.mantle, fg = colors.text },
               BlinkCmpSignatureHelpBorder = { bg = colors.mantle, fg = colors.surface2 },
-              BlinkCmpSignatureHelpActiveParameter = { bg = colors.surface0, fg = colors.peach, bold = true },
+              BlinkCmpSignatureHelpActiveParameter = {
+                bg = colors.surface0,
+                fg = colors.peach,
+                bold = true,
+              },
 
               -- Snacks.nvim picker NvChad style
               SnacksPicker = { bg = colors.base },
@@ -275,73 +283,73 @@ return {
               MiniStatuslineInactive = { fg = colors.overlay0, bg = "#2B3442" },
 
               -- Yukinord-style syntax highlighting
-              Boolean = { fg = colors.sky },      -- cyan for booleans
-              Number = { fg = colors.yellow },    -- yellow for numbers
-              Float = { fg = colors.yellow },     -- yellow for floats
+              Boolean = { fg = colors.sky }, -- cyan for booleans
+              Number = { fg = colors.yellow }, -- yellow for numbers
+              Float = { fg = colors.yellow }, -- yellow for floats
 
-              PreProc = { fg = colors.sky },      -- cyan for preprocessor
+              PreProc = { fg = colors.sky }, -- cyan for preprocessor
               PreCondit = { fg = colors.sky },
               Include = { fg = colors.sky },
               Define = { fg = colors.sky },
               Conditional = { fg = colors.mauve }, -- purple for control flow
               Repeat = { fg = colors.mauve },
-              Keyword = { fg = colors.sky },      -- cyan for keywords
-              Typedef = { fg = colors.green },    -- green for types
-              Exception = { fg = colors.mauve },  -- purple for exceptions
-              Statement = { fg = colors.sky },    -- cyan for statements
+              Keyword = { fg = colors.sky }, -- cyan for keywords
+              Typedef = { fg = colors.green }, -- green for types
+              Exception = { fg = colors.mauve }, -- purple for exceptions
+              Statement = { fg = colors.sky }, -- cyan for statements
 
               Error = { fg = colors.red },
               StorageClass = { fg = colors.sky }, -- cyan
               Tag = { fg = colors.sky },
               Label = { fg = colors.sky },
-              Structure = { fg = colors.green },  -- green for structures
+              Structure = { fg = colors.green }, -- green for structures
               Operator = { fg = colors.subtext0 }, -- muted operators like yukinord
               Title = { fg = colors.sky },
-              Special = { fg = colors.peach },    -- orange for special
+              Special = { fg = colors.peach }, -- orange for special
               SpecialChar = { fg = colors.yellow },
-              Type = { fg = colors.green },       -- green for types (like yukinord)
-              Function = { fg = colors.yellow },  -- yellow for functions (like yukinord)
+              Type = { fg = colors.green }, -- green for types (like yukinord)
+              Function = { fg = colors.yellow }, -- yellow for functions (like yukinord)
               Delimiter = { fg = colors.subtext0 }, -- muted delimiters
               Ignore = { fg = colors.overlay0 },
-              Macro = { fg = colors.sky },        -- cyan for macros
+              Macro = { fg = colors.sky }, -- cyan for macros
 
               -- Yukinord-style Treesitter highlights
               TSAnnotation = { fg = colors.sky },
               TSAttribute = { fg = colors.sky },
-              TSBoolean = { fg = colors.sky },     -- cyan for booleans
+              TSBoolean = { fg = colors.sky }, -- cyan for booleans
               TSCharacter = { fg = colors.yellow },
               TSCharacterSpecial = { link = "SpecialChar" },
               TSComment = { link = "Comment" },
               TSConditional = { fg = colors.mauve }, -- purple for control
-              TSConstBuiltin = { fg = colors.sky },  -- cyan for builtin constants
+              TSConstBuiltin = { fg = colors.sky }, -- cyan for builtin constants
               TSConstMacro = { fg = colors.sky },
-              TSConstant = { fg = colors.sky },      -- cyan for constants
+              TSConstant = { fg = colors.sky }, -- cyan for constants
               TSConstructor = { fg = colors.green }, -- green for constructors
               TSDebug = { link = "Debug" },
               TSDefine = { link = "Define" },
               TSEnvironment = { link = "Macro" },
               TSEnvironmentName = { link = "Type" },
               TSError = { link = "Error" },
-              TSException = { fg = colors.mauve },   -- purple for exceptions
-              TSField = { fg = colors.subtext0 },    -- muted for fields
-              TSFloat = { fg = colors.yellow },      -- yellow for numbers
+              TSException = { fg = colors.mauve }, -- purple for exceptions
+              TSField = { fg = colors.subtext0 }, -- muted for fields
+              TSFloat = { fg = colors.yellow }, -- yellow for numbers
               TSFuncBuiltin = { fg = colors.yellow },
               TSFuncMacro = { fg = colors.yellow },
-              TSFunction = { fg = colors.yellow },   -- yellow for functions
+              TSFunction = { fg = colors.yellow }, -- yellow for functions
               TSFunctionCall = { fg = colors.yellow },
-              TSInclude = { fg = colors.sky },       -- cyan for imports
-              TSKeyword = { fg = colors.sky },       -- cyan for keywords
+              TSInclude = { fg = colors.sky }, -- cyan for imports
+              TSKeyword = { fg = colors.sky }, -- cyan for keywords
               TSKeywordFunction = { fg = colors.sky },
               TSKeywordOperator = { fg = colors.subtext0 },
               TSKeywordReturn = { fg = colors.mauve }, -- purple for return
               TSLabel = { fg = colors.sky },
               TSLiteral = { link = "String" },
               TSMath = { fg = colors.subtext0 },
-              TSMethod = { fg = colors.yellow },     -- yellow for methods
+              TSMethod = { fg = colors.yellow }, -- yellow for methods
               TSMethodCall = { fg = colors.yellow },
-              TSNamespace = { fg = colors.green },   -- green for namespaces
+              TSNamespace = { fg = colors.green }, -- green for namespaces
               TSNone = { fg = colors.text },
-              TSNumber = { fg = colors.yellow },     -- yellow for numbers
+              TSNumber = { fg = colors.yellow }, -- yellow for numbers
               TSOperator = { fg = colors.subtext0 }, -- muted operators
               TSParameter = { fg = colors.subtext0 }, -- muted parameters
               TSParameterReference = { fg = colors.subtext0 },
@@ -350,23 +358,23 @@ return {
               TSPunctBracket = { fg = colors.subtext0 },
               TSPunctDelimiter = { link = "Delimiter" },
               TSPunctSpecial = { fg = colors.subtext0 },
-              TSRepeat = { fg = colors.mauve },      -- purple for loops
+              TSRepeat = { fg = colors.mauve }, -- purple for loops
               TSStorageClass = { fg = colors.sky },
               TSStorageClassLifetime = { fg = colors.sky },
               TSStrike = { fg = colors.overlay1 },
-              TSString = { fg = colors.peach },      -- orange for strings
+              TSString = { fg = colors.peach }, -- orange for strings
               TSStringEscape = { fg = colors.yellow },
               TSStringRegex = { fg = colors.yellow },
               TSStringSpecial = { link = "SpecialChar" },
               TSSymbol = { fg = colors.subtext0 },
-              TSTag = { fg = colors.sky },           -- cyan for tags
+              TSTag = { fg = colors.sky }, -- cyan for tags
               TSTagAttribute = { fg = colors.subtext0 },
               TSTagDelimiter = { fg = colors.subtext0 },
               TSText = { fg = colors.subtext0 },
               TSTextReference = { link = "Constant" },
               TSTitle = { link = "Title" },
               TSTodo = { link = "Todo" },
-              TSType = { fg = colors.green },        -- green for types
+              TSType = { fg = colors.green }, -- green for types
               TSTypeBuiltin = { fg = colors.green },
               TSTypeDefinition = { fg = colors.green },
               TSTypeQualifier = { fg = colors.sky },
