@@ -5,10 +5,12 @@ return {
     opts = {
       update_interval = 1000,
       set_dark_mode = function()
+        -- vim.cmd([[colorscheme flexoki-dark]])
         require("yukinord").setup({ style = "dark" })
         vim.cmd([[colorscheme yukinord]])
       end,
       set_light_mode = function()
+        -- vim.cmd([[colorscheme flexoki-light]])
         require("yukinord").setup({ style = "light" })
         vim.cmd([[colorscheme yukinord]])
       end,
@@ -569,4 +571,6 @@ return {
       })
     end,
   },
+
+  { "kepano/flexoki-neovim" },
 }
