@@ -101,6 +101,7 @@ return {
           "rust",
           "scss",
           "svelte",
+          "swift",
           "terraform",
           "tsx",
           "typescript",

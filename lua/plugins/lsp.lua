@@ -94,6 +94,23 @@ return {
                     },
                 },
             })
+
+            -- ════════════════════════════════════════════════════════════════════
+            -- SourceKit-LSP (Swift) - not managed by Mason
+            -- ════════════════════════════════════════════════════════════════════
+            vim.lsp.config("sourcekit", {
+                cmd = { "sourcekit-lsp" },
+                filetypes = { "swift", "objc", "objcpp", "c", "cpp" },
+                root_markers = { "Package.swift", ".git", "compile_commands.json" },
+                capabilities = {
+                    workspace = {
+                        didChangeWatchedFiles = {
+                            dynamicRegistration = true,
+                        },
+                    },
+                },
+            })
+            vim.lsp.enable("sourcekit")
         end,
     },
     {
