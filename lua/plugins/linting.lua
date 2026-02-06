@@ -119,7 +119,7 @@ return {
       ["yaml.docker-compose"] = { "yamllint" },
       json = { "jsonlint" },
       jsonc = { "jsonlint" },
-      markdown = { "markdownlint", "vale" },
+      markdown = { "markdownlint" },
       dockerfile = { "hadolint" },
       terraform = { "tflint", "tfsec" },
       tf = { "tflint", "tfsec" },
