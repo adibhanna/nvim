@@ -7,7 +7,8 @@ return {
       set_dark_mode = function()
         -- vim.cmd([[colorscheme flexoki-dark]])
         require("yukinord").setup({ style = "dark" })
-        vim.cmd([[colorscheme yukinord]])
+        vim.cmd([[colorscheme gruvbox]])
+        -- vim.cmd([[colorscheme yukinord]])
       end,
       set_light_mode = function()
         -- vim.cmd([[colorscheme flexoki-light]])
@@ -573,4 +574,36 @@ return {
   },
 
   { "kepano/flexoki-neovim" },
+  {
+    "ellisonleao/gruvbox.nvim",
+    priority = 1000,
+    config = function()
+      -- Default options:
+      require("gruvbox").setup({
+        terminal_colors = true, -- add neovim terminal colors
+        undercurl = true,
+        underline = true,
+        bold = false,
+        italic = {
+          strings = false,
+          emphasis = false,
+          comments = false,
+          operators = false,
+          folds = false,
+        },
+        strikethrough = true,
+        invert_selection = false,
+        invert_signs = false,
+        invert_tabline = false,
+        inverse = true, -- invert background for search, diffs, statuslines and errors
+        contrast = "hard", -- can be "hard", "soft" or empty string
+        palette_overrides = {},
+        overrides = {
+          SignColumn = { bg = "#ff9900" },
+        },
+        dim_inactive = false,
+        transparent_mode = false,
+      })
+    end,
+  },
 }
