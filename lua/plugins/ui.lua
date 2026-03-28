@@ -1,5 +1,6 @@
 -- UI: Which-key, diagnostics display, notifications, and visual enhancements
 return {
+  { "nvim-tree/nvim-web-devicons", lazy = true },
   -- ════════════════════════════════════════════════════════════════════════════
   -- Which-key (keybinding help)
   -- ════════════════════════════════════════════════════════════════════════════
