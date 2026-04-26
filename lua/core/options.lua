@@ -97,14 +97,13 @@ vim.opt.guifont = "monospace:h17" -- Font for GUI Neovim (e.g., Neovide)
 -- ============================================================================
 vim.filetype.add({
     extension = {
-        env = "dotenv", -- Treat .env extension as dotenv filetype
+        gotmpl = "gotmpl",  -- Go templates (registered for gopls)
+        tmpl = "gotmpl",
     },
     filename = {
-        [".env"] = "dotenv", -- Treat .env file as dotenv filetype
-        ["env"] = "dotenv",  -- Treat env file as dotenv filetype
+        [".envrc"] = "sh",  -- direnv files use bash syntax
     },
     pattern = {
         ["[jt]sconfig.*.json"] = "jsonc", -- Treat tsconfig/jsconfig files as JSONC (allows comments)
-        ["%.env%.[%w_.-]+"] = "dotenv",   -- Treat .env.* files as dotenv filetype
     },
 })

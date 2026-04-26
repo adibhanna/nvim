@@ -123,6 +123,7 @@ return {
     dependencies = { "mason-org/mason.nvim" },
     opts = {
       automatic_installation = true,
+      automatic_enable = false,
     },
   },
   {

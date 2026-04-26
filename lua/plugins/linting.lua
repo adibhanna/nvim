@@ -10,14 +10,9 @@ return {
     -- Custom Linter Configurations
     -- ══════════════════════════════════════════════════════════════════════════
 
-    -- Customize golangci-lint
+    -- Customize golangci-lint (v2+ uses --output.formats; let nvim-lint pick the right default)
     local golangcilint = lint.linters.golangcilint
     golangcilint.ignore_exitcode = true
-    golangcilint.args = {
-      "run",
-      "--out-format=json",
-      "--issues-exit-code=0",
-    }
 
     -- Configure luacheck
     local luacheck = lint.linters.luacheck
@@ -116,7 +111,6 @@ return {
       eruby = { "erb_lint" },
       rust = { "clippy" },
       yaml = { "yamllint" },
-      ["yaml.docker-compose"] = { "yamllint" },
       json = { "jsonlint" },
       jsonc = { "jsonlint" },
       markdown = { "markdownlint" },
@@ -148,7 +142,7 @@ return {
 
     local function is_file_too_large()
       local max_size = 1024 * 1024
-      local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(0))
+      local ok, stats = pcall(vim.uv.fs_stat, vim.api.nvim_buf_get_name(0))
       return ok and stats and stats.size > max_size
     end
 

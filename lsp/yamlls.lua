@@ -1,6 +1,6 @@
 -- YAML language server
 return {
   cmd = { "yaml-language-server", "--stdio" },
-  filetypes = { "yaml", "yaml.docker-compose" },
+  filetypes = { "yaml" },
   root_markers = { ".git" },
 }

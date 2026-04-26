@@ -137,7 +137,7 @@ return {
         },
         transparent_background = false,
         show_end_of_buffer = false,
-        integration_default = false,
+        default_integrations = false,
         no_bold = true,
         no_italic = true,
         no_underline = true,
