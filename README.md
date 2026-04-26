@@ -1,6 +1,6 @@
 # Neovim Configuration
 
-A minimal, fast Neovim configuration for Neovim 0.11+ with lazy-loading, LSP support, and intuitive keybindings.
+A minimal, fast Neovim configuration for Neovim 0.12+ with lazy-loading, LSP support, and intuitive keybindings.
 
 ---
 
@@ -10,7 +10,7 @@ A minimal, fast Neovim configuration for Neovim 0.11+ with lazy-loading, LSP sup
 
 ```bash
 # Core requirements
-brew install neovim    # v0.11+ required
+brew install neovim    # v0.12+ required
 brew install git
 brew install ripgrep   # Fast grep (used by picker)
 brew install fd        # Fast find (used by picker)
@@ -51,6 +51,9 @@ pip install pynvim  # Optional: for some plugins
 
 # PHP
 brew install php composer
+
+# Swift / iOS (macOS only)
+# Xcode + Command Line Tools provide sourcekit-lsp and xcodebuild
 
 # Lua (for luarocks, optional)
 brew install lua luarocks
@@ -133,13 +136,15 @@ All checks should pass. Common fixes:
 
 | Category | Tools |
 |----------|-------|
-| **LSP Servers** | lua_ls, gopls, zls, ts_ls, rust-analyzer, intelephense, bashls, pyright, cssls, html, jsonls, yamlls |
+| **LSP Servers** | lua_ls, gopls, zls, ts_ls, rust-analyzer, intelephense, bashls, pyright, cssls, html, jsonls, yamlls, sourcekit-lsp¹ |
 | **Linters** | eslint_d, luacheck, golangci-lint, shellcheck, markdownlint, yamllint, jsonlint, htmlhint, stylelint, phpstan, ruff, mypy |
 | **Formatters** | stylua, goimports, prettier, black, isort, shfmt, pint |
 
+¹ sourcekit-lsp ships with Xcode (not managed by Mason).
+
 ### Via Treesitter
 
-Parsers for: bash, c, css, go, html, javascript, json, latex, lua, markdown, php, python, rust, scss, svelte, terraform, tsx, typescript, vim, vue, yaml, zig
+Parsers for: bash, c, css, go, html, javascript, json, latex, lua, markdown, php, python, rust, scss, svelte, swift, terraform, tsx, typescript, vim, vue, yaml, zig
 
 ---
 
@@ -151,7 +156,7 @@ Parsers for: bash, c, css, go, html, javascript, json, latex, lua, markdown, php
 ├── lua/
 │   ├── core/
 │   │   ├── init.lua         # Loads all core modules
-│   │   ├── options.lua      # Neovim options
+│   │   ├── options.lua      # Neovim options + filetype detection
 │   │   ├── keymaps.lua      # Core keybindings
 │   │   ├── autocmds.lua     # Auto commands
 │   │   ├── lazy.lua         # Plugin manager bootstrap
@@ -163,13 +168,29 @@ Parsers for: bash, c, css, go, html, javascript, json, latex, lua, markdown, php
 │       ├── formatting.lua   # Conform.nvim (format on save)
 │       ├── git.lua          # Gitsigns, fugitive, diffview
 │       ├── linting.lua      # nvim-lint
-│       ├── lsp.lua          # LSP + Mason
+│       ├── lsp.lua          # Mason + LSP keymaps + diagnostic config
 │       ├── snacks.lua       # Picker, explorer, notifications
-│       ├── tools.lua        # Notes, file creation
+│       ├── swift.lua        # xcodebuild.nvim (Swift/iOS)
+│       ├── tools.lua        # Misc tools
 │       └── ui.lua           # Which-key, trouble, markdown
+├── lsp/                     # Per-server configs (vim.lsp.config / 0.11+ API)
+│   ├── bashls.lua
+│   ├── cssls.lua
+│   ├── gopls.lua
+│   ├── html.lua
+│   ├── intelephense.lua
+│   ├── jsonls.lua
+│   ├── lua_ls.lua
+│   ├── pyright.lua
+│   ├── rust_analyzer.lua
+│   ├── sourcekit.lua
+│   ├── ts_ls.lua
+│   ├── yamlls.lua
+│   └── zls.lua
 ├── ftplugin/
 │   ├── go.lua               # Go commands (:GoTest, :GoBuild, etc.)
 │   ├── rust.lua             # Rust commands (:CargoRun, :CargoTest, etc.)
+│   ├── swift.lua            # Swift indentation/comment settings
 │   └── zig.lua              # Zig commands (:ZigBuild, :ZigTest, etc.)
 └── doc/
     ├── go.txt               # :help go.txt
@@ -456,11 +477,28 @@ Parsers for: bash, c, css, go, html, javascript, json, latex, lua, markdown, php
 | `:ZigDoc` | Open Zig docs |
 | `:ZigAlt` | Switch test/source |
 
+### Swift / iOS (`<leader>x`)
+
+Powered by `xcodebuild.nvim`. Requires Xcode + Command Line Tools.
+
+| Key / Command | Action |
+|---------------|--------|
+| `<leader>xs` | Setup project |
+| `<leader>xb` / `xr` | Build / Build & Run |
+| `<leader>xt` | Run tests |
+| `<leader>xT` / `xf` | Test current class / function |
+| `<leader>xS` / `xd` | Select scheme / device |
+| `<leader>xo` | Boot simulator |
+| `<leader>xl` | Toggle build logs |
+| `:XcodebuildPicker` | All commands menu |
+
 ---
 
-## Language Servers (Mason)
+## Language Servers
 
-Auto-installed:
+Server configs live under `lsp/` and are activated via `vim.lsp.enable()` in `lua/plugins/lsp.lua`.
+
+Auto-installed via Mason:
 - **Go:** gopls
 - **Rust:** rust-analyzer
 - **Zig:** zls
@@ -470,6 +508,9 @@ Auto-installed:
 - **PHP:** intelephense
 - **Bash:** bashls
 - **CSS/HTML/JSON/YAML:** vscode servers
+
+Not managed by Mason:
+- **Swift / Objective-C:** sourcekit-lsp (ships with Xcode)
 
 ## Formatters (Conform)
 
