@@ -13,7 +13,7 @@ return {
       set_light_mode = function()
         -- vim.cmd([[colorscheme flexoki-light]])
         require("yukinord").setup({ style = "light" })
-        vim.cmd([[colorscheme gruvbox-material]])
+        vim.cmd([[colorscheme github_light_default]])
       end,
     },
   },
@@ -150,7 +150,7 @@ return {
           treesitter = true,
           treesitter_context = true,
           which_key = true,
-          fidget = true,
+          fidget = false,
           mason = true,
           neotest = true,
           dap_ui = true,
@@ -259,13 +259,10 @@ return {
               CursorLineNr = { fg = colors.text },
               GitSignsChange = { fg = colors.peach },
               LineNr = { fg = colors.overlay0 },
-              LspInfoBorder = { link = "FloatBorder" },
+              LspFloatBorder = { link = "FloatBorder" },
               VertSplit = { bg = colors.base, fg = colors.surface0 },
               WhichKeyFloat = { bg = colors.mantle },
               YankHighlight = { bg = colors.surface2 },
-              FidgetTask = { fg = colors.subtext1 },
-              FidgetTitle = { fg = colors.peach },
-
               IblIndent = { fg = colors.surface0 },
               IblScope = { fg = colors.overlay0 },
 

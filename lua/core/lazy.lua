@@ -47,7 +47,6 @@ require("lazy").setup({ import = "plugins" }, {
       disabled_plugins = {
         "gzip",
         "tarPlugin",
-        "tohtml",
         "tutor",
         "zipPlugin",
       },
