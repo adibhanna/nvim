@@ -52,6 +52,9 @@ pip install pynvim  # Optional: for some plugins
 # PHP
 brew install php composer
 
+# Laravel LSP (optional, for Laravel projects — see "Language Servers" below)
+composer global require laravel/lsp
+
 # Swift / iOS (macOS only)
 # Xcode + Command Line Tools provide sourcekit-lsp and xcodebuild
 
@@ -511,6 +514,40 @@ Auto-installed via Mason:
 
 Not managed by Mason:
 - **Swift / Objective-C:** sourcekit-lsp (ships with Xcode)
+- **Laravel:** laravel-lsp (installed via Composer, see below)
+
+### Laravel LSP
+
+[laravel/lsp](https://github.com/laravel/lsp) is Laravel's official language server. It is
+not available through Mason — install it globally with Composer:
+
+```bash
+composer global require laravel/lsp
+```
+
+Make sure Composer's global bin directory is on your `PATH`, otherwise Neovim cannot find
+the `laravel-lsp` binary:
+
+```bash
+# Add to ~/.zshrc (macOS default location)
+export PATH="$HOME/.config/composer/vendor/bin:$PATH"
+
+# Verify
+which laravel-lsp
+```
+
+Config lives in `lsp/laravel_lsp.lua`. The filename must match the name passed to
+`vim.lsp.enable()` in `lua/plugins/lsp.lua` — `laravel_lsp` resolves to
+`lsp/laravel_lsp.lua`, so a hyphenated filename silently fails to load.
+
+It runs *alongside* intelephense rather than replacing it. intelephense handles general PHP
+intelligence (classes, methods, properties); laravel-lsp adds Laravel-aware completion for
+strings such as `config('…')`, `route('…')`, `view('…')` and `env('…')`, plus Blade
+directives. It boots the Laravel application, so it only works in a real Laravel project
+(one containing `artisan`).
+
+To verify: open a PHP file in a Laravel project, type `config('` in insert mode, and the
+config keys should appear. `:checkhealth vim.lsp` lists it as attached.
 
 ## Formatters (Conform)
 

@@ -15,8 +15,12 @@ local function setup_keymaps(bufnr)
   -- gd, gD, gr, gi, gy handled by Snacks picker (snacks.lua)
 
   -- Diagnostics navigation
-  map("n", "[d", function() vim.diagnostic.jump({ count = -1 }) end, "Prev Diagnostic")
-  map("n", "]d", function() vim.diagnostic.jump({ count = 1 }) end, "Next Diagnostic")
+  map("n", "[d", function()
+    vim.diagnostic.jump({ count = -1 })
+  end, "Prev Diagnostic")
+  map("n", "]d", function()
+    vim.diagnostic.jump({ count = 1 })
+  end, "Next Diagnostic")
 
   -- <leader>c = Code
   map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, "Code Action")
@@ -28,7 +32,10 @@ local function setup_keymaps(bufnr)
   map("n", "<leader>li", "<cmd>checkhealth vim.lsp<cr>", "LSP Info")
   map("n", "<leader>lr", "<cmd>lsp restart<cr>", "LSP Restart")
   map("n", "<leader>lh", function()
-    vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = bufnr }), { bufnr = bufnr })
+    vim.lsp.inlay_hint.enable(
+      not vim.lsp.inlay_hint.is_enabled({ bufnr = bufnr }),
+      { bufnr = bufnr }
+    )
   end, "Toggle Inlay Hints")
 end
 
@@ -40,7 +47,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(args)
     local bufnr = args.buf
     local client = vim.lsp.get_client_by_id(args.data.client_id)
-    if not client then return end
+    if not client then
+      return
+    end
 
     setup_keymaps(bufnr)
 
@@ -106,6 +115,7 @@ vim.lsp.enable({
   "jsonls",
   "yamlls",
   "sourcekit",
+  "laravel_lsp",
 })
 
 -- ════════════════════════════════════════════════════════════════════════════
@@ -133,11 +143,26 @@ return {
     opts = {
       ensure_installed = {
         -- Linters
-        "eslint_d", "luacheck", "golangci-lint", "shellcheck",
-        "markdownlint", "yamllint", "jsonlint", "htmlhint", "stylelint",
-        "phpstan", "ruff", "mypy",
+        "eslint_d",
+        "luacheck",
+        "golangci-lint",
+        "shellcheck",
+        "markdownlint",
+        "yamllint",
+        "jsonlint",
+        "htmlhint",
+        "stylelint",
+        "phpstan",
+        "ruff",
+        "mypy",
         -- Formatters
-        "stylua", "goimports", "prettier", "black", "isort", "shfmt", "pint",
+        "stylua",
+        "goimports",
+        "prettier",
+        "black",
+        "isort",
+        "shfmt",
+        "pint",
       },
     },
   },
